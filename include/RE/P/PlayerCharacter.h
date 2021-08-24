@@ -140,6 +140,7 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_PlayerCharacter;
+		inline static constexpr auto VTABLE = VTABLE_PlayerCharacter;
 		inline static constexpr auto FORMTYPE = FormType::ActorCharacter;
 
 		enum class EventType

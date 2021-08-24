@@ -21,6 +21,7 @@ namespace RE
 	public:
 		inline static constexpr auto RTTI = RTTI_ModelReferenceEffect;
 		inline static constexpr auto Ni_RTTI = NiRTTI_ModelReferenceEffect;
+		inline static constexpr auto TYPE = TEMP_EFFECT_TYPE::kRefModel;
 
 		~ModelReferenceEffect() override;  // 00
 
@@ -34,8 +35,8 @@ namespace RE
 		void             Unk_36(void) override;                        // 36
 		void             Unk_3A(void) override;                        // 3A
 		void             UpdatePosition() override;                    // 3B
-		void             Unk_3C(void) override;                        // 3C
-		void             Unk_3D(void) override;                        // 3D - { return unkD0 & 1; }
+		NiAVObject*      GetTargetRoot() override;                     // 3C
+		bool             Unk_3D(void) override;                        // 3D - { return unkD0 & 1; }
 		void             Unk_3E(void) override;                        // 3E
 
 		// members

@@ -2,13 +2,14 @@
 
 #include "RE/B/BGSEncounterZone.h"
 #include "RE/E/ExtraNorthRotation.h"
+#include "RE/N/NiMath.h"
 #include "RE/T/TESFaction.h"
 #include "RE/T/TESNPC.h"
 #include "RE/T/TESWorldSpace.h"
 
 namespace RE
 {
-	void TESObjectCELL::ForEachReference(std::function<bool(RE::TESObjectREFR&)> a_callback) const
+	void TESObjectCELL::ForEachReference(std::function<bool(TESObjectREFR&)> a_callback) const
 	{
 		BSSpinLockGuard locker(spinLock);
 		for (const auto& ref : references) {
@@ -78,6 +79,21 @@ namespace RE
 		}
 
 		return zone ? zone->data.zoneOwner : nullptr;
+	}
+
+	float TESObjectCELL::GetWaterHeight() const
+	{
+		auto height = -NI_INFINITY;
+
+		if (cellFlags.none(Flag::kHasWater) || cellFlags.any(Flag::kIsInteriorCell)) {
+			return height;
+		}
+
+		if (waterHeight < 2147483600.0f) {
+			return waterHeight;
+		}
+
+		return worldSpace ? worldSpace->GetWaterHeight() : height;
 	}
 
 	bool TESObjectCELL::IsAttached() const

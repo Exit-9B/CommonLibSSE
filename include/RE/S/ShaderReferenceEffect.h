@@ -17,6 +17,7 @@ namespace RE
 	public:
 		inline static constexpr auto RTTI = RTTI_ShaderReferenceEffect;
 		inline static constexpr auto Ni_RTTI = NiRTTI_ShaderReferenceEffect;
+		inline static constexpr auto TYPE = TEMP_EFFECT_TYPE::kRefShader;
 
 		struct Data048
 		{
@@ -53,7 +54,7 @@ namespace RE
 		void             Unk_38(void) override;                                     // 38
 		void             Unk_39(void) override;                                     // 39
 		void             UpdatePosition() override;                                 // 3B
-		void             Unk_3C(void) override;                                     // 3C
+		NiAVObject*      GetTargetRoot() override;                                  // 3C
 		void             Unk_3E(void) override;                                     // 3E
 
 		// members

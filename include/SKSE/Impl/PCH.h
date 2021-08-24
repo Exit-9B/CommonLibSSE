@@ -32,6 +32,7 @@
 #include <new>
 #include <numeric>
 #include <optional>
+#include <random>
 #include <regex>
 #include <set>
 #include <source_location>
@@ -59,6 +60,7 @@ static_assert(
 #include <spdlog/spdlog.h>
 #pragma warning(pop)
 
+#include "SKSE/Impl/Util.h"
 #include "SKSE/Impl/WinAPI.h"
 
 namespace SKSE
@@ -608,6 +610,7 @@ namespace REL
 #	include "RE/Offsets.h"
 #	include "RE/Offsets_NiRTTI.h"
 #	include "RE/Offsets_RTTI.h"
+#   include "RE/Offsets_VTABLE.h"
 #else
 #	include "RE/Offsets_VR.h"
 #	include "RE/Offsets_VR_NiRTTI.h"

@@ -4,6 +4,7 @@
 #include "RE/B/BSTList.h"
 #include "RE/B/BSTTuple.h"
 #include "RE/I/ICellAttachDetachEventSource.h"
+#include "RE/N/NiPoint3.h"
 #include "RE/N/NiSmartPointer.h"
 
 namespace RE
@@ -21,6 +22,7 @@ namespace RE
 	class Sky;
 	class TESActorBase;
 	class TESObjectCELL;
+	class TESObjectREFR;
 	class TESWorldSpace;
 
 	struct PositionPlayerEvent;
@@ -57,6 +59,23 @@ namespace RE
 		BSEventNotifyControl ProcessEvent(const PositionPlayerEvent* a_event, BSTEventSource<PositionPlayerEvent>* a_eventSource) override;  // 01
 
 		static TES* GetSingleton();
+
+		void ForEachReference(std::function<bool(TESObjectREFR& a_ref)> a_callback);
+		void ForEachReferenceInRange(TESObjectREFR* a_origin, float a_radius, std::function<bool(TESObjectREFR& a_ref)> a_callback);
+
+		TESObjectCELL* GetCell(const NiPoint3& a_position) const
+		{
+			using func_t = decltype(&TES::GetCell);
+			REL::Relocation<func_t> func{ REL::ID(13177) };
+			return func(this, a_position);
+		}
+
+		float GetWaterHeight(const NiPoint3& a_pos, TESObjectCELL* a_cell) const
+		{
+			using func_t = decltype(&TES::GetWaterHeight);
+			REL::Relocation<func_t> func{ REL::ID(13212) };
+			return func(this, a_pos, a_cell);
+		}
 
 		// members
 		std::uint64_t                                         unk070;                     // 070

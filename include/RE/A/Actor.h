@@ -377,7 +377,7 @@ namespace RE
 		virtual void                 AttachArrow(const BSTSmartPointer<BipedAnim>& a_biped);                                                                                                                          // 0CD
 		virtual void                 DetachArrow(const BSTSmartPointer<BipedAnim>& a_biped);                                                                                                                          // 0CE
 		virtual bool                 AddShout(TESShout* a_shout);                                                                                                                                                     // 0CF
-		virtual void                 Unk_D0(void);                                                                                                                                                                    // 0D0 - { return; }
+		virtual void                 UnlockWord(TESWordOfPower* a_power);                                                                                                                                             // 0D0 - { return; }
 		virtual void                 Unk_D1(void);                                                                                                                                                                    // 0D1
 		virtual std::uint32_t        UseAmmo(std::uint32_t a_shotCount);                                                                                                                                              // 0D2
 		virtual bool                 CalculateCachedOwnerIsInCombatantFaction() const;                                                                                                                                // 0D3
@@ -469,7 +469,9 @@ namespace RE
 		static NiPointer<Actor> LookupByHandle(RefHandle a_refHandle);
 		static bool             LookupByHandle(RefHandle a_refHandle, NiPointer<Actor>& a_refrOut);
 
+		bool                         AddAnimationGraphEventSink(BSTEventSink<BSAnimationGraphEvent>* a_sink) const;
 		bool                         AddSpell(SpellItem* a_spell);
+		void                         AddToFaction(TESFaction* a_faction, std::int8_t a_rank);
 		void                         AllowBleedoutDialogue(bool a_canTalk);
 		void                         AllowPCDialogue(bool a_talk);
 		bool                         CanFlyHere() const;
@@ -479,11 +481,14 @@ namespace RE
 		void                         ClearExpressionOverride();
 		inline void                  ClearExtraArrows() { RemoveExtraArrows3D(); }
 		ActorHandle                  CreateRefHandle();
+		bool                         Decapitate();
 		void                         DispelWornItemEnchantments();
 		void                         DoReset3D(bool a_updateWeight);
+		void                         EnableAI(bool a_enable);
 		void                         EvaluatePackage(bool a_immediate = false, bool a_resetAI = false);
 		TESNPC*                      GetActorBase();
 		const TESNPC*                GetActorBase() const;
+		float                        GetActorValueModifier(ACTOR_VALUE_MODIFIER a_modifier, ActorValue a_value) const;
 		InventoryEntryData*          GetAttackingWeapon();
 		const InventoryEntryData*    GetAttackingWeapon() const;
 		bhkCharacterController*      GetCharController() const;
@@ -499,10 +504,13 @@ namespace RE
 		std::uint16_t                GetLevel() const;
 		ObjectRefHandle              GetOccupiedFurniture() const;
 		TESRace*                     GetRace() const;
+		[[nodiscard]] TESObjectARMO* GetSkin() const;
 		[[nodiscard]] TESObjectARMO* GetSkin(BGSBipedObjectForm::BipedObjectSlot a_slot);
+		[[nodiscard]] SOUL_LEVEL     GetSoulSize() const;
 		[[nodiscard]] TESObjectARMO* GetWornArmor(BGSBipedObjectForm::BipedObjectSlot a_slot);
 		[[nodiscard]] TESObjectARMO* GetWornArmor(FormID a_formID);
 		bool                         HasPerk(BGSPerk* a_perk) const;
+		bool                         HasSpell(SpellItem* a_spell) const;
 		void                         InterruptCast(bool a_restoreMagicka) const;
 		bool                         IsAIEnabled() const;
 		bool                         IsAMount() const;
@@ -514,6 +522,7 @@ namespace RE
 		bool                         IsGhost() const;
 		bool                         IsGuard() const;
 		bool                         IsHostileToActor(Actor* a_actor);
+		bool                         IsLimbGone(std::uint32_t a_limb);
 		[[nodiscard]] constexpr bool IsInKillMove() const noexcept { return boolFlags.all(BOOL_FLAGS::kIsInKillMove); }
 		bool                         IsOnMount() const;
 		bool                         IsPlayerTeammate() const;
@@ -521,7 +530,10 @@ namespace RE
 		bool                         IsSneaking() const;
 		[[nodiscard]] bool           IsSummoned() const noexcept;
 		bool                         IsTrespassing() const;
+		void                         KillImmediate();
+		void                         RemoveAnimationGraphEventSink(BSTEventSink<BSAnimationGraphEvent>* a_sink);
 		void                         RemoveExtraArrows3D();
+		void                         RemoveSelectedSpell(SpellItem* a_spell);
 		bool                         RemoveSpell(SpellItem* a_spell);
 		std::int32_t                 RequestDetectionLevel(Actor* a_target, DETECTION_PRIORITY a_priority = DETECTION_PRIORITY::kNormal);
 		void                         StealAlarm(TESObjectREFR* a_ref, TESForm* a_object, std::int32_t a_num, std::int32_t a_total, TESForm* a_owner, bool a_allowWarning);
@@ -531,6 +543,7 @@ namespace RE
 		void                         UpdateHairColor();
 		void                         UpdateSkinColor();
 		void                         UpdateWeaponAbility(TESForm* a_weapon, ExtraDataList* a_extraData, bool a_leftHand);
+		void                         VisitArmorAddon(TESObjectARMO* a_armor, TESObjectARMA* a_arma, std::function<void(bool a_firstPerson, NiAVObject& a_obj)> a_visitor);
 		bool                         VisitFactions(std::function<bool(TESFaction* a_faction, std::int8_t a_rank)> a_visitor);
 		bool                         WouldBeStealing(const TESObjectREFR* a_target) const;
 
