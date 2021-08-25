@@ -615,6 +615,7 @@ namespace REL
 #	include "RE/Offsets_VR.h"
 #	include "RE/Offsets_VR_NiRTTI.h"
 #	include "RE/Offsets_VR_RTTI.h"
+#	include "RE/Offsets_VR_VTABLE.h"
 #endif
 
 #include "RE/B/BSCoreTypes.h"

@@ -7,7 +7,7 @@ namespace RE
 	public:
 		static float GetCurrentGlobalTimeMult()
 		{
-			REL::Relocation<float*> value{ REL::ID(511883) };
+			REL::Relocation<float*> value{ Offset::BSTimer::GetCurrentGlobalTimeMult };
 			return *value;
 		}
 

@@ -37,14 +37,14 @@ namespace RE
 	public:
 		[[nodiscard]] static BSFaceGenManager* GetSingleton()
 		{
-			REL::Relocation<BSFaceGenManager**> singleton{ REL::ID(514182) };
+			REL::Relocation<BSFaceGenManager**> singleton{ Offset::BSFaceGenManager::GetSingleton };
 			return *singleton;
 		}
 
 		void PrepareHeadPartForShaders(BSFaceGenNiNode* a_node, BGSHeadPart* a_headPart, TESNPC* a_npc)
 		{
 			using func_t = decltype(&BSFaceGenManager::PrepareHeadPartForShaders);
-			REL::Relocation<func_t> func{ REL::ID(26259) };
+			REL::Relocation<func_t> func{ Offset::BSFaceGenManager::PrepareHeadPartForShaders };
 			return func(this, a_node, a_headPart, a_npc);
 		}
 

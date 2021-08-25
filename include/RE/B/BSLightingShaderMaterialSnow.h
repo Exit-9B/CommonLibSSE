@@ -29,7 +29,7 @@ namespace RE
 		BSLightingShaderMaterialSnow* ctor()
 		{
 			using func_t = decltype(&BSLightingShaderMaterialSnow::ctor);
-			REL::Relocation<func_t> func{ REL::ID(100118) };
+			REL::Relocation<func_t> func{ Offset::BSLightingShaderMaterialSnow::Ctor };
 			return func(this);
 		}
 		friend class BSLightingShaderMaterialBase;

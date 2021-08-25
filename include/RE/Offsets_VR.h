@@ -1,4 +1,5 @@
 #pragma once
+#include <REL/Relocation.h>
 
 namespace RE
 {
@@ -69,6 +70,11 @@ namespace RE
 			inline constexpr REL::Offset UnequipObject(0x006411A0);  // VR 1_4_15
 		}
 
+		namespace ActorValueList
+		{
+			inline constexpr REL::Offset GetSingleton(0x1f82ac8);
+		}
+
 		namespace ActorValueOwner
 		{
 			// IndirectSig: E8 ? ? ? ? F3 44 0F 2C C0
@@ -95,6 +101,11 @@ namespace RE
 			inline constexpr REL::Offset Vtbl(0x016F2338);  // VR 1_4_15
 		}
 
+		namespace BGSDecalManager
+		{
+			inline constexpr REL::Offset GetSingleton(0x1f89188);
+		}
+
 		namespace BGSDefaultObjectManager
 		{
 			// IndirectSig: E8 ? ? ? ? 4C 63 C3
@@ -105,6 +116,11 @@ namespace RE
 		{
 			// E8 ? ? ? ? 90 48 89 1D ? ? ? ? 48 8D 0D ? ? ? ?
 			inline constexpr REL::Offset Singleton(0x02FEBC50);  // VR
+		}
+
+		namespace BGSIdleCollection
+		{
+			inline constexpr REL::Offset Ctor(0x0196d70);
 		}
 
 		namespace BGSListForm
@@ -133,6 +149,12 @@ namespace RE
 			inline constexpr REL::Offset Singleton(0x01EC3B80);  // 1_5_97
 		}
 
+		namespace BGSWaterSystemManager
+		{
+			inline constexpr REL::Offset GetSingleton(0x1f85120);
+			inline constexpr REL::Offset CreateBulletWaterDisplacement(0x04d8a40);
+		}
+
 		namespace BipedAnim
 		{
 			// IndirectSig: E8 ? ? ? ? BA ? ? ? ? 48 8B CF E8 ? ? ? ? 48 8B 5C 24 ? EB 76
@@ -147,6 +169,17 @@ namespace RE
 			inline constexpr REL::Offset GetSingleton(0x00C29430);  // VR 1_4_15
 			// IndirectSig: E8 ? ? ? ? C6 46 04 01
 			inline constexpr REL::Offset BuildSoundDataFromDescriptor(0x00C29F60);  // VR 1_4_15
+		}
+
+		namespace BSDismemberSkinInstance
+		{
+			inline constexpr REL::Offset UpdateDismemberPartion(0x1401de820);
+		}
+
+		namespace BSFaceGenManager
+		{
+			inline constexpr REL::Offset GetSingleton(0x03e17c0);
+			inline constexpr REL::Offset     PrepareHeadPartForShaders(0x03e23d0);
 		}
 
 		namespace BSFixedString
@@ -173,10 +206,75 @@ namespace RE
 			inline constexpr REL::Offset Singleton(0x02FEA520);  // VR
 		}
 
+		namespace BSLightingShaderMaterial
+		{
+			inline constexpr REL::Offset Ctor(0x130dc60);
+		}
+
 		namespace BSLightingShaderMaterialBase
 		{
 			// IndirectSig: E8 ? ? ? ? 45 33 C0 33 D2 48 8B CF 4C 8B F0
 			inline constexpr REL::Offset CreateMaterial(0x0130EAD0);  // VR 1_4_15
+		}
+
+		namespace BSLightingShaderMaterialEnvmap
+		{
+			inline constexpr REL::Offset Ctor(0x130f0b0);
+		}
+
+		namespace BSLightingShaderMaterialEye
+		{
+			inline constexpr REL::Offset Ctor(0x130f760);
+		}
+
+		namespace BSLightingShaderMaterialFacegen
+		{
+			inline constexpr REL::Offset Ctor(0x1310e80);
+		}
+
+		namespace BSLightingShaderMaterialFacegenTint
+		{
+			inline constexpr REL::Offset Ctor(0x13115a0);
+		}
+
+		namespace BSLightingShaderMaterialGlowmap
+		{
+			inline constexpr REL::Offset Ctor(0x130ff20);
+		}
+
+		namespace BSLightingShaderMaterialHairTint
+		{
+			inline constexpr REL::Offset Ctor(0x13117c0);
+		}
+
+		namespace BSLightingShaderMaterialLODLandscape
+		{
+			inline constexpr REL::Offset Ctor(0x1312270);
+		}
+
+		namespace BSLightingShaderMaterialLandscape
+		{
+			inline constexpr REL::Offset Ctor(0x13119d0);
+		}
+
+		namespace BSLightingShaderMaterialMultiLayerParallax
+		{
+			inline constexpr REL::Offset Ctor(0x13129e0);
+		}
+
+		namespace BSLightingShaderMaterialParallax
+		{
+			inline constexpr REL::Offset Ctor(0x13103c0);
+		}
+
+		namespace BSLightingShaderMaterialParallaxOcc
+		{
+			inline constexpr REL::Offset Ctor(0x1310860);
+		}
+
+		namespace BSLightingShaderMaterialSnow
+		{
+			inline constexpr REL::Offset Ctor(0x1312800);
 		}
 
 		namespace BSReadWriteLock
@@ -285,6 +383,11 @@ namespace RE
 			inline constexpr REL::Offset Release16(0x00C6EF20);
 		}
 
+		namespace BSTimer
+		{
+			inline constexpr REL::Offset GetCurrentGlobalTimeMult(0x1ec569c);
+		}
+
 		namespace BSUntypedPointerHandle
 		{
 			// 8B 05 ? ? ? ? 89 44 24 78 48 8D 44 24 ? 8B 00
@@ -345,6 +448,11 @@ namespace RE
 			inline constexpr REL::Offset SizeOf64(0x00C413F0);  // VR 1_4_15
 			// IndirectSig: E8 ? ? ? ? 8B 9D B8 00 00 00
 			inline constexpr REL::Offset SizeOfSize(0x00C41310);  // VR 1_4_15
+		}
+
+		namespace CrosshairPickData
+		{
+			inline constexpr REL::Offset GetSingleton(0x2fc60c0);
 		}
 
 		namespace DialogueItem
@@ -495,6 +603,11 @@ namespace RE
 		{
 			// VTable: .?AVFirstPersonState@@
 			inline constexpr REL::Offset Vtbl(0x0172CEB0);  // VR 1_4_15
+		}
+
+		namespace FixedStrings
+		{
+			inline constexpr REL::Offset GetSingleton(0x01150c0);
 		}
 
 		namespace GameSettingCollection
@@ -716,6 +829,11 @@ namespace RE
 			inline constexpr REL::Offset Singleton(0x02F26BF8);  // 1_5_97
 		}
 
+		namespace MapMenu
+		{
+			inline constexpr REL::Offset PlaceMarker(0x0919520);
+		}
+
 		namespace MemoryManager
 		{
 			// DirectSig: 48 89 5C 24 ? 55 57 41 54 41 55 41 57 48 83 EC 30 65 48 8B 04 25 ? ? ? ?
@@ -740,6 +858,11 @@ namespace RE
 		{
 			// VTable: .?AUMenuOpenHandler@@
 			inline constexpr REL::Offset Vtbl(0x0173C970);  // VR 1_4_15
+		}
+
+		namespace MessageBoxData
+		{
+			inline constexpr REL::Offset QueueMessage(0x08d8420);
 		}
 
 		namespace MessageDataFactoryManager

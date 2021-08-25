@@ -42,6 +42,11 @@ namespace RE
 			inline constexpr REL::ID Vtbl(static_cast<std::uint64_t>(260538));
 		}
 
+		namespace ActorValueList
+		{
+			inline constexpr REL::ID GetSingleton(static_cast<std::uint64_t>(514139));
+		}
+
 		namespace ActorEquipManager
 		{
 			inline constexpr REL::ID EquipObject(static_cast<std::uint64_t>(37938));
@@ -72,6 +77,11 @@ namespace RE
 			inline constexpr REL::ID Vtbl(static_cast<std::uint64_t>(263061));
 		}
 
+		namespace BGSDecalManager
+		{
+			inline constexpr REL::ID GetSingleton(static_cast<std::uint64_t>(514414));
+		}
+
 		namespace BGSDefaultObjectManager
 		{
 			inline constexpr REL::ID GetSingleton(static_cast<std::uint64_t>(10878));
@@ -80,6 +90,11 @@ namespace RE
 		namespace BGSFootstepManager
 		{
 			inline constexpr REL::ID Singleton(static_cast<std::uint64_t>(517045));
+		}
+
+		namespace BGSIdleCollection
+		{
+			inline constexpr REL::ID Ctor(static_cast<std::uint64_t>(14127));
 		}
 
 		namespace BGSListForm
@@ -101,6 +116,12 @@ namespace RE
 			inline constexpr REL::ID Singleton(static_cast<std::uint64_t>(514316));
 		}
 
+		namespace BGSWaterSystemManager
+		{
+			inline constexpr REL::ID GetSingleton(static_cast<std::uint64_t>(514290));
+			inline constexpr REL::ID CreateBulletWaterDisplacement(static_cast<std::uint64_t>(31410));
+		}
+
 		namespace BipedAnim
 		{
 			inline constexpr REL::ID Dtor(static_cast<std::uint64_t>(15491));
@@ -111,6 +132,17 @@ namespace RE
 		{
 			inline constexpr REL::ID GetSingleton(static_cast<std::uint64_t>(66391));
 			inline constexpr REL::ID BuildSoundDataFromDescriptor(static_cast<std::uint64_t>(66404));
+		}
+
+		namespace BSDismemberSkinInstance
+		{
+			inline constexpr REL::ID UpdateDismemberPartion(static_cast<std::uint64_t>(15576));
+		}
+
+		namespace BSFaceGenManager
+		{
+			inline constexpr REL::ID GetSingleton(static_cast<std::uint64_t>(514182));
+			inline constexpr REL::ID PrepareHeadPartForShaders(static_cast<std::uint64_t>(26259));
 		}
 
 		namespace BSFixedString
@@ -124,9 +156,74 @@ namespace RE
 			inline constexpr REL::ID Singleton(static_cast<std::uint64_t>(516574));
 		}
 
+		namespace BSLightingShaderMaterial
+		{
+			inline constexpr REL::ID Ctor(static_cast<std::uint64_t>(100004));
+		}
+
 		namespace BSLightingShaderMaterialBase
 		{
 			inline constexpr REL::ID CreateMaterial(static_cast<std::uint64_t>(100016));
+		}
+
+		namespace BSLightingShaderMaterialEnvmap
+		{
+			inline constexpr REL::ID Ctor(static_cast<std::uint64_t>(100021));
+		}
+
+		namespace BSLightingShaderMaterialEye
+		{
+			inline constexpr REL::ID Ctor(static_cast<std::uint64_t>(100033));
+		}
+
+		namespace BSLightingShaderMaterialFacegen
+		{
+			inline constexpr REL::ID Ctor(static_cast<std::uint64_t>(100077));
+		}
+
+		namespace BSLightingShaderMaterialFacegenTint
+		{
+			inline constexpr REL::ID Ctor(static_cast<std::uint64_t>(100087));
+		}
+
+		namespace BSLightingShaderMaterialGlowmap
+		{
+			inline constexpr REL::ID Ctor(static_cast<std::uint64_t>(100045));
+		}
+
+		namespace BSLightingShaderMaterialHairTint
+		{
+			inline constexpr REL::ID Ctor(static_cast<std::uint64_t>(100095));
+		}
+
+		namespace BSLightingShaderMaterialLODLandscape
+		{
+			inline constexpr REL::ID Ctor(static_cast<std::uint64_t>(100110));
+		}
+
+		namespace BSLightingShaderMaterialLandscape
+		{
+			inline constexpr REL::ID Ctor(static_cast<std::uint64_t>(100102));
+		}
+
+		namespace BSLightingShaderMaterialMultiLayerParallax
+		{
+			inline constexpr REL::ID Ctor(static_cast<std::uint64_t>(100125));
+		}
+
+		namespace BSLightingShaderMaterialParallax
+		{
+			inline constexpr REL::ID Ctor(static_cast<std::uint64_t>(100055));
+		}
+
+		namespace BSLightingShaderMaterialParallaxOcc
+		{
+			inline constexpr REL::ID Ctor(static_cast<std::uint64_t>(100065));
+		}
+
+		namespace BSLightingShaderMaterialSnow
+		{
+			inline constexpr REL::ID Ctor(static_cast<std::uint64_t>(100118));
 		}
 
 		namespace BSReadWriteLock
@@ -206,6 +303,11 @@ namespace RE
 			inline constexpr REL::ID Release16(static_cast<std::uint64_t>(67848));
 		}
 
+		namespace BSTimer
+		{
+			inline constexpr REL::ID GetCurrentGlobalTimeMult(static_cast<std::uint64_t>(511883));
+		}
+
 		namespace BucketTable
 		{
 			inline constexpr REL::ID GetSingleton(static_cast<std::uint64_t>(67855));
@@ -248,6 +350,11 @@ namespace RE
 			inline constexpr REL::ID SizeOf32(static_cast<std::uint64_t>(66963));
 			inline constexpr REL::ID SizeOf64(static_cast<std::uint64_t>(66964));
 			inline constexpr REL::ID SizeOfSize(static_cast<std::uint64_t>(66962));
+		}
+
+		namespace CrosshairPickData
+		{
+			inline constexpr REL::ID GetSingleton(static_cast<std::uint64_t>(515446));
 		}
 
 		namespace DialogueItem
@@ -370,6 +477,11 @@ namespace RE
 		namespace FirstPersonState
 		{
 			inline constexpr REL::ID Vtbl(static_cast<std::uint64_t>(267810));
+		}
+
+		namespace FixedStrings
+		{
+			inline constexpr REL::ID GetSingleton(static_cast<std::uint64_t>(11308));
 		}
 
 		namespace GameSettingCollection
@@ -531,6 +643,11 @@ namespace RE
 			inline constexpr REL::ID Singleton(static_cast<std::uint64_t>(516943));
 		}
 
+		namespace MapMenu
+		{
+			inline constexpr REL::ID PlaceMarker(static_cast<std::uint64_t>(52226));
+		}
+
 		namespace MemoryManager
 		{
 			inline constexpr REL::ID GetSingleton(static_cast<std::uint64_t>(11045));
@@ -549,6 +666,11 @@ namespace RE
 		namespace MenuOpenHandler
 		{
 			inline constexpr REL::ID Vtbl(static_cast<std::uint64_t>(269538));
+		}
+
+		namespace MessageBoxData
+		{
+			inline constexpr REL::ID QueueMessage(static_cast<std::uint64_t>(51422));
 		}
 
 		namespace MessageDataFactoryManager

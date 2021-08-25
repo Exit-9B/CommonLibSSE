@@ -11,7 +11,7 @@ namespace RE
 		class AttachLightHitEffectVisitor : public ActiveEffect::ForEachHitEffectVisitor
 		{
 		public:
-			inline static constexpr auto RTTI = RTTI___AttachLightHitEffectVisitor;
+			inline static constexpr auto RTTI = RE::RTTI___AttachLightHitEffectVisitor;
 
 			virtual ~AttachLightHitEffectVisitor();  // 00
 

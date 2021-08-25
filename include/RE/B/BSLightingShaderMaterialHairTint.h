@@ -30,7 +30,7 @@ namespace RE
 		BSLightingShaderMaterialHairTint* ctor()
 		{
 			using func_t = decltype(&BSLightingShaderMaterialHairTint::ctor);
-			REL::Relocation<func_t> func{ REL::ID(100095) };
+			REL::Relocation<func_t> func{ Offset::BSLightingShaderMaterialHairTint::Ctor };
 			return func(this);
 		}
 		friend class BSLightingShaderMaterialBase;
