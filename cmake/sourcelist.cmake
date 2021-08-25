@@ -1031,11 +1031,11 @@ set(SOURCES
 	include/RE/Offsets.h
 	include/RE/Offsets_NiRTTI.h
 	include/RE/Offsets_RTTI.h
-	include/RE/Offsets_VTABLE.h
 	include/RE/Offsets_VR.h
 	include/RE/Offsets_VR_NiRTTI.h
 	include/RE/Offsets_VR_RTTI.h
 	include/RE/Offsets_VR_VTABLE.h
+	include/RE/Offsets_VTABLE.h
 	include/RE/P/PCGamepadType.h
 	include/RE/P/PackUnpack.h
 	include/RE/P/PackUnpackImpl.h

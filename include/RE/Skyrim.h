@@ -1030,6 +1030,8 @@
 #include "RE/O/Object.h"
 #include "RE/O/ObjectTypeInfo.h"
 #include "RE/O/OldMessageBoxCallback.h"
+#include "RE/Offsets_VR_VTABLE.h"
+#include "RE/Offsets_VTABLE.h"
 #include "RE/P/PCGamepadType.h"
 #include "RE/P/PackUnpack.h"
 #include "RE/P/PackUnpackImpl.h"

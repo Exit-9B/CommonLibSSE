@@ -179,7 +179,7 @@ namespace RE
 		namespace BSFaceGenManager
 		{
 			inline constexpr REL::Offset GetSingleton(0x03e17c0);
-			inline constexpr REL::Offset     PrepareHeadPartForShaders(0x03e23d0);
+			inline constexpr REL::Offset PrepareHeadPartForShaders(0x03e23d0);
 		}
 
 		namespace BSFixedString
