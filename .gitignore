@@ -2,3 +2,5 @@
 CMakeUserPresets.json
 /out*
 /.vs*
+/vcpkg*
+.DS_Store
