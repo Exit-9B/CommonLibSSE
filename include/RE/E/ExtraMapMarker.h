@@ -91,9 +91,10 @@ namespace RE
 		// members
 		TESFullName                                 locationName;  // 00
 		stl::enumeration<Flag, std::uint8_t>        flags;         // 10
-		stl::enumeration<MARKER_TYPE, std::uint8_t> type;          // 11
-		std::uint16_t                               pad02;         // 12
-		std::uint32_t                               pad04;         // 14
+		std::uint8_t                                pad11;         // 11
+		stl::enumeration<MARKER_TYPE, std::uint8_t> type;          // 12
+		std::uint8_t                                pad13;         // 13
+		std::uint32_t                               pad14;         // 14
 	};
 	static_assert(sizeof(MapMarkerData) == 0x18);
 
