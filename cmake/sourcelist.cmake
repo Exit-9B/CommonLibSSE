@@ -247,6 +247,7 @@ set(SOURCES
 	include/RE/B/BSResourceNiBinaryStream.h
 	include/RE/B/BSResponse.h
 	include/RE/B/BSSaveDataSystemUtility.h
+	include/RE/B/BSScaleformFileOpener.h
 	include/RE/B/BSScaleformManager.h
 	include/RE/B/BSScaleformTranslator.h
 	include/RE/B/BSScriptObjectBindPolicy.h
@@ -586,15 +587,19 @@ set(SOURCES
 	include/RE/G/GAtomic.h
 	include/RE/G/GColor.h
 	include/RE/G/GConstructorMov.h
+	include/RE/G/GFileConstants.h
 	include/RE/G/GFixedSizeHash.h
 	include/RE/G/GFxActionControl.h
 	include/RE/G/GFxEvent.h
 	include/RE/G/GFxExternalInterface.h
 	include/RE/G/GFxFileConstants.h
+	include/RE/G/GFxFileOpenerBase.h
 	include/RE/G/GFxFunctionHandler.h
+	include/RE/G/GFxJpegSupportBase.h
 	include/RE/G/GFxKey.h
 	include/RE/G/GFxKeyboardState.h
 	include/RE/G/GFxLoader.h
+	include/RE/G/GFxLoaderImpl.h
 	include/RE/G/GFxLog.h
 	include/RE/G/GFxLogBase.h
 	include/RE/G/GFxLogConstants.h
@@ -605,15 +610,19 @@ set(SOURCES
 	include/RE/G/GFxPlayerStats.h
 	include/RE/G/GFxRenderConfig.h
 	include/RE/G/GFxResource.h
+	include/RE/G/GFxResourceLib.h
 	include/RE/G/GFxResourceID.h
 	include/RE/G/GFxResourceKey.h
 	include/RE/G/GFxSpecialKeysState.h
 	include/RE/G/GFxState.h
 	include/RE/G/GFxStateBag.h
+	include/RE/G/GFxStateBagImpl.h
 	include/RE/G/GFxTranslator.h
 	include/RE/G/GFxValue.h
 	include/RE/G/GFxWStringBuffer.h
 	include/RE/G/GFxWWHelper.h
+	include/RE/G/GFxZlibSupport.h
+	include/RE/G/GFxZlibSupportBase.h
 	include/RE/G/GHash.h
 	include/RE/G/GHashNode.h
 	include/RE/G/GHashSet.h
@@ -1267,6 +1276,7 @@ set(SOURCES
 	src/RE/B/BSPointerHandle.cpp
 	src/RE/B/BSResourceNiBinaryStream.cpp
 	src/RE/B/BSResponse.cpp
+	src/RE/B/BSScaleformFileOpener.cpp
 	src/RE/B/BSScaleformManager.cpp
 	src/RE/B/BSScriptObjectBindPolicy.cpp
 	src/RE/B/BSShaderProperty.cpp
@@ -1331,6 +1341,7 @@ set(SOURCES
 	src/RE/G/GFxValue.cpp
 	src/RE/G/GFxWStringBuffer.cpp
 	src/RE/G/GFxWWHelper.cpp
+	src/RE/G/GFxZlibSupport.cpp
 	src/RE/G/GMemory.cpp
 	src/RE/G/GMemoryHeap.cpp
 	src/RE/G/GRefCountImpl.cpp

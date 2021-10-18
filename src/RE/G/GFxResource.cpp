@@ -4,7 +4,7 @@ namespace RE
 {
 	GFxResource::GFxResource() :
 		_refCount{ 1 },
-		_pad14(0),
+		_pad0C(0),
 		_lib(nullptr)
 	{}
 
@@ -40,6 +40,14 @@ namespace RE
 			return true;
 		} else {
 			return false;
+		}
+	}
+
+	void GFxResource::Release()
+	{
+		stl::atomic_ref myRefCount{ _refCount.value };
+		if (--myRefCount == 0) {
+			delete this;
 		}
 	}
 
