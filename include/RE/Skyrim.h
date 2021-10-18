@@ -615,6 +615,8 @@
 #include "RE/G/GFxResourceID.h"
 #include "RE/G/GFxResourceKey.h"
 #include "RE/G/GFxResourceLib.h"
+#include "RE/G/GFxResourceLibBase.h"
+#include "RE/G/GFxResourceWeakLib.h"
 #include "RE/G/GFxSpecialKeysState.h"
 #include "RE/G/GFxState.h"
 #include "RE/G/GFxStateBag.h"
