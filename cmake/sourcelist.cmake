@@ -610,9 +610,9 @@ set(SOURCES
 	include/RE/G/GFxPlayerStats.h
 	include/RE/G/GFxRenderConfig.h
 	include/RE/G/GFxResource.h
-	include/RE/G/GFxResourceLib.h
 	include/RE/G/GFxResourceID.h
 	include/RE/G/GFxResourceKey.h
+	include/RE/G/GFxResourceLib.h
 	include/RE/G/GFxSpecialKeysState.h
 	include/RE/G/GFxState.h
 	include/RE/G/GFxStateBag.h

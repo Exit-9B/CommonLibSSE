@@ -12,7 +12,8 @@ namespace RE
 	class GFxJpegSupportBase : public GFxState
 	{
 	protected:
-		GFxJpegSupportBase() : GFxState()
+		GFxJpegSupportBase() :
+			GFxState()
 		{
 			stateType = GFxState::StateType::kJpegSupport;
 		}

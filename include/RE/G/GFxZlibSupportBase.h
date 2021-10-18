@@ -10,7 +10,8 @@ namespace RE
 	class GFxZlibSupportBase : public GFxState
 	{
 	protected:
-		GFxZlibSupportBase() : GFxState()
+		GFxZlibSupportBase() :
+			GFxState()
 		{
 			stateType = GFxState::StateType::kZlibSupport;
 		}
