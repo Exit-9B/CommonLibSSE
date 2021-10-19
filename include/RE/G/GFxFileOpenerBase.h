@@ -12,9 +12,8 @@ namespace RE
 	{
 	protected:
 		GFxFileOpenerBase() :
-			GFxState()
+			GFxState(GFxState::StateType::kFileOpener)
 		{
-			stateType = GFxState::StateType::kFileOpener;
 		}
 
 	public:

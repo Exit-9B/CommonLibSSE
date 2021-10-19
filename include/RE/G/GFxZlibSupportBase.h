@@ -11,9 +11,8 @@ namespace RE
 	{
 	protected:
 		GFxZlibSupportBase() :
-			GFxState()
+			GFxState(GFxState::StateType::kZlibSupport)
 		{
-			stateType = GFxState::StateType::kZlibSupport;
 		}
 
 	public:
