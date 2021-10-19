@@ -590,6 +590,7 @@ set(SOURCES
 	include/RE/G/GFileConstants.h
 	include/RE/G/GFixedSizeHash.h
 	include/RE/G/GFxActionControl.h
+	include/RE/G/GFxCharacterDef.h
 	include/RE/G/GFxEvent.h
 	include/RE/G/GFxExternalInterface.h
 	include/RE/G/GFxFileConstants.h
@@ -616,9 +617,11 @@ set(SOURCES
 	include/RE/G/GFxResourceLibBase.h
 	include/RE/G/GFxResourceWeakLib.h
 	include/RE/G/GFxSpecialKeysState.h
+	include/RE/G/GFxSpriteDef.h
 	include/RE/G/GFxState.h
 	include/RE/G/GFxStateBag.h
 	include/RE/G/GFxStateBagImpl.h
+	include/RE/G/GFxTimelineDef.h
 	include/RE/G/GFxTranslator.h
 	include/RE/G/GFxValue.h
 	include/RE/G/GFxWStringBuffer.h
