@@ -28,9 +28,9 @@ namespace RE
 		std::uint32_t GetResourceTypeCode() const override;  // 02
 
 		// override (GFxCharacterDef)
-		bool           HitTest(const GPointF& a_pt, bool a_arg2, void* a_arg3) override;  // 05
-		std::uint32_t  GetVersion() override;                                             // 08
-		GFxCharacter*  CreateASCharacter() override;                                      // 09
+		bool          HitTest(const GPointF& a_pt, bool a_arg2, void* a_arg3) override;  // 05
+		std::uint32_t GetVersion() override;                                             // 08
+		GFxCharacter* CreateASCharacter() override;                                      // 09
 
 		// override (GFxTimelineDef)
 		std::uint32_t GetFrameCount() override;                                                                          // 0A

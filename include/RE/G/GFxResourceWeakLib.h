@@ -47,9 +47,7 @@ namespace RE
 				{
 					assert(a_node.resource);
 					GFxResourceKey key =
-						(a_node.type == NodeType::kResource)
-						? a_node.resource->GetKey()
-						: a_node.resolver->GetKey();
+						(a_node.type == NodeType::kResource) ? a_node.resource->GetKey() : a_node.resolver->GetKey();
 				}
 
 				UPInt operator()(const GFxResourceKey& a_key) const
