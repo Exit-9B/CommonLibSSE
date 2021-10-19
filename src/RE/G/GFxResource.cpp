@@ -65,7 +65,7 @@ namespace RE
 	GFxResource::ResourceType GFxResource::GetResourceType() const
 	{
 		return static_cast<GFxResource::ResourceType>(
-			stl::to_underlying(GetResourceUse()) >>
+			GetResourceTypeCode() >>
 			stl::to_underlying(ResourceType::kTypeCode_Shift));
 	}
 
