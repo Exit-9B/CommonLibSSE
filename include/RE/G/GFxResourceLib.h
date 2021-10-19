@@ -29,12 +29,15 @@ namespace RE
 			}
 
 			// members
-			GPtr<GFxResourceWeakLib> lib;
-			volatile ResolveState    state;
-			GFxResource* volatile    resource;
-			GFxResourceKey           key;
-			GString                  errorMessage;
+			GPtr<GFxResourceWeakLib> lib;              // 10
+			volatile ResolveState    state;            // 18
+			std::uint32_t            pad1C;            // 1C
+			GFxResource* volatile    resource;         // 20
+			GFxResourceKey           key;              // 28
+			GString                  errorMessage;     // 38
+			std::uint64_t            pad40[11];        // 40
 		};
+		static_assert(sizeof(ResourceSlot) == 0x98);
 
 		struct GFxResourcePtrHashFunc
 		{
