@@ -4,7 +4,6 @@
 
 namespace RE
 {
-	// 0x17e8568
 	class GFxButtonCharacterDef : public GFxCharacterDef
 	{
 	public:
