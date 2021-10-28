@@ -1,8 +1,10 @@
 #pragma once
 
+#include "RE/G/GEvent.h"
 #include "RE/G/GFxResourceKey.h"
 #include "RE/G/GHashSet.h"
 #include "RE/G/GRefCountBase.h"
+#include "RE/G/GStats.h"
 #include "RE/G/GString.h"
 
 namespace RE
@@ -35,7 +37,7 @@ namespace RE
 			GFxResource* volatile resource;  // 20
 			GFxResourceKey key;              // 28
 			GString        errorMessage;     // 38
-			std::uint64_t  pad40[11];        // 40
+			GEvent         resolveComplete;  // 40
 		};
 		static_assert(sizeof(ResourceSlot) == 0x98);
 

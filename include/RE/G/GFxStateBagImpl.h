@@ -11,7 +11,9 @@ namespace RE
 		public GFxStateBag,                                                      // 10
 		public GFxLogBase<GFxStateBagImpl>                                       // 20
 	{
-		std::uint64_t pad28[7];
+	public:
+		// members
+		std::uint64_t unk28[7];
 	};
 #ifndef __INTELLISENSE__
 	static_assert(sizeof(GFxStateBagImpl) == 0x60);

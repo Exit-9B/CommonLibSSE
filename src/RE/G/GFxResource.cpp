@@ -1,4 +1,5 @@
 #include "RE/G/GFxResource.h"
+#include "RE/G/GFxResourceLibBase.h"
 
 namespace RE
 {
@@ -47,6 +48,10 @@ namespace RE
 	{
 		stl::atomic_ref myRefCount{ _refCount.value };
 		if (--myRefCount == 0) {
+			if (_lib) {
+				_lib->RemoveResourceOnRelease(this);
+				_lib = nullptr;
+			}
 			delete this;
 		}
 	}

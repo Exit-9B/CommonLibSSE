@@ -1,5 +1,6 @@
 #pragma once
 
+#include "RE/G/GAtomic.h"
 #include "RE/G/GFxResourceLib.h"
 #include "RE/G/GFxResourceLibBase.h"
 #include "RE/G/GHashSet.h"
@@ -64,7 +65,7 @@ namespace RE
 
 		// members
 		GFxResourceLib*                              strongLib;     // 10
-		WinAPI::CRITICAL_SECTION                     resourceLock;  // 18
+		GLock                                        resourceLock;  // 18
 		GHashSet<ResourceNode, ResourceNode::HashOp> resources;     // 40
 		GPtr<GMemoryHeap>                            imageHeap;     // 48
 	};

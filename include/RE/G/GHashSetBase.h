@@ -415,12 +415,12 @@ namespace RE
 
 		const_iterator begin() const
 		{
-			return const_cast<SelfType*>(this)->Begin();
+			return const_cast<SelfType*>(this)->begin();
 		}
 
 		const_iterator end() const
 		{
-			return const_cast<SelfType*>(this)->End();
+			return const_cast<SelfType*>(this)->end();
 		}
 
 		template <class K>
@@ -594,7 +594,7 @@ namespace RE
 			}
 
 			SelfType newHash;
-			newHash.table = static_cast<TableType*>(Allocator::Alloc(sizeof(TableType) + sizeof(Entry) * a_newSize));
+			newHash.table = static_cast<TableType*>(Allocator::Alloc(a_heapAddr, sizeof(TableType) + sizeof(Entry) * a_newSize));
 			assert(newHash.table);
 
 			newHash.table->entryCount = 0;

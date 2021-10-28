@@ -9,20 +9,52 @@ namespace RE
 		using ValueType = T;
 		using AllocatorType = Allocator;
 		using SizePolicyType = SizePolicy;
+		using SelfType = GArrayDataBase<T, Allocator, SizePolicy>;
+
+		GArrayDataBase() :
+			data(nullptr),
+			size(0),
+			policy()
+		{}
+
+		GArrayDataBase(const SizePolicy& a_policy) :
+			data(nullptr),
+			size(0),
+			policy(a_policy)
+		{}
+
+		~GArrayDataBase()
+		{
+			Allocator::DestructArray(data, size);
+			Allocator::Free(data);
+		}
 
 		UPInt GetCapacity() const
 		{
 			return policy.GetCapacity();
 		}
 
-		void Reserve([[maybe_unused]] const void* a_heapAddr, UPInt a_newCapacity)
+		void ClearAndRelease()
+		{
+			Allocator::DestructArray(data, size);
+			Allocator::Free(data);
+			data = nullptr;
+			size = 0;
+			policy.SetCapacity(0);
+		}
+
+		void Reserve(const void* a_heapAddr, UPInt a_newCapacity)
 		{
 			if (policy.NeverShrinking() && a_newCapacity < GetCapacity())
 				return;
 
+			if (a_newCapacity < policy.GetMinCapacity())
+				a_newCapacity = policy.GetMinCapacity();
+
 			if (a_newCapacity == 0) {
 				if (data) {
 					Allocator::Free(data);
+					data = nullptr;
 				}
 				policy.SetCapacity(0);
 			} else {
@@ -32,7 +64,7 @@ namespace RE
 					if (Allocator::IsMovable()) {
 						data = (T*)Allocator::Realloc(data, sizeof(T) * newCapacity);
 					} else {
-						T* newData = (T*)Allocator::Alloc(sizeof(T) * newCapacity);
+						T* newData = (T*)Allocator::Alloc(a_heapAddr, sizeof(T) * newCapacity);
 						for (UPInt i = 0; i < size; ++i) {
 							Allocator::Construct(&newData[i], data[i]);
 							Allocator::Destruct(&data[i]);
@@ -41,7 +73,7 @@ namespace RE
 						data = newData;
 					}
 				} else {
-					data = (T*)Allocator::Alloc(sizeof(T) * newCapacity);
+					data = (T*)Allocator::Alloc(a_heapAddr, sizeof(T) * newCapacity);
 				}
 				policy.SetCapacity(newCapacity);
 			}
@@ -55,11 +87,11 @@ namespace RE
 				Allocator::DestructArray(data + a_newSize, oldSize - a_newSize);
 				if (a_newSize < (policy.GetCapacity() >> 1)) {
 					Reserve(a_heapAddr, a_newSize);
-				} else if (a_newSize >= policy.GetCapacity()) {
-					Reserve(a_heapAddr, a_newSize + (a_newSize >> 2));
 				}
-				size = a_newSize;
+			} else if (a_newSize >= policy.GetCapacity()) {
+				Reserve(a_heapAddr, a_newSize + (a_newSize >> 2));
 			}
+			size = a_newSize;
 		}
 
 		// members

@@ -1,9 +1,12 @@
 #pragma once
 
 #include "RE/G/GRefCountBase.h"
+#include "RE/G/GStats.h"
 
 namespace RE
 {
+	class GFxResource;
+
 	class GFxResourceLibBase : public GRefCountBase<GFxResourceLibBase, GStatGroups::kGStat_Default_Mem>
 	{
 	public:
