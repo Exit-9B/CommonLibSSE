@@ -69,12 +69,12 @@ namespace RE
 	{
 		struct ClipActionRecord
 		{
-			std::uint32_t clipEventFlags;
-			std::uint32_t unk4;
-			std::uint16_t keyCode;
-			std::uint16_t padA;
-			std::uint16_t unkC;
-			std::uint16_t padE;
+			std::uint32_t        clipEventFlags;
+			std::uint32_t        unk4;
+			std::uint16_t        keyCode;
+			std::uint16_t        padA;
+			std::uint16_t        unkC;
+			std::uint16_t        padE;
 			GASActionBufferData* actions;
 		};
 		static_assert(sizeof(ClipActionRecord) == 0x18);

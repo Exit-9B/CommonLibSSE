@@ -1,7 +1,7 @@
 #pragma once
 
-#include "GRefCountBase.h"
 #include "GFxPlayerStats.h"
+#include "GRefCountBase.h"
 
 namespace RE
 {
