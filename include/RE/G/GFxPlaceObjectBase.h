@@ -67,6 +67,20 @@ namespace RE
 
 	struct GFxPlaceObjectData : public GFxPlaceObjectUnpackedData
 	{
+		struct ClipActionRecord
+		{
+			std::uint32_t clipEventFlags;
+			std::uint32_t unk4;
+			std::uint16_t keyCode;
+			std::uint16_t padA;
+			std::uint16_t unkC;
+			std::uint16_t padE;
+			GASActionBufferData* actions;
+		};
+		static_assert(sizeof(ClipActionRecord) == 0x18);
+
+		using ClipActions = GArrayLH<ClipActionRecord, RE::GFxStatMovieData::kGFxStatMD_Tags_Mem>;
+
 		enum class ChangeType
 		{
 			kAddDisplayObject,
@@ -74,7 +88,7 @@ namespace RE
 			kReplaceDisplayObject,
 		};
 
-		void*                                      clipActions;  // 60
+		ClipActions*                               clipActions;  // 60
 		const char*                                name;         // 68
 		stl::enumeration<ChangeType, std::int32_t> changeType;   // 70
 		std::uint32_t                              pad74;        // 74
