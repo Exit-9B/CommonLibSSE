@@ -375,15 +375,15 @@ namespace RE
 		{
 		public:
 			// members
-			std::uint32_t mode;      // 00
-			float         blurX;     // 04
-			float         blurY;     // 08
-			std::uint32_t passes;    // 0C
-			GPointF       offset;    // 10
-			GColor        color;     // 18
-			GColor        color2;    // 1C
-			float         strength;  // 20
-			Cxform        cxform;    // 24
+			stl::enumeration<FilterModes, std::uint32_t> mode;      // 00
+			float                                        blurX;     // 04
+			float                                        blurY;     // 08
+			std::uint32_t                                passes;    // 0C
+			GPointF                                      offset;    // 10
+			GColor                                       color;     // 18
+			GColor                                       color2;    // 1C
+			float                                        strength;  // 20
+			Cxform                                       cxform;    // 24
 		};
 		static_assert(sizeof(BlurFilterParams) == 0x44);
 

@@ -48,7 +48,7 @@ namespace RE
 			std::uint16_t                              angle;             // 02
 			std::uint16_t                              distance;          // 04
 			std::uint16_t                              pad06;             // 06
-			GRenderer::BlurFilterParams                blurFilterParams;  // 08
+			GRenderer::BlurFilterParams                filterParams;      // 08
 			float                                      colorMatrix[20];   // 4C
 		};
 		static_assert(sizeof(Filter) == 0x9C);
