@@ -207,8 +207,19 @@ namespace RE
 	public:
 		using value_type = T;
 
-		static BSPointerHandle<T> GetHandle(T* a_ptr);
-		static bool               GetSmartPointer(const BSPointerHandle<T>& a_handle, NiPointer<T>& a_smartPointerOut);
+		static BSPointerHandle<T> GetHandle(T* a_ptr)
+		{
+			using func_t = decltype(&BSPointerHandleManagerInterface<T, Manager>::GetHandle);
+			REL::Relocation<func_t> func{ Offset::BSPointerHandleManagerInterface::GetHandle };
+			return func(a_ptr);
+		}
+
+		static bool GetSmartPointer(const BSPointerHandle<T>& a_handle, NiPointer<T>& a_smartPointerOut)
+		{
+			using func_t = decltype(&BSPointerHandleManagerInterface<T, Manager>::GetSmartPointer);
+			REL::Relocation<func_t> func{ Offset::BSPointerHandleManagerInterface::GetSmartPointer };
+			return func(a_handle, a_smartPointerOut);
+		}
 	};
 
 	extern template class BSPointerHandleManagerInterface<Actor>;

@@ -398,12 +398,12 @@ namespace RE
 	//	return func(this, a_data, a_name, a_isDObj);
 	//}
 
-	//std::uint32_t GFxValue::ObjectInterface::GetArraySize(void* a_data) const
-	//{
-	//	using func_t = decltype(&GFxValue::ObjectInterface::GetArraySize);
-	//	REL::Relocation<func_t> func{ Offset::GFxValue::ObjectInterface::GetArraySize };
-	//	return func(this, a_data);
-	//}
+	std::uint32_t GFxValue::ObjectInterface::GetArraySize(void* a_data) const
+	{
+		using func_t = decltype(&GFxValue::ObjectInterface::GetArraySize);
+		REL::Relocation<func_t> func{ Offset::GFxValue::ObjectInterface::GetArraySize };
+		return func(this, a_data);
+	}
 
 	//bool GFxValue::ObjectInterface::SetArraySize(void* a_data, std::uint32_t a_size)
 	//{
@@ -426,12 +426,12 @@ namespace RE
 	//	return func(this, a_data, a_idx, a_val);
 	//}
 
-	//bool GFxValue::ObjectInterface::PushBack(void* a_data, const GFxValue& a_value)
-	//{
-	//	using func_t = decltype(&GFxValue::ObjectInterface::PushBack);
-	//	REL::Relocation<func_t> func{ Offset::GFxValue::ObjectInterface::PushBack };
-	//	return func(this, a_data, a_value);
-	//}
+	bool GFxValue::ObjectInterface::PushBack(void* a_data, const GFxValue& a_value)
+	{
+		using func_t = decltype(&GFxValue::ObjectInterface::PushBack);
+		REL::Relocation<func_t> func{ Offset::GFxValue::ObjectInterface::PushBack };
+		return func(this, a_data, a_value);
+	}
 
 	//bool GFxValue::ObjectInterface::RemoveElements(void* a_data, std::uint32_t a_idx, std::int32_t a_count)
 	//{
@@ -880,11 +880,11 @@ namespace RE
 	//	return _objectInterface->DeleteMember(_value.obj, a_name, IsDisplayObject());
 	//}
 
-	//std::uint32_t GFxValue::GetArraySize() const
-	//{
-	//	assert(IsArray());
-	//	return _objectInterface->GetArraySize(_value.obj);
-	//}
+	std::uint32_t GFxValue::GetArraySize() const
+	{
+		assert(IsArray());
+		return _objectInterface->GetArraySize(_value.obj);
+	}
 
 	//bool GFxValue::SetArraySize(std::uint32_t a_size)
 	//{
@@ -904,11 +904,11 @@ namespace RE
 	//	return _objectInterface->SetElement(_value.obj, a_idx, a_val);
 	//}
 
-	//bool GFxValue::PushBack(const GFxValue& a_val)
-	//{
-	//	assert(IsArray());
-	//	return _objectInterface->PushBack(_value.obj, a_val);
-	//}
+	bool GFxValue::PushBack(const GFxValue& a_val)
+	{
+		assert(IsArray());
+		return _objectInterface->PushBack(_value.obj, a_val);
+	}
 
 	//bool GFxValue::RemoveElements(std::uint32_t a_idx, std::int32_t a_count)
 	//{

@@ -30,6 +30,12 @@ namespace RE
 			inline constexpr REL::Offset Singleton(0x02FBFD88);
 		}
 
+		namespace BSPointerHandleManagerInterface
+		{
+			inline constexpr REL::Offset GetHandle(0x001FA210);
+			inline constexpr REL::Offset GetSmartPointer(0x00139160);
+		}
+
 		namespace BSReadWriteLock
 		{
 			inline constexpr REL::Offset LockForRead(0x00C2BEF0);
@@ -75,15 +81,46 @@ namespace RE
 			}
 		}
 
+		namespace BSResourceNiBinaryStream
+		{
+			inline constexpr REL::Offset Ctor(0x00C9E760);
+			inline constexpr REL::Offset Dtor(0x00C9EA40);
+			inline constexpr REL::Offset Seek(0x00C9EB90);
+			inline constexpr REL::Offset SetEndianSwap(0x00C9EC60);
+		}
+
 		namespace BSStringPool
 		{
 			inline constexpr REL::Offset Release8(0x00C4FCF0);
 			inline constexpr REL::Offset Release16(0x00C4FF00);
 		}
 
+		namespace ExtraDataList
+		{
+			//inline constexpr REL::Offset Add;
+			//inline constexpr REL::Offset SetExtraFlags;
+			//inline constexpr REL::Offset SetInventoryChanges;
+		}
+
+		namespace ExtraOwnership
+		{
+			//inline constexpr REL::Offset Vtbl;
+		}
+
+		namespace ExtraReferenceHandle
+		{
+			//inline constexpr REL::Offset Vtbl;
+		}
+
+		namespace ExtraTextDisplayData
+		{
+			//inline constexpr REL::Offset Vtbl;
+			//inline constexpr REL::Offset GetDisplayName;
+		}
+
 		namespace GFxLoader
 		{
-			//inline constexpr REL::Offset CreateMovie;
+			inline constexpr REL::Offset CreateMovie(0x00F95DB0);
 		}
 
 		namespace GFxMovieView
@@ -97,7 +134,7 @@ namespace RE
 			{
 				//inline constexpr REL::Offset AttachMovie;
 				//inline constexpr REL::Offset DeleteMember;
-				//inline constexpr REL::Offset GetArraySize;
+				inline constexpr REL::Offset GetArraySize(0x00F0C310);
 				//inline constexpr REL::Offset GetDisplayInfo;
 				//inline constexpr REL::Offset GetElement;
 				//inline constexpr REL::Offset GetMember;
@@ -106,7 +143,7 @@ namespace RE
 				//inline constexpr REL::Offset Invoke;
 				inline constexpr REL::Offset ObjectAddRef(0x00F0D6A0);
 				inline constexpr REL::Offset ObjectRelease(0x00F0D700);
-				//inline constexpr REL::Offset PushBack;
+				inline constexpr REL::Offset PushBack(0x00F0D920);
 				//inline constexpr REL::Offset RemoveElements;
 				//inline constexpr REL::Offset SetArraySize;
 				//inline constexpr REL::Offset SetDisplayInfo;
@@ -180,6 +217,24 @@ namespace RE
 			inline constexpr REL::Offset AllFormsMapLock(0x01F5E928);
 			inline constexpr REL::Offset AllFormsByEditorID(0x01F5E8F0);
 			inline constexpr REL::Offset AllFormsEditorIDMapLock(0x01F5E930);
+		}
+
+		namespace TESObjectREFR
+		{
+			//inline constexpr REL::Offset FindReferenceFor3D;
+			//inline constexpr REL::Offset GetDisplayFullName;
+			//inline constexpr REL::Offset GetLock;
+			//inline constexpr REL::Offset GetOwner;
+			//inline constexpr REL::Offset GetStealValue;
+			//inline constexpr REL::Offset GetWeightInContainer;
+			//inline constexpr REL::Offset HasQuestObject;
+			//inline constexpr REL::Offset InitChildActivates;
+			//inline constexpr REL::Offset InitInventoryIfRequired;
+			//inline constexpr REL::Offset IsAnOwner;
+			//inline constexpr REL::Offset IsCrimeToActivate;
+			//inline constexpr REL::Offset MakeInventoryChanges;
+			//inline constexpr REL::Offset MoveTo;
+			//inline constexpr REL::Offset PlayAnimation;
 		}
 
 		namespace UI

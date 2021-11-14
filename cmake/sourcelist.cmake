@@ -578,7 +578,9 @@ set(SOURCES
 	include/RE/F/FxResponseArgsBase.h
 	include/RE/G/GAllocator.h
 	include/RE/G/GAllocatorBaseGH.h
+	include/RE/G/GAllocatorBaseLH.h
 	include/RE/G/GArray.h
+	include/RE/G/GArrayLH.h
 	include/RE/G/GArrayBase.h
 	include/RE/G/GArrayData.h
 	include/RE/G/GArrayDataBase.h
@@ -644,6 +646,7 @@ set(SOURCES
 	include/RE/G/GStats.h
 	include/RE/G/GStd.h
 	include/RE/G/GString.h
+	include/RE/G/GStringHash.h
 	include/RE/G/GSysAllocBase.h
 	include/RE/G/GSysAllocPaged.h
 	include/RE/G/GTexture.h
@@ -1238,10 +1241,14 @@ set(SOURCES
 	src/RE/A/Array.cpp
 	src/RE/B/BGSBaseAlias.cpp
 	src/RE/B/BSAtomic.cpp
+	src/RE/B/BSExtraData.cpp
+	src/RE/B/BSHandleRefObject.cpp
 	src/RE/B/BSInputDeviceManager.cpp
+	src/RE/B/BSResourceNiBinaryStream.cpp
 	src/RE/B/BSScaleformManager.cpp
 	src/RE/B/BSScriptObjectBindPolicy.cpp
 	src/RE/B/BSTArray.cpp
+	src/RE/E/ExtraDataList.cpp
 	src/RE/F/FxDelegate.cpp
 	src/RE/F/FxDelegateArgs.cpp
 	src/RE/G/GAtomic.cpp
@@ -1276,6 +1283,8 @@ set(SOURCES
 	src/RE/I/InputEvent.cpp
 	src/RE/M/MemoryPage.cpp
 	src/RE/N/NativeFunctionBase.cpp
+	src/RE/N/NiBinaryStream.cpp
+	src/RE/N/NiControllerManager.cpp
 	src/RE/O/Object.cpp
 	src/RE/O/ObjectTypeInfo.cpp
 	src/RE/P/PackUnpack.cpp
@@ -1286,7 +1295,10 @@ set(SOURCES
 	src/RE/S/SkyrimVM.cpp
 	src/RE/S/Stack.cpp
 	src/RE/S/StackFrame.cpp
+	src/RE/S/StreamBase.cpp
 	src/RE/T/TESDataHandler.cpp
+	src/RE/T/TESForm.cpp
+	src/RE/T/TESObjectREFR.cpp
 	src/RE/T/TypeInfo.cpp
 	src/RE/U/UI.cpp
 	src/RE/V/Variable.cpp
