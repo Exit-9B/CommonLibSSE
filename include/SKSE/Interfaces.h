@@ -366,7 +366,7 @@ namespace SKSE
 		std::uint32_t dataVersion;
 
 		std::uint32_t pluginVersion;
-		const char          name[256];
+		char          name[256];
 
 		char author[256];
 		char supportEmail[256];

@@ -208,7 +208,7 @@ namespace RE
 		using value_type = T;
 
 		static BSPointerHandle<T> GetHandle(T* a_ptr);
-		static bool GetSmartPointer(const BSPointerHandle<T>& a_handle, NiPointer<T>& a_smartPointerOut);
+		static bool               GetSmartPointer(const BSPointerHandle<T>& a_handle, NiPointer<T>& a_smartPointerOut);
 	};
 
 	extern template class BSPointerHandleManagerInterface<Actor>;
