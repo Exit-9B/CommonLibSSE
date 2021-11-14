@@ -21,11 +21,7 @@ namespace RE
 		// override (BSTEventSink<BSMusicEvent>)
 		BSEventNotifyControl ProcessEvent(const BSMusicEvent* a_event, BSTEventSource<BSMusicEvent>* a_eventSource) override;  // 01
 
-		[[nodiscard]] static BSMusicManager* GetSingleton()
-		{
-			REL::Relocation<BSMusicManager**> singleton{ REL::ID(514738) };
-			return *singleton;
-		}
+		[[nodiscard]] static BSMusicManager* GetSingleton();
 
 		// members
 		BSTArray<BSIMusicType*> musicQueue;  // 10

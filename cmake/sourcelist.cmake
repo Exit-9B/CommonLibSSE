@@ -973,6 +973,9 @@ set(SOURCES
 	include/RE/Offsets.h
 	include/RE/Offsets_NiRTTI.h
 	include/RE/Offsets_RTTI.h
+	include/RE/Offsets_VR.h
+	include/RE/Offsets_VR_NiRTTI.h
+	include/RE/Offsets_VR_RTTI.h
 	include/RE/P/PCGamepadType.h
 	include/RE/P/PackUnpack.h
 	include/RE/P/PackUnpackImpl.h
@@ -1213,6 +1216,7 @@ set(SOURCES
 	include/RE/V/Variable.h
 	include/RE/V/VirtualMachine.h
 	include/RE/W/WeatherType.h
+	include/RE/W/WorldSpaceMenu.h
 	include/RE/Z/ZeroFunctionArguments.h
 	include/RE/Z/ZeroOverheadHeap.h
 	include/REL/Relocation.h
@@ -1230,90 +1234,14 @@ set(SOURCES
 	include/SKSE/SKSE.h
 	include/SKSE/Trampoline.h
 	include/SKSE/Version.h
-	src/RE/A/AIFormulas.cpp
-	src/RE/A/AIProcess.cpp
-	src/RE/A/ActiveEffect.cpp
-	src/RE/A/Actor.cpp
-	src/RE/A/ActorEquipManager.cpp
-	src/RE/A/ActorValueOwner.cpp
 	src/RE/A/AddCallbackVisitor.cpp
-	src/RE/A/ArmorRatingVisitor.cpp
-	src/RE/A/ArmorRatingVisitorBase.cpp
 	src/RE/A/Array.cpp
-	src/RE/B/BGSAttackData.cpp
 	src/RE/B/BGSBaseAlias.cpp
-	src/RE/B/BGSBipedObjectForm.cpp
-	src/RE/B/BGSColorForm.cpp
-	src/RE/B/BGSEntryPointFunctionDataActivateChoice.cpp
-	src/RE/B/BGSEntryPointPerkEntry.cpp
-	src/RE/B/BGSFootstepManager.cpp
-	src/RE/B/BGSHeadPart.cpp
-	src/RE/B/BGSKeywordForm.cpp
-	src/RE/B/BGSListForm.cpp
-	src/RE/B/BGSLocation.cpp
-	src/RE/B/BGSOpenCloseForm.cpp
-	src/RE/B/BGSPerkEntry.cpp
-	src/RE/B/BGSSaveLoadManager.cpp
-	src/RE/B/BGSSoundCategory.cpp
-	src/RE/B/BGSStoryTeller.cpp
 	src/RE/B/BSAtomic.cpp
-	src/RE/B/BSAudioManager.cpp
-	src/RE/B/BSEffectShaderData.cpp
-	src/RE/B/BSExtraData.cpp
-	src/RE/B/BSFixedString.cpp
-	src/RE/B/BSHandleRefObject.cpp
-	src/RE/B/BSInputDevice.cpp
 	src/RE/B/BSInputDeviceManager.cpp
-	src/RE/B/BSLightingShaderMaterialBase.cpp
-	src/RE/B/BSPointerHandle.cpp
-	src/RE/B/BSResourceNiBinaryStream.cpp
-	src/RE/B/BSResponse.cpp
 	src/RE/B/BSScaleformManager.cpp
 	src/RE/B/BSScriptObjectBindPolicy.cpp
-	src/RE/B/BSShaderProperty.cpp
-	src/RE/B/BSSoundHandle.cpp
-	src/RE/B/BSStringPool.cpp
-	src/RE/B/BSSystemFileStorage.cpp
 	src/RE/B/BSTArray.cpp
-	src/RE/B/BSTCreateFactoryManager.cpp
-	src/RE/B/BSVisit.cpp
-	src/RE/B/BSWin32KeyboardDevice.cpp
-	src/RE/B/BSWin32SaveDataSystemUtility.cpp
-	src/RE/B/BSXFlags.cpp
-	src/RE/B/BarterMenu.cpp
-	src/RE/B/BipedAnim.cpp
-	src/RE/B/BookMenu.cpp
-	src/RE/B/bhkCharProxyController.cpp
-	src/RE/C/Calendar.cpp
-	src/RE/C/ChestsLooted.cpp
-	src/RE/C/CommandTable.cpp
-	src/RE/C/Console.cpp
-	src/RE/C/ConsoleLog.cpp
-	src/RE/C/ContainerMenu.cpp
-	src/RE/C/ControlMap.cpp
-	src/RE/E/Effect.cpp
-	src/RE/E/ExtraAliasInstanceArray.cpp
-	src/RE/E/ExtraAshPileRef.cpp
-	src/RE/E/ExtraCanTalkToPlayer.cpp
-	src/RE/E/ExtraCannotWear.cpp
-	src/RE/E/ExtraCharge.cpp
-	src/RE/E/ExtraContainerChanges.cpp
-	src/RE/E/ExtraCount.cpp
-	src/RE/E/ExtraDataList.cpp
-	src/RE/E/ExtraEnchantment.cpp
-	src/RE/E/ExtraForcedTarget.cpp
-	src/RE/E/ExtraHealth.cpp
-	src/RE/E/ExtraHotkey.cpp
-	src/RE/E/ExtraLightData.cpp
-	src/RE/E/ExtraLock.cpp
-	src/RE/E/ExtraMissingLinkedRefIDs.cpp
-	src/RE/E/ExtraOwnership.cpp
-	src/RE/E/ExtraPoison.cpp
-	src/RE/E/ExtraRank.cpp
-	src/RE/E/ExtraReferenceHandle.cpp
-	src/RE/E/ExtraSoul.cpp
-	src/RE/E/ExtraTextDisplayData.cpp
-	src/RE/E/ExtraUniqueID.cpp
 	src/RE/F/FxDelegate.cpp
 	src/RE/F/FxDelegateArgs.cpp
 	src/RE/G/GAtomic.cpp
@@ -1340,136 +1268,29 @@ set(SOURCES
 	src/RE/G/GStd.cpp
 	src/RE/G/GString.cpp
 	src/RE/G/GViewport.cpp
-	src/RE/G/GameSettingCollection.cpp
-	src/RE/G/GiftMenu.cpp
-	src/RE/H/HUDMeter.cpp
-	src/RE/H/HUDObject.cpp
-	src/RE/H/HeapBlock.cpp
-	src/RE/H/hkBaseTypes.cpp
-	src/RE/H/hkReferencedObject.cpp
-	src/RE/H/hkStringPtr.cpp
-	src/RE/H/hkpBroadPhase.cpp
-	src/RE/H/hkpCdBody.cpp
-	src/RE/H/hkpCharacterProxyListener.cpp
-	src/RE/H/hkpMaterial.cpp
-	src/RE/H/hkpWorldObject.cpp
-	src/RE/I/IAnimationGraphManagerHolder.cpp
 	src/RE/I/IFormFactory.cpp
 	src/RE/I/IFunction.cpp
-	src/RE/I/IHandlerFunctor.cpp
-	src/RE/I/IMemoryStore.cpp
-	src/RE/I/IMenu.cpp
-	src/RE/I/INIPrefSettingCollection.cpp
-	src/RE/I/INISettingCollection.cpp
 	src/RE/I/IObjectHandlePolicy.cpp
 	src/RE/I/IStackCallbackFunctor.cpp
 	src/RE/I/IVirtualMachine.cpp
 	src/RE/I/InputEvent.cpp
-	src/RE/I/InterfaceStrings.cpp
-	src/RE/I/Inventory.cpp
-	src/RE/I/Inventory3DManager.cpp
-	src/RE/I/InventoryChanges.cpp
-	src/RE/I/InventoryEntryData.cpp
-	src/RE/I/ItemCrafted.cpp
-	src/RE/I/ItemList.cpp
-	src/RE/I/ItemsPickpocketed.cpp
-	src/RE/L/LocalMapCamera.cpp
-	src/RE/L/Location.cpp
-	src/RE/L/LockpickingMenu.cpp
-	src/RE/L/LooseFileStream.cpp
-	src/RE/M/MagicFavorites.cpp
-	src/RE/M/MagicItem.cpp
-	src/RE/M/MagicTarget.cpp
-	src/RE/M/Main.cpp
 	src/RE/M/MemoryPage.cpp
-	src/RE/M/MenuControls.cpp
-	src/RE/M/MenuEventHandler.cpp
-	src/RE/M/MiddleHighProcessData.cpp
-	src/RE/M/Misc.cpp
 	src/RE/N/NativeFunctionBase.cpp
-	src/RE/N/NiAVObject.cpp
-	src/RE/N/NiAnimationKey.cpp
-	src/RE/N/NiBinaryStream.cpp
-	src/RE/N/NiCamera.cpp
-	src/RE/N/NiColorData.cpp
-	src/RE/N/NiColorKey.cpp
-	src/RE/N/NiControllerManager.cpp
-	src/RE/N/NiExtraData.cpp
-	src/RE/N/NiFloatData.cpp
-	src/RE/N/NiFloatKey.cpp
-	src/RE/N/NiInterpolator.cpp
-	src/RE/N/NiMath.cpp
-	src/RE/N/NiMatrix3.cpp
-	src/RE/N/NiMemManager.cpp
-	src/RE/N/NiNode.cpp
-	src/RE/N/NiObject.cpp
-	src/RE/N/NiObjectNET.cpp
-	src/RE/N/NiPoint3.cpp
-	src/RE/N/NiRefObject.cpp
-	src/RE/N/NiSkinInstance.cpp
-	src/RE/N/NiSystem.cpp
-	src/RE/N/NiTCollection.cpp
-	src/RE/N/NiTexture.cpp
-	src/RE/N/NiTimeController.cpp
 	src/RE/O/Object.cpp
 	src/RE/O/ObjectTypeInfo.cpp
 	src/RE/P/PackUnpack.cpp
-	src/RE/P/PackedInstructionStream.cpp
-	src/RE/P/PlayerCamera.cpp
-	src/RE/P/PlayerCharacter.cpp
-	src/RE/P/PlayerControls.cpp
-	src/RE/P/PlayerInputHandler.cpp
-	src/RE/P/ProcessLists.cpp
 	src/RE/R/RemoveCallbackVisitor.cpp
 	src/RE/S/ScrapHeap.cpp
 	src/RE/S/Script.cpp
-	src/RE/S/ScriptEventSourceHolder.cpp
 	src/RE/S/Setting.cpp
-	src/RE/S/Sky.cpp
 	src/RE/S/SkyrimVM.cpp
 	src/RE/S/Stack.cpp
 	src/RE/S/StackFrame.cpp
-	src/RE/S/Stream.cpp
-	src/RE/S/StreamBase.cpp
-	src/RE/Skyrim.cpp
-	src/RE/T/TES.cpp
-	src/RE/T/TESAIForm.cpp
-	src/RE/T/TESAmmo.cpp
-	src/RE/T/TESCamera.cpp
-	src/RE/T/TESClimate.cpp
-	src/RE/T/TESCondition.cpp
-	src/RE/T/TESContainer.cpp
 	src/RE/T/TESDataHandler.cpp
-	src/RE/T/TESDescription.cpp
-	src/RE/T/TESFaction.cpp
-	src/RE/T/TESFile.cpp
-	src/RE/T/TESForm.cpp
-	src/RE/T/TESHavokUtilities.cpp
-	src/RE/T/TESHitEvent.cpp
-	src/RE/T/TESLeveledList.cpp
-	src/RE/T/TESNPC.cpp
-	src/RE/T/TESObjectARMA.cpp
-	src/RE/T/TESObjectARMO.cpp
-	src/RE/T/TESObjectBOOK.cpp
-	src/RE/T/TESObjectCELL.cpp
-	src/RE/T/TESObjectREFR.cpp
-	src/RE/T/TESObjectSTAT.cpp
-	src/RE/T/TESObjectWEAP.cpp
-	src/RE/T/TESQuest.cpp
-	src/RE/T/TESRace.cpp
-	src/RE/T/TESTopic.cpp
-	src/RE/T/TESTopicInfo.cpp
-	src/RE/T/TESWorldSpace.cpp
-	src/RE/T/TaskQueueInterface.cpp
-	src/RE/T/ThumbstickEvent.cpp
 	src/RE/T/TypeInfo.cpp
 	src/RE/U/UI.cpp
-	src/RE/U/UIBlurManager.cpp
-	src/RE/U/UIMessageQueue.cpp
-	src/RE/U/UserEvents.cpp
 	src/RE/V/Variable.cpp
 	src/RE/V/VirtualMachine.cpp
-	src/RE/Z/ZeroFunctionArguments.cpp
 	src/REL/Relocation.cpp
 	src/SKSE/API.cpp
 	src/SKSE/IAT.cpp

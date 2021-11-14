@@ -1,5 +1,7 @@
 #pragma once
 
+#ifndef SKYRIMVR
+
 #include "RE/B/BSTEvent.h"
 #include "RE/G/GFxFunctionHandler.h"
 #include "RE/I/IMenu.h"
@@ -44,3 +46,5 @@ namespace RE
 	};
 	static_assert(sizeof(CreationClubMenu) == 0x88);
 }
+
+#endif

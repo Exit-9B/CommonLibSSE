@@ -127,7 +127,12 @@ namespace RE
 		TESObjectREFR*                        userData;                 // 0F8
 		float                                 fadeAmount;               // 100
 		std::uint32_t                         lastUpdatedFrameCounter;  // 104
-		std::uint64_t                         unk108;                   // 108
+#ifndef SKYRIMVR
+		std::uint64_t unk108;  // 108
+#else
+		std::uint32_t                         unk108;   // 108
+		stl::enumeration<Flag, std::uint32_t> flagsVR;  // 10C
+#endif
 	};
 	static_assert(sizeof(NiAVObject) == 0x110);
 }

@@ -27,7 +27,7 @@ namespace RE
 	bool PlayerCharacter::AttemptPickpocket(TESObjectREFR* a_containerRef, InventoryEntryData* a_entry, std::int32_t a_number, bool a_fromContainer)
 	{
 		using func_t = decltype(&PlayerCharacter::AttemptPickpocket);
-		REL::Relocation<func_t> func{ REL::ID(39568) };
+		REL::Relocation<func_t> func{ Offset::PlayerCharacter::AttemptPickpocket };
 		return func(this, a_containerRef, a_entry, a_number, a_fromContainer);
 	}
 
@@ -62,7 +62,11 @@ namespace RE
 
 	NiPointer<TESObjectREFR> PlayerCharacter::GetGrabbedRef()
 	{
+#ifndef SKYRIMVR
 		return grabbedObject.get();
+#else
+		return nullptr;
+#endif
 	}
 
 	std::uint32_t PlayerCharacter::GetNumTints(std::uint32_t a_tintType)
@@ -72,6 +76,7 @@ namespace RE
 		return func(this, a_tintType);
 	}
 
+#ifndef SKYRIMVR
 	TintMask* PlayerCharacter::GetOverlayTintMask(TintMask* a_original)
 	{
 		if (!overlayTintMasks) {
@@ -86,6 +91,7 @@ namespace RE
 
 		return nullptr;
 	}
+#endif
 
 	BSTArray<TintMask*>& PlayerCharacter::GetTintList()
 	{
@@ -106,7 +112,11 @@ namespace RE
 
 	bool PlayerCharacter::IsGrabbing() const
 	{
+#ifndef SKYRIMVR
 		return static_cast<bool>(grabbedObject);
+#else
+		return false;
+#endif
 	}
 
 	void PlayerCharacter::PlayPickupEvent(TESForm* a_item, TESForm* a_containerOwner, TESObjectREFR* a_containerRef, EventType a_eventType)
@@ -126,14 +136,14 @@ namespace RE
 	bool PlayerCharacter::CenterOnCell_Impl(const char* a_cellName, RE::TESObjectCELL* a_cell)
 	{
 		using func_t = decltype(&PlayerCharacter::CenterOnCell_Impl);
-		REL::Relocation<func_t> func{ REL::ID(39365) };
+		REL::Relocation<func_t> func{ Offset::PlayerCharacter::CenterOnCell };
 		return func(this, a_cellName, a_cell);
 	}
 
 	void PlayerCharacter::AddSkillExperience(ActorValue a_skill, float a_experience)
 	{
 		using func_t = decltype(&PlayerCharacter::AddSkillExperience);
-		REL::Relocation<func_t> func(REL::ID(39413));
+		REL::Relocation<func_t> func{ Offset::PlayerCharacter::AddSkillExperience };
 		return func(this, a_skill, a_experience);
 	}
 }

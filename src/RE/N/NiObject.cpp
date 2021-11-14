@@ -24,14 +24,14 @@ namespace RE
 	void NiObject::ProcessClone(NiCloningProcess& a_cloning)
 	{
 		using func_t = decltype(&NiObject::ProcessClone);
-		REL::Relocation<func_t> func{ REL::ID(68838) };
+		REL::Relocation<func_t> func{ Offset::NiObject::ProcessClone };
 		return func(this, a_cloning);
 	}
 
 	void NiObject::CreateDeepCopy(NiPointer<NiObject>& a_object)
 	{
 		using func_t = decltype(&NiObject::CreateDeepCopy);
-		REL::Relocation<func_t> func{ REL::ID(68839) };
+		REL::Relocation<func_t> func{ Offset::NiObject::CreateDeepCopy };
 		return func(this, a_object);
 	}
 }

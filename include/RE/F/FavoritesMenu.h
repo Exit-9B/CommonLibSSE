@@ -47,5 +47,7 @@ namespace RE
 		bool            isVampire;        // 73
 		std::uint32_t   pad74;            // 74
 	};
+#ifndef SKYRIMVR
 	static_assert(sizeof(FavoritesMenu) == 0x78);
+#endif
 }

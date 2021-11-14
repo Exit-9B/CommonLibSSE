@@ -363,117 +363,117 @@ namespace RE
 		return func(this, a_val, a_obj);
 	}
 
-	bool GFxValue::ObjectInterface::HasMember(void* a_data, const char* a_name, bool a_isDObj) const
-	{
-		using func_t = decltype(&GFxValue::ObjectInterface::HasMember);
-		REL::Relocation<func_t> func{ Offset::GFxValue::ObjectInterface::HasMember };
-		return func(this, a_data, a_name, a_isDObj);
-	}
+	//bool GFxValue::ObjectInterface::HasMember(void* a_data, const char* a_name, bool a_isDObj) const
+	//{
+	//	using func_t = decltype(&GFxValue::ObjectInterface::HasMember);
+	//	REL::Relocation<func_t> func{ Offset::GFxValue::ObjectInterface::HasMember };
+	//	return func(this, a_data, a_name, a_isDObj);
+	//}
 
-	bool GFxValue::ObjectInterface::GetMember(void* a_data, const char* a_name, GFxValue* a_val, bool a_isDObj) const
-	{
-		using func_t = decltype(&GFxValue::ObjectInterface::GetMember);
-		REL::Relocation<func_t> func{ Offset::GFxValue::ObjectInterface::GetMember };
-		return func(this, a_data, a_name, a_val, a_isDObj);
-	}
+	//bool GFxValue::ObjectInterface::GetMember(void* a_data, const char* a_name, GFxValue* a_val, bool a_isDObj) const
+	//{
+	//	using func_t = decltype(&GFxValue::ObjectInterface::GetMember);
+	//	REL::Relocation<func_t> func{ Offset::GFxValue::ObjectInterface::GetMember };
+	//	return func(this, a_data, a_name, a_val, a_isDObj);
+	//}
 
-	bool GFxValue::ObjectInterface::SetMember(void* a_data, const char* a_name, const GFxValue& a_value, bool a_isDObj)
-	{
-		using func_t = decltype(&GFxValue::ObjectInterface::SetMember);
-		REL::Relocation<func_t> func{ Offset::GFxValue::ObjectInterface::SetMember };
-		return func(this, a_data, a_name, a_value, a_isDObj);
-	}
+	//bool GFxValue::ObjectInterface::SetMember(void* a_data, const char* a_name, const GFxValue& a_value, bool a_isDObj)
+	//{
+	//	using func_t = decltype(&GFxValue::ObjectInterface::SetMember);
+	//	REL::Relocation<func_t> func{ Offset::GFxValue::ObjectInterface::SetMember };
+	//	return func(this, a_data, a_name, a_value, a_isDObj);
+	//}
 
-	bool GFxValue::ObjectInterface::Invoke(void* a_data, GFxValue* a_result, const char* a_name, const GFxValue* a_args, UPInt a_numArgs, bool isDObj)
-	{
-		using func_t = decltype(&GFxValue::ObjectInterface::Invoke);
-		REL::Relocation<func_t> func{ Offset::GFxValue::ObjectInterface::Invoke };
-		return func(this, a_data, a_result, a_name, a_args, a_numArgs, isDObj);
-	}
+	//bool GFxValue::ObjectInterface::Invoke(void* a_data, GFxValue* a_result, const char* a_name, const GFxValue* a_args, UPInt a_numArgs, bool isDObj)
+	//{
+	//	using func_t = decltype(&GFxValue::ObjectInterface::Invoke);
+	//	REL::Relocation<func_t> func{ Offset::GFxValue::ObjectInterface::Invoke };
+	//	return func(this, a_data, a_result, a_name, a_args, a_numArgs, isDObj);
+	//}
 
-	bool GFxValue::ObjectInterface::DeleteMember(void* a_data, const char* a_name, bool a_isDObj)
-	{
-		using func_t = decltype(&GFxValue::ObjectInterface::DeleteMember);
-		REL::Relocation<func_t> func{ Offset::GFxValue::ObjectInterface::DeleteMember };
-		return func(this, a_data, a_name, a_isDObj);
-	}
+	//bool GFxValue::ObjectInterface::DeleteMember(void* a_data, const char* a_name, bool a_isDObj)
+	//{
+	//	using func_t = decltype(&GFxValue::ObjectInterface::DeleteMember);
+	//	REL::Relocation<func_t> func{ Offset::GFxValue::ObjectInterface::DeleteMember };
+	//	return func(this, a_data, a_name, a_isDObj);
+	//}
 
-	std::uint32_t GFxValue::ObjectInterface::GetArraySize(void* a_data) const
-	{
-		using func_t = decltype(&GFxValue::ObjectInterface::GetArraySize);
-		REL::Relocation<func_t> func{ Offset::GFxValue::ObjectInterface::GetArraySize };
-		return func(this, a_data);
-	}
+	//std::uint32_t GFxValue::ObjectInterface::GetArraySize(void* a_data) const
+	//{
+	//	using func_t = decltype(&GFxValue::ObjectInterface::GetArraySize);
+	//	REL::Relocation<func_t> func{ Offset::GFxValue::ObjectInterface::GetArraySize };
+	//	return func(this, a_data);
+	//}
 
-	bool GFxValue::ObjectInterface::SetArraySize(void* a_data, std::uint32_t a_size)
-	{
-		using func_t = decltype(&GFxValue::ObjectInterface::SetArraySize);
-		REL::Relocation<func_t> func{ Offset::GFxValue::ObjectInterface::SetArraySize };
-		return func(this, a_data, a_size);
-	}
+	//bool GFxValue::ObjectInterface::SetArraySize(void* a_data, std::uint32_t a_size)
+	//{
+	//	using func_t = decltype(&GFxValue::ObjectInterface::SetArraySize);
+	//	REL::Relocation<func_t> func{ Offset::GFxValue::ObjectInterface::SetArraySize };
+	//	return func(this, a_data, a_size);
+	//}
 
-	bool GFxValue::ObjectInterface::GetElement(void* a_data, std::uint32_t a_idx, GFxValue* a_val) const
-	{
-		using func_t = decltype(&GFxValue::ObjectInterface::GetElement);
-		REL::Relocation<func_t> func{ Offset::GFxValue::ObjectInterface::GetElement };
-		return func(this, a_data, a_idx, a_val);
-	}
+	//bool GFxValue::ObjectInterface::GetElement(void* a_data, std::uint32_t a_idx, GFxValue* a_val) const
+	//{
+	//	using func_t = decltype(&GFxValue::ObjectInterface::GetElement);
+	//	REL::Relocation<func_t> func{ Offset::GFxValue::ObjectInterface::GetElement };
+	//	return func(this, a_data, a_idx, a_val);
+	//}
 
-	bool GFxValue::ObjectInterface::SetElement(void* a_data, std::uint32_t a_idx, const GFxValue& a_val)
-	{
-		using func_t = decltype(&GFxValue::ObjectInterface::SetElement);
-		REL::Relocation<func_t> func{ Offset::GFxValue::ObjectInterface::SetElement };
-		return func(this, a_data, a_idx, a_val);
-	}
+	//bool GFxValue::ObjectInterface::SetElement(void* a_data, std::uint32_t a_idx, const GFxValue& a_val)
+	//{
+	//	using func_t = decltype(&GFxValue::ObjectInterface::SetElement);
+	//	REL::Relocation<func_t> func{ Offset::GFxValue::ObjectInterface::SetElement };
+	//	return func(this, a_data, a_idx, a_val);
+	//}
 
-	bool GFxValue::ObjectInterface::PushBack(void* a_data, const GFxValue& a_value)
-	{
-		using func_t = decltype(&GFxValue::ObjectInterface::PushBack);
-		REL::Relocation<func_t> func{ Offset::GFxValue::ObjectInterface::PushBack };
-		return func(this, a_data, a_value);
-	}
+	//bool GFxValue::ObjectInterface::PushBack(void* a_data, const GFxValue& a_value)
+	//{
+	//	using func_t = decltype(&GFxValue::ObjectInterface::PushBack);
+	//	REL::Relocation<func_t> func{ Offset::GFxValue::ObjectInterface::PushBack };
+	//	return func(this, a_data, a_value);
+	//}
 
-	bool GFxValue::ObjectInterface::RemoveElements(void* a_data, std::uint32_t a_idx, std::int32_t a_count)
-	{
-		using func_t = decltype(&GFxValue::ObjectInterface::RemoveElements);
-		REL::Relocation<func_t> func{ Offset::GFxValue::ObjectInterface::RemoveElements };
-		return func(this, a_data, a_idx, a_count);
-	}
+	//bool GFxValue::ObjectInterface::RemoveElements(void* a_data, std::uint32_t a_idx, std::int32_t a_count)
+	//{
+	//	using func_t = decltype(&GFxValue::ObjectInterface::RemoveElements);
+	//	REL::Relocation<func_t> func{ Offset::GFxValue::ObjectInterface::RemoveElements };
+	//	return func(this, a_data, a_idx, a_count);
+	//}
 
-	bool GFxValue::ObjectInterface::GetDisplayInfo(void* a_data, DisplayInfo* a_info) const
-	{
-		using func_t = decltype(&GFxValue::ObjectInterface::GetDisplayInfo);
-		REL::Relocation<func_t> func{ Offset::GFxValue::ObjectInterface::GetDisplayInfo };
-		return func(this, a_data, a_info);
-	}
+	//bool GFxValue::ObjectInterface::GetDisplayInfo(void* a_data, DisplayInfo* a_info) const
+	//{
+	//	using func_t = decltype(&GFxValue::ObjectInterface::GetDisplayInfo);
+	//	REL::Relocation<func_t> func{ Offset::GFxValue::ObjectInterface::GetDisplayInfo };
+	//	return func(this, a_data, a_info);
+	//}
 
-	bool GFxValue::ObjectInterface::SetDisplayInfo(void* a_data, const DisplayInfo& a_info)
-	{
-		using func_t = decltype(&GFxValue::ObjectInterface::SetDisplayInfo);
-		REL::Relocation<func_t> func{ Offset::GFxValue::ObjectInterface::SetDisplayInfo };
-		return func(this, a_data, a_info);
-	}
+	//bool GFxValue::ObjectInterface::SetDisplayInfo(void* a_data, const DisplayInfo& a_info)
+	//{
+	//	using func_t = decltype(&GFxValue::ObjectInterface::SetDisplayInfo);
+	//	REL::Relocation<func_t> func{ Offset::GFxValue::ObjectInterface::SetDisplayInfo };
+	//	return func(this, a_data, a_info);
+	//}
 
-	bool GFxValue::ObjectInterface::SetText(void* a_data, const char* a_text, bool a_isHTML)
-	{
-		using func_t = decltype(&GFxValue::ObjectInterface::SetText);
-		REL::Relocation<func_t> func{ Offset::GFxValue::ObjectInterface::SetText };
-		return func(this, a_data, a_text, a_isHTML);
-	}
+	//bool GFxValue::ObjectInterface::SetText(void* a_data, const char* a_text, bool a_isHTML)
+	//{
+	//	using func_t = decltype(&GFxValue::ObjectInterface::SetText);
+	//	REL::Relocation<func_t> func{ Offset::GFxValue::ObjectInterface::SetText };
+	//	return func(this, a_data, a_text, a_isHTML);
+	//}
 
-	bool GFxValue::ObjectInterface::AttachMovie(void* a_data, GFxValue* a_movieClip, const char* a_symbolName, const char* a_instanceName, std::int32_t a_depth, const GFxValue* a_initObj)
-	{
-		using func_t = decltype(&GFxValue::ObjectInterface::AttachMovie);
-		REL::Relocation<func_t> func{ Offset::GFxValue::ObjectInterface::AttachMovie };
-		return func(this, a_data, a_movieClip, a_symbolName, a_instanceName, a_depth, a_initObj);
-	}
+	//bool GFxValue::ObjectInterface::AttachMovie(void* a_data, GFxValue* a_movieClip, const char* a_symbolName, const char* a_instanceName, std::int32_t a_depth, const GFxValue* a_initObj)
+	//{
+	//	using func_t = decltype(&GFxValue::ObjectInterface::AttachMovie);
+	//	REL::Relocation<func_t> func{ Offset::GFxValue::ObjectInterface::AttachMovie };
+	//	return func(this, a_data, a_movieClip, a_symbolName, a_instanceName, a_depth, a_initObj);
+	//}
 
-	bool GFxValue::ObjectInterface::GotoAndPlay(void* a_data, const char* a_frame, bool a_stop)
-	{
-		using func_t = decltype(&GFxValue::ObjectInterface::GotoAndPlay);
-		REL::Relocation<func_t> func{ Offset::GFxValue::ObjectInterface::GotoAndPlay };
-		return func(this, a_data, a_frame, a_stop);
-	}
+	//bool GFxValue::ObjectInterface::GotoAndPlay(void* a_data, const char* a_frame, bool a_stop)
+	//{
+	//	using func_t = decltype(&GFxValue::ObjectInterface::GotoAndPlay);
+	//	REL::Relocation<func_t> func{ Offset::GFxValue::ObjectInterface::GotoAndPlay };
+	//	return func(this, a_data, a_frame, a_stop);
+	//}
 
 	bool GFxValue::ObjectInterface::IsSameContext(const ObjectInterface* a_rhs) const
 	{
@@ -845,128 +845,128 @@ namespace RE
 		ChangeType(ValueType::kConvertStringW);
 	}
 
-	bool GFxValue::HasMember(const char* a_name) const
-	{
-		assert(IsObject());
-		return _objectInterface->HasMember(_value.obj, a_name, IsDisplayObject());
-	}
+	//bool GFxValue::HasMember(const char* a_name) const
+	//{
+	//	assert(IsObject());
+	//	return _objectInterface->HasMember(_value.obj, a_name, IsDisplayObject());
+	//}
 
-	bool GFxValue::GetMember(const char* a_name, GFxValue* a_val) const
-	{
-		assert(IsObject());
-		return _objectInterface->GetMember(_value.obj, a_name, a_val, IsDisplayObject());
-	}
+	//bool GFxValue::GetMember(const char* a_name, GFxValue* a_val) const
+	//{
+	//	assert(IsObject());
+	//	return _objectInterface->GetMember(_value.obj, a_name, a_val, IsDisplayObject());
+	//}
 
-	bool GFxValue::SetMember(const char* a_name, const GFxValue& a_val)
-	{
-		assert(IsObject());
-		return _objectInterface->SetMember(_value.obj, a_name, a_val, IsDisplayObject());
-	}
+	//bool GFxValue::SetMember(const char* a_name, const GFxValue& a_val)
+	//{
+	//	assert(IsObject());
+	//	return _objectInterface->SetMember(_value.obj, a_name, a_val, IsDisplayObject());
+	//}
 
-	bool GFxValue::Invoke(const char* a_name, GFxValue* a_result, const GFxValue* a_args, UPInt a_numArgs)
-	{
-		assert(IsObject());
-		return _objectInterface->Invoke(_value.obj, a_result, a_name, a_args, a_numArgs, IsDisplayObject());
-	}
+	//bool GFxValue::Invoke(const char* a_name, GFxValue* a_result, const GFxValue* a_args, UPInt a_numArgs)
+	//{
+	//	assert(IsObject());
+	//	return _objectInterface->Invoke(_value.obj, a_result, a_name, a_args, a_numArgs, IsDisplayObject());
+	//}
 
-	bool GFxValue::Invoke(const char* a_name, GFxValue* a_result)
-	{
-		return Invoke(a_name, a_result, nullptr, 0);
-	}
+	//bool GFxValue::Invoke(const char* a_name, GFxValue* a_result)
+	//{
+	//	return Invoke(a_name, a_result, nullptr, 0);
+	//}
 
-	bool GFxValue::DeleteMember(const char* a_name)
-	{
-		assert(IsObject());
-		return _objectInterface->DeleteMember(_value.obj, a_name, IsDisplayObject());
-	}
+	//bool GFxValue::DeleteMember(const char* a_name)
+	//{
+	//	assert(IsObject());
+	//	return _objectInterface->DeleteMember(_value.obj, a_name, IsDisplayObject());
+	//}
 
-	std::uint32_t GFxValue::GetArraySize() const
-	{
-		assert(IsArray());
-		return _objectInterface->GetArraySize(_value.obj);
-	}
+	//std::uint32_t GFxValue::GetArraySize() const
+	//{
+	//	assert(IsArray());
+	//	return _objectInterface->GetArraySize(_value.obj);
+	//}
 
-	bool GFxValue::SetArraySize(std::uint32_t a_size)
-	{
-		assert(IsArray());
-		return _objectInterface->SetArraySize(_value.obj, a_size);
-	}
+	//bool GFxValue::SetArraySize(std::uint32_t a_size)
+	//{
+	//	assert(IsArray());
+	//	return _objectInterface->SetArraySize(_value.obj, a_size);
+	//}
 
-	bool GFxValue::GetElement(std::uint32_t a_idx, GFxValue* a_val) const
-	{
-		assert(IsArray());
-		return _objectInterface->GetElement(_value.obj, a_idx, a_val);
-	}
+	//bool GFxValue::GetElement(std::uint32_t a_idx, GFxValue* a_val) const
+	//{
+	//	assert(IsArray());
+	//	return _objectInterface->GetElement(_value.obj, a_idx, a_val);
+	//}
 
-	bool GFxValue::SetElement(std::uint32_t a_idx, const GFxValue& a_val)
-	{
-		assert(IsArray());
-		return _objectInterface->SetElement(_value.obj, a_idx, a_val);
-	}
+	//bool GFxValue::SetElement(std::uint32_t a_idx, const GFxValue& a_val)
+	//{
+	//	assert(IsArray());
+	//	return _objectInterface->SetElement(_value.obj, a_idx, a_val);
+	//}
 
-	bool GFxValue::PushBack(const GFxValue& a_val)
-	{
-		assert(IsArray());
-		return _objectInterface->PushBack(_value.obj, a_val);
-	}
+	//bool GFxValue::PushBack(const GFxValue& a_val)
+	//{
+	//	assert(IsArray());
+	//	return _objectInterface->PushBack(_value.obj, a_val);
+	//}
 
-	bool GFxValue::RemoveElements(std::uint32_t a_idx, std::int32_t a_count)
-	{
-		assert(IsArray());
-		return _objectInterface->RemoveElements(_value.obj, a_idx, a_count);
-	}
+	//bool GFxValue::RemoveElements(std::uint32_t a_idx, std::int32_t a_count)
+	//{
+	//	assert(IsArray());
+	//	return _objectInterface->RemoveElements(_value.obj, a_idx, a_count);
+	//}
 
-	bool GFxValue::RemoveElement(std::uint32_t a_idx)
-	{
-		return RemoveElements(a_idx, 1);
-	}
+	//bool GFxValue::RemoveElement(std::uint32_t a_idx)
+	//{
+	//	return RemoveElements(a_idx, 1);
+	//}
 
-	bool GFxValue::ClearElements()
-	{
-		return RemoveElements(0);
-	}
+	//bool GFxValue::ClearElements()
+	//{
+	//	return RemoveElements(0);
+	//}
 
-	bool GFxValue::GetDisplayInfo(DisplayInfo* a_info) const
-	{
-		assert(IsDisplayObject());
-		return _objectInterface->GetDisplayInfo(_value.obj, a_info);
-	}
+	//bool GFxValue::GetDisplayInfo(DisplayInfo* a_info) const
+	//{
+	//	assert(IsDisplayObject());
+	//	return _objectInterface->GetDisplayInfo(_value.obj, a_info);
+	//}
 
-	bool GFxValue::SetDisplayInfo(const DisplayInfo& a_info)
-	{
-		assert(IsDisplayObject());
-		return _objectInterface->SetDisplayInfo(_value.obj, a_info);
-	}
+	//bool GFxValue::SetDisplayInfo(const DisplayInfo& a_info)
+	//{
+	//	assert(IsDisplayObject());
+	//	return _objectInterface->SetDisplayInfo(_value.obj, a_info);
+	//}
 
-	bool GFxValue::SetText(const char* a_text)
-	{
-		assert(IsDisplayObject());
-		return _objectInterface->SetText(_value.obj, a_text, false);
-	}
+	//bool GFxValue::SetText(const char* a_text)
+	//{
+	//	assert(IsDisplayObject());
+	//	return _objectInterface->SetText(_value.obj, a_text, false);
+	//}
 
-	bool GFxValue::SetTextHTML(const char* a_html)
-	{
-		assert(IsDisplayObject());
-		return _objectInterface->SetText(_value.obj, a_html, true);
-	}
+	//bool GFxValue::SetTextHTML(const char* a_html)
+	//{
+	//	assert(IsDisplayObject());
+	//	return _objectInterface->SetText(_value.obj, a_html, true);
+	//}
 
-	bool GFxValue::AttachMovie(GFxValue* a_movieClip, const char* a_symbolName, const char* a_instanceName, std::int32_t a_depth, const GFxValue* a_initObj)
-	{
-		assert(IsDisplayObject());
-		return _objectInterface->AttachMovie(_value.obj, a_movieClip, a_symbolName, a_instanceName, a_depth, a_initObj);
-	}
+	//bool GFxValue::AttachMovie(GFxValue* a_movieClip, const char* a_symbolName, const char* a_instanceName, std::int32_t a_depth, const GFxValue* a_initObj)
+	//{
+	//	assert(IsDisplayObject());
+	//	return _objectInterface->AttachMovie(_value.obj, a_movieClip, a_symbolName, a_instanceName, a_depth, a_initObj);
+	//}
 
-	bool GFxValue::GotoAndPlay(const char* a_frame)
-	{
-		assert(IsDisplayObject());
-		return _objectInterface->GotoAndPlay(_value.obj, a_frame, false);
-	}
+	//bool GFxValue::GotoAndPlay(const char* a_frame)
+	//{
+	//	assert(IsDisplayObject());
+	//	return _objectInterface->GotoAndPlay(_value.obj, a_frame, false);
+	//}
 
-	bool GFxValue::GotoAndStop(const char* a_frame)
-	{
-		assert(IsDisplayObject());
-		return _objectInterface->GotoAndPlay(_value.obj, a_frame, true);
-	}
+	//bool GFxValue::GotoAndStop(const char* a_frame)
+	//{
+	//	assert(IsDisplayObject());
+	//	return _objectInterface->GotoAndPlay(_value.obj, a_frame, true);
+	//}
 
 	bool GFxValue::IsManagedValue() const
 	{

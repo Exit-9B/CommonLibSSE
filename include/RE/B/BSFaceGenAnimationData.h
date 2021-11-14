@@ -20,19 +20,8 @@ namespace RE
 
 		void ClearExpressionOverride() noexcept { exprOverride = false; }
 
-		void Reset(float a_timer, bool a_resetExpression, bool a_resetModifierAndPhoneme, bool a_resetCustom, bool a_closeEyes)
-		{
-			using func_t = decltype(&BSFaceGenAnimationData::Reset);
-			REL::Relocation<func_t> func{ REL::ID(25977) };
-			return func(this, a_timer, a_resetExpression, a_resetModifierAndPhoneme, a_resetCustom, a_closeEyes);
-		}
-
-		void SetExpressionOverride(std::int32_t a_idx, float a_value)
-		{
-			using func_t = decltype(&BSFaceGenAnimationData::SetExpressionOverride);
-			REL::Relocation<func_t> func{ REL::ID(25980) };
-			return func(this, a_idx, a_value);
-		}
+		void Reset(float a_timer, bool a_resetExpression, bool a_resetModifierAndPhoneme, bool a_resetCustom, bool a_closeEyes);
+		void SetExpressionOverride(std::int32_t a_idx, float a_value);
 
 		// members
 		BSFaceGenKeyframeMultiple* transitionTargetKeyFrame;  // 018

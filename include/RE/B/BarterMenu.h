@@ -47,5 +47,7 @@ namespace RE
 		std::uint8_t    padA5;            // A5
 		std::uint16_t   padA6;            // A6
 	};
+#ifndef SKYRIMVR
 	static_assert(sizeof(BarterMenu) == 0xA8);
+#endif
 }

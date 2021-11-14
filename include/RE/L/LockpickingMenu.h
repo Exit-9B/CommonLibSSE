@@ -80,5 +80,7 @@ namespace RE
 		std::uint8_t  unk10E;  // 10E
 		std::uint8_t  pad10F;  // 10F
 	};
+#ifndef SKYRIMVR
 	static_assert(sizeof(LockpickingMenu) == 0x110);
+#endif
 }

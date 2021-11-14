@@ -58,5 +58,7 @@ namespace RE
 		std::uint16_t   padBA;            // BA
 		std::uint32_t   padBC;            // BC
 	};
+#ifndef SKYRIMVR
 	static_assert(sizeof(ContainerMenu) == 0xC0);
+#endif
 }

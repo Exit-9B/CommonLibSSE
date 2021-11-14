@@ -55,11 +55,7 @@ namespace RE
 		// override (BSTEventSink<PositionPlayerEvent>)
 		BSEventNotifyControl ProcessEvent(const PositionPlayerEvent* a_event, BSTEventSource<PositionPlayerEvent>* a_eventSource) override;  // 01
 
-		static MenuTopicManager* GetSingleton()
-		{
-			REL::Relocation<MenuTopicManager**> singleton{ REL::ID(514959) };
-			return *singleton;
-		}
+		static MenuTopicManager* GetSingleton();
 
 		// members
 		BSSimpleList<Dialogue*>*     selectedResponseNode;  // 18

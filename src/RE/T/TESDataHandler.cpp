@@ -11,12 +11,12 @@ namespace RE
 		return *singleton;
 	}
 
-	std::uint32_t TESDataHandler::LoadScripts()
-	{
-		using func_t = decltype(&TESDataHandler::LoadScripts);
-		REL::Relocation<func_t> func{ Offset::TESDataHandler::LoadScripts };
-		return func(this);
-	}
+	//std::uint32_t TESDataHandler::LoadScripts()
+	//{
+	//	using func_t = decltype(&TESDataHandler::LoadScripts);
+	//	REL::Relocation<func_t> func{ Offset::TESDataHandler::LoadScripts };
+	//	return func(this);
+	//}
 
 	TESForm* TESDataHandler::LookupForm(FormID a_rawFormID, std::string_view a_modName)
 	{

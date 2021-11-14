@@ -4,7 +4,7 @@ namespace RE
 {
 	RefHandle GiftMenu::GetTargetRefHandle()
 	{
-		REL::Relocation<RefHandle*> handle{ REL::ID(519570) };
+		REL::Relocation<RefHandle*> handle{ Offset::GiftMenu::TargetRefHandle };
 		return *handle;
 	}
 }

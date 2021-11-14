@@ -4,13 +4,13 @@ namespace RE
 {
 	ContainerMenu::ContainerMode ContainerMenu::GetContainerMode()
 	{
-		REL::Relocation<ContainerMode*> mode{ REL::ID(519396) };
+		REL::Relocation<ContainerMode*> mode{ Offset::ContainerMenu::GetContainerMode };
 		return *mode;
 	}
 
 	RefHandle ContainerMenu::GetTargetRefHandle()
 	{
-		REL::Relocation<RefHandle*> handle{ REL::ID(519421) };
+		REL::Relocation<RefHandle*> handle{ Offset::ContainerMenu::GetTargetRefHandle };
 		return *handle;
 	}
 }

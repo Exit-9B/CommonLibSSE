@@ -39,18 +39,11 @@ namespace RE
 		[[nodiscard]] constexpr const TESBoundObject* GetObject() const noexcept { return object; }
 		[[nodiscard]] TESForm*                        GetOwner();
 		[[nodiscard]] SOUL_LEVEL                      GetSoulLevel() const;
-
-		[[nodiscard]] std::int32_t GetValue() const
-		{
-			using func_t = decltype(&InventoryEntryData::GetValue);
-			REL::Relocation<func_t> func{ REL::ID(15757) };
-			return func(this);
-		}
-
-		[[nodiscard]] float GetWeight() const;
-		[[nodiscard]] bool  IsEnchanted() const;
-		[[nodiscard]] bool  IsLeveled() const;
-		[[nodiscard]] bool  IsWorn() const;
+		[[nodiscard]] std::int32_t                    GetValue() const;
+		[[nodiscard]] float                           GetWeight() const;
+		[[nodiscard]] bool                            IsEnchanted() const;
+		[[nodiscard]] bool                            IsLeveled() const;
+		[[nodiscard]] bool                            IsWorn() const;
 
 		[[nodiscard]] bool IsOwnedBy(Actor* a_testOwner, bool a_defaultTo = true)
 		{
@@ -62,12 +55,7 @@ namespace RE
 			return IsOwnedBy_Impl(a_testOwner, a_itemOwner, a_defaultTo);
 		}
 
-		[[nodiscard]] bool IsQuestObject() const
-		{
-			using func_t = decltype(&InventoryEntryData::IsQuestObject);
-			REL::Relocation<func_t> func{ REL::ID(15767) };
-			return func(this);
-		}
+		[[nodiscard]] bool IsQuestObject() const;
 
 		TES_HEAP_REDEFINE_NEW();
 
@@ -78,12 +66,7 @@ namespace RE
 		std::uint32_t                 pad14{ 0 };             // 14
 
 	private:
-		[[nodiscard]] bool IsOwnedBy_Impl(Actor* a_testOwner, TESForm* a_itemOwner, bool a_defaultTo)
-		{
-			using func_t = decltype(&InventoryEntryData::IsOwnedBy_Impl);
-			REL::Relocation<func_t> func{ REL::ID(15782) };
-			return func(this, a_testOwner, a_itemOwner, a_defaultTo);
-		}
+		[[nodiscard]] bool IsOwnedBy_Impl(Actor* a_testOwner, TESForm* a_itemOwner, bool a_defaultTo);
 	};
 	static_assert(sizeof(InventoryEntryData) == 0x18);
 }

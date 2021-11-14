@@ -67,5 +67,7 @@ namespace RE
 		std::uint64_t                   unk30588;      // 30588
 		std::uint64_t                   unk30590;      // 30590
 	};
+#ifndef SKYRIMVR
 	static_assert(sizeof(MapMenu) == 0x30598);
+#endif
 }

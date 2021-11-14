@@ -33,5 +33,7 @@ namespace RE
 		std::uint32_t   pad74;  // 74
 		std::uint64_t   unk78;  // 78
 	};
+#ifndef SKYRIMVR
 	static_assert(sizeof(LoadingMenu) == 0x80);
+#endif
 }

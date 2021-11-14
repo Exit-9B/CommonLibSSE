@@ -24,5 +24,7 @@ namespace RE
 		// override (GFxFunctionHandler)
 		void Call(Params& a_params) override;  // 01
 	};
+#ifndef SKYRIMVR
 	static_assert(sizeof(CreditsMenu) == 0x40);
+#endif
 }

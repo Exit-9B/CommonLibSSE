@@ -323,6 +323,15 @@ namespace REL
 			return result;
 		}
 
+		[[nodiscard]] std::uint32_t packed() const
+		{
+			auto major = std::get<0>(_impl);
+			auto minor = std::get<1>(_impl);
+			auto build = std::get<2>(_impl);
+			auto sub = std::get<3>(_impl);
+			return ((((major) & 0xFF) << 24) | (((minor) & 0xFF) << 16) | (((build) & 0xFFF) << 4) | ((sub) & 0xF));
+		}
+
 	private:
 		std::array<value_type, 4> _impl{ 0, 0, 0, 0 };
 	};
@@ -437,7 +446,11 @@ namespace REL
 			if (const auto result = getFilename();
 				result != _filename.size() - 1 ||
 				result == 0) {
+#ifndef SKYRIMVR
 				_filename = L"SkyrimSE.exe"sv;
+#else
+				_filename = L"SkyrimVR.exe"sv;
+#endif
 			}
 
 			load();

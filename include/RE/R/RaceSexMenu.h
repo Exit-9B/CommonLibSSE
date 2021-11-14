@@ -49,5 +49,7 @@ namespace RE
 		std::uint16_t                        unk1A2;     // 1A2
 		std::uint32_t                        unk1A4;     // 1A4
 	};
+#ifndef SKYRIMVR
 	static_assert(sizeof(RaceSexMenu) == 0x1A8);
+#endif
 }

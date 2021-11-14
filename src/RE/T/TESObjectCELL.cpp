@@ -34,6 +34,13 @@ namespace RE
 		return owner && owner->Is(FormType::NPC) ? static_cast<TESNPC*>(owner) : nullptr;
 	}
 
+	bhkWorld* TESObjectCELL::GetbhkWorld() const
+	{
+		using func_t = decltype(&TESObjectCELL::GetbhkWorld);
+		REL::Relocation<func_t> func{ Offset::TESObjectCELL::GetbhkWorld };
+		return func(this);
+	}
+
 	EXTERIOR_DATA* TESObjectCELL::GetCoordinates()
 	{
 		return IsExteriorCell() ? cellData.exterior : nullptr;

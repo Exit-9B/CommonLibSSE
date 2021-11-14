@@ -38,5 +38,7 @@ namespace RE
 		// members
 		BSTArray<Data> unk38;  // 38
 	};
+#ifndef SKYRIMVR
 	static_assert(sizeof(DialogueMenu) == 0x50);
+#endif
 }
