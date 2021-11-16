@@ -578,11 +578,13 @@ set(SOURCES
 	include/RE/F/FxResponseArgsBase.h
 	include/RE/G/GAllocator.h
 	include/RE/G/GAllocatorBaseGH.h
+	include/RE/G/GAllocatorBaseLH.h
 	include/RE/G/GArray.h
 	include/RE/G/GArrayBase.h
 	include/RE/G/GArrayData.h
 	include/RE/G/GArrayDataBase.h
 	include/RE/G/GArrayDefaultPolicy.h
+	include/RE/G/GArrayLH.h
 	include/RE/G/GAtomic.h
 	include/RE/G/GColor.h
 	include/RE/G/GConstructorMov.h
@@ -644,6 +646,7 @@ set(SOURCES
 	include/RE/G/GStats.h
 	include/RE/G/GStd.h
 	include/RE/G/GString.h
+	include/RE/G/GStringHash.h
 	include/RE/G/GSysAllocBase.h
 	include/RE/G/GSysAllocPaged.h
 	include/RE/G/GTexture.h
