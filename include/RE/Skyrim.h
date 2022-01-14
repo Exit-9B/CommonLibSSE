@@ -648,7 +648,6 @@
 #include "RE/G/GStats.h"
 #include "RE/G/GStd.h"
 #include "RE/G/GString.h"
-#include "RE/G/GStringHash.h"
 #include "RE/G/GSysAllocBase.h"
 #include "RE/G/GSysAllocPaged.h"
 #include "RE/G/GTexture.h"
