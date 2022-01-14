@@ -15,7 +15,7 @@ namespace RE
 		kCave = 4,
 		kCamp = 5,
 		kFort = 6,
-		kNordicRuins = 7,
+		kNordicRuin = 7,
 		kDwemerRuin = 8,
 		kShipwreck = 9,
 		kGrove = 10,
@@ -33,7 +33,7 @@ namespace RE
 		kImperialTower = 22,
 		kClearing = 23,
 		kPass = 24,
-		kAlter = 25,
+		kAltar = 25,
 		kRock = 26,
 		kLighthouse = 27,
 		kOrcStronghold = 28,
@@ -61,12 +61,19 @@ namespace RE
 		kFalkreathCapitol = 50,
 		kDawnstarCastle = 51,
 		kDawnstarCapitol = 52,
-		kDLC02_TempleOfMiraak = 53,
-		kDLC02_RavenRock = 54,
-		kDLC02_BeastStone = 55,
-		kDLC02_TelMithryn = 56,
-		kDLC02_ToSkyrim = 57,
-		kDLC02_ToSolstheim = 58
+		kDLC02MiraakTemple = 53,
+		kDLC02RavenRock = 54,
+		kDLC02StandingStones = 55,
+		kDLC02TelvanniTower = 56,
+		kDLC02ToSkyrim = 57,
+		kDLC02ToSolstheim = 58,
+		kDLC02CastleKarstaag = 59,
+
+		kDoor = 61,
+		kQuestTarget = 62,
+		kMultipleQuestTarget = 63,
+		kPlayerSet = 64,
+		kYouAreHere = 65,
 	};
 
 	class MapMarkerData
