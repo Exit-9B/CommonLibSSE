@@ -283,14 +283,14 @@ namespace RE
 		NiPointer<TESObjectREFR> GetGrabbedRef();
 		std::uint32_t            GetNumTints(std::uint32_t a_tintType);
 #ifndef SKYRIMVR
-		TintMask*                GetOverlayTintMask(TintMask* a_original);
+		TintMask* GetOverlayTintMask(TintMask* a_original);
 #endif
-		BSTArray<TintMask*>&     GetTintList();
-		TintMask*                GetTintMask(std::uint32_t a_tintType, std::uint32_t a_index);
-		bool                     HasActorDoingCommand() const;
-		bool                     IsGrabbing() const;
-		void                     PlayPickupEvent(TESForm* a_item, TESForm* a_containerOwner, TESObjectREFR* a_containerRef, EventType a_eventType);
-		void                     StartGrabObject();
+		BSTArray<TintMask*>& GetTintList();
+		TintMask*            GetTintMask(std::uint32_t a_tintType, std::uint32_t a_index);
+		bool                 HasActorDoingCommand() const;
+		bool                 IsGrabbing() const;
+		void                 PlayPickupEvent(TESForm* a_item, TESForm* a_containerOwner, TESObjectREFR* a_containerRef, EventType a_eventType);
+		void                 StartGrabObject();
 
 		// members
 		std::uint32_t                                           unk3D8;                                       // 3D8

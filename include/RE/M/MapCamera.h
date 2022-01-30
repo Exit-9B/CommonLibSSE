@@ -2,8 +2,8 @@
 
 #ifndef SKYRIMVR
 
-#include "RE/B/BSTSmartPointer.h"
-#include "RE/T/TESCamera.h"
+#	include "RE/B/BSTSmartPointer.h"
+#	include "RE/T/TESCamera.h"
 
 namespace RE
 {

@@ -47,13 +47,13 @@ namespace RE
 			std::uint64_t padVR1;  // VR offset moved by 0x10
 			std::uint64_t padVR2;
 #endif
-			std::uint64_t                  unk30250;        // 30250
-			std::uint64_t                  unk30258;        // 30258
-			LocalMapCamera                 camera;          // 30260
-			NiPointer<BSShaderAccumulator> unk302C8;        // 302C8
-			ImageSpaceShaderParam          unk302D0;        // 302D0
-			std::uint64_t                  unk30350;        // 30350
-			NiPointer<NiNode>              unk30358;        // 30358
+			std::uint64_t                  unk30250;  // 30250
+			std::uint64_t                  unk30258;  // 30258
+			LocalMapCamera                 camera;    // 30260
+			NiPointer<BSShaderAccumulator> unk302C8;  // 302C8
+			ImageSpaceShaderParam          unk302D0;  // 302D0
+			std::uint64_t                  unk30350;  // 30350
+			NiPointer<NiNode>              unk30358;  // 30358
 #ifdef SKYRIMVR
 			BSTArray<void*> unk30370;
 			BSTArray<void*> unk30388;

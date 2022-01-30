@@ -2,7 +2,7 @@
 
 #ifndef SKYRIMVR
 
-#include "RE/T/TESCamera.h"
+#	include "RE/T/TESCamera.h"
 
 namespace RE
 {
