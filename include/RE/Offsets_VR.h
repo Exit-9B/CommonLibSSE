@@ -853,7 +853,6 @@ namespace RE
 		namespace ScriptEventSourceHolder
 		{
 			inline constexpr REL::Offset GetSingleton(static_cast<std::uint64_t>(0x1964C0));
-			inline constexpr REL::Offset SendActivateEvent(static_cast<std::uint64_t>(0x2B37E0));
 			inline constexpr REL::Offset SendOpenCloseEvent(static_cast<std::uint64_t>(0x199CF0));
 		}
 
