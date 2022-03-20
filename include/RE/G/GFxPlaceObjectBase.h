@@ -43,13 +43,13 @@ namespace RE
 
 		struct Filter
 		{
-			stl::enumeration<FilterType, std::uint8_t> filterType;        // 00
-			std::uint8_t                               pad01;             // 01
-			std::uint16_t                              angle;             // 02
-			std::uint16_t                              distance;          // 04
-			std::uint16_t                              pad06;             // 06
-			GRenderer::BlurFilterParams                filterParams;      // 08
-			float                                      colorMatrix[20];   // 4C
+			stl::enumeration<FilterType, std::uint8_t> filterType;       // 00
+			std::uint8_t                               pad01;            // 01
+			std::uint16_t                              angle;            // 02
+			std::uint16_t                              distance;         // 04
+			std::uint16_t                              pad06;            // 06
+			GRenderer::BlurFilterParams                filterParams;     // 08
+			float                                      colorMatrix[20];  // 4C
 		};
 		static_assert(sizeof(Filter) == 0x9C);
 
