@@ -23,7 +23,7 @@ namespace RE
 
 		[[nodiscard]] static Allocator* GetSingleton()
 		{
-			REL::Relocation<hkContainerHeapAllocator::Allocator*> singleton{ REL::ID(383828) };
+			REL::Relocation<hkContainerHeapAllocator::Allocator*> singleton{ Offset::hkContainerHeapAllocator::Singleton };
 			return singleton.get();
 		}
 	};

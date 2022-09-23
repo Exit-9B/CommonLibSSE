@@ -13,7 +13,7 @@ namespace RE
 		pad32(0),
 		pad34(0)
 	{
-		REL::Relocation<std::uintptr_t> vtbl{ REL::ID(186855) };
+		REL::Relocation<std::uintptr_t> vtbl{ Offset::ExtraTextDisplayData::Vtbl };
 		((std::uintptr_t*)this)[0] = vtbl.address();
 	}
 
@@ -28,7 +28,7 @@ namespace RE
 		pad32(0),
 		pad34(0)
 	{
-		REL::Relocation<std::uintptr_t> vtbl{ REL::ID(186855) };
+		REL::Relocation<std::uintptr_t> vtbl{ Offset::ExtraTextDisplayData::Vtbl };
 		((std::uintptr_t*)this)[0] = vtbl.address();
 		SetName(a_name);
 	}
@@ -44,7 +44,7 @@ namespace RE
 		pad32(0),
 		pad34(0)
 	{
-		REL::Relocation<std::uintptr_t> vtbl{ REL::ID(186855) };
+		REL::Relocation<std::uintptr_t> vtbl{ Offset::ExtraTextDisplayData::Vtbl };
 		((std::uintptr_t*)this)[0] = vtbl.address();
 		GetDisplayName(a_baseObject, a_temperFactor);
 	}
@@ -57,7 +57,7 @@ namespace RE
 	const char* ExtraTextDisplayData::GetDisplayName(TESBoundObject* a_baseObject, float a_temperFactor)
 	{
 		using func_t = decltype(&ExtraTextDisplayData::GetDisplayName);
-		REL::Relocation<func_t> func{ REL::ID(12768) };
+		REL::Relocation<func_t> func{ Offset::ExtraTextDisplayData::GetDisplayName };
 		return func(this, a_baseObject, a_temperFactor);
 	}
 

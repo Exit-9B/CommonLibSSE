@@ -4,7 +4,7 @@ namespace RE
 {
 	TaskQueueInterface* TaskQueueInterface::GetSingleton()
 	{
-		REL::Relocation<TaskQueueInterface**> singleton{ REL::ID(403759) };
+		REL::Relocation<TaskQueueInterface**> singleton{ Offset::TaskQueueInterface::Singleton };
 		return *singleton;
 	}
 }

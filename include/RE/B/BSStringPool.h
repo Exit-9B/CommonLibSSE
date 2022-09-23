@@ -26,14 +26,14 @@ namespace RE
 			static inline void release8(const char*& a_entry)
 			{
 				using func_t = decltype(&Entry::release8);
-				REL::Relocation<func_t> func{ REL::ID(69192) };
+				REL::Relocation<func_t> func{ Offset::BSStringPool::Release8 };
 				return func(a_entry);
 			}
 
 			static inline void release16(const wchar_t*& a_entry)
 			{
 				using func_t = decltype(&Entry::release16);
-				REL::Relocation<func_t> func{ REL::ID(69193) };
+				REL::Relocation<func_t> func{ Offset::BSStringPool::Release16 };
 				return func(a_entry);
 			}
 

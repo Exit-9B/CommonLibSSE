@@ -8,7 +8,7 @@ namespace RE
 	void ActiveEffect::Dispel(bool a_force)
 	{
 		using func_t = decltype(&ActiveEffect::Dispel);
-		REL::Relocation<func_t> func{ REL::ID(34061) };
+		REL::Relocation<func_t> func{ Offset::ActiveEffect::Dispel };
 		return func(this, a_force);
 	}
 

@@ -5,7 +5,7 @@ namespace RE
 	BSTEventSource<ChestsLooted::Event>* ChestsLooted::GetEventSource()
 	{
 		using func_t = decltype(&ChestsLooted::GetEventSource);
-		REL::Relocation<func_t> func{ REL::ID(51182) };
+		REL::Relocation<func_t> func{ Offset::ChestsLooted::GetEventSource };
 		return func();
 	}
 

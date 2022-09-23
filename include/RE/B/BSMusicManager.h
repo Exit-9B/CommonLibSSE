@@ -23,7 +23,7 @@ namespace RE
 
 		[[nodiscard]] static BSMusicManager* GetSingleton()
 		{
-			REL::Relocation<BSMusicManager**> singleton{ REL::ID(400896) };
+			REL::Relocation<BSMusicManager**> singleton{ Offset::BSMusicManager::Singleton };
 			return *singleton;
 		}
 
