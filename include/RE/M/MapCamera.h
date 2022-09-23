@@ -1,7 +1,9 @@
 #pragma once
 
-#include "RE/B/BSTSmartPointer.h"
-#include "RE/T/TESCamera.h"
+#ifndef SKYRIMVR
+
+#	include "RE/B/BSTSmartPointer.h"
+#	include "RE/T/TESCamera.h"
 
 namespace RE
 {
@@ -46,3 +48,5 @@ namespace RE
 	};
 	static_assert(sizeof(MapCamera) == 0x90);
 }
+
+#endif

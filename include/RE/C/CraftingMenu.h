@@ -28,5 +28,9 @@ namespace RE
 		// members
 		CraftingSubMenus::CraftingSubMenu* subMenu;  // 30
 	};
+#ifndef SKYRIMVR
 	static_assert(sizeof(CraftingMenu) == 0x38);
+#else
+	//static_assert(sizeof(CraftingMenu) == 0x58);
+#endif
 }

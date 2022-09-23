@@ -52,5 +52,9 @@ namespace RE
 		std::uint8_t        unk96;      // 96
 		std::uint8_t        pad97;      // 97
 	};
+#ifndef SKYRIMVR
 	static_assert(sizeof(BookMenu) == 0x98);
+#else
+	//static_assert(sizeof(BookMenu) == 0xB0);
+#endif
 }

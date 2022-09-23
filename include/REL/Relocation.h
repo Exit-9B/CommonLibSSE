@@ -452,7 +452,11 @@ namespace REL
 			if (const auto result = getFilename();
 				result != _filename.size() - 1 ||
 				result == 0) {
+#ifndef SKYRIMVR
 				_filename = L"SkyrimSE.exe"sv;
+#else
+				_filename = L"SkyrimVR.exe"sv;
+#endif
 			}
 
 			load();

@@ -40,5 +40,9 @@ namespace RE
 		float              unk48;     // 48
 		float              unk4C;     // 4C
 	};
+#ifndef SKYRIMVR
 	static_assert(sizeof(TweenMenu) == 0x50);
+#else
+	static_assert(sizeof(TweenMenu) == 0x60);
+#endif
 }

@@ -26,5 +26,9 @@ namespace RE
 		bool ProcessThumbstick(ThumbstickEvent* a_event) override;  // 03
 		bool ProcessMouseMove(MouseMoveEvent* a_event) override;    // 04
 	};
+#ifndef SKYRIMVR
 	static_assert(sizeof(CursorMenu) == 0x40);
+#else
+	static_assert(sizeof(CursorMenu) == 0x50);
+#endif
 }

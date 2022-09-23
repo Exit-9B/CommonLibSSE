@@ -974,7 +974,10 @@ set(SOURCES
 	include/RE/O/OldMessageBoxCallback.h
 	include/RE/Offsets.h
 	include/RE/Offsets_NiRTTI.h
+	include/RE/Offsets_NiRTTI_VR.h
 	include/RE/Offsets_RTTI.h
+	include/RE/Offsets_RTTI_VR.h
+	include/RE/Offsets_VR.h
 	include/RE/P/PCGamepadType.h
 	include/RE/P/PackUnpack.h
 	include/RE/P/PackUnpackImpl.h
@@ -1215,6 +1218,7 @@ set(SOURCES
 	include/RE/V/Variable.h
 	include/RE/V/VirtualMachine.h
 	include/RE/W/WeatherType.h
+	include/RE/W/WorldSpaceMenu.h
 	include/RE/Z/ZeroFunctionArguments.h
 	include/RE/Z/ZeroOverheadHeap.h
 	include/REL/Relocation.h

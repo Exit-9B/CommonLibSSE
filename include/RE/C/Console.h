@@ -40,5 +40,9 @@ namespace RE
 	protected:
 		void SetSelectedRef_Impl(ObjectRefHandle& a_handle);
 	};
+#ifndef SKYRIMVR
 	static_assert(sizeof(Console) == 0x58);
+#else
+	static_assert(sizeof(Console) == 0x68);
+#endif
 }

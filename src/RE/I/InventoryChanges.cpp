@@ -27,12 +27,14 @@ namespace RE
 		changed = true;
 	}
 
+#ifndef SKYRIMVR
 	TESObjectARMO* InventoryChanges::GetArmorInSlot(std::int32_t a_slot)
 	{
 		using func_t = decltype(&InventoryChanges::GetArmorInSlot);
 		REL::Relocation<func_t> func{ Offset::InventoryChanges::GetArmorInSlot };
 		return func(this, a_slot);
 	}
+#endif
 
 	std::uint16_t InventoryChanges::GetNextUniqueID()
 	{

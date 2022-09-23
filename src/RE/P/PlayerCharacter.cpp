@@ -69,7 +69,11 @@ namespace RE
 
 	NiPointer<TESObjectREFR> PlayerCharacter::GetGrabbedRef()
 	{
+#ifndef SKYRIMVR
 		return grabbedObject.get();
+#else
+		return nullptr;
+#endif
 	}
 
 	std::uint32_t PlayerCharacter::GetNumTints(std::uint32_t a_tintType)
@@ -79,6 +83,7 @@ namespace RE
 		return func(this, a_tintType);
 	}
 
+#ifndef SKYRIMVR
 	TintMask* PlayerCharacter::GetOverlayTintMask(TintMask* a_original)
 	{
 		if (!overlayTintMasks) {
@@ -93,6 +98,7 @@ namespace RE
 
 		return nullptr;
 	}
+#endif
 
 	BSTArray<TintMask*>& PlayerCharacter::GetTintList()
 	{
@@ -113,7 +119,11 @@ namespace RE
 
 	bool PlayerCharacter::IsGrabbing() const
 	{
+#ifndef SKYRIMVR
 		return static_cast<bool>(grabbedObject);
+#else
+		return false;
+#endif
 	}
 
 	void PlayerCharacter::PlayPickupEvent(TESForm* a_item, TESForm* a_containerOwner, TESObjectREFR* a_containerRef, EventType a_eventType)

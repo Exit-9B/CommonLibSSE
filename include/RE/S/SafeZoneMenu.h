@@ -15,5 +15,9 @@ namespace RE
 
 		~SafeZoneMenu() override;  // 00
 	};
+#ifndef SKYRIMVR
 	static_assert(sizeof(SafeZoneMenu) == 0x30);
+#else
+	static_assert(sizeof(SafeZoneMenu) == 0x40);
+#endif
 }

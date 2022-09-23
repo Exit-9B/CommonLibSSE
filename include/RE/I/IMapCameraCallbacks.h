@@ -1,5 +1,7 @@
 #pragma once
 
+#ifndef SKYRIMVR
+
 namespace RE
 {
 	struct IMapCameraCallbacks
@@ -15,3 +17,5 @@ namespace RE
 	};
 	static_assert(sizeof(IMapCameraCallbacks) == 0x8);
 }
+
+#endif

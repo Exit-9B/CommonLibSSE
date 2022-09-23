@@ -38,5 +38,9 @@ namespace RE
 		std::uint16_t   pad7A;            // 7A
 		std::uint32_t   pad7C;            // 7C
 	};
+#ifndef SKYRIMVR
 	static_assert(sizeof(GiftMenu) == 0x80);
+#else
+	static_assert(sizeof(GiftMenu) == 0x90);
+#endif
 }

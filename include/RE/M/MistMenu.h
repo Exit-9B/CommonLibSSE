@@ -79,5 +79,9 @@ namespace RE
 		std::uint32_t unk138;                         // 138
 		std::uint32_t pad13C;                         // 13C
 	};
+#ifndef SKYRIMVR
 	static_assert(sizeof(MistMenu) == 0x140);
+#else
+	//static_assert(sizeof(MistMenu) == 0x1A8);
+#endif
 }

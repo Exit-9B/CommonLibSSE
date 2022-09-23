@@ -19,6 +19,7 @@ namespace RE
 	class MenuOpenCloseEvent;
 	class TESWorldSpace;
 
+#ifndef SKYRIMVR
 	// menuDepth = 3
 	// flags = kPausesGame | kUsesCursor | kRendersOffscreenTargets | kCustomRendering
 	// context = kMap
@@ -68,4 +69,59 @@ namespace RE
 		std::uint64_t                   unk30590;      // 30590
 	};
 	static_assert(sizeof(MapMenu) == 0x30598);
+#else
+	class MapClickHandler;
+	class MapTouchpadHandler;
+
+	class MapMenu :
+		public WorldSpaceMenu,                   // 00
+		public BSTEventSink<MenuOpenCloseEvent>  // 58
+	{
+	public:
+		inline static constexpr auto      RTTI = RTTI_MapMenu;
+		constexpr static std::string_view MENU_NAME = "MapMenu";
+
+		~MapMenu() override;  // 00
+
+		// override (IMenu)
+		void               Accept(CallbackProcessor* a_processor) override;                       // 01
+		UI_MESSAGE_RESULTS ProcessMessage(UIMessage& a_message) override;                         // 04
+		void               AdvanceMovie(float a_interval, std::uint32_t a_currentTime) override;  // 05
+		void               RefreshPlatform() override;                                            // 08
+
+		// override (BSTEventSink<MenuOpenCloseEvent>)
+		BSEventNotifyControl ProcessEvent(const MenuOpenCloseEvent* a_event, BSTEventSource<MenuOpenCloseEvent>* a_eventSource) override;  // 01
+
+		// members
+		BSTSmartPointer<MapMoveHandler>     moveHandler;      // 00060
+		BSTSmartPointer<MapLookHandler>     lookHandler;      // 00068
+		BSTSmartPointer<MapZoomHandler>     zoomHandler;      // 00070
+		BSTSmartPointer<MapClickHandler>    clickHandler;     // 00078
+		BSTSmartPointer<MapTouchpadHandler> touchpadHandler;  // 00080
+		BSTSmartPointer<void*>              unk00088;         // 00088
+		BSTSmartPointer<void*>              unk00090;         // 00090
+		BSTSmartPointer<void*>              unk00098;         // 00098
+		BSTSmartPointer<void*>              unk000A0;         // 000A0
+		std::uint64_t                       unk000A8;         // 000A8
+		LocalMapMenu                        localMapMenu;     // 000B0
+		RefHandle                           unk30530;         // 30530
+		NiPoint3                            unk30534;         // 30534
+		BSTArray<void*>                     unk30540;         // 30540
+		BSTArray<void*>                     unk30558;         // 30558
+		NiPoint3                            unk30570;         // 30570
+		std::uint32_t                       unk3057C;         // 3057C
+		std::uint64_t                       unk30580;         // 30580
+		std::uint64_t                       unk30588;         // 30588
+		TESWorldSpace*                      worldSpace;       // 30590
+		GFxValue                            unk30598;         // 30598
+		BSSoundHandle                       unk305B0;         // 305B0
+		std::uint64_t                       unk305C0;         // 305C0
+		std::uint64_t                       unk305C8;         // 305C8
+		std::uint64_t                       unk305D0;         // 305D0
+		std::uint64_t                       unk305D8;         // 305D0
+		std::uint64_t                       unk305E0;         // 305E0
+		std::uint64_t                       unk305E8;         // 305E8
+	};
+	static_assert(sizeof(MapMenu) == 0x305F0);
+#endif
 }

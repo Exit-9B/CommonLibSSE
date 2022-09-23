@@ -33,8 +33,10 @@ namespace RE
 		bool ProcessButton(ButtonEvent* a_event) override;          // 05
 
 		// members
-		BSTArray<void*>                      unk040[7];  // 040
-		RaceSexCamera                        camera;     // 0E8
+		BSTArray<void*> unk040[7];  // 040
+#ifndef SKYRIMVR
+		RaceSexCamera camera;  // 0E8
+#endif
 		BSTArray<void*>                      unk140[2];  // 140
 		BSTArray<void*>                      unk170;     // 170
 		std::uint64_t                        unk188;     // 188
@@ -49,5 +51,9 @@ namespace RE
 		std::uint16_t                        unk1A2;     // 1A2
 		std::uint32_t                        unk1A4;     // 1A4
 	};
+#ifndef SKYRIMVR
 	static_assert(sizeof(RaceSexMenu) == 0x1A8);
+#else
+	static_assert(sizeof(RaceSexMenu) == 0x160);
+#endif
 }

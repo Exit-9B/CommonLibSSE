@@ -111,6 +111,15 @@ namespace RE
 		stl::enumeration<Context, std::uint32_t>       inputContext{ Context::kNone };  // 20
 		std::uint32_t                                  pad24{ 0 };                      // 24
 		GPtr<FxDelegate>                               fxDelegate{ nullptr };           // 28
+#ifdef SKYRIMVR
+		std::int32_t  unk30;  // 30
+		std::int32_t  unk34;  // 34
+		std::uint64_t unk38;  // 38
+#endif
 	};
+#ifndef SKYRIMVR
 	static_assert(sizeof(IMenu) == 0x30);
+#else
+	static_assert(sizeof(IMenu) == 0x40);
+#endif
 }

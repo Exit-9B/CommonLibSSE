@@ -25,5 +25,9 @@ namespace RE
 		std::uint16_t pad3A;  // 3A
 		std::uint32_t pad3C;  // 3C
 	};
+#ifndef SKYRIMVR
 	static_assert(sizeof(FaderMenu) == 0x40);
+#else
+	//static_assert(sizeof(FaderMenu) == 0x60);
+#endif
 }
