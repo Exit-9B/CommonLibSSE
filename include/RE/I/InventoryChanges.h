@@ -27,8 +27,8 @@ namespace RE
 
 			// add
 			virtual VisitResult Visit(InventoryEntryData* a_entryData) = 0;  // 01
-			virtual void Unk_02(RE::FormType a_formType);                    // 02 - { return 1; }
-			virtual void Unk_03(void);                                       // 03
+			virtual void        Unk_02(RE::FormType a_formType);             // 02 - { return 1; }
+			virtual void        Unk_03(void);                                // 03
 		};
 		static_assert(sizeof(IItemChangeVisitor) == 0x8);
 
