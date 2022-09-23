@@ -11,7 +11,7 @@ namespace RE
 	public:
 		inline static constexpr auto RTTI = RTTI_BGSAbilityPerkEntry;
 
-		~BGSAbilityPerkEntry() override;  // 00
+		~BGSAbilityPerkEntry() override;  // 03
 
 		// override (BGSPerkEntry)
 		PERK_ENTRY_TYPE GetType() const override;                  // 04 - { return kAbility; }

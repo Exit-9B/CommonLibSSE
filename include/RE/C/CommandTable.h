@@ -47,7 +47,7 @@ namespace RE
 		kStage = 0x17,
 		kMapMarker = 0x18,
 		kActorBase = 0x19,
-		kCoontainerRef = 0x1A,
+		kContainerRef = 0x1A,
 		kWorldOrList = 0x1B,
 		kCrimeType = 0x1C,
 		kPackage = 0x1D,

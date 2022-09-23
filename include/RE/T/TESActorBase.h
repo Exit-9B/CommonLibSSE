@@ -43,7 +43,7 @@ namespace RE
 		bool IsAutoCalc() const override;                         // 3E - { return formType == FormType::NPC && (TESActorBaseData::flags >> 4) & 1; }
 		void SetAutoCalc(bool a_autoCalc) override;               // 3F
 
-		// override (TESAIForm)
+		// override (ActorValueOwner)
 		float              GetActorValue(ActorValue a_akValue) override;                                                      // 01
 		float              GetPermanentActorValue(ActorValue a_akValue) override;                                             // 02
 		float              GetBaseActorValue(ActorValue a_akValue) override;                                                  // 03
