@@ -1060,6 +1060,7 @@ namespace RE
 		inline constexpr REL::Offset CreateRefHandle(static_cast<std::uint64_t>(0x1428A0));
 		inline constexpr REL::Offset DebugNotification(static_cast<std::uint64_t>(0x908170));
 		inline constexpr REL::Offset GetArmorFinalRating(static_cast<std::uint64_t>(0x1E7ED0));
+		inline constexpr REL::Offset LogDirectory(static_cast<std::uint64_t>(0x1EABD50));
 		inline constexpr REL::Offset LookupReferenceByHandle(static_cast<std::uint64_t>(0x143180));
 		inline constexpr REL::Offset PlaySound(static_cast<std::uint64_t>(0x90B1D0));
 		inline constexpr REL::Offset RTDynamicCast(static_cast<std::uint64_t>(0x138BABA));
