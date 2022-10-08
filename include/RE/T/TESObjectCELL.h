@@ -232,5 +232,9 @@ namespace RE
 		BGSLightingTemplate*                      lightingTemplate;  // 130 - LTMP
 		std::uint64_t                             unk138;            // 138
 	};
+#ifndef SKYRIMVR
 	static_assert(sizeof(TESObjectCELL) == 0x148);
+#else
+	static_assert(sizeof(TESObjectCELL) == 0x140);
+#endif
 }

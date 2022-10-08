@@ -23,7 +23,7 @@ namespace RE
 	public:
 		[[nodiscard]] static std::uint32_t& GetIndex()
 		{
-			REL::Relocation<std::uint32_t*> index{ REL::ID(380074) };
+			REL::Relocation<std::uint32_t*> index{ RE::Offset::BGSAddToPlayerInventoryEvent::GetIndex };
 			return *index;
 		}
 

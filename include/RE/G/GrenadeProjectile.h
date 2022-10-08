@@ -50,5 +50,9 @@ namespace RE
 		std::uint16_t  pad1E2;               // 1E2
 		std::uint32_t  pad1E4;               // 1E4
 	};
+#ifndef SKYRIMVR
 	static_assert(sizeof(GrenadeProjectile) == 0x1F0);
+#else
+	static_assert(sizeof(GrenadeProjectile) == 0x1E8);
+#endif
 }

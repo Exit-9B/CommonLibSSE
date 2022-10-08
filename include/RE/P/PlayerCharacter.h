@@ -468,5 +468,9 @@ namespace RE
 	private:
 		bool CenterOnCell_Impl(const char* a_cellName, RE::TESObjectCELL* a_cell);
 	};
+#ifndef SKYRIMVR
 	static_assert(sizeof(PlayerCharacter) == 0xBE8);
+#else
+	static_assert(sizeof(PlayerCharacter) == 0xBE0);
+#endif
 }

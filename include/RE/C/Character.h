@@ -53,5 +53,9 @@ namespace RE
 		virtual void Unk_128(void);  // 128
 		virtual void Unk_129(void);  // 129 - { return 1; }
 	};
+#ifndef SKYRIMVR
 	static_assert(sizeof(Character) == 0x2B8);
+#else
+	static_assert(sizeof(Character) == 0x2B0);
+#endif
 }

@@ -142,7 +142,7 @@ namespace RE
 	BGSLocation* TESObjectREFR::GetCurrentLocation() const
 	{
 		using func_t = decltype(&TESObjectREFR::GetCurrentLocation);
-		REL::Relocation<func_t> func{ REL::ID(19812) };
+		REL::Relocation<func_t> func{ RE::Offset::TESObjectREFR::GetCurrentLocation };
 		return func(this);
 	}
 

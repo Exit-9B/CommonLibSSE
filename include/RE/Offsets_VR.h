@@ -92,6 +92,11 @@ namespace RE
 			inline constexpr REL::Offset TargetReference(static_cast<std::uint64_t>(0x3011228));
 		}
 
+		namespace BGSAddToPlayerInventoryEvent
+		{
+			inline constexpr REL::Offset GetIndex(static_cast<std::uint64_t>(0x1DED188));
+		}
+
 		namespace BGSDefaultObjectManager
 		{
 			inline constexpr REL::Offset GetSingleton(static_cast<std::uint64_t>(0x1077C0));
@@ -118,6 +123,12 @@ namespace RE
 			inline constexpr REL::Offset Save(static_cast<std::uint64_t>(0x58E310));
 			inline constexpr REL::Offset Singleton(static_cast<std::uint64_t>(0x2FEB248));
 			inline constexpr REL::Offset Load(static_cast<std::uint64_t>(0x58E920));
+		}
+
+		namespace BGSStoryEventManager
+		{
+			inline constexpr REL::Offset AddEvent(static_cast<std::uint64_t>(0x4E0860));
+			inline constexpr REL::Offset GetSingleton(static_cast<std::uint64_t>(0x321C30));
 		}
 
 		namespace BGSStoryTeller
@@ -791,6 +802,7 @@ namespace RE
 			}
 
 			inline constexpr REL::Offset ActivatePickRef(static_cast<std::uint64_t>(0x6B2C60));
+			inline constexpr REL::Offset AddPlayerAddItemEvent(static_cast<std::uint64_t>(0x6C0640));
 			inline constexpr REL::Offset AttemptPickpocket(static_cast<std::uint64_t>(0x6D58A0));
 			inline constexpr REL::Offset GetArmorValue(static_cast<std::uint64_t>(0x69C2D0));
 			inline constexpr REL::Offset GetDamage(static_cast<std::uint64_t>(0x69C650));
@@ -986,6 +998,7 @@ namespace RE
 
 		namespace TESObjectREFR
 		{
+			inline constexpr REL::Offset GetCurrentLocation(static_cast<std::uint64_t>(0x2AABF0));
 			inline constexpr REL::Offset GetDisplayFullName(static_cast<std::uint64_t>(0x2A78F0));
 			inline constexpr REL::Offset GetLock(static_cast<std::uint64_t>(0x2B8C30));
 			inline constexpr REL::Offset GetOwner(static_cast<std::uint64_t>(0x2B7DE0));

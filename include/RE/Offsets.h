@@ -89,6 +89,11 @@ namespace RE
 			inline constexpr REL::ID TargetRefHandle(static_cast<std::uint64_t>(403520));
 		}
 
+		namespace BGSAddToPlayerInventoryEvent
+		{
+			inline constexpr REL::ID GetIndex(static_cast<std::uint64_t>(380074));
+		}
+
 		namespace BGSDefaultObjectManager
 		{
 			inline constexpr REL::ID GetSingleton(static_cast<std::uint64_t>(13894));
@@ -115,6 +120,12 @@ namespace RE
 			inline constexpr REL::ID Save(static_cast<std::uint64_t>(35727));
 			inline constexpr REL::ID Singleton(static_cast<std::uint64_t>(403340));
 			inline constexpr REL::ID Load(static_cast<std::uint64_t>(35728));
+		}
+
+		namespace BGSStoryEventManager
+		{
+			inline constexpr REL::ID AddEvent(static_cast<std::uint64_t>(32359));
+			inline constexpr REL::ID GetSingleton(static_cast<std::uint64_t>(22790));
 		}
 
 		namespace BGSStoryTeller
@@ -773,6 +784,7 @@ namespace RE
 			}
 
 			inline constexpr REL::ID ActivatePickRef(static_cast<std::uint64_t>(40548));
+			inline constexpr REL::ID AddPlayerAddItemEvent(static_cast<std::uint64_t>(40456));
 			inline constexpr REL::ID AttemptPickpocket(static_cast<std::uint64_t>(40654));
 			inline constexpr REL::ID GetArmorValue(static_cast<std::uint64_t>(40249));
 			inline constexpr REL::ID GetDamage(static_cast<std::uint64_t>(40253));
@@ -957,6 +969,7 @@ namespace RE
 		namespace TESObjectREFR
 		{
 			inline constexpr REL::ID FindReferenceFor3D(static_cast<std::uint64_t>(19750));
+			inline constexpr REL::ID GetCurrentLocation(static_cast<std::uint64_t>(19812));
 			inline constexpr REL::ID GetDisplayFullName(static_cast<std::uint64_t>(19781));
 			inline constexpr REL::ID GetLock(static_cast<std::uint64_t>(20223));
 			inline constexpr REL::ID GetOwner(static_cast<std::uint64_t>(20194));

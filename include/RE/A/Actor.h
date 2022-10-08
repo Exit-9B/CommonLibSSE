@@ -598,5 +598,9 @@ namespace RE
 	private:
 		TESFaction* GetCrimeFactionImpl() const;
 	};
+#ifndef SKYRIMVR
 	static_assert(sizeof(Actor) == 0x2B8);
+#else
+	static_assert(sizeof(Actor) == 0x2B0);
+#endif
 }
