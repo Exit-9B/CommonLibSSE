@@ -863,12 +863,12 @@ set(SOURCES
 	include/RE/M/MagicCaster.h
 	include/RE/M/MagicFavorites.h
 	include/RE/M/MagicItem.h
+	include/RE/M/MagicItemTraversalFunctor.h
 	include/RE/M/MagicMenu.h
 	include/RE/M/MagicSystem.h
 	include/RE/M/MagicTarget.h
 	include/RE/M/Main.h
 	include/RE/M/MainMenu.h
-	include/RE/M/MagicItemTraversalFunctor.h
 	include/RE/M/MapCamera.h
 	include/RE/M/MapInputHandler.h
 	include/RE/M/MapLookHandler.h

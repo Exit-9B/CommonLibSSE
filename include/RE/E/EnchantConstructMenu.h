@@ -49,10 +49,10 @@ namespace RE
 				virtual ~CategoryListEntry();  // 00
 
 				// add
-				virtual void ShowInItemCard(EnchantConstructMenu* a_menu);  // 01
-				virtual void Unk_02(void);                                  // 02
-				virtual const char* GetName();                              // 03
-				virtual void SetData(GFxValue* dataContainer);              // 04
+				virtual void        ShowInItemCard(EnchantConstructMenu* a_menu);  // 01
+				virtual void        Unk_02(void);                                  // 02
+				virtual const char* GetName();                                     // 03
+				virtual void        SetData(GFxValue* dataContainer);              // 04
 
 				// members
 				stl::enumeration<FilterFlag, std::uint32_t> filterFlag;  // 0C
@@ -96,14 +96,14 @@ namespace RE
 				Result operator()(Effect* a_effect) override;  // 01
 
 				// members
-			    BSTArray<Effect>  createdEffects;      // 10
-			    Effect*           costliestEffect;     // 28
-			    EnchantmentEntry* enchantmentParams;   // 30
-			    EnchantmentItem*  createdEnchantment;  // 38
-			    FormType          formType;            // 40
-			    TESForm*          baseObject;          // 48
-			    float             soulGemRatio;        // 50
-			    std::uint32_t     pad5C;               // 5C
+				BSTArray<Effect>  createdEffects;      // 10
+				Effect*           costliestEffect;     // 28
+				EnchantmentEntry* enchantmentParams;   // 30
+				EnchantmentItem*  createdEnchantment;  // 38
+				FormType          formType;            // 40
+				TESForm*          baseObject;          // 48
+				float             soulGemRatio;        // 50
+				std::uint32_t     pad5C;               // 5C
 			};
 			static_assert(sizeof(CreateEffectFunctor) == 0x58);
 
