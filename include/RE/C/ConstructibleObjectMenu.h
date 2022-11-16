@@ -31,9 +31,9 @@ namespace RE
 			~ConstructibleObjectMenu() override;  // 00
 
 			// override (CraftingSubMenu)
-			void Accept(CallbackProcessor* a_cbReg) override;  // 01
-			void Unk_06(void) override;                        // 06
-			void Unk_07(void) override;                        // 07
+			void Accept(CallbackProcessor* a_cbReg) override;     // 01
+			void Unk_06(void) override;                           // 06
+			void SetItemCardInfo(ItemCard* a_itemCard) override;  // 07
 
 			// members
 			BSTArray<void*> unk100;  // 100

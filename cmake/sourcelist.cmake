@@ -868,6 +868,7 @@ set(SOURCES
 	include/RE/M/MagicTarget.h
 	include/RE/M/Main.h
 	include/RE/M/MainMenu.h
+	include/RE/M/MagicItemTraversalFunctor.h
 	include/RE/M/MapCamera.h
 	include/RE/M/MapInputHandler.h
 	include/RE/M/MapLookHandler.h

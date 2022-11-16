@@ -22,7 +22,7 @@ namespace RE
 				virtual ~QuitMenuCallback();  // 00
 
 				// override (IMessageBoxCallback)
-				virtual void Run(Message a_msg) override;  // 01
+				void Run(Message a_msg) override;  // 01
 
 				// members
 				AlchemyMenu* subMenu;  // 10
@@ -32,8 +32,8 @@ namespace RE
 			virtual ~AlchemyMenu();  // 00
 
 			// override (CraftingSubMenu)
-			virtual void Accept(CallbackProcessor* a_cbReg) override;  // 01
-			virtual void Unk_05(void) override;                        // 05
+			void Accept(CallbackProcessor* a_cbReg) override;          // 01
+			bool ProcessUserEvent(BSFixedString* a_control) override;  // 05
 
 			// members
 			BSTArray<void*> unk100;  // 100
