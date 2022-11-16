@@ -20,6 +20,43 @@ namespace RE
 	public:
 		inline static constexpr auto RTTI = RTTI_Projectile;
 
+		class LaunchData
+		{
+		public:
+			// add
+			virtual ~LaunchData();
+
+			// members
+			NiPoint3         unk08;         // 08
+			NiPoint3         unk14;         // 14
+			BGSProjectile*   projectile;    // 20
+			Actor*           aggressor;     // 28
+			void*            unk30;         // 30
+			TESObjectWEAP*   sourceWeapon;  // 38
+			TESAmmo*         sourceAmmo;    // 40
+			float            unk48;         // 48
+			float            unk4C;         // 4C
+			std::uint64_t    unk50;         // 50
+			std::uint64_t    unk58;         // 58
+			std::uint64_t    unk60;         // 60
+			TESObjectCELL*   unk68;         // 68
+			std::uint64_t    unk70;         // 70
+			std::uint64_t    unk78;         // 78
+			EnchantmentItem* enchantment;   // 80
+			AlchemyItem*     poison;        // 88
+			std::uint32_t    unk90;         // 90
+			float            unk94;         // 94
+			float            unk98;         // 98
+			std::uint8_t     unk9C;         // 9C
+			std::uint8_t     unk9D;         // 9D
+			std::uint8_t     unk9E;         // 9E
+			std::uint8_t     unk9F;         // 9F
+			std::uint16_t    unkA0;         // A0
+			std::uint16_t    unkA2;         // A2
+			std::uint32_t    padA4;         // A4
+		};
+		static_assert(sizeof(LaunchData) == 0xA8);
+
 		struct ImpactData
 		{
 		public:
