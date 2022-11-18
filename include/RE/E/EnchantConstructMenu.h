@@ -85,7 +85,7 @@ namespace RE
 			};
 			static_assert(sizeof(ItemChangeEntry) == 0x20);
 
-			class CreateEffectFunctor : MagicItemTraversalFunctor
+			class CreateEffectFunctor : public MagicItemTraversalFunctor
 			{
 			public:
 				inline static constexpr auto RTTI = RTTI_CraftingSubMenus__EnchantConstructMenu__CreateEffectFunctor;
