@@ -69,9 +69,9 @@ namespace RE
 				inline static constexpr auto RTTI = RTTI_CraftingSubMenus__EnchantConstructMenu__EnchantmentEntry;
 
 				// members
-				EnchantmentItem* data;       // 18
-				float            magnitude;  // 20
-				float            charges;    // 24
+				EnchantmentItem* data;          // 18
+				float            magnitude;     // 20
+				float            maxMagnitude;  // 24
 			};
 			static_assert(sizeof(EnchantmentEntry) == 0x28);
 
@@ -188,7 +188,7 @@ namespace RE
 			Selections                                   selected;                // 170
 			InventoryEntryData*                          craftItemPreview;        // 1A0
 			CreateEffectFunctor                          createEffectFunctor;     // 1A8
-			std::uint32_t                                sliderEnchantmentIndex;  // 200
+			std::int32_t                                 sliderEnchantmentIndex;  // 200
 			float                                        sliderMaxMagnitude;      // 204
 			std::uint32_t                                highlightIndex;          // 208
 			stl::enumeration<Category, std::uint32_t>    currentCategory;         // 20C
