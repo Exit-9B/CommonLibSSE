@@ -762,6 +762,11 @@ namespace RE
 			inline constexpr REL::Offset CreateDeepCopy(static_cast<std::uint64_t>(0xC97A60));
 		}
 
+		namespace NiPoint3
+		{
+			inline constexpr REL::Offset Zero(static_cast<std::uint64_t>(0x316AAF0));
+		}
+
 		namespace NiRefObject
 		{
 			inline constexpr REL::Offset TotalObjectCount(static_cast<std::uint64_t>(0x316AD20));
@@ -833,6 +838,11 @@ namespace RE
 		namespace ReadyWeaponHandler
 		{
 			inline constexpr REL::Offset Vtbl(static_cast<std::uint64_t>(0x16F22A8));
+		}
+
+		namespace ReferenceEffectController
+		{
+			inline constexpr REL::Offset Start(static_cast<std::uint64_t>(0x561EC0));
 		}
 
 		namespace REFR_LOCK

@@ -744,6 +744,11 @@ namespace RE
 			inline constexpr REL::ID CreateDeepCopy(static_cast<std::uint64_t>(70191));
 		}
 
+		namespace NiPoint3
+		{
+			inline constexpr REL::ID Zero(static_cast<std::uint64_t>(410468));
+		}
+
 		namespace NiRefObject
 		{
 			inline constexpr REL::ID TotalObjectCount(static_cast<std::uint64_t>(410493));
@@ -814,6 +819,11 @@ namespace RE
 		namespace ReadyWeaponHandler
 		{
 			inline constexpr REL::ID Vtbl(static_cast<std::uint64_t>(208721));
+		}
+
+		namespace ReferenceEffectController
+		{
+			inline constexpr REL::ID Start(static_cast<std::uint64_t>(34761));
 		}
 
 		namespace ResponseDictionary

@@ -17,8 +17,8 @@ namespace RE
 
 		// override (ReferenceEffectController)
 		virtual void             Unk_01(void) override;                                   // 01
-		virtual void             Unk_02(void) override;                                   // 02
-		virtual void             Unk_03(void) override;                                   // 03
+		virtual float            Unk_02(void) override;                                   // 02
+		virtual float            Unk_03(void) override;                                   // 03
 		virtual void             Unk_04(void) override;                                   // 04
 		virtual const NiPoint3&  GetSourcePosition() override;                            // 05
 		virtual bool             GetUseSourcePosition() override;                         // 06

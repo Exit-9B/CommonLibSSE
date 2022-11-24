@@ -1,5 +1,7 @@
 #pragma once
 
+#include "RE/M/MemoryManager.h"
+
 namespace RE
 {
 	class BGSArtObject;
@@ -16,12 +18,12 @@ namespace RE
 	public:
 		inline static constexpr auto RTTI = RTTI_ReferenceEffectController;
 
-		virtual ~ReferenceEffectController();  // 00
+		virtual ~ReferenceEffectController() = default;  // 00
 
 		// add
 		virtual void             Unk_01(void);                                   // 01 - { return; }
-		virtual void             Unk_02(void);                                   // 02 - { return 0.0; }
-		virtual void             Unk_03(void);                                   // 03 - { return 1.0; }
+		virtual float            Unk_02(void);                                   // 02 - { return 0.0; }
+		virtual float            Unk_03(void);                                   // 03 - { return 1.0; }
 		virtual void             Unk_04(void);                                   // 04 - { return; }
 		virtual const NiPoint3&  GetSourcePosition();                            // 05 - { return NiPoint3(); }
 		virtual bool             GetUseSourcePosition();                         // 06 - { return true; }
@@ -53,6 +55,11 @@ namespace RE
 		virtual bool             GetAllowNo3D();                                 // 20 - { return false; }
 		virtual void             SaveGame(BGSSaveGameBuffer* a_buf);             // 21 - { return; }
 		virtual void             LoadGame(BGSLoadGameBuffer* a_buf);             // 22 - { return; }
+
+		void Start(ReferenceEffect** a_effectOut = nullptr);
+		void Stop();
+
+		TES_HEAP_REDEFINE_NEW();
 	};
 	static_assert(sizeof(ReferenceEffectController) == 0x8);
 }
