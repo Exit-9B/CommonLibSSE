@@ -94,6 +94,13 @@ namespace RE
 			inline constexpr REL::ID GetIndex(static_cast<std::uint64_t>(380074));
 		}
 
+		namespace BGSCreatedObjectManager
+		{
+			inline constexpr REL::ID CreateArmorEnchantment(static_cast<std::uint64_t>(36166));
+			inline constexpr REL::ID CreateWeaponEnchantment(static_cast<std::uint64_t>(36165));
+			inline constexpr REL::ID Singleton(static_cast<std::uint64_t>(400320));
+		}
+
 		namespace BGSDefaultObjectManager
 		{
 			inline constexpr REL::ID GetSingleton(static_cast<std::uint64_t>(13894));
@@ -375,6 +382,7 @@ namespace RE
 		namespace ExtraDataList
 		{
 			inline constexpr REL::ID Add(static_cast<std::uint64_t>(12315));
+			inline constexpr REL::ID SetCount(static_cast<std::uint64_t>(11617));
 			inline constexpr REL::ID SetExtraFlags(static_cast<std::uint64_t>(12042));
 			inline constexpr REL::ID SetInventoryChanges(static_cast<std::uint64_t>(11600));
 		}
@@ -887,6 +895,7 @@ namespace RE
 
 		namespace TaskQueueInterface
 		{
+			inline constexpr REL::ID Attach3D(static_cast<std::uint64_t>(36897));
 			inline constexpr REL::ID Singleton(static_cast<std::uint64_t>(403759));
 		}
 
@@ -978,6 +987,8 @@ namespace RE
 
 		namespace TESObjectREFR
 		{
+			inline constexpr REL::ID ApplyArtObject(static_cast<std::uint64_t>(22769));
+			inline constexpr REL::ID ApplyEffectShader(static_cast<std::uint64_t>(19872));
 			inline constexpr REL::ID FindReferenceFor3D(static_cast<std::uint64_t>(19750));
 			inline constexpr REL::ID GetCurrentLocation(static_cast<std::uint64_t>(19812));
 			inline constexpr REL::ID GetDisplayFullName(static_cast<std::uint64_t>(19781));

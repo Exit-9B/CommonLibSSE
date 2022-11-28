@@ -64,6 +64,7 @@ set(SOURCES
 	include/RE/B/BGSCollisionLayer.h
 	include/RE/B/BGSColorForm.h
 	include/RE/B/BGSConstructibleObject.h
+	include/RE/B/BGSCreatedObjectManager.h
 	include/RE/B/BGSDebris.h
 	include/RE/B/BGSDecalGroup.h
 	include/RE/B/BGSDefaultObjectManager.h
@@ -1255,6 +1256,7 @@ set(SOURCES
 	src/RE/B/BGSBaseAlias.cpp
 	src/RE/B/BGSBipedObjectForm.cpp
 	src/RE/B/BGSColorForm.cpp
+	src/RE/B/BGSCreatedObjectManager.cpp
 	src/RE/B/BGSEntryPointFunctionDataActivateChoice.cpp
 	src/RE/B/BGSEntryPointPerkEntry.cpp
 	src/RE/B/BGSFootstepManager.cpp

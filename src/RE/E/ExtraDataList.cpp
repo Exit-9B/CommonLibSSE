@@ -257,6 +257,13 @@ namespace RE
 		return xSoul ? *xSoul->soul : SOUL_LEVEL::kNone;
 	}
 
+	void ExtraDataList::SetCount(std::uint16_t a_count)
+	{
+		using func_t = decltype(&ExtraDataList::SetCount);
+		REL::Relocation<func_t> func{ Offset::ExtraDataList::SetCount };
+		return func(this, a_count);
+	}
+
 	void ExtraDataList::SetExtraFlags(ExtraFlags::Flag a_flags, bool a_enable)
 	{
 		using func_t = decltype(&ExtraDataList::SetExtraFlags);

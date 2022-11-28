@@ -67,6 +67,7 @@
 #include "RE/B/BGSCollisionLayer.h"
 #include "RE/B/BGSColorForm.h"
 #include "RE/B/BGSConstructibleObject.h"
+#include "RE/B/BGSCreatedObjectManager.h"
 #include "RE/B/BGSDebris.h"
 #include "RE/B/BGSDecalGroup.h"
 #include "RE/B/BGSDefaultObjectManager.h"
