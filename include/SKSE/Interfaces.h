@@ -375,12 +375,21 @@ namespace SKSE
 		constexpr void PluginName(std::string_view a_plugin) noexcept { SetCharBuffer(a_plugin, std::span{ pluginName }); }
 		constexpr void PluginVersion(REL::Version a_version) noexcept { pluginVersion = a_version.pack(); }
 #ifndef SKYRIMSE_PRE_1_6_629
-		constexpr void HasNoStructUse(bool a_value) noexcept { noStructUse = a_value; }
+		constexpr void HasNoStructUse(bool a_value) noexcept
+		{
+			noStructUse = a_value;
+		}
 #endif
-		constexpr void UsesAddressLibrary(bool a_value) noexcept { addressLibrary = a_value; }
+		constexpr void UsesAddressLibrary(bool a_value) noexcept
+		{
+			addressLibrary = a_value;
+		}
 		constexpr void UsesSigScanning(bool a_value) noexcept { sigScanning = a_value; }
 #ifndef SKYRIMSE_PRE_1_6_629
-		constexpr void UsesStructsPost629(bool a_value) noexcept { structsPost629 = a_value; }
+		constexpr void UsesStructsPost629(bool a_value) noexcept
+		{
+			structsPost629 = a_value;
+		}
 #endif
 
 		const std::uint32_t dataVersion{ kVersion };
