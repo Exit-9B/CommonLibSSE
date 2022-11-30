@@ -58,7 +58,7 @@ namespace RE
 		BSSoundHandle                          sound;           // C8
 		stl::enumeration<Flags, std::uint32_t> flags;           // D4
 	};
-#ifndef SKYRIMVR
+#if !defined(SKYRIMVR) && !defined(SKYRIMSE_PRE_1_6_629)
 	static_assert(sizeof(Hazard) == 0xE0);
 #else
 	static_assert(sizeof(Hazard) == 0xD8);

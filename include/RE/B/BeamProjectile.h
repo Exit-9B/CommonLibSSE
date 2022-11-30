@@ -47,7 +47,7 @@ namespace RE
 		// members
 		std::uint64_t unk238;  // 238
 	};
-#ifndef SKYRIMVR
+#if !defined(SKYRIMVR) && !defined(SKYRIMSE_PRE_1_6_629)
 	static_assert(sizeof(BeamProjectile) == 0x248);
 #else
 	static_assert(sizeof(BeamProjectile) == 0x240);
