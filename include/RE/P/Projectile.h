@@ -30,7 +30,7 @@ namespace RE
 			NiPoint3         unk08;         // 08
 			NiPoint3         unk14;         // 14
 			BGSProjectile*   projectile;    // 20
-			Actor*           aggressor;     // 28
+			TESObjectREFR*   source;        // 28
 			void*            unk30;         // 30
 			TESObjectWEAP*   sourceWeapon;  // 38
 			TESAmmo*         sourceAmmo;    // 40
