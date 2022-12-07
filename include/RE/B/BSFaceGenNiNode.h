@@ -36,5 +36,9 @@ namespace RE
 		std::uint16_t                     pad162;         // 162
 		std::uint32_t                     pad164;         // 164
 	};
+#ifndef SKYRIMVR
 	static_assert(sizeof(BSFaceGenNiNode) == 0x168);
+#else
+	static_assert(sizeof(BSFaceGenNiNode) == 0x190);
+#endif
 }

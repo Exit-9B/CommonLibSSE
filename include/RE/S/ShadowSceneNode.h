@@ -83,5 +83,9 @@ namespace RE
 
 		std::uint64_t unk300;  // 300
 	};
+#ifndef SKYRIMVR
 	static_assert(sizeof(ShadowSceneNode) == 0x308);
+#else
+	//static_assert(sizeof(ShadowSceneNode) == 0x340);
+#endif
 }

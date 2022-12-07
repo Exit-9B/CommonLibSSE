@@ -91,6 +91,9 @@ namespace RE
 
 		// add
 		virtual void        UpdateControllers(NiUpdateData& a_data);                                                            // 25
+#ifdef SKYRIMVR
+		virtual void UnkVR_26(void);  // added in VR
+#endif
 		virtual void        PerformOp(PerformOpFunc& a_func);                                                                   // 26
 		virtual void        AttachProperty(NiAlphaProperty* a_property);                                                        // 27 - { return; }
 		virtual void        SetMaterialNeedsUpdate(bool a_needsUpdate);                                                         // 28 - { return; }
@@ -115,24 +118,35 @@ namespace RE
 		void               UpdateHairColor(const NiColor& a_color);
 
 		// members
-		NiNode*                               parent;                   // 030
-		std::uint32_t                         parentIndex;              // 038
-		std::uint32_t                         unk03C;                   // 03C
-		NiPointer<NiCollisionObject>          collisionObject;          // 040
-		NiTransform                           local;                    // 048
-		NiTransform                           world;                    // 07C
-		NiTransform                           previousWorld;            // 0B0
-		NiBound                               worldBound;               // 0E4
+		NiNode*                      parent;           // 030
+		std::uint32_t                parentIndex;      // 038
+		std::uint32_t                unk03C;           // 03C
+		NiPointer<NiCollisionObject> collisionObject;  // 040
+		NiTransform                  local;            // 048
+		NiTransform                  world;            // 07C
+		NiTransform                  previousWorld;    // 0B0
+		NiBound                      worldBound;       // 0E4
+#ifdef SKYRIMVR
+		std::uint32_t unkVR1;  // VR offset moved by 0x18
+		std::uint32_t unkVR2;
+		std::uint32_t unkVR3;
+		std::uint32_t unkVR4;
+		std::uint32_t unkVR5;
+		std::uint32_t unkVR6;
+#endif
 		stl::enumeration<Flag, std::uint32_t> flags;                    // 0F4
 		TESObjectREFR*                        userData;                 // 0F8
 		float                                 fadeAmount;               // 100
 		std::uint32_t                         lastUpdatedFrameCounter;  // 104
-#ifndef SKYRIMVR
-		std::uint64_t unk108;  // 108
-#else
-		std::uint32_t                         unk108;   // 108
-		stl::enumeration<Flag, std::uint32_t> flagsVR;  // 10C
+		std::uint32_t                         unk108;                   // 108
+#ifdef SKYRIMVR
+		std::uint64_t unkVR7;
+		std::uint64_t unkVR8;
 #endif
 	};
+#ifndef SKYRIMVR
 	static_assert(sizeof(NiAVObject) == 0x110);
+#else
+	static_assert(sizeof(NiAVObject) == 0x138);
+#endif
 }

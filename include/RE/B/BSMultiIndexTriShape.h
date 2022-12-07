@@ -40,5 +40,9 @@ namespace RE
 		float                       normalDampener;            // 1D0
 		std::uint32_t               unk1D4;                    // 1D4
 	};
+#ifndef SKYRIMVR
 	static_assert(sizeof(BSMultiIndexTriShape) == 0x1D8);
+#else
+	//static_assert(sizeof(BSMultiIndexTriShape) == 0x258);
+#endif
 }

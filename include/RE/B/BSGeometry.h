@@ -72,6 +72,10 @@ namespace RE
 
 		// members
 		NiBound                              modelBound;                  // 110
+#ifdef SKYRIMVR
+		NiPoint3 unkVR09;  // VR offset moved by 0x18
+		NiPoint3 unkVR10;
+#endif
 		NiPointer<NiProperty>                properties[States::kTotal];  // 120
 		NiPointer<NiSkinInstance>            skinInstance;                // 130
 		void*                                rendererData;                // 138
@@ -82,5 +86,9 @@ namespace RE
 		std::uint16_t                        pad152;                      // 152
 		std::uint32_t                        pad154;                      // 154
 	};
+#ifndef SKYRIMVR
 	static_assert(sizeof(BSGeometry) == 0x158);
+#else
+	static_assert(sizeof(BSGeometry) == 0x198);
+#endif
 }

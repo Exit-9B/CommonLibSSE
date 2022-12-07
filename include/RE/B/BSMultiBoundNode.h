@@ -43,5 +43,9 @@ namespace RE
 		BSCullingProcess::BSCPCullingType cullingMode;    // 130
 		float                             lastAccumTime;  // 134
 	};
+#ifndef SKYRIMVR
 	static_assert(sizeof(BSMultiBoundNode) == 0x138);
+#else
+	static_assert(sizeof(BSMultiBoundNode) == 0x160);
+#endif
 }

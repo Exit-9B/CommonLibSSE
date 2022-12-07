@@ -29,12 +29,20 @@ namespace RE
 		static bool WorldPtToScreenPt3(const float a_matrix[4][4], const NiRect<float>& a_port, const NiPoint3& a_point, float& a_xOut, float& a_yOut, float& a_zOut, float a_zeroTolerance);
 
 		// members
-		float         worldToCam[4][4];  // 110
+#ifndef SKYRIMVR
+		float worldToCam[4][4];  // 110
+#else
+		float unkVR9[37];
+#endif
 		NiFrustum     viewFrustum;       // 150
 		float         minNearPlaneDist;  // 16C
 		float         maxFarNearRatio;   // 170
 		NiRect<float> port;              // 174
 		float         lodAdjust;         // 184
 	};
+#ifndef SKYRIMVR
 	static_assert(sizeof(NiCamera) == 0x188);
+#else
+	static_assert(sizeof(NiCamera) == 0x208);
+#endif
 }
