@@ -90,7 +90,7 @@ namespace RE
 		void          ProcessClone(NiCloningProcess& a_cloning) override;  // 1D
 
 		// add
-		virtual void        UpdateControllers(NiUpdateData& a_data);                                                            // 25
+		virtual void UpdateControllers(NiUpdateData& a_data);  // 25
 #ifdef SKYRIMVR
 		virtual void UnkVR_26(void);  // added in VR
 #endif

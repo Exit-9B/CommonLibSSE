@@ -71,7 +71,7 @@ namespace RE
 		virtual void                    Unk_37(void);              // 37 - { return 0; }
 
 		// members
-		NiBound                              modelBound;                  // 110
+		NiBound modelBound;  // 110
 #ifdef SKYRIMVR
 		NiPoint3 unkVR09;  // VR offset moved by 0x18
 		NiPoint3 unkVR10;
