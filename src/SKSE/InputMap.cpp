@@ -90,11 +90,9 @@ namespace SKSE
 	{
 		if (a_keyCode >= kMacro_MouseButtonOffset && a_keyCode < kMacro_GamepadOffset) {
 			return GetMouseButtonName(a_keyCode);
-		}
-		else if (a_keyCode >= kMacro_GamepadOffset && a_keyCode < kMaxMacros) {
+		} else if (a_keyCode >= kMacro_GamepadOffset && a_keyCode < kMaxMacros) {
 			return GetGamepadButtonName(a_keyCode);
-		}
-		else {
+		} else {
 			return GetKeyboardKeyName(a_keyCode);
 		}
 	}
