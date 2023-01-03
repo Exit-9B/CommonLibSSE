@@ -1241,6 +1241,7 @@ set(SOURCES
 	include/SKSE/RegistrationSet.h
 	include/SKSE/SKSE.h
 	include/SKSE/Trampoline.h
+	include/SKSE/Translation.h
 	include/SKSE/Version.h
 	src/RE/A/AIFormulas.cpp
 	src/RE/A/AIProcess.cpp
@@ -1282,6 +1283,7 @@ set(SOURCES
 	src/RE/B/BSResourceNiBinaryStream.cpp
 	src/RE/B/BSResponse.cpp
 	src/RE/B/BSScaleformManager.cpp
+	src/RE/B/BSScaleformTranslator.cpp
 	src/RE/B/BSScriptObjectBindPolicy.cpp
 	src/RE/B/BSShaderProperty.cpp
 	src/RE/B/BSSoundHandle.cpp
@@ -1494,4 +1496,5 @@ set(SOURCES
 	src/SKSE/RegistrationMap.cpp
 	src/SKSE/RegistrationSet.cpp
 	src/SKSE/Trampoline.cpp
+	src/SKSE/Translation.cpp
 )

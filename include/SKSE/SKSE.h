@@ -10,4 +10,5 @@
 #include "SKSE/RegistrationMap.h"
 #include "SKSE/RegistrationSet.h"
 #include "SKSE/Trampoline.h"
+#include "SKSE/Translation.h"
 #include "SKSE/Version.h"

@@ -24,6 +24,8 @@ namespace RE
 		// override (GFxTranslator)
 		void Translate(TranslateInfo* a_translateInfo) override;  // 02
 
+		static void GetCachedString(wchar_t** a_pOut, wchar_t* a_bufIn, std::uint32_t a_unused);
+
 		// members
 		BSTranslator translator;  // 20
 	};

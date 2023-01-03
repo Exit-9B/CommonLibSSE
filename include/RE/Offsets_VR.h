@@ -233,6 +233,7 @@ namespace RE
 
 		namespace BSScaleformTranslator
 		{
+			inline constexpr REL::Offset GetCachedString(static_cast<std::uint64_t>(0xC6E830));
 			inline constexpr REL::Offset Vtbl(static_cast<std::uint64_t>(0x1866FA0));
 		}
 
