@@ -13,6 +13,7 @@
 namespace RE
 {
 	class EnchantmentItem;
+	class ExtraDataList;
 	class InventoryEntryData;
 
 	namespace CraftingSubMenus
@@ -173,6 +174,10 @@ namespace RE
 			bool HasItemPreview() override;                            // 04 - { return currentCategory != Enchantment || craftItemPreview; }
 			bool ProcessUserEvent(BSFixedString* a_control) override;  // 05
 			void SetItemCardInfo(ItemCard* a_itemCard) override;       // 07
+
+			void RenameItem(const char* a_name);
+			void RenameItem_Impl(InventoryEntryData* a_entryData, ExtraDataList* a_extraList, const char* a_name);
+			void UpdateInterface();
 
 			// members
 			stl::enumeration<FilterFlag, std::uint32_t>  filterDisenchant;        // 100

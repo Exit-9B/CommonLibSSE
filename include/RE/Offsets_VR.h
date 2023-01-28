@@ -347,6 +347,15 @@ namespace RE
 			inline constexpr REL::Offset Singleton(static_cast<std::uint64_t>(0x2F8AAA0));
 		}
 
+		namespace CraftingSubMenus
+		{
+			namespace EnchantConstructMenu
+			{
+				inline constexpr REL::Offset RenameItem(static_cast<std::uint64_t>(0x89D5C0));
+				inline constexpr REL::Offset UpdateInterface(static_cast<std::uint64_t>(0x89FC10));
+			}
+		}
+
 		namespace CRC32Calculator
 		{
 			inline constexpr REL::Offset SizeOf32(static_cast<std::uint64_t>(0xC41370));

@@ -1363,6 +1363,7 @@ set(SOURCES
 	src/RE/C/ContainerMenu.cpp
 	src/RE/C/ControlMap.cpp
 	src/RE/E/Effect.cpp
+	src/RE/E/EnchantConstructMenu.cpp
 	src/RE/E/ExtraAliasInstanceArray.cpp
 	src/RE/E/ExtraAshPileRef.cpp
 	src/RE/E/ExtraCanTalkToPlayer.cpp

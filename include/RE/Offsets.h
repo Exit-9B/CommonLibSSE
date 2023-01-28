@@ -334,6 +334,15 @@ namespace RE
 			inline constexpr REL::ID Singleton(static_cast<std::uint64_t>(400863));
 		}
 
+		namespace CraftingSubMenus
+		{
+			namespace EnchantConstructMenu
+			{
+				inline constexpr REL::ID RenameItem(static_cast<std::uint64_t>(51415));
+				inline constexpr REL::ID UpdateInterface(static_cast<std::uint64_t>(51459));
+			}
+		}
+
 		namespace CRC32Calculator
 		{
 			inline constexpr REL::ID SizeOf32(static_cast<std::uint64_t>(12141));
