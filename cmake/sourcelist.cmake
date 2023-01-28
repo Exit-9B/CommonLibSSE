@@ -1491,6 +1491,7 @@ set(SOURCES
 	src/RE/P/PlayerControls.cpp
 	src/RE/P/PlayerInputHandler.cpp
 	src/RE/P/ProcessLists.cpp
+	src/RE/R/RaceSexMenu.cpp
 	src/RE/R/ReferenceEffectController.cpp
 	src/RE/R/RemoveCallbackVisitor.cpp
 	src/RE/S/ScrapHeap.cpp

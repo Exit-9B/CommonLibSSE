@@ -226,9 +226,10 @@ namespace RE
 
 		namespace BSScaleformManager
 		{
-			inline constexpr REL::Offset Singleton(static_cast<std::uint64_t>(0x2FEA518));
-			inline constexpr REL::Offset LoadMovie(static_cast<std::uint64_t>(0xF2B480));
 			inline constexpr REL::Offset FileExists(static_cast<std::uint64_t>(0xF20EF0));
+			inline constexpr REL::Offset IsValidName(static_cast<std::uint64_t>(0xF2BB20));
+			inline constexpr REL::Offset LoadMovie(static_cast<std::uint64_t>(0xF2B480));
+			inline constexpr REL::Offset Singleton(static_cast<std::uint64_t>(0x2FEA518));
 		}
 
 		namespace BSScaleformTranslator
@@ -842,6 +843,11 @@ namespace RE
 			inline constexpr REL::Offset Singleton(static_cast<std::uint64_t>(0x1F831B0));
 			inline constexpr REL::Offset ClearCachedFactionFightReactions(static_cast<std::uint64_t>(0x705B00));
 			inline constexpr REL::Offset StopCombatAndAlarmOnActor(static_cast<std::uint64_t>(0x700330));
+		}
+
+		namespace RaceSexMenu
+		{
+			inline constexpr REL::Offset ChangeName(static_cast<std::uint64_t>(0x8E7D70));
 		}
 
 		namespace ReadyWeaponHandler

@@ -29,6 +29,8 @@ namespace RE
 
 		static BSScaleformManager* GetSingleton();
 
+		bool IsValidName(const char* a_name);
+
 		bool LoadMovie(IMenu* a_menu, GPtr<GFxMovieView>& a_viewOut, const char* a_fileName, ScaleModeType a_mode = ScaleModeType::kShowAll, float a_backGroundAlpha = 0.0);
 
 		bool LoadMovieEx(IMenu* a_menu, std::string_view a_fileName, std::function<void(GFxMovieDef*)> a_callback);
