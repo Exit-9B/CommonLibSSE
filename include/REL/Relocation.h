@@ -441,24 +441,6 @@ namespace REL
 	private:
 		Module()
 		{
-			const auto getFilename = [&]() {
-				return WinAPI::GetEnvironmentVariable(
-					ENVIRONMENT.data(),
-					_filename.data(),
-					static_cast<std::uint32_t>(_filename.size()));
-			};
-
-			_filename.resize(getFilename());
-			if (const auto result = getFilename();
-				result != _filename.size() - 1 ||
-				result == 0) {
-#ifndef SKYRIMVR
-				_filename = L"SkyrimSE.exe"sv;
-#else
-				_filename = L"SkyrimVR.exe"sv;
-#endif
-			}
-
 			load();
 		}
 
@@ -472,16 +454,23 @@ namespace REL
 
 		void load()
 		{
-			auto handle = WinAPI::GetModuleHandle(_filename.c_str());
+			auto handle = WinAPI::GetModuleHandle(static_cast<wchar_t*>(nullptr));
 			if (handle == nullptr) {
 				stl::report_and_fail(
-					fmt::format(
-						"Failed to obtain module handle for: \"{0}\".\n"
-						"You have likely renamed the executable to something unexpected. "
-						"Renaming the executable back to \"{0}\" may resolve the issue."sv,
-						stl::utf16_to_utf8(_filename).value_or("<unicode conversion error>"s)));
+					"Failed to obtain module handle for game executable."sv);
 			}
 			_base = reinterpret_cast<std::uintptr_t>(handle);
+
+			std::wstring path;
+			path.resize(4096);
+
+			path.resize(
+				WinAPI::GetModuleFileName(
+				handle,
+				path.data(),
+				static_cast<std::uint32_t>(path.size())));
+
+			_filename = std::filesystem::path(path).filename().c_str();
 
 			load_version();
 			load_segments();
@@ -513,8 +502,6 @@ namespace REL
 			std::make_pair(".text"sv, WinAPI::IMAGE_SCN_MEM_WRITE),
 			std::make_pair(".gfids"sv, static_cast<std::uint32_t>(0))
 		};
-
-		static constexpr auto ENVIRONMENT = L"SKSE_RUNTIME"sv;
 
 		std::wstring                        _filename;
 		std::array<Segment, Segment::total> _segments;
