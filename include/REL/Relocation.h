@@ -466,9 +466,9 @@ namespace REL
 
 			path.resize(
 				WinAPI::GetModuleFileName(
-				handle,
-				path.data(),
-				static_cast<std::uint32_t>(path.size())));
+					handle,
+					path.data(),
+					static_cast<std::uint32_t>(path.size())));
 
 			_filename = std::filesystem::path(path).filename().c_str();
 
