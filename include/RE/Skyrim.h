@@ -581,6 +581,7 @@
 #include "RE/F/FxDelegateHandler.h"
 #include "RE/F/FxResponseArgs.h"
 #include "RE/F/FxResponseArgsBase.h"
+#include "RE/G/GASActionBufferData.h"
 #include "RE/G/GASDoAction.h"
 #include "RE/G/GASDoInitAction.h"
 #include "RE/G/GASExecuteTag.h"

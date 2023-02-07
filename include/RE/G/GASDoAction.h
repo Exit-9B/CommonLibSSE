@@ -4,18 +4,7 @@
 
 namespace RE
 {
-	class GASActionBufferData :
-		public GRefCountBase<GASActionBufferData, GFxStatMovieData::kGFxStatMD_ActionOps_Mem>
-	{
-	public:
-		~GASActionBufferData() override;  // 00
-
-		// members
-		void*         buffer;  // 10
-		std::uint64_t size;    // 18
-		std::uint64_t unk20;   // 20
-	};
-	static_assert(sizeof(GASActionBufferData) == 0x28);
+	class GASActionBufferData;
 
 	class GASDoAction : public GASExecuteTag
 	{
