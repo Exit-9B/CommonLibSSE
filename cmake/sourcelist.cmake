@@ -1392,6 +1392,7 @@ set(SOURCES
 	src/RE/G/GFxLoader.cpp
 	src/RE/G/GFxLog.cpp
 	src/RE/G/GFxMovie.cpp
+	src/RE/G/GFxMovieDataDef.cpp
 	src/RE/G/GFxMovieDef.cpp
 	src/RE/G/GFxMovieView.cpp
 	src/RE/G/GFxRenderConfig.cpp

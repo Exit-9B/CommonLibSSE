@@ -2,7 +2,7 @@
 
 #include "RE/G/GMutex.h"
 #include "RE/G/GRefCountBase.h"
-#include "RE/G/GStats.h"
+#include "RE/G/GFxPlayerStats.h"
 
 namespace RE
 {

@@ -497,6 +497,26 @@ namespace RE
 			inline constexpr REL::Offset Singleton(static_cast<std::uint64_t>(0x2F8A780));
 		}
 
+		namespace GASActionBufferData
+		{
+			inline constexpr REL::Offset Vtbl(static_cast<std::uint64_t>(0x186C990));
+		}
+
+		namespace GASDoAction
+		{
+			inline constexpr REL::Offset Vtbl(static_cast<std::uint64_t>(0x186CF60));
+		}
+
+		namespace GASDoInitAction
+		{
+			inline constexpr REL::Offset Vtbl(static_cast<std::uint64_t>(0x186CFA0));
+		}
+
+		namespace GFxInitImportActions
+		{
+			inline constexpr REL::Offset Vtbl(static_cast<std::uint64_t>(0x188CA68));
+		}
+
 		namespace GFxLoader
 		{
 			inline constexpr REL::Offset CreateMovie(static_cast<std::uint64_t>(0xF38CA0));
@@ -505,6 +525,31 @@ namespace RE
 		namespace GFxMovieView
 		{
 			inline constexpr REL::Offset InvokeNoReturn(static_cast<std::uint64_t>(0xF30F20));
+		}
+
+		namespace GFxPlaceObject2
+		{
+			inline constexpr REL::Offset Vtbl(static_cast<std::uint64_t>(0x186E680));
+		}
+
+		namespace GFxPlaceObject3
+		{
+			inline constexpr REL::Offset Vtbl(static_cast<std::uint64_t>(0x186E6D8));
+		}
+
+		namespace GFxRemoveObject
+		{
+			inline constexpr REL::Offset Vtbl(static_cast<std::uint64_t>(0x188C9A8));
+		}
+
+		namespace GFxRemoveObject2
+		{
+			inline constexpr REL::Offset Vtbl(static_cast<std::uint64_t>(0x188C9E8));
+		}
+
+		namespace GFxSetBackgroundColor
+		{
+			inline constexpr REL::Offset(static_cast<std::uint64_t>(0x188CA28));
 		}
 
 		namespace GFxValue
