@@ -92,7 +92,7 @@ namespace RE
 		{
 		public:
 			void* Alloc(std::size_t a_size);
-			void Free();
+			void  Free();
 
 			// members
 			void*         allocPtr;      // 00
