@@ -549,7 +549,7 @@ namespace RE
 
 		namespace GFxSetBackgroundColor
 		{
-			inline constexpr REL::Offset(static_cast<std::uint64_t>(0x188CA28));
+			inline constexpr REL::Offset Vtbl(static_cast<std::uint64_t>(0x188CA28));
 		}
 
 		namespace GFxValue
