@@ -267,6 +267,8 @@ namespace RE
 		using ObjectVisitor = ObjectInterface::ObjVisitor;
 		using ArrayVisitor = ObjectInterface::ArrVisitor;
 
+		using ObjectVisitFn = std::function<void(const char*, const RE::GFxValue&)>;
+
 		GFxValue();
 		GFxValue(ValueType a_rhs);
 		GFxValue(std::nullptr_t);
@@ -353,6 +355,7 @@ namespace RE
 		bool Invoke(const char* a_name, GFxValue* a_result = nullptr);
 		bool DeleteMember(const char* a_name);
 		void VisitMembers(ObjectVisitor* a_visitor) const;
+		void VisitMembers(ObjectVisitFn&& a_visitor) const;
 
 		template <std::size_t N>
 		inline bool Invoke(const char* a_name, const std::array<GFxValue, N>& a_args)

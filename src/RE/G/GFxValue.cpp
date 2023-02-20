@@ -814,6 +814,30 @@ namespace RE
 		return _objectInterface->VisitMembers(_value.obj, a_visitor, IsDisplayObject());
 	}
 
+	void GFxValue::VisitMembers(ObjectVisitFn&& a_visitor) const
+	{
+		assert(IsObject());
+
+		struct MemberVisitor : ObjectVisitor
+		{
+		public:
+			MemberVisitor(ObjectVisitFn&& a_fn) : _fn(a_fn) {}
+
+			void Visit(const char* a_name, const RE::GFxValue& a_val) override
+			{
+				if (_fn) {
+					_fn(a_name, a_val);
+				}
+			}
+
+		private:
+			ObjectVisitFn _fn;
+		};
+
+		MemberVisitor visitor{ std::forward<ObjectVisitFn>(a_visitor) };
+		return _objectInterface->VisitMembers(_value.obj, std::addressof(visitor), IsDisplayObject());
+	}
+
 	std::uint32_t GFxValue::GetArraySize() const
 	{
 		assert(IsArray());
