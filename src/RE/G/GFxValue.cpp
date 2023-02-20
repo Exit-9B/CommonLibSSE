@@ -821,7 +821,8 @@ namespace RE
 		struct MemberVisitor : ObjectVisitor
 		{
 		public:
-			MemberVisitor(ObjectVisitFn&& a_fn) : _fn(a_fn) {}
+			MemberVisitor(ObjectVisitFn&& a_fn) :
+				_fn(a_fn) {}
 
 			void Visit(const char* a_name, const RE::GFxValue& a_val) override
 			{
