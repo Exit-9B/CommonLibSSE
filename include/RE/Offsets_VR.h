@@ -559,7 +559,9 @@ namespace RE
 				inline constexpr REL::Offset AttachMovie(static_cast<std::uint64_t>(0xF24EF0));
 				inline constexpr REL::Offset DeleteMember(static_cast<std::uint64_t>(0xF25FE0));
 				inline constexpr REL::Offset GetArraySize(static_cast<std::uint64_t>(0xF26720));
+				inline constexpr REL::Offset GetCxform(static_cast<std::uint64_t>(0xF26730));
 				inline constexpr REL::Offset GetDisplayInfo(static_cast<std::uint64_t>(0xF26770));
+				inline constexpr REL::Offset GetDisplayMatrix(static_cast<std::uint64_t>(0xF26A00));
 				inline constexpr REL::Offset GetElement(static_cast<std::uint64_t>(0xF26A80));
 				inline constexpr REL::Offset GetMember(static_cast<std::uint64_t>(0xF26CA0));
 				inline constexpr REL::Offset GotoAndPlay(static_cast<std::uint64_t>(0xF270C0));
@@ -570,7 +572,9 @@ namespace RE
 				inline constexpr REL::Offset PushBack(static_cast<std::uint64_t>(0xF27E50));
 				inline constexpr REL::Offset RemoveElements(static_cast<std::uint64_t>(0xF28210));
 				inline constexpr REL::Offset SetArraySize(static_cast<std::uint64_t>(0xF28870));
+				inline constexpr REL::Offset SetCxform(static_cast<std::uint64_t>(0xF288A0));
 				inline constexpr REL::Offset SetDisplayInfo(static_cast<std::uint64_t>(0xF28900));
+				inline constexpr REL::Offset SetDisplayMatrix(static_cast<std::uint64_t>(0xF29330));
 				inline constexpr REL::Offset SetElement(static_cast<std::uint64_t>(0xF294B0));
 				inline constexpr REL::Offset SetMember(static_cast<std::uint64_t>(0xF296F0));
 				inline constexpr REL::Offset SetText(static_cast<std::uint64_t>(0xF29840));

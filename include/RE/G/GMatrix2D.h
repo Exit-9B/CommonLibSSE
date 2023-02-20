@@ -10,6 +10,11 @@ namespace RE
 			SetIdentity();
 		}
 
+		GMatrix2D(float a_v0, float a_v1, float a_v2, float a_v3, float a_v4, float a_v5)
+		{
+			SetMatrix(a_v0, a_v1, a_v2, a_v3, a_v4, a_v5);
+		}
+
 		GMatrix2D& operator=(const GMatrix2D& a_rhs)
 		{
 			for (std::size_t i = 0; i < std::extent<decltype(data), 0>::value; ++i) {

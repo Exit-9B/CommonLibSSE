@@ -1,9 +1,11 @@
 #pragma once
 
 #include "RE/G/GFxPlayerStats.h"
+#include "RE/G/GMatrix2D.h"
 #include "RE/G/GMatrix3D.h"
 #include "RE/G/GMemory.h"
 #include "RE/G/GNewOverrideBase.h"
+#include "RE/G/GRenderer.h"
 #include "RE/G/GStats.h"
 #include "RE/G/GString.h"
 
@@ -250,6 +252,10 @@ namespace RE
 
 			bool GetDisplayInfo(void* a_data, DisplayInfo* a_info) const;
 			bool SetDisplayInfo(void* a_data, const DisplayInfo& a_info);
+			bool GetDisplayMatrix(void* a_data, GMatrix2D* a_mat) const;
+			bool SetDisplayMatrix(void* a_data, const GMatrix2D& a_mat);
+			bool GetCxform(void* a_data, GRenderer::Cxform* a_cx) const;
+			bool SetCxform(void* a_data, const GRenderer::Cxform& a_cx);
 
 			bool SetText(void* a_data, const char* a_text, bool a_isHTML);
 
@@ -382,6 +388,10 @@ namespace RE
 		// AS MovieClips, Buttons, TextFields support. Valid for DisplayObject type
 		bool GetDisplayInfo(DisplayInfo* a_info) const;
 		bool SetDisplayInfo(const DisplayInfo& a_info);
+		bool GetDisplayMatrix(GMatrix2D* a_mat) const;
+		bool SetDisplayMatrix(const GMatrix2D& a_mat);
+		bool GetCxform(GRenderer::Cxform* a_cx) const;
+		bool SetCxform(const GRenderer::Cxform& a_cx);
 
 		// AS TextField support. Valid for DisplayObject type.
 		bool SetText(const char* a_text);

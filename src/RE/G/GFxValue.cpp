@@ -382,6 +382,34 @@ namespace RE
 		return func(this, a_data, a_info);
 	}
 
+	bool GFxValue::ObjectInterface::GetDisplayMatrix(void* a_data, GMatrix2D* a_mat) const
+	{
+		using func_t = decltype(&GFxValue::ObjectInterface::GetDisplayMatrix);
+		REL::Relocation<func_t> func{ Offset::GFxValue::ObjectInterface::GetDisplayMatrix };
+		return func(this, a_data, a_mat);
+	}
+
+	bool GFxValue::ObjectInterface::SetDisplayMatrix(void* a_data, const GMatrix2D& a_mat)
+	{
+		using func_t = decltype(&GFxValue::ObjectInterface::SetDisplayMatrix);
+		REL::Relocation<func_t> func{ Offset::GFxValue::ObjectInterface::SetDisplayMatrix };
+		return func(this, a_data, a_mat);
+	}
+
+	bool GFxValue::ObjectInterface::GetCxform(void* a_data, GRenderer::Cxform* a_cx) const
+	{
+		using func_t = decltype(&GFxValue::ObjectInterface::GetCxform);
+		REL::Relocation<func_t> func{ Offset::GFxValue::ObjectInterface::GetCxform };
+		return func(this, a_data, a_cx);
+	}
+
+	bool GFxValue::ObjectInterface::SetCxform(void* a_data, const GRenderer::Cxform& a_cx)
+	{
+		using func_t = decltype(&GFxValue::ObjectInterface::SetCxform);
+		REL::Relocation<func_t> func{ Offset::GFxValue::ObjectInterface::SetCxform };
+		return func(this, a_data, a_cx);
+	}
+
 	bool GFxValue::ObjectInterface::SetText(void* a_data, const char* a_text, bool a_isHTML)
 	{
 		using func_t = decltype(&GFxValue::ObjectInterface::SetText);
@@ -895,6 +923,30 @@ namespace RE
 	{
 		assert(IsDisplayObject());
 		return _objectInterface->SetDisplayInfo(_value.obj, a_info);
+	}
+
+	bool GFxValue::GetDisplayMatrix(GMatrix2D* a_mat) const
+	{
+		assert(IsDisplayObject());
+		return _objectInterface->GetDisplayMatrix(_value.obj, a_mat);
+	}
+
+	bool GFxValue::SetDisplayMatrix(const GMatrix2D& a_mat)
+	{
+		assert(IsDisplayObject());
+		return _objectInterface->SetDisplayMatrix(_value.obj, a_mat);
+	}
+
+	bool GFxValue::GetCxform(GRenderer::Cxform* a_cx) const
+	{
+		assert(IsDisplayObject());
+		return _objectInterface->GetCxform(_value.obj, a_cx);
+	}
+
+	bool GFxValue::SetCxform(const GRenderer::Cxform& a_cx)
+	{
+		assert(IsDisplayObject());
+		return _objectInterface->SetCxform(_value.obj, a_cx);
 	}
 
 	bool GFxValue::SetText(const char* a_text)

@@ -546,7 +546,9 @@ namespace RE
 				inline constexpr REL::ID AttachMovie(static_cast<std::uint64_t>(82219));
 				inline constexpr REL::ID DeleteMember(static_cast<std::uint64_t>(82230));
 				inline constexpr REL::ID GetArraySize(static_cast<std::uint64_t>(82237));
+				inline constexpr REL::ID GetCxform(static_cast<std::uint64_t>(82238));
 				inline constexpr REL::ID GetDisplayInfo(static_cast<std::uint64_t>(82239));
+				inline constexpr REL::ID GetDisplayMatrix(static_cast<std::uint64_t>(82240));
 				inline constexpr REL::ID GetElement(static_cast<std::uint64_t>(82241));
 				inline constexpr REL::ID GetMember(static_cast<std::uint64_t>(82245));
 				inline constexpr REL::ID GotoAndPlay(static_cast<std::uint64_t>(82253));
@@ -558,6 +560,8 @@ namespace RE
 				inline constexpr REL::ID RemoveElements(static_cast<std::uint64_t>(82280));
 				inline constexpr REL::ID SetArraySize(static_cast<std::uint64_t>(82285));
 				inline constexpr REL::ID SetDisplayInfo(static_cast<std::uint64_t>(82287));
+				inline constexpr REL::ID SetDisplayMatrix(static_cast<std::uint64_t>(82288));
+				inline constexpr REL::ID SetCxform(static_cast<std::uint64_t>(82286));
 				inline constexpr REL::ID SetElement(static_cast<std::uint64_t>(82289));
 				inline constexpr REL::ID SetMember(static_cast<std::uint64_t>(82292));
 				inline constexpr REL::ID SetText(static_cast<std::uint64_t>(82293));
