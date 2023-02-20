@@ -239,6 +239,7 @@ namespace RE
 			bool SetMember(void* a_data, const char* a_name, const GFxValue& a_value, bool a_isDObj);
 			bool Invoke(void* a_data, GFxValue* a_result, const char* a_name, const GFxValue* a_args, UPInt a_numArgs, bool a_isDObj);
 			bool DeleteMember(void* a_data, const char* a_name, bool a_isDObj);
+			void VisitMembers(void* a_data, ObjVisitor* a_visitor, bool a_isDObj) const;
 
 			std::uint32_t GetArraySize(void* a_data) const;
 			bool          SetArraySize(void* a_data, std::uint32_t a_size);
@@ -351,6 +352,7 @@ namespace RE
 		bool Invoke(const char* a_name, GFxValue* a_result, const GFxValue* a_args, UPInt a_numArgs);
 		bool Invoke(const char* a_name, GFxValue* a_result = nullptr);
 		bool DeleteMember(const char* a_name);
+		void VisitMembers(ObjectVisitor* a_visitor) const;
 
 		template <std::size_t N>
 		inline bool Invoke(const char* a_name, const std::array<GFxValue, N>& a_args)

@@ -574,6 +574,7 @@ namespace RE
 				inline constexpr REL::Offset SetElement(static_cast<std::uint64_t>(0xF294B0));
 				inline constexpr REL::Offset SetMember(static_cast<std::uint64_t>(0xF296F0));
 				inline constexpr REL::Offset SetText(static_cast<std::uint64_t>(0xF29840));
+				inline constexpr REL::Offset VisitMembers(static_cast<std::uint64_t>(0xF2A180));
 			}
 		}
 

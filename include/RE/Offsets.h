@@ -561,6 +561,7 @@ namespace RE
 				inline constexpr REL::ID SetElement(static_cast<std::uint64_t>(82289));
 				inline constexpr REL::ID SetMember(static_cast<std::uint64_t>(82292));
 				inline constexpr REL::ID SetText(static_cast<std::uint64_t>(82293));
+				inline constexpr REL::ID VisitMembers(static_cast<std::uint64_t>(82302));
 			}
 		}
 

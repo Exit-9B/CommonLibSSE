@@ -319,6 +319,13 @@ namespace RE
 		return func(this, a_data, a_name, a_isDObj);
 	}
 
+	void GFxValue::ObjectInterface::VisitMembers(void* a_data, ObjVisitor* a_visitor, bool a_isDObj) const
+	{
+		using func_t = decltype(&GFxValue::ObjectInterface::VisitMembers);
+		REL::Relocation<func_t> func{ Offset::GFxValue::ObjectInterface::VisitMembers };
+		return func(this, a_data, a_visitor, a_isDObj);
+	}
+
 	std::uint32_t GFxValue::ObjectInterface::GetArraySize(void* a_data) const
 	{
 		using func_t = decltype(&GFxValue::ObjectInterface::GetArraySize);
@@ -799,6 +806,12 @@ namespace RE
 	{
 		assert(IsObject());
 		return _objectInterface->DeleteMember(_value.obj, a_name, IsDisplayObject());
+	}
+
+	void GFxValue::VisitMembers(ObjectVisitor* a_visitor) const
+	{
+		assert(IsObject());
+		return _objectInterface->VisitMembers(_value.obj, a_visitor, IsDisplayObject());
 	}
 
 	std::uint32_t GFxValue::GetArraySize() const
