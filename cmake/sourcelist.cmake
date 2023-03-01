@@ -582,7 +582,16 @@ set(SOURCES
 	include/RE/G/GASActionBufferData.h
 	include/RE/G/GASDoAction.h
 	include/RE/G/GASDoInitAction.h
+	include/RE/G/GASEnvironment.h
 	include/RE/G/GASExecuteTag.h
+	include/RE/G/GASFunctionObject.h
+	include/RE/G/GASGlobalContext.h
+	include/RE/G/GASObject.h
+	include/RE/G/GASObjectInterface.h
+	include/RE/G/GASRefCountBase.h
+	include/RE/G/GASStringBuiltinManager.h
+	include/RE/G/GASStringManager.h
+	include/RE/G/GASUserDefinedFunctionObject.h
 	include/RE/G/GAcquireInterface.h
 	include/RE/G/GAllocator.h
 	include/RE/G/GAllocatorBaseGH.h
@@ -599,8 +608,10 @@ set(SOURCES
 	include/RE/G/GConstructorMov.h
 	include/RE/G/GEvent.h
 	include/RE/G/GFixedSizeHash.h
+	include/RE/G/GFxASCharacter.h
 	include/RE/G/GFxActionControl.h
 	include/RE/G/GFxButtonCharacterDef.h
+	include/RE/G/GFxCharacter.h
 	include/RE/G/GFxCharacterDef.h
 	include/RE/G/GFxConstShapeCharacterDef.h
 	include/RE/G/GFxConstShapeNoStyles.h
@@ -656,6 +667,7 @@ set(SOURCES
 	include/RE/G/GFxShapeNoStyles.h
 	include/RE/G/GFxShapeWithStyles.h
 	include/RE/G/GFxSpecialKeysState.h
+	include/RE/G/GFxSprite.h
 	include/RE/G/GFxSpriteDef.h
 	include/RE/G/GFxState.h
 	include/RE/G/GFxStateBag.h
@@ -692,11 +704,14 @@ set(SOURCES
 	include/RE/G/GPtr.h
 	include/RE/G/GRect.h
 	include/RE/G/GRefCountBase.h
+	include/RE/G/GRefCountBaseGC.h
 	include/RE/G/GRefCountBaseNTS.h
 	include/RE/G/GRefCountBaseStatImpl.h
+	include/RE/G/GRefCountBaseWeakSupport.h
 	include/RE/G/GRefCountImpl.h
 	include/RE/G/GRefCountImplCore.h
 	include/RE/G/GRefCountNTSImpl.h
+	include/RE/G/GRefCountWeakSupportImpl.h
 	include/RE/G/GRenderer.h
 	include/RE/G/GRendererEventHandler.h
 	include/RE/G/GStats.h
