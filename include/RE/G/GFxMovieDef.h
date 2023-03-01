@@ -88,11 +88,11 @@ namespace RE
 			static_assert(sizeof(HeapLimit) == 0x30);
 
 			// members
-			GMemoryHeap*               heap;              // 10
-			GPtr<GASRefCountCollector> refCountCollector; // 18
-			GPtr<GASStringManager>     stringManager;     // 20
-			std::uint64_t              unk28;             // 28
-			HeapLimit                  heapLimit;         // 30
+			GMemoryHeap*               heap;               // 10
+			GPtr<GASRefCountCollector> refCountCollector;  // 18
+			GPtr<GASStringManager>     stringManager;      // 20
+			std::uint64_t              unk28;              // 28
+			HeapLimit                  heapLimit;          // 30
 		};
 		static_assert(sizeof(MemoryContextImpl) == 0x60);
 
