@@ -132,6 +132,11 @@ namespace RE
 			inline constexpr REL::Offset Load(static_cast<std::uint64_t>(0x58E920));
 		}
 
+		namespace BGSSkillPerkTreeNode
+		{
+			inline constexpr REL::Offset Ctor(static_cast<std::uint64_t>(0x3F4420));
+		}
+
 		namespace BGSStoryEventManager
 		{
 			inline constexpr REL::Offset AddEvent(static_cast<std::uint64_t>(0x4E0860));

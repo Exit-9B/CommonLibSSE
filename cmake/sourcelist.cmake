@@ -1340,6 +1340,7 @@ set(SOURCES
 	src/RE/B/BGSOpenCloseForm.cpp
 	src/RE/B/BGSPerkEntry.cpp
 	src/RE/B/BGSSaveLoadManager.cpp
+	src/RE/B/BGSSkillPerkTreeNode.cpp
 	src/RE/B/BGSSoundCategory.cpp
 	src/RE/B/BGSStoryTeller.cpp
 	src/RE/B/BSAtomic.cpp

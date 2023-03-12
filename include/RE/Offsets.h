@@ -129,6 +129,11 @@ namespace RE
 			inline constexpr REL::ID Load(static_cast<std::uint64_t>(35728));
 		}
 
+		namespace BGSSkillPerkTreeNode
+		{
+			inline constexpr REL::ID Ctor(static_cast<std::uint64_t>(27263));
+		}
+
 		namespace BGSStoryEventManager
 		{
 			inline constexpr REL::ID AddEvent(static_cast<std::uint64_t>(32359));
