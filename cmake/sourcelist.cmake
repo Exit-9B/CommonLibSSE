@@ -212,6 +212,7 @@ set(SOURCES
 	include/RE/B/BSImagespaceShaderBlur3.h
 	include/RE/B/BSInputDevice.h
 	include/RE/B/BSInputDeviceManager.h
+	include/RE/B/BSInputEventQueue.h
 	include/RE/B/BSIntrusiveRefCounted.h
 	include/RE/B/BSKeyboardDevice.h
 	include/RE/B/BSLensFlareRenderData.h
@@ -344,6 +345,7 @@ set(SOURCES
 	include/RE/C/CFilter.h
 	include/RE/C/CRC.h
 	include/RE/C/Calendar.h
+	include/RE/C/CharEvent.h
 	include/RE/C/Character.h
 	include/RE/C/ChestsLooted.h
 	include/RE/C/Clouds.h
@@ -1352,6 +1354,7 @@ set(SOURCES
 	src/RE/B/BSHandleRefObject.cpp
 	src/RE/B/BSInputDevice.cpp
 	src/RE/B/BSInputDeviceManager.cpp
+	src/RE/B/BSInputEventQueue.cpp
 	src/RE/B/BSLightingShaderMaterialBase.cpp
 	src/RE/B/BSPointerHandle.cpp
 	src/RE/B/BSResourceNiBinaryStream.cpp

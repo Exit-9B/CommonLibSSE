@@ -189,6 +189,11 @@ namespace RE
 			inline constexpr REL::ID Singleton(static_cast<std::uint64_t>(402776));
 		}
 
+		namespace BSInputEventQueue
+		{
+			inline constexpr REL::ID Singleton(static_cast<std::uint64_t>(407374));
+		}
+
 		namespace BSLightingShaderMaterialBase
 		{
 			inline constexpr REL::ID CreateMaterial(static_cast<std::uint64_t>(106723));
