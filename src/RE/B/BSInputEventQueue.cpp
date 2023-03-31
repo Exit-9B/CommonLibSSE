@@ -17,6 +17,9 @@ namespace RE
 			cachedEvent.device = a_device;
 			cachedEvent.idCode = a_id;
 			cachedEvent.userEvent = {};
+#ifdef SKYRIMVR
+			cachedEvent.unkVR28 = -1;
+#endif
 
 			PushOntoInputQueue(&cachedEvent);
 			++buttonEventCount;
@@ -51,9 +54,10 @@ namespace RE
 	{
 		if (thumbstickEventCount < MAX_THUMBSTICK_EVENTS) {
 			auto& cachedEvent = thumbstickEvents[thumbstickEventCount];
-			cachedEvent.idCode = a_id;
 			cachedEvent.xValue = a_xValue;
 			cachedEvent.yValue = a_yValue;
+			cachedEvent.device = INPUT_DEVICE::kGamepad;
+			cachedEvent.idCode = a_id;
 			cachedEvent.userEvent = {};
 
 			PushOntoInputQueue(&cachedEvent);
@@ -84,6 +88,39 @@ namespace RE
 			++kinectEventCount;
 		}
 	}
+
+#ifdef SKYRIMVR
+	void BSInputEventQueue::AddButtonEvent(INPUT_DEVICE a_device, std::int32_t a_arg2, std::int32_t a_id, float a_value, float a_duration)
+	{
+		if (buttonEventCount < MAX_BUTTON_EVENTS) {
+			auto& cachedEvent = buttonEvents[buttonEventCount];
+			cachedEvent.value = a_value;
+			cachedEvent.heldDownSecs = a_duration;
+			cachedEvent.device = a_device;
+			cachedEvent.idCode = a_id;
+			cachedEvent.userEvent = {};
+			cachedEvent.unkVR28 = a_arg2;
+
+			PushOntoInputQueue(&cachedEvent);
+			++buttonEventCount;
+		}
+	}
+
+	void BSInputEventQueue::AddThumbstickEvent(ThumbstickEvent::InputType a_id, INPUT_DEVICE a_device, float a_xValue, float a_yValue)
+	{
+		if (thumbstickEventCount < MAX_THUMBSTICK_EVENTS) {
+			auto& cachedEvent = thumbstickEvents[thumbstickEventCount];
+			cachedEvent.xValue = a_xValue;
+			cachedEvent.yValue = a_yValue;
+			cachedEvent.device = a_device;
+			cachedEvent.idCode = a_id;
+			cachedEvent.userEvent = {};
+
+			PushOntoInputQueue(&cachedEvent);
+			++thumbstickEventCount;
+		}
+	}
+#endif
 
 	void BSInputEventQueue::PushOntoInputQueue(InputEvent* a_event)
 	{

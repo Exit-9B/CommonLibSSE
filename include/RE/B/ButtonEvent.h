@@ -3,10 +3,15 @@
 #include "RE/B/BSFixedString.h"
 #include "RE/I/IDEvent.h"
 #include "RE/I/InputEvent.h"
+#include "RE/V/VRWandEvent.h"
 
 namespace RE
 {
+#ifndef SKYRIMVR
 	class ButtonEvent : public IDEvent
+#else
+	class ButtonEvent : public VRWandEvent
+#endif
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_ButtonEvent;
@@ -25,5 +30,9 @@ namespace RE
 		float value;         // 28
 		float heldDownSecs;  // 2C
 	};
+#ifndef SKYRIMVR
 	static_assert(sizeof(ButtonEvent) == 0x30);
+#else
+	static_assert(sizeof(ButtonEvent) == 0x38);
+#endif
 }

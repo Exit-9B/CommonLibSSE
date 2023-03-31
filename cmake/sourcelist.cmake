@@ -1294,9 +1294,12 @@ set(SOURCES
 	include/RE/U/UserEventEnabled.h
 	include/RE/U/UserEvents.h
 	include/RE/V/VDescTable.h
+	include/RE/V/VRWandEvent.h
 	include/RE/V/ValueModifierEffect.h
 	include/RE/V/Variable.h
 	include/RE/V/VirtualMachine.h
+	include/RE/V/VrWandTouchpadPositionEvent.h
+	include/RE/V/VrWandTouchpadSwipeEvent.h
 	include/RE/W/WeatherType.h
 	include/RE/W/WorldSpaceMenu.h
 	include/RE/Z/ZeroFunctionArguments.h

@@ -187,6 +187,11 @@ namespace RE
 			}
 		}
 
+		namespace BSInputEventQueue
+		{
+			inline constexpr REL::Offset Singleton(static_cast<std::uint64_t>(0x30A8BB8));
+		}
+
 		namespace BSMusicManager
 		{
 			inline constexpr REL::Offset Singleton(static_cast<std::uint64_t>(0x2F8ABB0));
