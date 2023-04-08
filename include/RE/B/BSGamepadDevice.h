@@ -20,12 +20,12 @@ namespace RE
 		bool IsEnabled() const override;  // 07 - { return connected && userIndex != -1; }
 
 		// add
-		virtual void Unk_09(void) = 0;  // 09
-		virtual void Unk_0A(void);      // 0A - { return; }
-		virtual void Unk_0B(void);      // 0B - { return; }
-		virtual void Unk_0C(void);      // 0C - { return 0; }
-		virtual void Unk_0D(void);      // 0D
-		virtual void Unk_0E(void);      // 0E - { return; }
+		virtual void Unk_09(void) = 0;                                                                    // 09
+		virtual void Unk_0A(void);                                                                        // 0A - { return; }
+		virtual void Unk_0B(void);                                                                        // 0B - { return; }
+		virtual void Unk_0C(void);                                                                        // 0C - { return 0; }
+		virtual void NormalizeThumbstickValue(int a_thumbX, int a_thumbY, float& a_xOut, float& a_yOut);  // 0D
+		virtual void Unk_0E(void);                                                                        // 0E - { return; }
 
 		// members
 		std::int32_t  userIndex;          // C8

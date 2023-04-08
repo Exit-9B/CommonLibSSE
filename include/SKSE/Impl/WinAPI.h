@@ -193,3 +193,27 @@ namespace RE::DirectX
 	};
 	static_assert(sizeof(XMFLOAT4X4) == 0x40);
 }
+
+namespace RE::XInput
+{
+	struct XINPUT_GAMEPAD
+	{
+	public:
+		std::uint16_t wButtons;       // 0
+		std::uint8_t  bLeftTrigger;   // 2
+		std::uint8_t  bRightTrigger;  // 3
+		std::int16_t  sThumbLX;       // 4
+		std::int16_t  sThumbLY;       // 6
+		std::int16_t  sThumbRX;       // 8
+		std::int16_t  sThumbRY;       // A
+	};
+	static_assert(sizeof(XINPUT_GAMEPAD) == 0xC);
+
+	struct XINPUT_STATE
+	{
+	public:
+		std::uint32_t  dwPacketNumber;  // 00
+		XINPUT_GAMEPAD Gamepad;         // 04
+	};
+	static_assert(sizeof(XINPUT_STATE) == 0x10);
+}
