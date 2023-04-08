@@ -76,7 +76,9 @@ namespace RE
 		std::uint8_t  unk134;                         // 134
 		std::uint8_t  unk135;                         // 135
 		std::uint16_t unk136;                         // 136
-		std::uint32_t unk138;                         // 138
+		std::uint16_t unk138;                         // 138
+		bool          leftMouseDown;                  // 13A
+		bool          rightMouseDown;                 // 13B
 		std::uint32_t pad13C;                         // 13C
 	};
 #ifndef SKYRIMVR
