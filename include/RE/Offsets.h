@@ -776,6 +776,11 @@ namespace RE
 			inline constexpr REL::ID Singleton(static_cast<std::uint64_t>(401263));
 		}
 
+		namespace MenuCursor
+		{
+			inline constexpr REL::ID Singleton(static_cast<std::uint64_t>(403551));
+		}
+
 		namespace MenuOpenHandler
 		{
 			inline constexpr REL::ID Vtbl(static_cast<std::uint64_t>(215783));

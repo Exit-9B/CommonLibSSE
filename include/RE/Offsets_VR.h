@@ -794,6 +794,11 @@ namespace RE
 			inline constexpr REL::Offset Singleton(static_cast<std::uint64_t>(0x2FC52E8));
 		}
 
+		namespace MenuCursor
+		{
+			inline constexpr REL::Offset Singleton(static_cast<std::uint64_t>(0x2FEBC40));
+		}
+
 		namespace MenuOpenHandler
 		{
 			inline constexpr REL::Offset Vtbl(static_cast<std::uint64_t>(0x173C970));

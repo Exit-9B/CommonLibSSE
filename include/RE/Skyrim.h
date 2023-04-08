@@ -957,6 +957,7 @@
 #include "RE/M/MemoryManager.h"
 #include "RE/M/MemoryPage.h"
 #include "RE/M/MenuControls.h"
+#include "RE/M/MenuCursor.h"
 #include "RE/M/MenuEventHandler.h"
 #include "RE/M/MenuOpenCloseEvent.h"
 #include "RE/M/MenuOpenHandler.h"
