@@ -51,11 +51,11 @@ namespace RE
 		~BSWin32GamepadDevice() override;  // 00
 
 		// override (BSPCGamepadDeviceDelegate)
-		void Initialize() override;           // 01
-		void Process(float a_arg1) override;  // 02
-		void Unk_03(void) override;           // 03 - { return; }
-		void Reset() override;                // 08 - { std::memset(&unk0D8, 0, 0x50); }
-		void Unk_09(void) override;           // 09 - { return; }
+		void Initialize() override;                                          // 01
+		void Poll(float a_timeDelta) override;                               // 02
+		void Shutdown() override;                                            // 03 - { return; }
+		void ClearInputState() override;                                     // 08 - { std::memset(&unk0D8, 0, 0x50); }
+		void SetVibration(float a_largeMotor, float a_smallMotor) override;  // 09 - { return; }
 
 		// members
 		InputState previousState;  // 0D8

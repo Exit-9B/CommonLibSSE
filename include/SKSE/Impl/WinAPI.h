@@ -216,4 +216,11 @@ namespace RE::XInput
 		XINPUT_GAMEPAD Gamepad;         // 04
 	};
 	static_assert(sizeof(XINPUT_STATE) == 0x10);
+
+	struct XINPUT_VIBRATION
+	{
+		std::uint16_t wLeftMotorSpeed;   // 0
+		std::uint16_t wRightMotorSpeed;  // 2
+	};
+	static_assert(sizeof(XINPUT_VIBRATION) == 0x4);
 }
