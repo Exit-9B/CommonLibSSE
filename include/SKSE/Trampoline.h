@@ -223,30 +223,37 @@ namespace SKSE
 			static_assert(sizeof(TrampolineAssembly) == 0xE);
 #pragma pack(pop)
 
-			TrampolineAssembly* mem = nullptr;
-			if (const auto it = _5branches.find(a_dst); it != _5branches.end()) {
-				mem = reinterpret_cast<TrampolineAssembly*>(it->second);
-			} else {
-				mem = allocate<TrampolineAssembly>();
-				_5branches.emplace(a_dst, reinterpret_cast<std::byte*>(mem));
-			}
-
-			const auto disp =
-				reinterpret_cast<const std::byte*>(mem) -
+			std::ptrdiff_t disp =
+				reinterpret_cast<const std::byte*>(a_dst) -
 				reinterpret_cast<const std::byte*>(a_src + sizeof(SrcAssembly));
-			if (!in_range(disp)) {  // the trampoline should already be in range, so this should never happen
-				stl::report_and_fail("displacement is out of range"sv);
+
+			if (!in_range(disp)) {
+				TrampolineAssembly* mem = nullptr;
+				if (const auto it = _5branches.find(a_dst); it != _5branches.end()) {
+					mem = reinterpret_cast<TrampolineAssembly*>(it->second);
+				} else {
+					mem = allocate<TrampolineAssembly>();
+					_5branches.emplace(a_dst, reinterpret_cast<std::byte*>(mem));
+				}
+
+				disp =
+					reinterpret_cast<const std::byte*>(mem) -
+					reinterpret_cast<const std::byte*>(a_src + sizeof(SrcAssembly));
+
+				if (!in_range(disp)) {  // the trampoline should already be in range, so this should never happen
+					stl::report_and_fail("displacement is out of range"sv);
+				}
+
+				mem->jmp = static_cast<std::uint8_t>(0xFF);
+				mem->modrm = static_cast<std::uint8_t>(0x25);
+				mem->disp = static_cast<std::int32_t>(0);
+				mem->addr = static_cast<std::uint64_t>(a_dst);
 			}
 
 			SrcAssembly assembly;
 			assembly.opcode = a_opcode;
 			assembly.disp = static_cast<std::int32_t>(disp);
 			REL::safe_write(a_src, &assembly, sizeof(assembly));
-
-			mem->jmp = static_cast<std::uint8_t>(0xFF);
-			mem->modrm = static_cast<std::uint8_t>(0x25);
-			mem->disp = static_cast<std::int32_t>(0);
-			mem->addr = static_cast<std::uint64_t>(a_dst);
 		}
 
 		void write_6branch(std::uintptr_t a_src, std::uintptr_t a_dst, std::uint8_t a_modrm)
