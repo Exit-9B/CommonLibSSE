@@ -387,6 +387,7 @@ set(SOURCES
 	include/RE/D/DialogueMenu.h
 	include/RE/D/DialoguePackage.h
 	include/RE/D/DialogueTypes.h
+	include/RE/D/DirectionHandler.h
 	include/RE/D/DoNothingUnhandledPolicy.h
 	include/RE/D/DropObjectFunctor.h
 	include/RE/E/Effect.h
