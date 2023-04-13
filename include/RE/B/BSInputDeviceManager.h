@@ -1,5 +1,6 @@
 #pragma once
 
+#include "RE/B/BSFixedString.h"
 #include "RE/B/BSTEvent.h"
 #include "RE/B/BSTSingleton.h"
 #include "RE/I/InputDevices.h"
@@ -22,6 +23,7 @@ namespace RE
 	public:
 		static BSInputDeviceManager* GetSingleton();
 
+		bool                          GetButtonNameFromID(INPUT_DEVICE a_device, std::int32_t a_id, BSFixedString& a_buttonName) const;
 		BSPCGamepadDeviceDelegate*    GetGamepad();
 		BSPCGamepadDeviceHandler*     GetGamepadHandler();
 		BSWin32KeyboardDevice*        GetKeyboard();
