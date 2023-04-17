@@ -231,6 +231,19 @@ namespace RE
 			inline constexpr REL::ID SetEndianSwap(static_cast<std::uint64_t>(71021));
 		}
 
+		namespace BSScaleformExternalTexture
+		{
+			inline constexpr REL::ID LoadPNG(static_cast<std::uint64_t>(82321));
+			inline constexpr REL::ID ReleaseTexture(static_cast<std::uint64_t>(82317));
+			inline constexpr REL::ID SetTexture(static_cast<std::uint64_t>(82318));
+		}
+
+		namespace BSScaleformImageLoader
+		{
+			inline constexpr REL::ID AddTexture(static_cast<std::uint64_t>(84469));
+			inline constexpr REL::ID RemoveTexture(static_cast<std::uint64_t>(84470));
+		}
+
 		namespace BSScaleformManager
 		{
 			inline constexpr REL::ID FileExists(static_cast<std::uint64_t>(82411));

@@ -1,9 +1,9 @@
 #pragma once
 
+#include "RE/B/BSScaleformExternalTexture.h"
 #include "RE/B/BSTEvent.h"
 #include "RE/G/GPtr.h"
 #include "RE/I/IMenu.h"
-#include "RE/I/ImageData.h"
 #include "RE/S/SimpleAnimationGraphManagerHolder.h"
 
 namespace RE
@@ -38,19 +38,19 @@ namespace RE
 		[[nodiscard]] TESObjectREFR* GetTargetReference();  // returns null if opened from inventory
 
 		// members
-		BSTArray<ImageData> unk50;      // 50
-		GPtr<GFxMovieView>  book;       // 68
-		void*               unk70;      // 70 - smart ptr
-		std::uint32_t       unk78;      // 78
-		std::uint32_t       pad7C;      // 7C
-		std::uint64_t       unk80;      // 80
-		void*               unk88;      // 88 - smart ptr
-		std::uint16_t       unk90;      // 90
-		std::uint16_t       unk92;      // 92
-		bool                closeMenu;  // 94
-		bool                isNote;     // 95
-		std::uint8_t        unk96;      // 96
-		std::uint8_t        pad97;      // 97
+		BSTArray<BSScaleformExternalTexture> unk50;      // 50
+		GPtr<GFxMovieView>                   book;       // 68
+		void*                                unk70;      // 70 - smart ptr
+		std::uint32_t                        unk78;      // 78
+		std::uint32_t                        pad7C;      // 7C
+		std::uint64_t                        unk80;      // 80
+		void*                                unk88;      // 88 - smart ptr
+		std::uint16_t                        unk90;      // 90
+		std::uint16_t                        unk92;      // 92
+		bool                                 closeMenu;  // 94
+		bool                                 isNote;     // 95
+		std::uint8_t                         unk96;      // 96
+		std::uint8_t                         pad97;      // 97
 	};
 #ifndef SKYRIMVR
 	static_assert(sizeof(BookMenu) == 0x98);
