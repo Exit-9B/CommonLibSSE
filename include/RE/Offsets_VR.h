@@ -125,6 +125,17 @@ namespace RE
 			inline constexpr REL::Offset SetOpenState(static_cast<std::uint64_t>(0x199220));
 		}
 
+		namespace BSResource
+		{
+			namespace LooseFileLocation
+			{
+				inline constexpr REL::Offset Vtbl(static_cast<std::uint64_t>(0x15B8FB8));
+			}
+
+			inline constexpr REL::Offset RegisterGlobalPath(static_cast<std::uint64_t>(0xC89AB0));
+			inline constexpr REL::Offset RegisterLocation(static_cast<std::uint64_t>(0xC89960));
+		}
+
 		namespace BGSSaveLoadManager
 		{
 			inline constexpr REL::Offset Save(static_cast<std::uint64_t>(0x58E310));

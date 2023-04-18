@@ -248,6 +248,7 @@ set(SOURCES
 	include/RE/B/BSPointerHandleSmartPointer.h
 	include/RE/B/BSPrecomputedNavmeshInfoPathMap.h
 	include/RE/B/BSReloadShaderI.h
+	include/RE/B/BSResource.h
 	include/RE/B/BSResourceNiBinaryStream.h
 	include/RE/B/BSResponse.h
 	include/RE/B/BSSaveDataSystemUtility.h
