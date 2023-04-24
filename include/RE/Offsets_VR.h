@@ -109,6 +109,18 @@ namespace RE
 			inline constexpr REL::Offset GetSingleton(static_cast<std::uint64_t>(0x1077C0));
 		}
 
+		namespace BGSEntryPoint
+		{
+			inline constexpr REL::Offset EntryPoints(static_cast<std::uint64_t>(0x1E90190));
+			inline constexpr REL::Offset HandleEntryPoint(static_cast<std::uint64_t>(0x33E5A0));
+		}
+
+		namespace BGSEntryPointFunction
+		{
+			inline constexpr REL::Offset EntryPointFunctions(static_cast<std::uint64_t>(0x1E90D10));
+			inline constexpr REL::Offset EntryPointFunctionTypeArgumentCount(static_cast<std::uint64_t>(0x1E90E90));
+		}
+
 		namespace BGSFootstepManager
 		{
 			inline constexpr REL::Offset Singleton(static_cast<std::uint64_t>(0x2FEBC50));
@@ -1195,7 +1207,6 @@ namespace RE
 			inline constexpr REL::Offset Singleton(static_cast<std::uint64_t>(0x2FEA140));
 		}
 
-		inline constexpr REL::Offset ApplyPerkEntries(static_cast<std::uint64_t>(0x33E5A0));
 		inline constexpr REL::Offset CreateRefHandle(static_cast<std::uint64_t>(0x1428A0));
 		inline constexpr REL::Offset DebugNotification(static_cast<std::uint64_t>(0x908170));
 		inline constexpr REL::Offset GetArmorFinalRating(static_cast<std::uint64_t>(0x1E7ED0));

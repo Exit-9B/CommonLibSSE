@@ -75,6 +75,7 @@ set(SOURCES
 	include/RE/B/BGSDualCastData.h
 	include/RE/B/BGSEncounterZone.h
 	include/RE/B/BGSEntryPoint.h
+	include/RE/B/BGSEntryPointFunction.h
 	include/RE/B/BGSEntryPointFunctionData.h
 	include/RE/B/BGSEntryPointFunctionDataActivateChoice.h
 	include/RE/B/BGSEntryPointFunctionDataOneValue.h

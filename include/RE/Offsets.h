@@ -106,6 +106,18 @@ namespace RE
 			inline constexpr REL::ID GetSingleton(static_cast<std::uint64_t>(13894));
 		}
 
+		namespace BGSEntryPoint
+		{
+			inline constexpr REL::ID EntryPoints(static_cast<std::uint64_t>(368994));
+			inline constexpr REL::ID HandleEntryPoint(static_cast<std::uint64_t>(23526));
+		}
+
+		namespace BGSEntryPointFunction
+		{
+			inline constexpr REL::ID EntryPointFunctions(static_cast<std::uint64_t>(369178));
+			inline constexpr REL::ID EntryPointFunctionTypeArgumentCount(static_cast<std::uint64_t>(369210));
+		}
+
 		namespace BGSFootstepManager
 		{
 			inline constexpr REL::ID Singleton(static_cast<std::uint64_t>(401262));
@@ -1165,7 +1177,6 @@ namespace RE
 			inline constexpr REL::ID Singleton(static_cast<std::uint64_t>(402638));
 		}
 
-		inline constexpr REL::ID ApplyPerkEntries(static_cast<std::uint64_t>(23526));
 		inline constexpr REL::ID CreateRefHandle(static_cast<std::uint64_t>(12326));
 		inline constexpr REL::ID DebugNotification(static_cast<std::uint64_t>(52933));
 		inline constexpr REL::ID GetArmorFinalRating(static_cast<std::uint64_t>(16017));
