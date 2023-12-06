@@ -104,7 +104,16 @@ namespace SKSE
 
 			std::filesystem::path path = knownPath.get();
 			path /= "My Games"sv;
-			path /= *REL::Relocation<const char**>(RE::Offset::LogDirectory).get();
+#ifdef SKYRIMVR
+			path /= "Skyrim VR"sv;
+#else
+			if (::GetModuleHandle(TEXT("Galaxy64"))) {
+				path /= "Skyrim Special Edition GOG"sv;
+			}
+			else {
+				path /= "Skyrim Special Edition"sv;
+			}
+#endif
 			path /= "SKSE"sv;
 			return path;
 		}
