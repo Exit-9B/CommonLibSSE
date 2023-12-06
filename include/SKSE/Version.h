@@ -28,9 +28,10 @@ namespace SKSE
 	inline constexpr REL::Version RUNTIME_1_6_640(1, 6, 640, 0);
 	inline constexpr REL::Version RUNTIME_1_6_659(1, 6, 659, 0);
 	inline constexpr REL::Version RUNTIME_1_6_678(1, 6, 678, 0);
+	inline constexpr REL::Version RUNTIME_1_6_1130(1, 6, 1130, 0);
 
 	inline constexpr REL::Version RUNTIME_VR_1_4_15(1, 4, 15, 0);
 	inline constexpr REL::Version RUNTIME_VR_1_4_15_1(1, 4, 15, 1);
 
-	inline constexpr auto RUNTIME_LATEST = RUNTIME_1_6_640;  // latest for steam
+	inline constexpr auto RUNTIME_LATEST = RUNTIME_1_6_1130;  // latest for steam
 }
