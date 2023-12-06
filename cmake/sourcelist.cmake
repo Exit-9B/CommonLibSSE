@@ -268,6 +268,7 @@ set(SOURCES
 	include/RE/B/BSStringPool.h
 	include/RE/B/BSSystemFile.h
 	include/RE/B/BSSystemFileStorage.h
+	include/RE/B/BSSystemUtility.h
 	include/RE/B/BSTAnimationGraphDataChannel.h
 	include/RE/B/BSTArray.h
 	include/RE/B/BSTCaseInsensitiveStringMap.h
@@ -306,6 +307,7 @@ set(SOURCES
 	include/RE/B/BSWin32KeyboardDevice.h
 	include/RE/B/BSWin32MouseDevice.h
 	include/RE/B/BSWin32SaveDataSystemUtility.h
+	include/RE/B/BSWin32SystemUtility.h
 	include/RE/B/BSWin32VirtualKeyboardDevice.h
 	include/RE/B/BSXAudio2GameSound.h
 	include/RE/B/BSXFlags.h
@@ -346,6 +348,7 @@ set(SOURCES
 	include/RE/B/bhkThreadMemorySource.h
 	include/RE/B/bhkWorld.h
 	include/RE/B/bhkWorldObject.h
+	include/RE/C/CCallback.h
 	include/RE/C/CFilter.h
 	include/RE/C/CRC.h
 	include/RE/C/Calendar.h

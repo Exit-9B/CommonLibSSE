@@ -346,6 +346,11 @@ namespace RE
 			inline constexpr REL::ID GetSingleton(static_cast<std::uint64_t>(109278));
 		}
 
+		namespace BSWin32SystemUtility
+		{
+			inline constexpr REL::ID GetSingleton(static_cast<std::uint64_t>(109206));
+		}
+
 		namespace Calendar
 		{
 			inline constexpr REL::ID Singleton(static_cast<std::uint64_t>(400447));
