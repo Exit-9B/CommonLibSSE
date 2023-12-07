@@ -29,13 +29,13 @@ namespace RE
 		virtual ~BSWin32SystemUtility();  // 00
 
 		// override (BSSystemUtility)
-		void GetAuthenticationInfo(char*& userAuthID, std::uint64_t& size) override;  // 02
-		void DoInitialize() override;                                                 // 04
-		void DoUpdate() override;                                                     // 06
-		void DoGetUserName(char* buffer, std::uint64_t size) override;                // 08
-		void DoGetComputerName(char* buffer, std::uint64_t size) override;            // 0D
-		void DoAuthenticateUser() override;                                           // 10
-		bool Func12() override;                                                       // 12
+		void GetAuthenticationInfo(char*& a_userAuthID, std::uint64_t& a_size) override;  // 02
+		void DoInitialize() override;                                                     // 04
+		void DoUpdate() override;                                                         // 06
+		void DoGetUserName(char* a_buffer, std::uint64_t a_size) override;                // 08
+		void DoGetComputerName(char* a_buffer, std::uint64_t a_size) override;            // 0D
+		void DoAuthenticateUser() override;                                               // 10
+		bool Unk_12() override;                                                           // 12
 
 		[[nodiscard]] static BSWin32SystemUtility* GetSingleton()
 		{
@@ -52,7 +52,7 @@ namespace RE
 		VirtualKeyboardDoneCallback*                       virtualKeyboardDone;                              // 1D0 - added in 1.6.1130
 		VirtualKeyboardCancelCallback*                     virtualKeyboardCancel;                            // 1D8 - added in 1.6.1130
 		void*                                              virtualKeyboardUserParam;                         // 1E0 - added in 1.6.1130
-		bool                                               steamAPIInitialized;                              // 1E8 - added in 1.6.1130
+		bool                                               steamAPIInitialized;                              // 1E8
 		std::uint8_t                                       pad1E9;                                           // 1E9
 		std::uint16_t                                      pad1EA;                                           // 1EA
 		std::uint32_t                                      pad1EC;                                           // 1EC

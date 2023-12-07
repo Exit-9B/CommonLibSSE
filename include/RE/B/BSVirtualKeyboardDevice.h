@@ -28,9 +28,9 @@ namespace RE
 		void Unk_0A(void) override;  // 0A - { return; }
 
 		// add
-		virtual void Start(const kbInfo* info) = 0;  // 0B
-		virtual void Stop() = 0;                     // 0C
-		virtual void UserCancelled() = 0;            // 0D
+		virtual void Start(const kbInfo* a_info) = 0;  // 0B
+		virtual void Stop() = 0;                       // 0C
+		virtual void UserCancelled() = 0;              // 0D
 	};
 	static_assert(sizeof(BSVirtualKeyboardDevice) == 0x70);
 }
