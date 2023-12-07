@@ -348,7 +348,7 @@ namespace RE
 
 		namespace BSWin32SystemUtility
 		{
-			inline constexpr REL::ID GetSingleton(static_cast<std::uint64_t>(109206));
+			inline constexpr REL::ID GetSingleton(static_cast<std::uint64_t>(453511));
 		}
 
 		namespace Calendar
