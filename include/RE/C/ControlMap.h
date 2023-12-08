@@ -85,15 +85,15 @@ namespace RE
 
 		// members
 		InputContext*                                    controlMap[InputContextID::kTotal];  // 060
-		BSTArray<LinkedMapping>                          linkedMappings;                      // 0E8
-		BSTArray<InputContextID>                         contextPriorityStack;                // 100
-		stl::enumeration<UEFlag, std::uint32_t>          enabledControls;                     // 118
-		stl::enumeration<UEFlag, std::uint32_t>          unk11C;                              // 11C
-		std::int8_t                                      textEntryCount;                      // 120
-		bool                                             ignoreKeyboardMouse;                 // 121
-		bool                                             ignoreActivateDisabledEvents;        // 122
-		std::uint8_t                                     pad123;                              // 123
-		stl::enumeration<PC_GAMEPAD_TYPE, std::uint32_t> gamePadMapType;                      // 124
+		BSTArray<LinkedMapping>                          linkedMappings;                      // 0F0
+		BSTArray<InputContextID>                         contextPriorityStack;                // 108
+		stl::enumeration<UEFlag, std::uint32_t>          enabledControls;                     // 120
+		stl::enumeration<UEFlag, std::uint32_t>          unk124;                              // 124
+		std::int8_t                                      textEntryCount;                      // 128
+		bool                                             ignoreKeyboardMouse;                 // 129
+		bool                                             ignoreActivateDisabledEvents;        // 12A
+		std::uint8_t                                     pad12B;                              // 12B
+		stl::enumeration<PC_GAMEPAD_TYPE, std::uint32_t> gamePadMapType;                      // 12C
 	};
-	static_assert(sizeof(ControlMap) == 0x128);
+	static_assert(sizeof(ControlMap) == 0x130);
 }

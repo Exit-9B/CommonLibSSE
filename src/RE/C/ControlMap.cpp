@@ -113,13 +113,13 @@ namespace RE
 
 		if (a_enable) {
 			enabledControls.set(a_flags);
-			if (unk11C != UEFlag::kInvalid) {
-				unk11C.set(a_flags);
+			if (unk124 != UEFlag::kInvalid) {
+				unk124.set(a_flags);
 			}
 		} else {
 			enabledControls.reset(a_flags);
-			if (unk11C != UEFlag::kInvalid) {
-				unk11C.reset(a_flags);
+			if (unk124 != UEFlag::kInvalid) {
+				unk124.reset(a_flags);
 			}
 		}
 
