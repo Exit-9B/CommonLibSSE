@@ -354,6 +354,11 @@ namespace RE
 			inline constexpr REL::Offset GetSingleton(static_cast<std::uint64_t>(0x137C200));
 		}
 
+		namespace BSWin32SystemUtility
+		{
+			inline constexpr REL::Offset GetSingleton(static_cast<std::uint64_t>(0x137B630));
+		}
+
 		namespace BucketTable
 		{
 			inline constexpr REL::Offset GetSingleton(static_cast<std::uint64_t>(0xC6F400));

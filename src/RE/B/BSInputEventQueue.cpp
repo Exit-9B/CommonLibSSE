@@ -62,7 +62,7 @@ namespace RE
 	template <>
 	VrWandTouchpadPositionEvent* BSInputEventQueue::GetCachedEvent<VrWandTouchpadPositionEvent>()
 	{
-		if (vrTouchpadPositionEvent < MAX_VR_TOUCHPAD_POSITION_EVENTS) {
+		if (vrTouchpadPositionEventCount < MAX_VR_TOUCHPAD_POSITION_EVENTS) {
 			return &vrTouchpadPositionEvents[vrTouchpadPositionEventCount];
 		}
 
@@ -72,7 +72,7 @@ namespace RE
 	template <>
 	VrWandTouchpadSwipeEvent* BSInputEventQueue::GetCachedEvent<VrWandTouchpadSwipeEvent>()
 	{
-		if (vrTouchpadSwipeEvent < MAX_VR_TOUCHPAD_SWIPE_EVENTS) {
+		if (vrTouchpadSwipeEventCount < MAX_VR_TOUCHPAD_SWIPE_EVENTS) {
 			return &vrTouchpadSwipeEvents[vrTouchpadSwipeEventCount];
 		}
 
