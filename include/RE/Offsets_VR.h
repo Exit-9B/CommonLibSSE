@@ -419,6 +419,12 @@ namespace RE
 			inline constexpr REL::Offset Ctor(static_cast<std::uint64_t>(0x572FD0));
 		}
 
+		namespace Effect
+		{
+			inline constexpr REL::Offset SetDuration(static_cast<std::uint64_t>(0x108B00));
+			inline constexpr REL::Offset SetMagnitude(static_cast<std::uint64_t>(0x108A40));
+		}
+
 		namespace ExtraAliasInstanceArray
 		{
 			inline constexpr REL::Offset Vtbl(static_cast<std::uint64_t>(0x15A3CF0));

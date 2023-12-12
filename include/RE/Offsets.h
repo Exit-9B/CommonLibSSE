@@ -406,6 +406,12 @@ namespace RE
 			inline constexpr REL::ID Ctor(static_cast<std::uint64_t>(35220));
 		}
 
+		namespace Effect
+		{
+			inline constexpr REL::ID SetDuration(static_cast<std::uint64_t>(11012));
+			inline constexpr REL::ID SetMagnitude(static_cast<std::uint64_t>(11008));
+		}
+
 		namespace ExtraAliasInstanceArray
 		{
 			inline constexpr REL::ID Vtbl(static_cast<std::uint64_t>(186835));
