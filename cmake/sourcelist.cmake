@@ -1327,6 +1327,7 @@ set(SOURCES
 	include/SKSE/InputMap.h
 	include/SKSE/Interfaces.h
 	include/SKSE/Logger.h
+	include/SKSE/MergeMapper.h
 	include/SKSE/RegistrationMap.h
 	include/SKSE/RegistrationSet.h
 	include/SKSE/SKSE.h
@@ -1589,6 +1590,7 @@ set(SOURCES
 	src/SKSE/InputMap.cpp
 	src/SKSE/Interfaces.cpp
 	src/SKSE/Logger.cpp
+	src/SKSE/MergeMapper.cpp
 	src/SKSE/RegistrationMap.cpp
 	src/SKSE/RegistrationSet.cpp
 	src/SKSE/Trampoline.cpp

@@ -50,7 +50,7 @@ namespace RE
 		std::uint32_t                         GetCurrentSubRecordType();
 		[[nodiscard]] constexpr std::uint32_t GetCurrentSubRecordSize() const noexcept { return actualChunkSize; }
 		[[nodiscard]] constexpr std::uint32_t GetCurrentChunkID() const noexcept { return currentchunkID; }
-		[[nodiscard]] std::string_view        GetFilename() const noexcept { return { fileName }; }
+		[[nodiscard]] stl::zstring            GetFilename() const noexcept { return { fileName }; }
 		FormType                              GetFormType();
 		[[nodiscard]] std::uint16_t           GetSmallFileCompileIndex() const noexcept { return smallFileCompileIndex; }
 		[[nodiscard]] constexpr std::uint32_t GetPartialIndex() const noexcept { return !IsLight() ? compileIndex : (0xFE000 | smallFileCompileIndex); };

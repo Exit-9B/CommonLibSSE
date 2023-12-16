@@ -41,20 +41,20 @@ namespace RE
 		static TESDataHandler* GetSingleton();
 
 		std::uint32_t LoadScripts();
-		TESForm*      LookupForm(FormID a_rawFormID, std::string_view a_modName);
+		TESForm*      LookupForm(FormID a_rawFormID, stl::zstring a_modName);
 		template <class T>
-		T* LookupForm(FormID a_rawFormID, std::string_view a_modName);
+		T* LookupForm(FormID a_rawFormID, stl::zstring a_modName);
 
-		const TESFile*              LookupModByName(std::string_view a_modName);
-		std::optional<std::uint8_t> GetModIndex(std::string_view a_modName);
+		const TESFile*              LookupModByName(stl::zstring a_modName);
+		std::optional<std::uint8_t> GetModIndex(stl::zstring a_modName);
 
-		const TESFile*              LookupLoadedModByName(std::string_view a_modName);
+		const TESFile*              LookupLoadedModByName(stl::zstring a_modName);
 		const TESFile*              LookupLoadedModByIndex(std::uint8_t a_index);
-		std::optional<std::uint8_t> GetLoadedModIndex(std::string_view a_modName);
+		std::optional<std::uint8_t> GetLoadedModIndex(stl::zstring a_modName);
 
-		const TESFile*               LookupLoadedLightModByName(std::string_view a_modName);
+		const TESFile*               LookupLoadedLightModByName(stl::zstring a_modName);
 		const TESFile*               LookupLoadedLightModByIndex(std::uint16_t a_index);
-		std::optional<std::uint16_t> GetLoadedLightModIndex(std::string_view a_modName);
+		std::optional<std::uint16_t> GetLoadedLightModIndex(stl::zstring a_modName);
 
 		bool IsGeneratedID(FormID a_formID);
 

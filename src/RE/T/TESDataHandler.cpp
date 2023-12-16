@@ -2,6 +2,7 @@
 
 #include "RE/T/TESFile.h"
 #include "RE/T/TESForm.h"
+#include "SKSE/MergeMapper.h"
 
 namespace RE
 {
@@ -45,8 +46,12 @@ namespace RE
 		return func(this);
 	}
 
-	TESForm* TESDataHandler::LookupForm(FormID a_rawFormID, std::string_view a_modName)
+	TESForm* TESDataHandler::LookupForm(FormID a_rawFormID, stl::zstring a_modName)
 	{
+		if (const auto mergeMapper = SKSE::GetMergeMapperInterface()) {
+			std::tie(a_modName, a_rawFormID) = mergeMapper->GetNewFormID(a_modName.data(), a_rawFormID);
+		}
+
 		auto file = LookupModByName(a_modName);
 		if (!file || file->compileIndex == 0xFF) {
 			return nullptr;
@@ -61,7 +66,7 @@ namespace RE
 		return TESForm::LookupByID(formID);
 	}
 
-	const TESFile* TESDataHandler::LookupModByName(std::string_view a_modName)
+	const TESFile* TESDataHandler::LookupModByName(stl::zstring a_modName)
 	{
 		for (auto& file : files) {
 			if (_stricmp(file->fileName, a_modName.data()) == 0) {
@@ -71,13 +76,13 @@ namespace RE
 		return nullptr;
 	}
 
-	std::optional<std::uint8_t> TESDataHandler::GetModIndex(std::string_view a_modName)
+	std::optional<std::uint8_t> TESDataHandler::GetModIndex(stl::zstring a_modName)
 	{
 		auto mod = LookupModByName(a_modName);
 		return mod ? std::make_optional(mod->compileIndex) : std::nullopt;
 	}
 
-	const TESFile* TESDataHandler::LookupLoadedModByName(std::string_view a_modName)
+	const TESFile* TESDataHandler::LookupLoadedModByName(stl::zstring a_modName)
 	{
 		for (auto& file : QNormalFileList()) {
 			if (_stricmp(file->fileName, a_modName.data()) == 0) {
@@ -99,13 +104,13 @@ namespace RE
 #endif
 	}
 
-	std::optional<std::uint8_t> TESDataHandler::GetLoadedModIndex(std::string_view a_modName)
+	std::optional<std::uint8_t> TESDataHandler::GetLoadedModIndex(stl::zstring a_modName)
 	{
 		auto mod = LookupLoadedModByName(a_modName);
 		return mod ? std::make_optional(mod->compileIndex) : std::nullopt;
 	}
 
-	const TESFile* TESDataHandler::LookupLoadedLightModByName(std::string_view a_modName)
+	const TESFile* TESDataHandler::LookupLoadedLightModByName(stl::zstring a_modName)
 	{
 		for (auto& smallFile : QSmallFileList()) {
 			if (_stricmp(smallFile->fileName, a_modName.data()) == 0) {
@@ -123,7 +128,7 @@ namespace RE
 		return nullptr;
 	}
 
-	std::optional<std::uint16_t> TESDataHandler::GetLoadedLightModIndex(std::string_view a_modName)
+	std::optional<std::uint16_t> TESDataHandler::GetLoadedLightModIndex(stl::zstring a_modName)
 	{
 		auto mod = LookupLoadedLightModByName(a_modName);
 		return mod ? std::make_optional(mod->smallFileCompileIndex) : std::nullopt;
