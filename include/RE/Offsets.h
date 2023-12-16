@@ -980,7 +980,7 @@ namespace RE
 
 		namespace Script
 		{
-			inline constexpr REL::ID CompileAndRun(static_cast<std::uint64_t>(21890));
+			inline constexpr REL::ID CompileAndRun(static_cast<std::uint64_t>(441582));
 		}
 
 		namespace ScriptEventSourceHolder
