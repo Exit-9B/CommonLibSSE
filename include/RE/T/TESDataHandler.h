@@ -25,6 +25,10 @@ namespace RE
 	struct TESFileCollection
 	{
 	public:
+		TESFile* GetFileForID(std::uint32_t a_formID) const;
+		TESFile* GetNormalFile(std::uint32_t a_index) const;
+		TESFile* GetSmallFile(std::uint32_t a_index) const;
+
 		// members
 		BSTArray<TESFile*> files;       // 00
 		BSTArray<TESFile*> smallFiles;  // 18
@@ -58,6 +62,10 @@ namespace RE
 		template <class T>
 		BSTArray<T*>& GetFormArray();
 
+		[[nodiscard]] const TESFileCollection*        QCompiledFiles() const;
+		[[nodiscard]] std::span<const TESFile* const> QNormalFileList() const;
+		[[nodiscard]] std::span<const TESFile* const> QSmallFileList() const;
+
 		// members
 		std::uint8_t                      pad001;                                         // 001
 		std::uint16_t                     pad002;                                         // 002
@@ -72,24 +80,34 @@ namespace RE
 		std::uint32_t                     padD54;                                         // D54
 		TESFile*                          activeFile;                                     // D58
 		BSSimpleList<TESFile*>            files;                                          // D60
-		TESFileCollection                 compiledFileCollection;                         // D70
-		bool                              masterSave;                                     // DA0
-		bool                              blockSave;                                      // DA1
-		bool                              saveLoadGame;                                   // DA2
-		bool                              autoSaving;                                     // DA3
-		bool                              exportingPlugin;                                // DA4
-		bool                              clearingData;                                   // DA5
-		bool                              hasDesiredFiles;                                // DA6
-		bool                              checkingModels;                                 // DA7
-		bool                              loadingFiles;                                   // DA8
-		bool                              dontRemoveIDs;                                  // DA9
-		std::uint8_t                      unkDAA;                                         // DAA
-		std::uint8_t                      padDAB;                                         // DAB
-		std::uint32_t                     padDAC;                                         // DAC
-		TESRegionDataManager*             regionDataManager;                              // DB0
-		std::uint64_t                     unkDB8;                                         // DB8
+#ifndef SKYRIMVR
+		TESFileCollection compiledFileCollection;  // D70
+#else
+		std::uint32_t loadedFileCount;    // 0D70
+		std::uint32_t pad0D74;            // 0D74
+		TESFile*      loadedFiles[0xFF];  // 0D78
+#endif
+		bool                  masterSave;         // DA0
+		bool                  blockSave;          // DA1
+		bool                  saveLoadGame;       // DA2
+		bool                  autoSaving;         // DA3
+		bool                  exportingPlugin;    // DA4
+		bool                  clearingData;       // DA5
+		bool                  hasDesiredFiles;    // DA6
+		bool                  checkingModels;     // DA7
+		bool                  loadingFiles;       // DA8
+		bool                  dontRemoveIDs;      // DA9
+		std::uint8_t          unkDAA;             // DAA
+		std::uint8_t          padDAB;             // DAB
+		std::uint32_t         padDAC;             // DAC
+		TESRegionDataManager* regionDataManager;  // DB0
+		std::uint64_t         unkDB8;             // DB8
 	};
+#ifndef SKYRIMVR
 	static_assert(sizeof(TESDataHandler) == 0xDC0);
+#else
+	static_assert(sizeof(TESDataHandler) == 0x1590);
+#endif
 
 	template <class T>
 	T* TESDataHandler::LookupForm(FormID a_rawFormID, std::string_view a_modName)

@@ -5,6 +5,33 @@
 
 namespace RE
 {
+	TESFile* TESFileCollection::GetFileForID(std::uint32_t a_formID) const
+	{
+		const std::uint8_t normalIndex = a_formID >> 24;
+		if (normalIndex == 0xFE) {
+			const std::uint16_t smallIndex = (a_formID >> 12) & 0xFFF;
+			return GetSmallFile(smallIndex);
+		} else {
+			return GetNormalFile(normalIndex);
+		}
+	}
+
+	TESFile* TESFileCollection::GetNormalFile(std::uint32_t a_index) const
+	{
+		if (a_index < files.size()) {
+			return files[a_index];
+		}
+		return nullptr;
+	}
+
+	TESFile* TESFileCollection::GetSmallFile(std::uint32_t a_index) const
+	{
+		if (a_index < smallFiles.size()) {
+			return smallFiles[a_index];
+		}
+		return nullptr;
+	}
+
 	TESDataHandler* TESDataHandler::GetSingleton()
 	{
 		REL::Relocation<TESDataHandler**> singleton{ Offset::TESDataHandler::Singleton };
@@ -25,8 +52,10 @@ namespace RE
 			return nullptr;
 		}
 
-		FormID formID = file->compileIndex << (3 * 8);
-		formID += file->smallFileCompileIndex << ((1 * 8) + 4);
+		FormID formID = file->compileIndex << 24;
+		if (file->compileIndex == 0xFE && file->IsLight()) {
+			formID += file->smallFileCompileIndex << 12;
+		}
 		formID += a_rawFormID;
 
 		return TESForm::LookupByID(formID);
@@ -50,7 +79,7 @@ namespace RE
 
 	const TESFile* TESDataHandler::LookupLoadedModByName(std::string_view a_modName)
 	{
-		for (auto& file : compiledFileCollection.files) {
+		for (auto& file : QNormalFileList()) {
 			if (_stricmp(file->fileName, a_modName.data()) == 0) {
 				return file;
 			}
@@ -60,12 +89,14 @@ namespace RE
 
 	const TESFile* TESDataHandler::LookupLoadedModByIndex(std::uint8_t a_index)
 	{
-		for (auto& file : compiledFileCollection.files) {
-			if (file->compileIndex == a_index) {
-				return file;
-			}
+		if (const auto* const compiledFiles = QCompiledFiles()) {
+			return compiledFiles->GetNormalFile(a_index);
 		}
+#ifndef SKYRIMVR
 		return nullptr;
+#else
+		return loadedFiles[a_index];
+#endif
 	}
 
 	std::optional<std::uint8_t> TESDataHandler::GetLoadedModIndex(std::string_view a_modName)
@@ -76,7 +107,7 @@ namespace RE
 
 	const TESFile* TESDataHandler::LookupLoadedLightModByName(std::string_view a_modName)
 	{
-		for (auto& smallFile : compiledFileCollection.smallFiles) {
+		for (auto& smallFile : QSmallFileList()) {
 			if (_stricmp(smallFile->fileName, a_modName.data()) == 0) {
 				return smallFile;
 			}
@@ -86,10 +117,8 @@ namespace RE
 
 	const TESFile* TESDataHandler::LookupLoadedLightModByIndex(std::uint16_t a_index)
 	{
-		for (auto& smallFile : compiledFileCollection.smallFiles) {
-			if (smallFile->smallFileCompileIndex == a_index) {
-				return smallFile;
-			}
+		if (const auto* const compiledFiles = QCompiledFiles()) {
+			return compiledFiles->GetSmallFile(a_index);
 		}
 		return nullptr;
 	}
@@ -108,5 +137,44 @@ namespace RE
 	BSTArray<TESForm*>& TESDataHandler::GetFormArray(FormType a_formType)
 	{
 		return formArrays[stl::to_underlying(a_formType)];
+	}
+
+	const TESFileCollection* TESDataHandler::QCompiledFiles() const
+	{
+#ifndef SKYRIMVR
+		const TESFileCollection* const compiledFiles = &compiledFileCollection;
+		__assume(compiledFiles);
+		return compiledFiles;
+#else
+		static const TESFileCollection* const compiledFiles = []() {
+			const auto handle = WinAPI::GetModuleHandle("skyrimvresl");
+
+			using GetCompiledFileCollection_t = const TESFileCollection*();
+			const auto GetCompiledFileCollection = reinterpret_cast<GetCompiledFileCollection_t*>(WinAPI::GetProcAddress(handle, "GetCompiledFileCollectionExtern"));
+			return GetCompiledFileCollection ? GetCompiledFileCollection() : nullptr;
+		}();
+
+		return compiledFiles;
+#endif
+	}
+
+	std::span<const TESFile* const> TESDataHandler::QNormalFileList() const
+	{
+		if (const auto* const compiledFiles = QCompiledFiles()) {
+			return compiledFiles->files;
+		}
+#ifndef SKYRIMVR
+		return {};
+#else
+		return std::span(loadedFiles, loadedFileCount);
+#endif
+	}
+
+	std::span<const TESFile* const> TESDataHandler::QSmallFileList() const
+	{
+		if (const auto* const compiledFiles = QCompiledFiles()) {
+			return compiledFiles->smallFiles;
+		}
+		return {};
 	}
 }
