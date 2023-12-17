@@ -679,6 +679,11 @@ namespace RE
 			inline constexpr REL::ID FormFactoriesInitialized(static_cast<std::uint64_t>(400503));
 		}
 
+		namespace IMenu
+		{
+			inline constexpr REL::ID RefreshPlatform(static_cast<std::uint64_t>(82309));
+		}
+
 		namespace INIPrefSettingCollection
 		{
 			inline constexpr REL::ID Singleton(static_cast<std::uint64_t>(410219));

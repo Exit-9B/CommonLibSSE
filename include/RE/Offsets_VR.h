@@ -697,6 +697,11 @@ namespace RE
 			inline constexpr REL::Offset FormFactoriesInitialized(static_cast<std::uint64_t>(0x1F88B13));
 		}
 
+		namespace IMenu
+		{
+			inline constexpr REL::Offset RefreshPlatform(static_cast<std::uint64_t>(0xF2A510));
+		}
+
 		namespace INIPrefSettingCollection
 		{
 			inline constexpr REL::Offset Singleton(static_cast<std::uint64_t>(0x30C3B18));
