@@ -322,6 +322,7 @@ set(SOURCES
 	include/RE/B/BookMenu.h
 	include/RE/B/BottomBar.h
 	include/RE/B/ButtonEvent.h
+	include/RE/B/bhkAabbPhantom.h
 	include/RE/B/bhkCachingShapePhantom.h
 	include/RE/B/bhkCharProxyController.h
 	include/RE/B/bhkCharacterController.h
@@ -932,6 +933,7 @@ set(SOURCES
 	include/RE/L/LevelUpMenu.h
 	include/RE/L/LinkerProcessor.h
 	include/RE/L/LoadWaitSpinner.h
+	include/RE/L/LoadedAreaBound.h
 	include/RE/L/LoadingMenu.h
 	include/RE/L/LocalMapCamera.h
 	include/RE/L/LocalMapMenu.h
