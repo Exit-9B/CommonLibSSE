@@ -434,7 +434,7 @@ namespace RE
 		std::int32_t                                            difficulty;                                   // AF8
 		std::uint32_t                                           unkAFC;                                       // AFC
 		std::int8_t                                             murder;                                       // B00
-		std::int8_t                                             perkCount;                                    // B01
+		std::uint8_t                                            perkCount;                                    // B01
 		stl::enumeration<ByCharGenFlag, std::uint8_t>           byCharGenFlag;                                // B02
 		std::uint8_t                                            padB03;                                       // B03
 		std::uint32_t                                           unkB04;                                       // B04
