@@ -311,6 +311,11 @@ namespace RE
 			}
 		}
 
+		namespace BSShaderProperty
+		{
+			inline constexpr REL::ID SetMaterial(static_cast<std::uint64_t>(105544));
+		}
+
 		namespace BSSoundHandle
 		{
 			inline constexpr REL::ID IsValid(static_cast<std::uint64_t>(67621));

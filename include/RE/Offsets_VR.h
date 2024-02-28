@@ -319,6 +319,11 @@ namespace RE
 			}
 		}
 
+		namespace BSShaderProperty
+		{
+			inline constexpr REL::Offset SetMaterial(static_cast<std::uint64_t>(0x12CA650));
+		}
+
 		namespace BSSoundHandle
 		{
 			inline constexpr REL::Offset IsValid(static_cast<std::uint64_t>(0xC28540));

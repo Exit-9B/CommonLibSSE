@@ -107,8 +107,8 @@ namespace RE
 		virtual void               Unk_2E(void);               // 2E - { return 1; }
 		virtual void               Unk_2F(void);               // 2F - { return 0; }
 		virtual void               Unk_30(void);               // 30
-		virtual void               Unk_31(void);               // 31 - { return; }
-		virtual void               Unk_32(void);               // 32 - { return 1.0; }
+		virtual void               SetAlpha(float a_alpha);    // 31 - { return; }
+		virtual float              GetAlpha();                 // 32 - { return 1.0; }
 		virtual void               Unk_33(void);               // 33 - { return 1; }
 		virtual void               Unk_34(void);               // 34
 		virtual void               Unk_35(void);               // 35 - { return 0; }
@@ -123,6 +123,7 @@ namespace RE
 		virtual void               Unk_3E(void);               // 3E - { return 0; }
 
 		void SetEffectShaderData(const BSTSmartPointer<BSEffectShaderData>& a_data);
+		void SetMaterial(BSShaderMaterial* a_material, bool a_arg2);
 
 		// members
 		float                                                alpha;                // 30

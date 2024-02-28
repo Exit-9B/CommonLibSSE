@@ -39,8 +39,8 @@ namespace RE
 		void          Unk_2D(void) override;                              // 2D
 		void          Unk_2F(void) override;                              // 2F
 		void          Unk_30(void) override;                              // 30
-		void          Unk_31(void) override;                              // 31
-		void          Unk_32(void) override;                              // 32
+		void          SetAlpha(float a_alpha) override;                   // 31
+		float         GetAlpha() override;                                // 32
 		void          Unk_33(void) override;                              // 33
 		void          Unk_34(void) override;                              // 34
 		void          Unk_35(void) override;                              // 35 - { return 11; }

@@ -7,4 +7,11 @@ namespace RE
 		lastRenderPassState = std::numeric_limits<std::int32_t>::max();
 		effectData = a_data;
 	}
+
+	void BSShaderProperty::SetMaterial(BSShaderMaterial* a_material, bool a_arg2)
+	{
+		using func_t = decltype(&BSShaderProperty::SetMaterial);
+		REL::Relocation<func_t> func{ Offset::BSShaderProperty::SetMaterial };
+		return func(this, a_material, a_arg2);
+	}
 }
