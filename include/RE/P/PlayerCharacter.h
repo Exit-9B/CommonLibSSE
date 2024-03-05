@@ -410,7 +410,7 @@ namespace RE
 		NiPointer<NiAVObject>                                   targeted3D;                                   // 9C8
 		CombatGroup*                                            combatGroup;                                  // 9D0
 		BSTArray<ActorHandle>                                   actorsToDisplayOnTheHUDArray;                 // 9D8
-		std::uint64_t                                           unk9F0;                                       // 9F0
+		TESForm*                                                advanceObject;                                // 9F0
 		TESBoundObject*                                         lastOneHandItems[2];                          // 9F8
 		std::uint32_t                                           teammateCount;                                // A08
 		float                                                   combatTimer;                                  // A0C
@@ -427,8 +427,8 @@ namespace RE
 		float                                                   commandTimer;                                 // AD8
 		std::uint32_t                                           unkADC;                                       // ADC
 		TESImageSpaceModifier*                                  unkAE0;                                       // AE0
-		std::int32_t                                            unkAE8;                                       // AE8
-		std::uint32_t                                           unkAEC;                                       // AEC
+		RE::ActorValue                                          advanceSkill;                                 // AE8
+		std::uint32_t                                           advanceAction;                                // AEC
 		std::uint32_t                                           unkAF0;                                       // AF0
 		stl::enumeration<GrabbingType, std::uint32_t>           grabType;                                     // AF4
 		std::int32_t                                            difficulty;                                   // AF8
