@@ -1,6 +1,8 @@
 #pragma once
 
 #include "RE/A/ActorPackage.h"
+#include "RE/A/ActorValues.h"
+#include "RE/B/BGSBodyPartDefs.h"
 #include "RE/B/BGSPerkEntry.h"
 #include "RE/B/BSAtomic.h"
 #include "RE/B/BSPointerHandle.h"
@@ -32,6 +34,7 @@ namespace RE
 	class NiNode;
 	class QueuedFile;
 	class TESBoundObject;
+	class VATSCommand;
 	struct AnimationVariableData;
 	struct BSAnimationGraphVariableCache;
 
@@ -111,10 +114,10 @@ namespace RE
 			kSneakAttack = 1 << 11,
 			kIgnoreCritical = 1 << 12,
 			kPredictDamage = 1 << 13,
-			kPredictBaseDamage = 1 << 14,
-			kBash = 1 << 15,
-			kTimedBash = 1 << 16,
-			kPowerAttack = 1 << 17,
+			kBash = 1 << 14,
+			kTimedBash = 1 << 15,
+			kPowerAttack = 1 << 16,
+			kLeftHand = 1 << 17,
 			kMeleeAttack = 1 << 18,
 			kRicochet = 1 << 19,
 			kExplosion = 1 << 20
@@ -123,34 +126,33 @@ namespace RE
 		void Populate(Actor* a_aggressor, Actor* a_target, InventoryEntryData* a_weapon);
 
 		// members
-		NiPoint3                 unk00;                   // 00
-		NiPoint3                 unk0C;                   // 0C
-		ActorHandle              aggressor;               // 18
-		ActorHandle              target;                  // 1C
-		ObjectRefHandle          sourceRef;               // 20
-		std::uint32_t            pad24;                   // 24
-		NiPointer<BGSAttackData> attackData;              // 28
-		TESObjectWEAP*           weapon;                  // 30
-		std::uint64_t            unk38;                   // 38
-		std::uint64_t            unk40;                   // 40
-		std::uint32_t            unk48;                   // 48
-		float                    healthDamage;            // 4C
-		float                    totalDamage;             // 50
-		float                    physicalDamage;          // 54
-		float                    targetedLimbDamage;      // 58
-		float                    percentBlocked;          // 5C
-		float                    resistedPhysicalDamage;  // 60
-		float                    resistedTypedDamage;     // 64
-		std::uint32_t            stagger;                 // 68
-		float                    sneakAttackBonus;        // 6C
-		float                    bonusHealthDamageMult;   // 70
-		float                    pushBack;                // 74
-		float                    reflectedDamage;         // 78
-		float                    criticalDamageMult;      // 7C
-		Flag                     flags;                   // 80
-		std::uint32_t            equipIndex;              // 84
-		std::uint32_t            material;                // 88
-		std::uint32_t            damageLimb;              // 8C
+		NiPoint3                   position;            // 00
+		NiPoint3                   direction;           // 0C
+		ActorHandle                aggressor;           // 18
+		ActorHandle                target;              // 1C
+		ObjectRefHandle            sourceRef;           // 20
+		std::uint32_t              pad24;               // 24
+		NiPointer<BGSAttackData>   attackData;          // 28
+		TESObjectWEAP*             weapon;              // 30
+		SpellItem*                 criticalEffect;      // 38
+		SpellItem*                 combatSpell;         // 40
+		VATSCommand*               vatsCommand;         // 48
+		float                      totalDamage;         // 50
+		float                      physicalDamage;      // 54
+		float                      targetedLimbDamage;  // 58
+		float                      percentBlocked;      // 5C
+		float                      damageToArmor;       // 60
+		float                      damageToWeapon;      // 64
+		float                      stagger;             // 68
+		float                      weaponCondition;     // 6C
+		float                      sneakAttackBonus;    // 70
+		float                      limbDamageMult;      // 74
+		float                      knockbackDamage;     // 78
+		float                      criticalDamageMult;  // 7C
+		Flag                       flags;               // 80
+		std::uint32_t              equipIndex;          // 84
+		ActorValue                 skill;               // 88
+		BGSBodyPartDefs::LIMB_ENUM damageLimb;          // 8C
 	};
 	static_assert(sizeof(HitData) == 0x90);
 

@@ -24,10 +24,10 @@ namespace RE
 		ExtraDataType GetType() const override;  // 01 - { return kNonActorMagicTarget; }
 
 		// override (MagicTarget)
-		void                         Unk_01(void) override;            // 01
-		TESObjectREFR*               GetTargetStatsObject() override;  // 02 - { return targetObject; }
-		bool                         CanAddActiveEffect() override;    // 06 - { return true; }
-		BSSimpleList<ActiveEffect*>* GetActiveEffectList() override;   // 07 - { return &activeEffects; }
+		bool                         AddTarget(AddTargetData& a_data) override;  // 01
+		TESObjectREFR*               GetTargetStatsObject() override;            // 02 - { return targetObject; }
+		bool                         CanAddActiveEffect() override;              // 06 - { return true; }
+		BSSimpleList<ActiveEffect*>* GetActiveEffectList() override;             // 07 - { return &activeEffects; }
 
 		// members
 		TESObjectREFR*              targetObject;   // 28

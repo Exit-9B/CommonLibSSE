@@ -11,6 +11,7 @@ set(SOURCES
 	include/RE/A/ActorCause.h
 	include/RE/A/ActorEquipManager.h
 	include/RE/A/ActorKnowledge.h
+	include/RE/A/ActorMagicCaster.h
 	include/RE/A/ActorMover.h
 	include/RE/A/ActorPackage.h
 	include/RE/A/ActorSpeedChannel.h
@@ -361,6 +362,8 @@ set(SOURCES
 	include/RE/C/CollisionLayers.h
 	include/RE/C/Color.h
 	include/RE/C/CombatGroupDetectionListener.h
+	include/RE/C/CombatUtilities.h
+	include/RE/C/CommandEffect.h
 	include/RE/C/CommandTable.h
 	include/RE/C/CommonTypeTraits.h
 	include/RE/C/CompactingStore.h
@@ -1100,6 +1103,7 @@ set(SOURCES
 	include/RE/R/RaceSexMenuEvent.h
 	include/RE/R/RawFuncCallQuery.h
 	include/RE/R/ReadyWeaponHandler.h
+	include/RE/R/ReanimateEffect.h
 	include/RE/R/RefActivateData.h
 	include/RE/R/RefAttachTechniqueInput.h
 	include/RE/R/ReferenceArray.h
@@ -1532,6 +1536,7 @@ set(SOURCES
 	src/RE/P/PlayerControls.cpp
 	src/RE/P/PlayerInputHandler.cpp
 	src/RE/P/ProcessLists.cpp
+	src/RE/P/Projectile.cpp
 	src/RE/R/RaceSexMenu.cpp
 	src/RE/R/ReferenceEffectController.cpp
 	src/RE/R/RemoveCallbackVisitor.cpp

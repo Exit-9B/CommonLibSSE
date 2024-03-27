@@ -367,6 +367,11 @@ namespace RE
 			inline constexpr REL::ID GetEventSource(static_cast<std::uint64_t>(51182));
 		}
 
+		namespace CombatUtilities
+		{
+			inline constexpr REL::ID GetAngleToProjectedTarget(static_cast<std::uint64_t>(47286));
+		}
+
 		namespace Console
 		{
 			inline constexpr REL::ID SelectedRef(static_cast<std::uint64_t>(405935));
@@ -415,6 +420,11 @@ namespace RE
 		{
 			inline constexpr REL::ID SetDuration(static_cast<std::uint64_t>(11012));
 			inline constexpr REL::ID SetMagnitude(static_cast<std::uint64_t>(11008));
+		}
+
+		namespace EffectArchetypes
+		{
+			inline constexpr REL::ID Archetypes(static_cast<std::uint64_t>(358289));
 		}
 
 		namespace ExtraAliasInstanceArray
@@ -955,6 +965,13 @@ namespace RE
 			inline constexpr REL::ID Singleton(static_cast<std::uint64_t>(400315));
 			inline constexpr REL::ID ClearCachedFactionFightReactions(static_cast<std::uint64_t>(41410));
 			inline constexpr REL::ID StopCombatAndAlarmOnActor(static_cast<std::uint64_t>(41340));
+		}
+
+		namespace Projectile
+		{
+			inline constexpr REL::ID CastSpell(static_cast<std::uint64_t>(44206));
+			inline constexpr REL::ID Kill(static_cast<std::uint64_t>(44110));
+			inline constexpr REL::ID Launch(static_cast<std::uint64_t>(44108));
 		}
 
 		namespace RaceSexMenu

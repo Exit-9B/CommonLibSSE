@@ -107,7 +107,7 @@ namespace RE
 
 		float                     CalculateMagickaCost(Actor* a_caster) const;
 		float                     CalculateTotalGoldValue(Actor* a_caster = nullptr) const;
-		Effect*                   GetCostliestEffectItem(std::uint32_t a_arg1 = 5, bool a_arg2 = false);
+		Effect*                   GetCostliestEffectItem(MagicSystem::Delivery a_delivery = MagicSystem::Delivery::kNone, bool a_arg2 = false);
 		Data*                     GetData();
 		[[nodiscard]] const Data* GetData() const;
 

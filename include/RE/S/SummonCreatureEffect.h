@@ -24,12 +24,13 @@ namespace RE
 		void Unk_15(void) override;  // 15
 
 		// members
-		std::uint64_t unk90;  // 90
-		std::uint64_t unk98;  // 98
-		std::uint64_t unkA0;  // A0
-		std::uint64_t unkA8;  // A8
-		std::uint64_t unkB0;  // B0
-		std::uint64_t unkB8;  // B8
+		std::uint64_t unk90;           // 90
+		std::uint64_t unk98;           // 98
+		std::uint64_t unkA0;           // A0
+		ActorHandle   summonedCreature;// A8
+		std::uint32_t unkAC;           // AC
+		std::uint64_t unkB0;           // B0
+		std::uint64_t unkB8;           // B8
 	};
 	static_assert(sizeof(SummonCreatureEffect) == 0xC0);
 }

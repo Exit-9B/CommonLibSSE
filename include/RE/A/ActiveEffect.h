@@ -29,7 +29,8 @@ namespace RE
 			kHasConditions = 1 << 7,
 			kRecovers = 1 << 9,
 			kInactive = 1 << 15,
-			kDispelled = 1 << 18
+			kDispelled = 1 << 18,
+			kCustomSkillUse = 1 << 19
 		};
 
 		enum class ConditionStatus
@@ -62,11 +63,11 @@ namespace RE
 
 		virtual ~ActiveEffect();  // 13
 
-		virtual void Unk_14(void);  // 14 - { return; }
-		virtual void Unk_15(void);  // 15 - { return; }
-		virtual void Unk_16(void);  // 16
-		virtual void Unk_17(void);  // 17 - { return 1; }
-		virtual void Unk_18(void);  // 18 - { return 1.0; }
+		virtual void  Unk_14(void);                                         // 14 - { return; }
+		virtual void  Unk_15(void);                                         // 15 - { return; }
+		virtual void  Unk_16(void);                                         // 16
+		virtual bool  CheckCustomSkillUseConditions();                      // 17 - { return 1; }
+		virtual float GetCustomSkillUseMagnitudeMultiplier(float a_delta);  // 18 - { return 1.0; }
 
 		void                               Dispel(bool a_force);
 		[[nodiscard]] EffectSetting*       GetBaseObject() noexcept;

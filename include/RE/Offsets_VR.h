@@ -380,6 +380,11 @@ namespace RE
 			inline constexpr REL::Offset GetEventSource(static_cast<std::uint64_t>(0x88D4E0));
 		}
 
+		namespace CombatUtilities
+		{
+			inline constexpr REL::Offset GetAngleToProjectedTarget(static_cast<std::uint64_t>(0x7E6220));
+		}
+
 		namespace Console
 		{
 			inline constexpr REL::Offset SelectedRef(static_cast<std::uint64_t>(0x30115FC));
@@ -428,6 +433,11 @@ namespace RE
 		{
 			inline constexpr REL::Offset SetDuration(static_cast<std::uint64_t>(0x108B00));
 			inline constexpr REL::Offset SetMagnitude(static_cast<std::uint64_t>(0x108A40));
+		}
+
+		namespace EffectArchetypes
+		{
+			inline constexpr REL::Offset Archetypes(static_cast<std::uint64_t>(0x1E6D020));
 		}
 
 		namespace ExtraAliasInstanceArray
@@ -974,6 +984,13 @@ namespace RE
 			inline constexpr REL::Offset Singleton(static_cast<std::uint64_t>(0x1F831B0));
 			inline constexpr REL::Offset ClearCachedFactionFightReactions(static_cast<std::uint64_t>(0x705B00));
 			inline constexpr REL::Offset StopCombatAndAlarmOnActor(static_cast<std::uint64_t>(0x700330));
+		}
+
+		namespace Projectile
+		{
+			inline constexpr REL::Offset CastSpell(static_cast<std::uint64_t>(0x77DC00));
+			inline constexpr REL::Offset Kill(static_cast<std::uint64_t>(0x776F20));
+			inline constexpr REL::Offset Launch(static_cast<std::uint64_t>(0x776440));
 		}
 
 		namespace RaceSexMenu

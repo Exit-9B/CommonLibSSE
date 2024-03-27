@@ -19,10 +19,10 @@ namespace RE
 
 		virtual ~ValueModifierEffect();  // 13
 
-		virtual void Unk_14(void) override;  // 14
-		virtual void Unk_15(void) override;  // 15
-		virtual void Unk_17(void) override;  // 17
-		virtual void Unk_18(void) override;  // 18
+		virtual void  Unk_14(void) override;                                         // 14
+		virtual void  Unk_15(void) override;                                         // 15
+		virtual bool  CheckCustomSkillUseConditions() override;                      // 17
+		virtual float GetCustomSkillUseMagnitudeMultiplier(float a_delta) override;  // 18
 
 		// add
 		virtual void Unk_19(void);  // 19

@@ -4,7 +4,9 @@
 #include "RE/B/BSPointerHandle.h"
 #include "RE/B/BSSoundHandle.h"
 #include "RE/B/BSTList.h"
+#include "RE/C/CollisionLayers.h"
 #include "RE/F/FormTypes.h"
+#include "RE/I/ImpactResults.h"
 #include "RE/M/MagicSystem.h"
 #include "RE/N/NiSmartPointer.h"
 #include "RE/T/TESObjectREFR.h"
@@ -13,6 +15,8 @@ namespace RE
 {
 	class bhkCollisionObject;
 	class bhkSimpleShapePhantom;
+	class CombatController;
+	class MagicItem;
 	class QueuedFile;
 
 	class Projectile : public TESObjectREFR
@@ -20,57 +24,77 @@ namespace RE
 	public:
 		inline static constexpr auto RTTI = RTTI_Projectile;
 
+		enum class Flags
+		{
+			kNoHitOutsideCombat = 1 << 19,
+			kProcessedImpacts = 1 << 22,
+			kIsDualCast = 1 << 28
+		};
+
 		class LaunchData
 		{
 		public:
+			inline static constexpr auto RTTI = RTTI_Projectile__LaunchData;
+
+			LaunchData() = default;
+
 			// add
-			virtual ~LaunchData();
+			virtual ~LaunchData() = default;  // 00
+
+			TES_HEAP_REDEFINE_NEW();
 
 			// members
-			NiPoint3         unk08;         // 08
-			NiPoint3         unk14;         // 14
-			BGSProjectile*   projectile;    // 20
-			TESObjectREFR*   source;        // 28
-			void*            unk30;         // 30
-			TESObjectWEAP*   sourceWeapon;  // 38
-			TESAmmo*         sourceAmmo;    // 40
-			float            unk48;         // 48
-			float            unk4C;         // 4C
-			std::uint64_t    unk50;         // 50
-			std::uint64_t    unk58;         // 58
-			std::uint64_t    unk60;         // 60
-			TESObjectCELL*   unk68;         // 68
-			std::uint64_t    unk70;         // 70
-			std::uint64_t    unk78;         // 78
-			EnchantmentItem* enchantment;   // 80
-			AlchemyItem*     poison;        // 88
-			std::uint32_t    unk90;         // 90
-			float            unk94;         // 94
-			float            unk98;         // 98
-			std::uint8_t     unk9C;         // 9C
-			std::uint8_t     unk9D;         // 9D
-			std::uint8_t     unk9E;         // 9E
-			std::uint8_t     unk9F;         // 9F
-			std::uint16_t    unkA0;         // A0
-			std::uint16_t    unkA2;         // A2
-			std::uint32_t    padA4;         // A4
+			NiPoint3                   origin;                                              // 08
+			NiPoint3                   unk14;                                               // 14
+			BGSProjectile*             projectile;                                          // 20
+			TESObjectREFR*             shooter{ nullptr };                                  // 28
+			CombatController*          combatController{ nullptr };                         // 30
+			TESObjectWEAP*             sourceWeapon{ nullptr };                             // 38
+			TESAmmo*                   sourceAmmo{ nullptr };                               // 40
+			float                      heading{ 0.0f };                                     // 48
+			float                      pitch{ 0.0f };                                       // 4C
+			std::uint64_t              unk50{ 0 };                                          // 50
+			TESObjectREFR*             desiredTarget;                                       // 58
+			std::uint64_t              unk60{ 0 };                                          // 60
+			TESObjectCELL*             parentCell{ nullptr };                               // 68
+			MagicItem*                 spell{ nullptr };                                    // 70
+			MagicSystem::CastingSource castingSource{ MagicSystem::CastingSource::kNone };  // 78
+			std::uint32_t              pad7C;                                               // 7C
+			EnchantmentItem*           enchantment{ nullptr };                              // 80
+			AlchemyItem*               poison{ nullptr };                                   // 88
+			std::int32_t               area{ 0 };                                           // 90
+			float                      power{ 1.0f };                                       // 94
+			float                      scale{ 1.0f };                                       // 98
+			bool                       unk9C{ false };                                      // 9C
+			bool                       unk9D{ false };                                      // 9D
+			bool                       unk9E{ true };                                       // 9E
+			bool                       unk9F{ false };                                      // 9F
+			bool                       useOrigin{ false };                                  // A0
+			bool                       unkA1{ false };                                      // A1
+			bool                       unkA2{ false };                                      // A2
+			std::uint8_t               padA3;                                               // A3
+			std::uint32_t              padA4;                                               // A4
 		};
 		static_assert(sizeof(LaunchData) == 0xA8);
 
 		struct ImpactData
 		{
 		public:
-			// members
-			std::uint64_t                 unk00;     // 00
-			std::uint64_t                 unk08;     // 08
-			std::uint64_t                 unk10;     // 10
-			ObjectRefHandle               collidee;  // 18
-			NiPointer<bhkCollisionObject> colObj;    // 20
-			std::uint64_t                 unk28;     // 28
-			std::uint64_t                 unk30;     // 30
-			std::uint64_t                 unk38;     // 38
-			std::uint64_t                 unk40;     // 40
-			std::uint64_t                 unk48;     // 48
+			NiPoint3                      targetPosition;   // 00
+			NiPoint3                      direction;        // 0C
+			ObjectRefHandle               collidee;         // 18
+			std::uint32_t                 pad1C;            // 1C
+			NiPointer<bhkCollisionObject> colObj;           // 20
+			BGSMaterialType*              materialType;     // 28
+			std::int32_t                  damageNodeIndex;  // 30
+			COL_LAYER                     collisionLayer;   // 34
+			std::uint64_t                 unk38;            // 38
+			ImpactResult                  impactResult;     // 40
+			std::uint32_t                 unk44;            // 44
+			std::uint8_t                  unk48;            // 48
+			std::uint8_t                  unk49;            // 49
+			std::uint16_t                 pad4A;            // 4A
+			std::uint32_t                 pad4C;            // 4C
 		};
 		static_assert(sizeof(ImpactData) == 0x50);
 
@@ -132,57 +156,61 @@ namespace RE
 		virtual void Handle3DLoaded();               // C0 - { return; }
 		virtual void Unk_C1(void);                   // C1 - { return 0; }
 
+		static BSPointerHandle<Projectile> Launch(const LaunchData& a_data);
+
+		void Kill();
+
 		// members
-		BSSimpleList<ImpactData*>  impacts;            // 098
-		float                      unk0A8;             // 0A8
-		float                      unk0AC;             // 0AC
-		std::uint64_t              unk0B0;             // 0B0
-		float                      unk0B8;             // 0B8
-		float                      unk0BC;             // 0BC
-		std::uint64_t              unk0C0;             // 0C0
-		float                      unk0C8;             // 0C8
-		float                      unk0CC;             // 0CC
-		std::uint64_t              unk0D0;             // 0D0
-		float                      unk0D8;             // 0D8
-		float                      unk0DC;             // 0DC
-		bhkSimpleShapePhantom*     unk0E0;             // 0E0 - smart ptr
-		mutable BSSpinLock         unk0E8;             // 0E8
-		NiPoint3                   unk0F0;             // 0F0
-		float                      unk0FC;             // 0FC
-		float                      unk100;             // 100
-		float                      unk104;             // 104
-		void*                      unk108;             // 108 - smart ptr
-		void*                      unk110;             // 110 - smart ptr
-		NiPointer<ActorCause>      actorCause;         // 118
-		ObjectRefHandle            shooter;            // 120
-		ObjectRefHandle            desiredTarget;      // 124
-		BSSoundHandle              sndHandle;          // 128
-		BSSoundHandle              sndCountdown;       // 134
-		std::uint32_t*             unk140;             // 140
-		InventoryEntryData*        unk148;             // 148
-		BGSExplosion*              explosion;          // 150
-		MagicItem*                 spell;              // 158
-		MagicSystem::CastingSource castingSource;      // 160
-		std::uint32_t              pad164;             // 164
-		EffectSetting*             avEffect;           // 168
-		NiPointer<QueuedFile>      projectileDBFiles;  // 170
-		std::uint64_t              unk178;             // 178
-		std::uint64_t              unk180;             // 180
-		float                      unk188;             // 188
-		float                      unk18C;             // 18C
-		float                      range;              // 190
-		std::uint32_t              unk194;             // 194
-		float                      unk198;             // 198
-		float                      unk19C;             // 19C
-		std::uint64_t              unk1A0;             // 1A0
-		std::uint64_t              unk1A8;             // 1A8
-		TESObjectWEAP*             weaponSource;       // 1B0
-		TESAmmo*                   ammoSource;         // 1B8
-		float                      distanceMoved;      // 1C0
-		std::uint32_t              unk1C4;             // 1C4
-		std::uint32_t              unk1C8;             // 1C8
-		std::uint32_t              flags;              // 1CC
-		std::uint64_t              unk1D0;             // 1D0
+		BSSimpleList<ImpactData*>              impacts;            // 098
+		float                                  unk0A8;             // 0A8
+		float                                  unk0AC;             // 0AC
+		std::uint64_t                          unk0B0;             // 0B0
+		float                                  unk0B8;             // 0B8
+		float                                  unk0BC;             // 0BC
+		std::uint64_t                          unk0C0;             // 0C0
+		float                                  unk0C8;             // 0C8
+		float                                  unk0CC;             // 0CC
+		std::uint64_t                          unk0D0;             // 0D0
+		float                                  unk0D8;             // 0D8
+		float                                  unk0DC;             // 0DC
+		bhkSimpleShapePhantom*                 unk0E0;             // 0E0 - smart ptr
+		mutable BSSpinLock                     unk0E8;             // 0E8
+		NiPoint3                               unk0F0;             // 0F0
+		float                                  unk0FC;             // 0FC
+		float                                  unk100;             // 100
+		float                                  unk104;             // 104
+		void*                                  unk108;             // 108 - smart ptr
+		void*                                  unk110;             // 110 - smart ptr
+		NiPointer<ActorCause>                  actorCause;         // 118
+		ObjectRefHandle                        shooter;            // 120
+		ObjectRefHandle                        desiredTarget;      // 124
+		BSSoundHandle                          sndHandle;          // 128
+		BSSoundHandle                          sndCountdown;       // 134
+		std::uint32_t*                         unk140;             // 140
+		InventoryEntryData*                    unk148;             // 148
+		BGSExplosion*                          explosion;          // 150
+		MagicItem*                             spell;              // 158
+		MagicSystem::CastingSource             castingSource;      // 160
+		std::uint32_t                          pad164;             // 164
+		EffectSetting*                         avEffect;           // 168
+		NiPointer<QueuedFile>                  projectileDBFiles;  // 170
+		std::uint64_t                          unk178;             // 178
+		std::uint64_t                          unk180;             // 180
+		float                                  power;              // 188
+		float                                  unk18C;             // 18C
+		float                                  range;              // 190
+		std::uint32_t                          unk194;             // 194
+		float                                  unk198;             // 198
+		float                                  unk19C;             // 19C
+		std::uint64_t                          unk1A0;             // 1A0
+		std::uint64_t                          unk1A8;             // 1A8
+		TESObjectWEAP*                         weaponSource;       // 1B0
+		TESAmmo*                               ammoSource;         // 1B8
+		float                                  distanceMoved;      // 1C0
+		std::uint32_t                          unk1C4;             // 1C4
+		float                                  scale;              // 1C8
+		stl::enumeration<Flags, std::uint32_t> flags;              // 1CC
+		std::uint64_t                          unk1D0;             // 1D0
 	};
 #if !defined(SKYRIMVR) && !defined(SKYRIMSE_PRE_1_6_629)
 	static_assert(sizeof(Projectile) == 0x1E0);

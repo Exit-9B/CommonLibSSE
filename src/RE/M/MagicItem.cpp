@@ -12,11 +12,11 @@ namespace RE
 		return CalculateCost(a_caster);
 	}
 
-	Effect* MagicItem::GetCostliestEffectItem(std::uint32_t a_arg1, bool a_arg2)
+	Effect* MagicItem::GetCostliestEffectItem(MagicSystem::Delivery a_delivery, bool a_arg2)
 	{
 		using func_t = decltype(&MagicItem::GetCostliestEffectItem);
 		REL::Relocation<func_t> func{ Offset::MagicItem::GetCostliestEffectItem };
-		return func(this, a_arg1, a_arg2);
+		return func(this, a_delivery, a_arg2);
 	}
 
 	float MagicItem::CalculateCost(Actor* a_caster) const
