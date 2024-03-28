@@ -64,6 +64,7 @@ set(SOURCES
 	include/RE/B/BGSCameraShot.h
 	include/RE/B/BGSCollisionLayer.h
 	include/RE/B/BGSColorForm.h
+	include/RE/B/BGSConstructFormsInAllFilesMap.h
 	include/RE/B/BGSConstructibleObject.h
 	include/RE/B/BGSCreatedObjectManager.h
 	include/RE/B/BGSDebris.h
@@ -89,6 +90,7 @@ set(SOURCES
 	include/RE/B/BGSFootstepEvent.h
 	include/RE/B/BGSFootstepManager.h
 	include/RE/B/BGSFootstepSet.h
+	include/RE/B/BGSFormChanges.h
 	include/RE/B/BGSHazard.h
 	include/RE/B/BGSHeadPart.h
 	include/RE/B/BGSIdleCollection.h
@@ -144,6 +146,7 @@ set(SOURCES
 	include/RE/B/BGSReferenceEffect.h
 	include/RE/B/BGSRelationship.h
 	include/RE/B/BGSReverbParameters.h
+	include/RE/B/BGSSaveLoadGame.h
 	include/RE/B/BGSSaveLoadManager.h
 	include/RE/B/BGSScene.h
 	include/RE/B/BGSSceneAction.h

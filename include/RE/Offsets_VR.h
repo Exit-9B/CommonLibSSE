@@ -148,6 +148,11 @@ namespace RE
 			inline constexpr REL::Offset RegisterLocation(static_cast<std::uint64_t>(0xC89960));
 		}
 
+		namespace BGSSaveLoadGame
+		{
+			inline constexpr REL::Offset Singleton{ static_cast<std::uint64_t>(0x2FEB200) };
+		}
+
 		namespace BGSSaveLoadManager
 		{
 			inline constexpr REL::Offset Save(static_cast<std::uint64_t>(0x58E310));

@@ -134,6 +134,11 @@ namespace RE
 			inline constexpr REL::ID SetOpenState(static_cast<std::uint64_t>(14287));
 		}
 
+		namespace BGSSaveLoadGame
+		{
+			inline constexpr REL::ID Singleton{ static_cast<std::uint64_t>(403330) };
+		}
+
 		namespace BGSSaveLoadManager
 		{
 			inline constexpr REL::ID Save(static_cast<std::uint64_t>(35727));
