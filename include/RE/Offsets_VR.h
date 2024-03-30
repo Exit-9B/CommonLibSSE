@@ -307,6 +307,7 @@ namespace RE
 			namespace ObjectBindPolicy
 			{
 				inline constexpr REL::Offset BindObject(static_cast<std::uint64_t>(0x1265F80));
+				inline constexpr REL::Offset GetInitialPropertyValues(static_cast<std::uint64_t>(0x1264BA0));
 			}
 
 			namespace NF_util
