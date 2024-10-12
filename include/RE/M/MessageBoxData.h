@@ -14,19 +14,26 @@ namespace RE
 	public:
 		inline static constexpr auto RTTI = RTTI_MessageBoxData;
 
-		~MessageBoxData() override;  // 00
+		~MessageBoxData() override = default;  // 00
+
+		void QueueMessage()
+		{
+			using func_t = decltype(&MessageBoxData::QueueMessage);
+			static REL::Relocation<func_t> func{ Offset::MessageBoxData::QueueMessage };
+			return func(this);
+		}
 
 		// members
-		BSString                             bodyText;    // 10
-		BSTArray<BSString>                   buttonText;  // 20
-		std::uint32_t                        unk38;       // 38
-		std::int32_t                         unk3C;       // 3C
-		BSTSmartPointer<IMessageBoxCallback> callback;    // 40
-		std::uint32_t                        unk48;       // 48
-		std::uint8_t                         unk4C;       // 4C
-		std::uint8_t                         unk4D;       // 4D
-		std::uint8_t                         unk4E;       // 4E
-		std::uint8_t                         unk4F;       // 4F
+		BSString                             bodyText;     // 10
+		BSTArray<BSString>                   buttonText;   // 20
+		std::uint32_t                        unk38{ 0 };   // 38
+		std::int32_t                         unk3C{ -1 };  // 3C
+		BSTSmartPointer<IMessageBoxCallback> callback;     // 40
+		std::uint32_t                        unk48{ 10 };  // 48
+		std::uint8_t                         unk4C;        // 4C
+		std::uint8_t                         unk4D;        // 4D
+		std::uint8_t                         unk4E;        // 4E
+		std::uint8_t                         unk4F;        // 4F
 	};
 	static_assert(sizeof(MessageBoxData) == 0x50);
 }

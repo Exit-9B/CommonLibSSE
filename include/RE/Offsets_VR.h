@@ -890,6 +890,11 @@ namespace RE
 			inline constexpr REL::Offset Singleton(static_cast<std::uint64_t>(0x2FC4878));
 		}
 
+		namespace MessageBoxData
+		{
+			inline constexpr REL::Offset QueueMessage(static_cast<std::uint64_t>(0x8D8420));
+		}
+
 		namespace MessageDataFactoryManager
 		{
 			inline constexpr REL::Offset GetSingleton(static_cast<std::uint64_t>(0x335CA0));
