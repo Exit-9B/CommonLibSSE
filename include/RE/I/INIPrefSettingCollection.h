@@ -22,7 +22,7 @@ namespace RE
 
 	namespace literals
 	{
-		template <stl::nttp::string S>
+		template <stl::nttp::zstring S>
 		inline auto operator""_pref()
 		{
 			static RE::Setting* setting = nullptr;

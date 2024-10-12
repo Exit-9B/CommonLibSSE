@@ -26,7 +26,7 @@ namespace RE
 
 	namespace literals
 	{
-		template <stl::nttp::string S>
+		template <stl::nttp::zstring S>
 		inline auto operator""_ini()
 		{
 			static RE::Setting* setting = nullptr;
