@@ -8,6 +8,20 @@ namespace RE
 		return *singleton;
 	}
 
+	void Inventory3DManager::Begin3D(std::uint32_t a_arg1)
+	{
+		using func_t = decltype(&Inventory3DManager::Begin3D);
+		REL::Relocation<func_t> func{ Offset::Inventory3DManager::Begin3D };
+		return func(this, a_arg1);
+	}
+
+	void Inventory3DManager::End3D()
+	{
+		using func_t = decltype(&Inventory3DManager::End3D);
+		REL::Relocation<func_t> func{ Offset::Inventory3DManager::End3D };
+		return func(this);
+	}
+
 	void Inventory3DManager::UpdateItem3D(InventoryEntryData* a_objDesc)
 	{
 		using func_t = decltype(&Inventory3DManager::UpdateItem3D);

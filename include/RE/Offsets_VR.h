@@ -756,11 +756,13 @@ namespace RE
 
 		namespace Inventory3DManager
 		{
+			inline constexpr REL::Offset Begin3D(static_cast<std::uint64_t>(0x8B4B40));
+			inline constexpr REL::Offset End3D(static_cast<std::uint64_t>(0x8B4D50));
+			inline constexpr REL::Offset Clear3D(static_cast<std::uint64_t>(0x8B5240));
+			inline constexpr REL::Offset Render(static_cast<std::uint64_t>(0x8B4C90));
 			inline constexpr REL::Offset Singleton(static_cast<std::uint64_t>(0x2FEBC80));
 			inline constexpr REL::Offset UpdateItem3D(static_cast<std::uint64_t>(0x8B4EA0));
 			inline constexpr REL::Offset UpdateMagic3D(static_cast<std::uint64_t>(0x8B4ED0));
-			inline constexpr REL::Offset Clear3D(static_cast<std::uint64_t>(0x8B5240));
-			inline constexpr REL::Offset Render(static_cast<std::uint64_t>(0x8B4C90));
 		}
 
 		namespace InventoryChanges

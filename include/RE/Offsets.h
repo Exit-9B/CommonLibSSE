@@ -738,11 +738,13 @@ namespace RE
 
 		namespace Inventory3DManager
 		{
+			inline constexpr REL::ID Begin3D(static_cast<std::uint64_t>(51754));
+			inline constexpr REL::ID End3D(static_cast<std::uint64_t>(51756));
+			inline constexpr REL::ID Clear3D(static_cast<std::uint64_t>(51759));
+			inline constexpr REL::ID Render(static_cast<std::uint64_t>(51755));
 			inline constexpr REL::ID Singleton(static_cast<std::uint64_t>(403559));
 			inline constexpr REL::ID UpdateItem3D(static_cast<std::uint64_t>(51757));
 			inline constexpr REL::ID UpdateMagic3D(static_cast<std::uint64_t>(51758));
-			inline constexpr REL::ID Clear3D(static_cast<std::uint64_t>(51759));
-			inline constexpr REL::ID Render(static_cast<std::uint64_t>(51755));
 		}
 
 		namespace InventoryChanges

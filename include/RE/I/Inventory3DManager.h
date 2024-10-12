@@ -28,38 +28,40 @@ namespace RE
 	static_assert(sizeof(LoadedInventoryModel) == 0x20);
 
 	class Inventory3DManager :
-		public BSTSingletonSDM<Inventory3DManager>,  // 10
-		public MenuEventHandler                      // 00
+		public MenuEventHandler,                    // 00
+		public BSTSingletonSDM<Inventory3DManager>  // 10
 	{
 	public:
 		~Inventory3DManager() override;  // 00
 
 		static Inventory3DManager* GetSingleton();
 
+		void          Begin3D(std::uint32_t a_arg1);
+		void          End3D();
 		void          UpdateItem3D(InventoryEntryData* a_objDesc);
 		void          UpdateMagic3D(TESForm* a_form, std::uint32_t a_arg2);
 		void          Clear3D();
 		std::uint32_t Render();
 
 		// members
-		std::uint8_t                                  unk011;         // 011
-		std::uint16_t                                 unk012;         // 012
-		NiPoint3                                      unk014;         // 014
-		NiPoint3                                      unk020;         // 020
-		float                                         unk02C;         // 02C
-		float                                         unk030;         // 030
-		std::uint32_t                                 unk034;         // 034
-		TESObjectREFR*                                tempRef;        // 038
-		ExtraDataList                                 originalExtra;  // 040
-		BSTSmallArray<LoadedInventoryModel, 7>        loadedModels;   // 058
-		std::uint32_t                                 unk148;         // 148
-		float                                         zoomProgress;   // 14C - 1 if zoomed in, 0 if not, in-between during transition
-		BSTSmartPointer<NewInventoryMenuItemLoadTask> loadTask;       // 150
-		std::uint8_t                                  unk158;         // 158
-		std::uint8_t                                  unk159;         // 159
-		std::uint8_t                                  unk15A;         // 15A
-		std::uint8_t                                  pad15B;         // 15B
-		std::uint32_t                                 pad15C;         // 15C
+		std::uint8_t                                  unk011;           // 011
+		std::uint16_t                                 unk012;           // 012
+		NiPoint3                                      currentPosition;  // 014
+		NiPoint3                                      position;         // 020
+		float                                         currentScale;     // 02C
+		float                                         defaultScale;     // 030
+		std::uint32_t                                 state;            // 034
+		TESObjectREFR*                                tempRef;          // 038
+		ExtraDataList                                 originalExtra;    // 040
+		BSTSmallArray<LoadedInventoryModel, 7>        loadedModels;     // 058
+		std::uint32_t                                 unk148;           // 148
+		float                                         zoomProgress;     // 14C - 1 if zoomed in, 0 if not, in-between during transition
+		BSTSmartPointer<NewInventoryMenuItemLoadTask> loadTask;         // 150
+		std::uint8_t                                  unk158;           // 158
+		std::uint8_t                                  unk159;           // 159
+		std::uint8_t                                  unk15A;           // 15A
+		std::uint8_t                                  pad15B;           // 15B
+		std::uint32_t                                 pad15C;           // 15C
 	};
 #if !defined(SKYRIMVR) && !defined(SKYRIMSE_PRE_1_6_629)
 	static_assert(sizeof(Inventory3DManager) == 0x168);
