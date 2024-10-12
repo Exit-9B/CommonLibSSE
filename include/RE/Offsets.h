@@ -766,6 +766,12 @@ namespace RE
 			inline constexpr REL::ID IsOwnedBy(static_cast<std::uint64_t>(16020));
 		}
 
+		namespace ItemCard
+		{
+			inline constexpr REL::ID SetForm(static_cast<std::uint64_t>(51898));
+			inline constexpr REL::ID SetItem(static_cast<std::uint64_t>(51897));
+		}
+
 		namespace ItemCrafted
 		{
 			inline constexpr REL::ID GetEventSource(static_cast<std::uint64_t>(51403));

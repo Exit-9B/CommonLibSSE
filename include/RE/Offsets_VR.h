@@ -784,6 +784,12 @@ namespace RE
 			inline constexpr REL::Offset IsOwnedBy(static_cast<std::uint64_t>(0x1E8130));
 		}
 
+		namespace ItemCard
+		{
+			inline constexpr REL::Offset SetForm(static_cast<std::uint64_t>(0x8BFDB0));
+			inline constexpr REL::Offset SetItem(static_cast<std::uint64_t>(0x8BEBD0));
+		}
+
 		namespace ItemCrafted
 		{
 			inline constexpr REL::Offset GetEventSource(static_cast<std::uint64_t>(0x89BE30));
