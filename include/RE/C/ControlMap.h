@@ -81,14 +81,16 @@ namespace RE
 		constexpr bool   IsSneakingControlsEnabled() const noexcept { return enabledControls.all(UEFlag::kSneaking); }
 		constexpr bool   IsVATSControlsEnabled() const noexcept { return enabledControls.all(UEFlag::kVATS); }
 		constexpr bool   IsWheelZoomControlsEnabled() const noexcept { return enabledControls.all(UEFlag::kWheelZoom); }
-		void             ToggleControls(UEFlag a_flags, bool a_enable);
+		void             StoreControls();
+		void             LoadStoredControls();
+		void             ToggleControls(UEFlag a_flags, bool a_enable, bool a_storeState);
 
 		// members
 		InputContext*                                    controlMap[InputContextID::kTotal];  // 060
 		BSTArray<LinkedMapping>                          linkedMappings;                      // 0F0
 		BSTArray<InputContextID>                         contextPriorityStack;                // 108
 		stl::enumeration<UEFlag, std::uint32_t>          enabledControls;                     // 120
-		stl::enumeration<UEFlag, std::uint32_t>          unk124;                              // 124
+		stl::enumeration<UEFlag, std::uint32_t>          storedControls;                      // 124
 		std::int8_t                                      textEntryCount;                      // 128
 		bool                                             ignoreKeyboardMouse;                 // 129
 		bool                                             ignoreActivateDisabledEvents;        // 12A
