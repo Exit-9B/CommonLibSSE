@@ -23,8 +23,8 @@ namespace RE
 		ForEachReference([&](TESObjectREFR& ref) {
 			const auto distance = a_origin.GetSquaredDistance(ref.GetPosition());
 			return distance <= a_radius ?
-                       a_callback(ref) :
-                       true;
+			           a_callback(ref) :
+			           true;
 		});
 	}
 

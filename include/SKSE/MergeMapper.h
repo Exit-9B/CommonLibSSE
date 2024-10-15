@@ -5,17 +5,21 @@
 
 namespace SKSE
 {
-    constexpr const auto MergeMapperPluginName = "MergeMapper";
-    // A message used to fetch MergeMapper's interface
-    struct MergeMapperMessage {
-        enum : uint32_t { kMessage_GetInterface = 0xe6cb8b59 };  // Randomly generated
-        void* (*GetApiFunction)(unsigned int revisionNumber) = nullptr;
-    };
+	constexpr const auto MergeMapperPluginName = "MergeMapper";
+	// A message used to fetch MergeMapper's interface
+	struct MergeMapperMessage
+	{
+		enum : uint32_t
+		{
+			kMessage_GetInterface = 0xe6cb8b59
+		};  // Randomly generated
+		void* (*GetApiFunction)(unsigned int revisionNumber) = nullptr;
+	};
 
-    // Returns an IMergeMapperInterface001 object compatible with the API shown below
-    // This should only be called after SKSE sends kMessage_PostLoad to your plugin
-    struct IMergeMapperInterface001;
-    IMergeMapperInterface001* GetMergeMapperInterface() noexcept;
+	// Returns an IMergeMapperInterface001 object compatible with the API shown below
+	// This should only be called after SKSE sends kMessage_PostLoad to your plugin
+	struct IMergeMapperInterface001;
+	IMergeMapperInterface001* GetMergeMapperInterface() noexcept;
 
 	// This object provides access to MergeMapper's mod support API
 	struct IMergeMapperInterface001

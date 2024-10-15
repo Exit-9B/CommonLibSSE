@@ -111,8 +111,8 @@ namespace RE
 		std::uint64_t                                       unk120;                     // 120
 		std::uint8_t                                        unk128;                     // 128
 #if !defined(SKYRIMVR)
-		BorderMode    showLANDborders;  // 12C
-		Color         borderColor;      // 130
+		BorderMode showLANDborders;  // 12C
+		Color      borderColor;      // 130
 #else
 		bool showLANDborders;  // 129
 #endif

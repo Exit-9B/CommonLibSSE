@@ -109,8 +109,7 @@ namespace SKSE
 #else
 			if (::GetModuleHandle(TEXT("Galaxy64"))) {
 				path /= "Skyrim Special Edition GOG"sv;
-			}
-			else {
+			} else {
 				path /= "Skyrim Special Edition"sv;
 			}
 #endif
