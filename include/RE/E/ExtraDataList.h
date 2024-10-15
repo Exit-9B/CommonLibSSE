@@ -182,6 +182,7 @@ namespace RE
 		TESForm*              GetOwner();
 		SOUL_LEVEL            GetSoulLevel() const;
 		void                  SetCount(std::uint16_t a_count);
+		void                  SetEnchantment(EnchantmentItem* a_enchantment, std::uint16_t a_chargeAmount, bool a_removeOnUnequip);
 		void                  SetExtraFlags(ExtraFlags::Flag a_flags, bool a_enable);
 		void                  SetInventoryChanges(InventoryChanges* a_changes);
 		void                  SetOwner(TESForm* a_owner);

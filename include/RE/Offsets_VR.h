@@ -490,6 +490,7 @@ namespace RE
 		{
 			inline constexpr REL::Offset Add(static_cast<std::uint64_t>(0x142140));
 			inline constexpr REL::Offset SetCount(static_cast<std::uint64_t>(0x11EB50));
+			inline constexpr REL::Offset SetEnchantment(static_cast<std::uint64_t>(0x1372B0));
 			inline constexpr REL::Offset SetExtraFlags(static_cast<std::uint64_t>(0x136360));
 			inline constexpr REL::Offset SetInventoryChanges(static_cast<std::uint64_t>(0x11FBA0));
 		}
