@@ -87,6 +87,11 @@ namespace RE
 			inline constexpr REL::Offset TargetRefHandle(static_cast<std::uint64_t>(0x3011184));
 		}
 
+		namespace BaseExtraList
+		{
+			inline constexpr REL::Offset Dtor(static_cast<std::uint64_t>(0x117350));
+		}
+
 		namespace BookMenu
 		{
 			inline constexpr REL::Offset TargetReference(static_cast<std::uint64_t>(0x3011228));

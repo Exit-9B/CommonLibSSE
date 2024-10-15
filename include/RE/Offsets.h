@@ -89,6 +89,11 @@ namespace RE
 			inline constexpr REL::ID TargetRefHandle(static_cast<std::uint64_t>(403520));
 		}
 
+		namespace BaseExtraList
+		{
+			inline constexpr REL::ID Dtor(static_cast<std::uint64_t>(11572));
+		}
+
 		namespace BGSAddToPlayerInventoryEvent
 		{
 			inline constexpr REL::ID GetIndex(static_cast<std::uint64_t>(380074));

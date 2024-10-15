@@ -30,7 +30,11 @@ namespace RE
 
 #if !defined(SKYRIMVR) && !defined(SKYRIMSE_PRE_1_6_629)
 		virtual ~BaseExtraList();  // 00
+#else
+		~BaseExtraList();
 #endif
+
+		TES_HEAP_REDEFINE_NEW();
 
 		// members
 		BSExtraData*      data = nullptr;      // 08
