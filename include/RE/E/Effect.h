@@ -28,6 +28,7 @@ namespace RE
 
 		TES_HEAP_REDEFINE_NEW();
 
+		void Copy(const Effect* a_other);
 		void SetDuration(std::int32_t a_duration);
 		void SetMagnitude(float a_magnitude);
 

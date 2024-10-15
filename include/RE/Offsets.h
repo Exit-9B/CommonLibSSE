@@ -429,6 +429,7 @@ namespace RE
 
 		namespace Effect
 		{
+			inline constexpr REL::ID Copy(static_cast<std::uint64_t>(10997));
 			inline constexpr REL::ID SetDuration(static_cast<std::uint64_t>(11012));
 			inline constexpr REL::ID SetMagnitude(static_cast<std::uint64_t>(11008));
 		}
@@ -1091,11 +1092,13 @@ namespace RE
 
 		namespace TESCondition
 		{
+			inline constexpr REL::ID Copy(static_cast<std::uint64_t>(29879));
 			inline constexpr REL::ID IsTrue(static_cast<std::uint64_t>(29888));
 		}
 
 		namespace TESConditionItem
 		{
+			inline constexpr REL::ID Copy(static_cast<std::uint64_t>(29904));
 			inline constexpr REL::ID IsTrue(static_cast<std::uint64_t>(29924));
 		}
 

@@ -442,6 +442,7 @@ namespace RE
 
 		namespace Effect
 		{
+			inline constexpr REL::Offset Copy(static_cast<std::uint64_t>(0x108440));
 			inline constexpr REL::Offset SetDuration(static_cast<std::uint64_t>(0x108B00));
 			inline constexpr REL::Offset SetMagnitude(static_cast<std::uint64_t>(0x108A40));
 		}
@@ -1115,17 +1116,14 @@ namespace RE
 
 		namespace TESCondition
 		{
-			namespace Node
-			{
-				inline constexpr REL::Offset Run(static_cast<std::uint64_t>(0x455010));
-			}
-
+			inline constexpr REL::Offset Copy(static_cast<std::uint64_t>(0x453F90));
 			inline constexpr REL::Offset IsTrue(static_cast<std::uint64_t>(0x4542F0));
 			inline constexpr REL::Offset Run(static_cast<std::uint64_t>(0x4542F0));
 		}
 
 		namespace TESConditionItem
 		{
+			inline constexpr REL::Offset Copy(static_cast<std::uint64_t>(0x454B70));
 			inline constexpr REL::Offset IsTrue(static_cast<std::uint64_t>(0x455010));
 		}
 
