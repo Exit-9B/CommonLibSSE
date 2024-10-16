@@ -34,8 +34,9 @@ namespace RE
 
 		static BGSCreatedObjectManager* GetSingleton();
 
-		EnchantmentItem* CreateArmorEnchantment(BSTArray<Effect>& a_effects);
-		EnchantmentItem* CreateWeaponEnchantment(BSTArray<Effect>& a_effects);
+		EnchantmentItem* AddArmorEnchantment(BSTArray<Effect>& a_effects);
+		EnchantmentItem* AddWeaponEnchantment(BSTArray<Effect>& a_effects);
+		void DestroyEnchantment(EnchantmentItem* a_enchantment, bool a_isWeapon);
 
 		// members
 		std::uint64_t              unk00;               // 00

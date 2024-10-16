@@ -101,8 +101,9 @@ namespace RE
 
 		namespace BGSCreatedObjectManager
 		{
-			inline constexpr REL::ID CreateArmorEnchantment(static_cast<std::uint64_t>(36166));
-			inline constexpr REL::ID CreateWeaponEnchantment(static_cast<std::uint64_t>(36165));
+			inline constexpr REL::ID AddArmorEnchantment(static_cast<std::uint64_t>(36166));
+			inline constexpr REL::ID AddWeaponEnchantment(static_cast<std::uint64_t>(36165));
+			inline constexpr REL::ID DestroyEnchantment(static_cast<std::uint64_t>(36169));
 			inline constexpr REL::ID Singleton(static_cast<std::uint64_t>(400320));
 		}
 
