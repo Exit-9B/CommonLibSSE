@@ -774,6 +774,7 @@ namespace RE
 			inline constexpr REL::ID GetValue(static_cast<std::uint64_t>(15995));
 			inline constexpr REL::ID IsQuestObject(static_cast<std::uint64_t>(16005));
 			inline constexpr REL::ID IsOwnedBy(static_cast<std::uint64_t>(16020));
+			inline constexpr REL::ID SetWorn(static_cast<std::uint64_t>(16027));
 		}
 
 		namespace ItemCard

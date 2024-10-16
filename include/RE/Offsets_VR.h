@@ -792,6 +792,7 @@ namespace RE
 			inline constexpr REL::Offset GetValue(static_cast<std::uint64_t>(0x1E7280));
 			inline constexpr REL::Offset IsQuestObject(static_cast<std::uint64_t>(0x1E7740));
 			inline constexpr REL::Offset IsOwnedBy(static_cast<std::uint64_t>(0x1E8130));
+			inline constexpr REL::Offset SetWorn(static_cast<std::uint64_t>(0x1E8AE0));
 		}
 
 		namespace ItemCard

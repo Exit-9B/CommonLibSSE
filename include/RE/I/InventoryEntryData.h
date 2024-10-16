@@ -69,6 +69,13 @@ namespace RE
 			return func(this);
 		}
 
+		void SetWorn(bool a_worn, bool a_left, bool a_deleteExtraList = true)
+		{
+			using func_t = decltype(&InventoryEntryData::SetWorn);
+			REL::Relocation<func_t> func{ Offset::InventoryEntryData::SetWorn };
+			return func(this, a_worn, a_left, a_deleteExtraList);
+		}
+
 		TES_HEAP_REDEFINE_NEW();
 
 		// members
