@@ -102,6 +102,11 @@ namespace RE
 			inline constexpr REL::Offset GetIndex(static_cast<std::uint64_t>(0x1DED188));
 		}
 
+		namespace BGSCraftItemEvent
+		{
+			inline constexpr REL::Offset GetIndex(static_cast<std::uint64_t>(0x1EAA18C));
+		}
+
 		namespace BGSCreatedObjectManager
 		{
 			inline constexpr REL::Offset AddArmorEnchantment(static_cast<std::uint64_t>(0x5A6850));
@@ -194,6 +199,7 @@ namespace RE
 		{
 			inline constexpr REL::Offset GetSingleton(static_cast<std::uint64_t>(0xC29430));
 			inline constexpr REL::Offset BuildSoundDataFromDescriptor(static_cast<std::uint64_t>(0xC29F60));
+			inline constexpr REL::Offset PrecacheDescriptor(static_cast<std::uint64_t>(0xC2BE60));
 		}
 
 		namespace BSFaceGenAnimationData
@@ -1074,6 +1080,11 @@ namespace RE
 			inline constexpr REL::Offset FirstScriptCommand(static_cast<std::uint64_t>(0x1E75A00));
 		}
 
+		namespace SendHUDMessage
+		{
+			inline constexpr REL::Offset ShowHUDMessage(static_cast<std::uint64_t>(0x908170));
+		}
+
 		namespace ShoutHandler
 		{
 			inline constexpr REL::Offset Vtbl(static_cast<std::uint64_t>(0x16F2488));
@@ -1271,7 +1282,6 @@ namespace RE
 		}
 
 		inline constexpr REL::Offset CreateRefHandle(static_cast<std::uint64_t>(0x1428A0));
-		inline constexpr REL::Offset DebugNotification(static_cast<std::uint64_t>(0x908170));
 		inline constexpr REL::Offset GetArmorFinalRating(static_cast<std::uint64_t>(0x1E7ED0));
 		inline constexpr REL::Offset LogDirectory(static_cast<std::uint64_t>(0x1EABD50));
 		inline constexpr REL::Offset LookupReferenceByHandle(static_cast<std::uint64_t>(0x143180));

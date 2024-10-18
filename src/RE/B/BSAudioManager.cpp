@@ -31,4 +31,11 @@ namespace RE
 		REL::Relocation<func_t> func{ Offset::BSAudioManager::BuildSoundDataFromDescriptor };
 		return func(this, a_soundHandle, a_descriptor, a_flags);
 	}
+
+	void BSAudioManager::PrecacheDescriptor(const BSISoundDescriptor* a_descriptor, std::uint32_t a_flags)
+	{
+		using func_t = decltype(&BSAudioManager::PrecacheDescriptor);
+		REL::Relocation<func_t> func{ Offset::BSAudioManager::PrecacheDescriptor };
+		return func(this, a_descriptor, a_flags);
+	}
 }

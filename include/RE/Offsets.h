@@ -99,6 +99,11 @@ namespace RE
 			inline constexpr REL::ID GetIndex(static_cast<std::uint64_t>(380074));
 		}
 
+		namespace BGSCraftItemEvent
+		{
+			inline constexpr REL::ID GetIndex(static_cast<std::uint64_t>(380076));
+		}
+
 		namespace BGSCreatedObjectManager
 		{
 			inline constexpr REL::ID AddArmorEnchantment(static_cast<std::uint64_t>(36166));
@@ -185,6 +190,7 @@ namespace RE
 		{
 			inline constexpr REL::ID GetSingleton(static_cast<std::uint64_t>(67652));
 			inline constexpr REL::ID BuildSoundDataFromDescriptor(static_cast<std::uint64_t>(67666));
+			inline constexpr REL::ID PrecacheDescriptor(static_cast<std::uint64_t>(67720));
 		}
 
 		namespace BSFaceGenAnimationData
@@ -1050,6 +1056,11 @@ namespace RE
 			inline constexpr REL::ID FirstScriptCommand(static_cast<std::uint64_t>(361120));
 		}
 
+		namespace SendHUDMessage
+		{
+			inline constexpr REL::ID ShowHUDMessage(static_cast<std::uint64_t>(52933));
+		}
+
 		namespace ShoutHandler
 		{
 			inline constexpr REL::ID Vtbl(static_cast<std::uint64_t>(208735));
@@ -1246,7 +1257,6 @@ namespace RE
 		}
 
 		inline constexpr REL::ID CreateRefHandle(static_cast<std::uint64_t>(12326));
-		inline constexpr REL::ID DebugNotification(static_cast<std::uint64_t>(52933));
 		inline constexpr REL::ID GetArmorFinalRating(static_cast<std::uint64_t>(16017));
 		inline constexpr REL::ID LookupReferenceByHandle(static_cast<std::uint64_t>(12332));
 		inline constexpr REL::ID PlaySound(static_cast<std::uint64_t>(52939));

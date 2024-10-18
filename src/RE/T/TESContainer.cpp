@@ -15,7 +15,7 @@ namespace RE
 		}
 	}
 
-	std::int32_t TESContainer::CountObjectsInContainer(TESBoundObject* a_object) const
+	std::int32_t TESContainer::GetObjectCount(const TESBoundObject* a_object) const
 	{
 		std::int32_t count = 0;
 		ForEachContainerObject([&](ContainerObject& a_contObj) {

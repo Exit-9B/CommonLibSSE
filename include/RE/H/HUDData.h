@@ -22,7 +22,8 @@ namespace RE
 			kQuestFailed = 16,
 			kSkillIncrease = 20,
 			kWordOfPower1 = 21,
-			kWordOfPower2 = 22
+			kWordOfPower2 = 22,
+			kSetMode = 23
 		};
 
 		enum class Discovery

@@ -66,6 +66,7 @@ set(SOURCES
 	include/RE/B/BGSColorForm.h
 	include/RE/B/BGSConstructFormsInAllFilesMap.h
 	include/RE/B/BGSConstructibleObject.h
+	include/RE/B/BGSCraftItemEvent.h
 	include/RE/B/BGSCreatedObjectManager.h
 	include/RE/B/BGSDebris.h
 	include/RE/B/BGSDecalGroup.h
@@ -1128,6 +1129,7 @@ set(SOURCES
 	include/RE/S/ScriptEventSourceHolder.h
 	include/RE/S/ScriptFunction.h
 	include/RE/S/ScrollItem.h
+	include/RE/S/SendHUDMessage.h
 	include/RE/S/SendPlayerToJailFunctor.h
 	include/RE/S/SetEventData.h
 	include/RE/S/SetMotionTypeFunctor.h
@@ -1358,6 +1360,7 @@ set(SOURCES
 	src/RE/B/BGSBaseAlias.cpp
 	src/RE/B/BGSBipedObjectForm.cpp
 	src/RE/B/BGSColorForm.cpp
+	src/RE/B/BGSConstructibleObject.cpp
 	src/RE/B/BGSCreatedObjectManager.cpp
 	src/RE/B/BGSEntryPointFunctionDataActivateChoice.cpp
 	src/RE/B/BGSEntryPointPerkEntry.cpp
@@ -1547,6 +1550,7 @@ set(SOURCES
 	src/RE/S/ScrapHeap.cpp
 	src/RE/S/Script.cpp
 	src/RE/S/ScriptEventSourceHolder.cpp
+	src/RE/S/SendHUDMessage.cpp
 	src/RE/S/Setting.cpp
 	src/RE/S/Sky.cpp
 	src/RE/S/SkyrimVM.cpp

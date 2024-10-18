@@ -44,6 +44,15 @@ namespace RE
 	struct ActorMotionFeedbackData;
 	struct ActorMotionFeedbackOutput;
 
+	enum class SKILL_ACTION
+	{
+		kNormalUse = 0,
+		kPowerAttack,
+		kBash,
+		kLockpickSuccess,
+		kLockpickBroken
+	};
+
 	enum class ACTOR_CRITICAL_STAGE
 	{
 		kNone = 0,
@@ -416,7 +425,7 @@ namespace RE
 		virtual void                 Unk_F4(void);                                                                                                                                                                    // 0F4
 		virtual bool                 HasBeenAttacked() const;                                                                                                                                                         // 0F5
 		virtual void                 SetBeenAttacked(bool a_set);                                                                                                                                                     // 0F6
-		virtual void                 UseSkill(ActorValue a_av, float a_points, TESForm* a_arg3);                                                                                                                      // 0F7 - { return; }
+		virtual void                 UseSkill(ActorValue a_av, float a_points, TESForm* a_advanceObject = nullptr, SKILL_ACTION a_advanceAction = SKILL_ACTION::kNormalUse);                                          // 0F7 - { return; }
 		virtual bool                 IsAtPoint(const NiPoint3& a_point, float a_radius, bool a_expandRadius, bool a_alwaysTestHeight);                                                                                // 0F8
 		virtual bool                 IsInFaction(const TESFaction* faction) const;                                                                                                                                    // 0F9
 		virtual void                 ForEachPerk(PerkEntryVisitor& a_visitor) const;                                                                                                                                  // 0FA
