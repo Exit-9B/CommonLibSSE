@@ -39,7 +39,7 @@ namespace RE
 		void          Begin3D(std::uint32_t a_arg1);
 		void          End3D();
 		void          UpdateItem3D(InventoryEntryData* a_objDesc);
-		void          UpdateMagic3D(TESForm* a_form, std::uint32_t a_arg2);
+		void          UpdateItem3D(TESForm* a_form, ExtraDataList* a_extraList = nullptr);
 		void          Clear3D();
 		std::uint32_t Render();
 

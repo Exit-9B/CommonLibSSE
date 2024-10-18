@@ -24,16 +24,16 @@ namespace RE
 
 	void Inventory3DManager::UpdateItem3D(InventoryEntryData* a_objDesc)
 	{
-		using func_t = decltype(&Inventory3DManager::UpdateItem3D);
+		using func_t = void (Inventory3DManager::*)(InventoryEntryData*);
 		REL::Relocation<func_t> func{ Offset::Inventory3DManager::UpdateItem3D };
 		return func(this, a_objDesc);
 	}
 
-	void Inventory3DManager::UpdateMagic3D(TESForm* a_form, std::uint32_t a_arg2)
+	void Inventory3DManager::UpdateItem3D(TESForm* a_form, ExtraDataList* a_extraList)
 	{
-		using func_t = decltype(&Inventory3DManager::UpdateMagic3D);
-		REL::Relocation<func_t> func{ Offset::Inventory3DManager::UpdateMagic3D };
-		return func(this, a_form, a_arg2);
+		using func_t = void (Inventory3DManager::*)(TESForm*, ExtraDataList*);
+		REL::Relocation<func_t> func{ Offset::Inventory3DManager::UpdateObject3D };
+		return func(this, a_form, a_extraList);
 	}
 
 	void Inventory3DManager::Clear3D()

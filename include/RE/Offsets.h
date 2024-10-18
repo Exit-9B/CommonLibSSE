@@ -758,7 +758,7 @@ namespace RE
 			inline constexpr REL::ID Render(static_cast<std::uint64_t>(51755));
 			inline constexpr REL::ID Singleton(static_cast<std::uint64_t>(403559));
 			inline constexpr REL::ID UpdateItem3D(static_cast<std::uint64_t>(51757));
-			inline constexpr REL::ID UpdateMagic3D(static_cast<std::uint64_t>(51758));
+			inline constexpr REL::ID UpdateObject3D(static_cast<std::uint64_t>(51758));
 		}
 
 		namespace InventoryChanges

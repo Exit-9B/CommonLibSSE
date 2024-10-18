@@ -776,7 +776,7 @@ namespace RE
 			inline constexpr REL::Offset Render(static_cast<std::uint64_t>(0x8B4C90));
 			inline constexpr REL::Offset Singleton(static_cast<std::uint64_t>(0x2FEBC80));
 			inline constexpr REL::Offset UpdateItem3D(static_cast<std::uint64_t>(0x8B4EA0));
-			inline constexpr REL::Offset UpdateMagic3D(static_cast<std::uint64_t>(0x8B4ED0));
+			inline constexpr REL::Offset UpdateObject3D(static_cast<std::uint64_t>(0x8B4ED0));
 		}
 
 		namespace InventoryChanges
