@@ -7,7 +7,8 @@ namespace RE
 	class InventoryUpdateData : public IUIMessageData
 	{
 	public:
-		inline static constexpr auto RTTI = RTTI_InventoryUpdateData;
+		inline static constexpr auto             RTTI = RTTI_InventoryUpdateData;
+		inline static constexpr std::string_view CLASS_NAME = "InventoryUpdateData";
 
 		~InventoryUpdateData() override = default;  // 00
 

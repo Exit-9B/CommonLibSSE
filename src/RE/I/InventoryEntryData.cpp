@@ -70,6 +70,13 @@ namespace RE
 		extraLists->push_front(a_extra);
 	}
 
+	InventoryEntryData& InventoryEntryData::DeepCopy(const InventoryEntryData& a_other)
+	{
+		using func_t = decltype(&InventoryEntryData::DeepCopy);
+		REL::Relocation<func_t> func{ Offset::InventoryEntryData::DeepCopy };
+		return func(this, a_other);
+	}
+
 	std::optional<double> InventoryEntryData::GetEnchantmentCharge() const
 	{
 		std::optional<double> result;

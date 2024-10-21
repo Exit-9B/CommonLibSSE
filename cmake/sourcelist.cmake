@@ -1313,8 +1313,10 @@ set(SOURCES
 	include/RE/U/UI.h
 	include/RE/U/UIBlurManager.h
 	include/RE/U/UIMessage.h
+	include/RE/U/UIMessageDataFactory.h
 	include/RE/U/UIMessageQueue.h
 	include/RE/U/UISaveLoadManager.h
+	include/RE/U/UIUtils.h
 	include/RE/U/UserEventEnabled.h
 	include/RE/U/UserEvents.h
 	include/RE/V/VDescTable.h
@@ -1397,6 +1399,7 @@ set(SOURCES
 	src/RE/B/BSSystemFileStorage.cpp
 	src/RE/B/BSTArray.cpp
 	src/RE/B/BSTCreateFactoryManager.cpp
+	src/RE/B/BSUIMessageData.cpp
 	src/RE/B/BSVisit.cpp
 	src/RE/B/BSWin32KeyboardDevice.cpp
 	src/RE/B/BSWin32SaveDataSystemUtility.cpp

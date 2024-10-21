@@ -49,4 +49,10 @@ namespace RE
 		REL::Relocation<func_t> func{ Offset::Inventory3DManager::Render };
 		return func(this);
 	}
+
+	void Inventory3DManager::SetMouseRotation(bool a_active)
+	{
+		REL::Relocation<bool*> bMouseRotation{ Offset::Inventory3DManager::bMouseRotation };
+		*bMouseRotation = a_active;
+	}
 }

@@ -44,6 +44,11 @@ namespace RE
 			inline constexpr REL::Offset UnequipObject(static_cast<std::uint64_t>(0x6411A0));
 		}
 
+		namespace ActorValueInfo
+		{
+			inline constexpr REL::Offset GetActorValueName(static_cast<std::uint64_t>(0x3F0AE0));
+		}
+
 		namespace ActorValueOwner
 		{
 			inline constexpr REL::Offset GetArmorRatingSkillMultiplier(static_cast<std::uint64_t>(0x3CE200));
@@ -57,6 +62,7 @@ namespace RE
 
 		namespace AIProcess
 		{
+			inline constexpr REL::Offset ClearFurniture(static_cast<std::uint64_t>(0x6A1FE0));
 			inline constexpr REL::Offset SetBaseScale(static_cast<std::uint64_t>(0x665BD0));
 			inline constexpr REL::Offset Update3DModel(static_cast<std::uint64_t>(0x65A140));
 		}
@@ -217,6 +223,11 @@ namespace RE
 			inline constexpr REL::Offset Dtor8(static_cast<std::uint64_t>(0xC6DC70));
 			inline constexpr REL::Offset Ctor16(static_cast<std::uint64_t>(0xC6E440));
 			inline constexpr REL::Offset Dtor16(static_cast<std::uint64_t>(0xC6E550));
+		}
+
+		namespace BSFurnitureMarkerNode
+		{
+			inline constexpr REL::Offset FindBSFurnitureMarkerNode(static_cast<std::uint64_t>(0xD9D640));
 		}
 
 		namespace BSGraphics
@@ -777,6 +788,7 @@ namespace RE
 			inline constexpr REL::Offset Singleton(static_cast<std::uint64_t>(0x2FEBC80));
 			inline constexpr REL::Offset UpdateItem3D(static_cast<std::uint64_t>(0x8B4EA0));
 			inline constexpr REL::Offset UpdateObject3D(static_cast<std::uint64_t>(0x8B4ED0));
+			inline constexpr REL::Offset bMouseRotation(static_cast<std::uint64_t>(0x3013408));
 		}
 
 		namespace InventoryChanges
@@ -795,6 +807,7 @@ namespace RE
 
 		namespace InventoryEntryData
 		{
+			inline constexpr REL::Offset DeepCopy(static_cast<std::uint64_t>(0x1E67C0));
 			inline constexpr REL::Offset GetValue(static_cast<std::uint64_t>(0x1E7280));
 			inline constexpr REL::Offset IsQuestObject(static_cast<std::uint64_t>(0x1E7740));
 			inline constexpr REL::Offset IsOwnedBy(static_cast<std::uint64_t>(0x1E8130));
@@ -1274,6 +1287,11 @@ namespace RE
 			inline constexpr REL::Offset CreateUIMessageData(static_cast<std::uint64_t>(0xF1FCA0));
 			inline constexpr REL::Offset ProcessCommands(static_cast<std::uint64_t>(0xF1FBC0));
 			inline constexpr REL::Offset Singleton(static_cast<std::uint64_t>(0x1F850F8));
+		}
+
+		namespace UIUtils
+		{
+			inline constexpr REL::Offset PlayMenuSound(static_cast<std::uint64_t>(0x90B240));
 		}
 
 		namespace UserEvents

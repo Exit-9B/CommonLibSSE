@@ -46,6 +46,11 @@ namespace RE
 			inline constexpr REL::ID UnequipObject(static_cast<std::uint64_t>(38901));
 		}
 
+		namespace ActorValueInfo
+		{
+			inline constexpr REL::ID GetActorValueName(static_cast<std::uint64_t>(27192));
+		}
+
 		namespace ActorValueOwner
 		{
 			inline constexpr REL::ID GetArmorRatingSkillMultiplier(static_cast<std::uint64_t>(26424));
@@ -59,6 +64,7 @@ namespace RE
 
 		namespace AIProcess
 		{
+			inline constexpr REL::ID ClearFurniture(static_cast<std::uint64_t>(39798));
 			inline constexpr REL::ID SetBaseScale(static_cast<std::uint64_t>(39588));
 			inline constexpr REL::ID Update3DModel(static_cast<std::uint64_t>(39395));
 		}
@@ -203,6 +209,11 @@ namespace RE
 		{
 			inline constexpr REL::ID Ctor8(69161);
 			inline constexpr REL::ID Ctor16(69176);
+		}
+
+		namespace BSFurnitureMarkerNode
+		{
+			inline constexpr REL::ID FindBSFurnitureMarkerNode(static_cast<std::uint64_t>(76647));
 		}
 
 		namespace BSGraphics
@@ -759,6 +770,7 @@ namespace RE
 			inline constexpr REL::ID Singleton(static_cast<std::uint64_t>(403559));
 			inline constexpr REL::ID UpdateItem3D(static_cast<std::uint64_t>(51757));
 			inline constexpr REL::ID UpdateObject3D(static_cast<std::uint64_t>(51758));
+			inline constexpr REL::ID bMouseRotation(static_cast<std::uint64_t>(406167));
 		}
 
 		namespace InventoryChanges
@@ -777,6 +789,7 @@ namespace RE
 
 		namespace InventoryEntryData
 		{
+			inline constexpr REL::ID DeepCopy(static_cast<std::uint64_t>(15983));
 			inline constexpr REL::ID GetValue(static_cast<std::uint64_t>(15995));
 			inline constexpr REL::ID IsQuestObject(static_cast<std::uint64_t>(16005));
 			inline constexpr REL::ID IsOwnedBy(static_cast<std::uint64_t>(16020));
@@ -1249,6 +1262,11 @@ namespace RE
 			inline constexpr REL::ID CreateUIMessageData(static_cast<std::uint64_t>(82169));
 			inline constexpr REL::ID ProcessCommands(static_cast<std::uint64_t>(82167));
 			inline constexpr REL::ID Singleton(static_cast<std::uint64_t>(400445));
+		}
+
+		namespace UIUtils
+		{
+			inline constexpr REL::ID PlayMenuSound(static_cast<std::uint64_t>(52940));
 		}
 
 		namespace UserEvents

@@ -6,6 +6,13 @@
 
 namespace RE
 {
+	void AIProcess::ClearFurniture()
+	{
+		using func_t = decltype(&AIProcess::ClearFurniture);
+		static REL::Relocation<func_t> func{ Offset::AIProcess::ClearFurniture };
+		return func(this);
+	}
+
 	float AIProcess::GetCachedHeight() const
 	{
 		return high ? high->cachedActorHeight : static_cast<float>(-1.0);
