@@ -1269,6 +1269,11 @@ namespace RE
 			inline constexpr REL::Offset Vtbl(static_cast<std::uint64_t>(0x16F2378));
 		}
 
+		namespace TutorialMenu
+		{
+			inline constexpr REL::Offset TutorialsShownA(static_cast<std::uint64_t>(0x30141C8));
+		}
+
 		namespace UI
 		{
 			inline constexpr REL::Offset Singleton(static_cast<std::uint64_t>(0x1F83200));
