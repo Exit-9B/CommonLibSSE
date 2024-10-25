@@ -30,7 +30,7 @@ namespace RE
 
 		const auto file = a_message->GetFile(0);
 		const auto filename = file ? file->GetFilename() : ""sv;
-		FormID relativeID = a_message->GetFormID() & 0xFFFFFF;
+		FormID     relativeID = a_message->GetFormID() & 0xFFFFFF;
 		if (file && file->IsLight()) {
 			relativeID &= 0xFFF;
 		}
@@ -67,7 +67,7 @@ namespace RE
 		const auto uiMessageQueue = UIMessageQueue::GetSingleton();
 		uiMessageQueue->AddMessage(TutorialMenu::MENU_NAME, UI_MESSAGE_TYPE::kShow, msgData);
 
-		const auto pos = static_cast<std::uint32_t>(std::distance(std::ranges::begin(*tutorialsShown), it));
+		const auto          pos = static_cast<std::uint32_t>(std::distance(std::ranges::begin(*tutorialsShown), it));
 		const std::uint32_t oldSize = tutorialsShown->size();
 		const std::uint32_t newSize = oldSize + 1;
 		tutorialsShown->resize(newSize);
