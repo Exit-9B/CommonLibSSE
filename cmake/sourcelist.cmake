@@ -1590,6 +1590,7 @@ set(SOURCES
 	src/RE/T/TESRace.cpp
 	src/RE/T/TESTopic.cpp
 	src/RE/T/TESTopicInfo.cpp
+	src/RE/T/TESValueForm.cpp
 	src/RE/T/TESWorldSpace.cpp
 	src/RE/T/TaskQueueInterface.cpp
 	src/RE/T/ThumbstickEvent.cpp
