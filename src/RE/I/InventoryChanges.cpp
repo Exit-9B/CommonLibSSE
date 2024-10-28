@@ -43,6 +43,13 @@ namespace RE
 		return func(this);
 	}
 
+	RE::ExtraDataList* InventoryChanges::EnchantObject(RE::TESBoundObject* a_obj, RE::ExtraDataList* a_extraList, RE::EnchantmentItem* a_enchantment, uint16_t a_charge)
+	{
+		using func_t = decltype(&InventoryChanges::EnchantObject);
+		static REL::Relocation<func_t> func{ RE::Offset::InventoryChanges::EnchantObject };
+		return func(this, a_obj, a_extraList, a_enchantment, a_charge);
+	}
+
 	void InventoryChanges::SendContainerChangedEvent(ExtraDataList* a_itemExtraList, TESObjectREFR* a_fromRefr, TESForm* a_item, std::int32_t a_count)
 	{
 		using func_t = decltype(&InventoryChanges::SendContainerChangedEvent);

@@ -459,6 +459,13 @@ namespace RE
 		return boolFlags.all(BOOL_FLAGS::kIsTrespassing);
 	}
 
+	void Actor::RefreshEquippedActorValueCharge(const RE::TESForm* a_object, const RE::ExtraDataList* a_extraList, bool a_isLeft)
+	{
+		using func_t = decltype(&Actor::RefreshEquippedActorValueCharge);
+		REL::Relocation<func_t> func{ Offset::Actor::RefreshEquippedActorValueCharge };
+		return func(this, a_object, a_extraList, a_isLeft);
+	}
+
 	void Actor::RemoveExtraArrows3D()
 	{
 		extraList.RemoveByType(ExtraDataType::kAttachedArrows3D);

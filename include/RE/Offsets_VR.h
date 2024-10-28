@@ -27,6 +27,7 @@ namespace RE
 			inline constexpr REL::Offset HasPerk(static_cast<std::uint64_t>(0x6025A0));
 			inline constexpr REL::Offset InterruptCast(static_cast<std::uint64_t>(0x63AB50));
 			inline constexpr REL::Offset IsRunning(static_cast<std::uint64_t>(0x5D9770));
+			inline constexpr REL::Offset RefreshEquippedActorValueCharge(static_cast<std::uint64_t>(0x63A2A0));
 			inline constexpr REL::Offset RequestDetectionLevel(static_cast<std::uint64_t>(0x605190));
 			inline constexpr REL::Offset StealAlarm(static_cast<std::uint64_t>(0x5E5DC0));
 			inline constexpr REL::Offset SwitchRace(static_cast<std::uint64_t>(0x610000));
@@ -793,6 +794,7 @@ namespace RE
 
 		namespace InventoryChanges
 		{
+			inline constexpr REL::Offset EnchantObject(static_cast<std::uint64_t>(0x1FD500));
 			inline constexpr REL::Offset GenerateLeveledListChanges(static_cast<std::uint64_t>(0x1F1470));
 			inline constexpr REL::Offset GetNextUniqueID(static_cast<std::uint64_t>(0x1FD8A0));
 			inline constexpr REL::Offset InitFromContainerExtra(static_cast<std::uint64_t>(0x1FAB90));
@@ -1225,6 +1227,8 @@ namespace RE
 			inline constexpr REL::Offset ApplyEffectShader(static_cast<std::uint64_t>(0x2AE290));
 			inline constexpr REL::Offset GetCurrentLocation(static_cast<std::uint64_t>(0x2AABF0));
 			inline constexpr REL::Offset GetDisplayFullName(static_cast<std::uint64_t>(0x2A78F0));
+			inline constexpr REL::Offset GetInventoryItemAt(static_cast<std::uint64_t>(0x29F910));
+			inline constexpr REL::Offset GetInventoryItemCount(static_cast<std::uint64_t>(0x29F980));
 			inline constexpr REL::Offset GetLock(static_cast<std::uint64_t>(0x2B8C30));
 			inline constexpr REL::Offset GetOwner(static_cast<std::uint64_t>(0x2B7DE0));
 			inline constexpr REL::Offset GetStealValue(static_cast<std::uint64_t>(0x1E9C20));

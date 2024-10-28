@@ -292,6 +292,19 @@ namespace RE
 		return func(this, a_changes);
 	}
 
+	void ExtraDataList::SetOverrideName(const char* a_name)
+	{
+		auto textData = GetByType<RE::ExtraTextDisplayData>();
+		if (!textData) {
+			textData = new RE::ExtraTextDisplayData();
+			Add(textData);
+		}
+
+		if (!textData->displayNameText && !textData->ownerQuest) {
+			textData->SetName(a_name);
+		}
+	}
+
 	void ExtraDataList::SetOwner(TESForm* a_owner)
 	{
 		if (a_owner && a_owner->IsDynamicForm()) {

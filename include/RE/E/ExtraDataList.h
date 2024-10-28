@@ -185,6 +185,7 @@ namespace RE
 		void                  SetEnchantment(EnchantmentItem* a_enchantment, std::uint16_t a_chargeAmount, bool a_removeOnUnequip);
 		void                  SetExtraFlags(ExtraFlags::Flag a_flags, bool a_enable);
 		void                  SetInventoryChanges(InventoryChanges* a_changes);
+		void                  SetOverrideName(const char* a_name);
 		void                  SetOwner(TESForm* a_owner);
 
 	private:

@@ -28,6 +28,7 @@ namespace RE
 			inline constexpr REL::ID HasPerk(static_cast<std::uint64_t>(37698));
 			inline constexpr REL::ID InterruptCast(static_cast<std::uint64_t>(38757));
 			inline constexpr REL::ID IsRunning(static_cast<std::uint64_t>(37234));
+			inline constexpr REL::ID RefreshEquippedActorValueCharge(static_cast<std::uint64_t>(38752));
 			inline constexpr REL::ID RemoveSpell(static_cast<std::uint64_t>(38717));
 			inline constexpr REL::ID RequestDetectionLevel(static_cast<std::uint64_t>(37764));
 			inline constexpr REL::ID StealAlarm(static_cast<std::uint64_t>(37422));
@@ -775,6 +776,7 @@ namespace RE
 
 		namespace InventoryChanges
 		{
+			inline constexpr REL::ID EnchantObject(static_cast<std::uint64_t>(16146));
 			inline constexpr REL::ID GetArmorInSlot(static_cast<std::uint64_t>(16113));
 			inline constexpr REL::ID GetNextUniqueID(static_cast<std::uint64_t>(16148));
 			inline constexpr REL::ID SendContainerChangedEvent(static_cast<std::uint64_t>(16149));
@@ -1201,6 +1203,8 @@ namespace RE
 			inline constexpr REL::ID FindReferenceFor3D(static_cast<std::uint64_t>(19750));
 			inline constexpr REL::ID GetCurrentLocation(static_cast<std::uint64_t>(19812));
 			inline constexpr REL::ID GetDisplayFullName(static_cast<std::uint64_t>(19781));
+			inline constexpr REL::ID GetInventoryItemAt(static_cast<std::uint64_t>(19699));
+			inline constexpr REL::ID GetInventoryItemCount(static_cast<std::uint64_t>(19700));
 			inline constexpr REL::ID GetLock(static_cast<std::uint64_t>(20223));
 			inline constexpr REL::ID GetOwner(static_cast<std::uint64_t>(20194));
 			inline constexpr REL::ID GetStealValue(static_cast<std::uint64_t>(16045));

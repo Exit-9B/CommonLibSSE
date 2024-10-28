@@ -44,12 +44,13 @@ namespace RE
 #ifndef SKYRIMVR
 		TESObjectARMO* GetArmorInSlot(std::int32_t a_slot);
 #endif
-		std::uint16_t GetNextUniqueID();
-		void          InitFromContainerExtra();
-		void          InitLeveledItems();
-		void          InitScripts();
-		void          SendContainerChangedEvent(ExtraDataList* a_itemExtraList, TESObjectREFR* a_fromRefr, TESForm* a_item, std::int32_t a_count);
-		void          SetUniqueID(ExtraDataList* a_itemList, TESForm* a_oldForm, TESForm* a_newForm);
+		std::uint16_t      GetNextUniqueID();
+		RE::ExtraDataList* EnchantObject(RE::TESBoundObject* a_obj, RE::ExtraDataList* a_extraList, RE::EnchantmentItem* a_enchantment, uint16_t a_charge);
+		void               InitFromContainerExtra();
+		void               InitLeveledItems();
+		void               InitScripts();
+		void               SendContainerChangedEvent(ExtraDataList* a_itemExtraList, TESObjectREFR* a_fromRefr, TESForm* a_item, std::int32_t a_count);
+		void               SetUniqueID(ExtraDataList* a_itemList, TESForm* a_oldForm, TESForm* a_newForm);
 
 		[[nodiscard]] std::int32_t GetCount(const TESBoundObject* a_object, std::predicate<const InventoryEntryData*> auto a_itemFilter) const
 		{
