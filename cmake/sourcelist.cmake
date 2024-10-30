@@ -246,6 +246,7 @@ set(SOURCES
 	include/RE/B/BSNavmeshInfoMap.h
 	include/RE/B/BSNiAllocator.h
 	include/RE/B/BSNiNode.h
+	include/RE/B/BSOpenVR.h
 	include/RE/B/BSPCGamepadDeviceDelegate.h
 	include/RE/B/BSPCGamepadDeviceHandler.h
 	include/RE/B/BSPathingCell.h
@@ -305,6 +306,7 @@ set(SOURCES
 	include/RE/B/BSTriShape.h
 	include/RE/B/BSUIMessageData.h
 	include/RE/B/BSUIScaleformData.h
+	include/RE/B/BSVRInterface.h
 	include/RE/B/BSVirtualKeyboardDevice.h
 	include/RE/B/BSVisit.h
 	include/RE/B/BSVolumetricLightingRenderData.h
@@ -1349,6 +1351,13 @@ set(SOURCES
 	include/SKSE/Trampoline.h
 	include/SKSE/Translation.h
 	include/SKSE/Version.h
+	include/vr/COpenVRContext.h
+	include/vr/Hmd.h
+	include/vr/IVROverlay.h
+	include/vr/OpenVR.h
+	include/vr/OpenVRTypes.h
+	include/vr/Properties.h
+	include/vr/VREvent.h
 	src/RE/A/AIFormulas.cpp
 	src/RE/A/AIProcess.cpp
 	src/RE/A/ActiveEffect.cpp

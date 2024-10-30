@@ -427,11 +427,7 @@ namespace REL
 	class Module
 	{
 	public:
-		[[nodiscard]] static Module& get()
-		{
-			static Module singleton;
-			return singleton;
-		}
+		static Module& get();
 
 		[[nodiscard]] std::uintptr_t base() const noexcept { return _base; }
 		[[nodiscard]] stl::zwstring  filename() const noexcept { return _filename; }
@@ -447,7 +443,6 @@ namespace REL
 			return static_cast<T*>(pointer());
 		}
 
-	private:
 		Module()
 		{
 			load();
@@ -461,6 +456,7 @@ namespace REL
 		Module& operator=(const Module&) = delete;
 		Module& operator=(Module&&) = delete;
 
+	private:
 		void load()
 		{
 			auto handle = WinAPI::GetModuleHandle(static_cast<wchar_t*>(nullptr));
@@ -517,6 +513,12 @@ namespace REL
 		Version                             _version;
 		std::uintptr_t                      _base{ 0 };
 	};
+
+	inline static Module gModule;
+	inline Module&       Module::get()
+	{
+		return gModule;
+	}
 
 	class IDDatabase
 	{

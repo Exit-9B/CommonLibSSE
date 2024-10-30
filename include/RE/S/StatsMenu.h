@@ -66,9 +66,9 @@ namespace RE
 		void               PostDisplay() override;                           // 06
 
 		// override (MenuEventHandler)
-		bool CanProcess(InputEvent* a_event) override;              // 01
-		bool ProcessThumbstick(ThumbstickEvent* a_event) override;  // 03
-		bool ProcessButton(ButtonEvent* a_event) override;          // 05
+		bool ShouldHandleEvent(const InputEvent* a_event) override;  // 01
+		bool HandleEvent(const ButtonEvent* a_event) override;       // 05
+		bool HandleEvent(const ThumbstickEvent* a_event) override;   // 03
 
 		// members
 		NiCamera*                 unk040;                  // 040

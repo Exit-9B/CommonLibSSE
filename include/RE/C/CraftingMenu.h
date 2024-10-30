@@ -1,6 +1,7 @@
 #pragma once
 
 #include "RE/I/IMenu.h"
+#include "RE/M/MenuEventHandler.h"
 
 namespace RE
 {
@@ -12,7 +13,11 @@ namespace RE
 	// menuDepth = 0
 	// flags = kUsesMenuContext | kDisablePauseMenu | kUpdateUsesCursor | kInventoryItemMenu | kDontHideCursorWhenTopmost
 	// context = kItemMenu
-	class CraftingMenu : public IMenu
+	class CraftingMenu : public IMenu  // 00
+#ifdef SKYRIMVR
+		,
+						 public MenuEventHandler  // 40
+#endif
 	{
 	public:
 		inline static constexpr auto      RTTI = RTTI_CraftingMenu;
@@ -31,6 +36,6 @@ namespace RE
 #ifndef SKYRIMVR
 	static_assert(sizeof(CraftingMenu) == 0x38);
 #else
-	//static_assert(sizeof(CraftingMenu) == 0x58);
+	static_assert(sizeof(CraftingMenu) == 0x58);
 #endif
 }

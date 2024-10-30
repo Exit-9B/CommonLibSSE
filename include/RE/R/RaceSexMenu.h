@@ -28,10 +28,10 @@ namespace RE
 		void               AdvanceMovie(float a_interval, std::uint32_t a_currentTime) override;  // 05
 
 		// override (MenuEventHandler)
-		bool CanProcess(InputEvent* a_event) override = 0;          // 01
-		bool ProcessThumbstick(ThumbstickEvent* a_event) override;  // 03
-		bool ProcessMouseMove(MouseMoveEvent* a_event) override;    // 04
-		bool ProcessButton(ButtonEvent* a_event) override;          // 05
+		bool ShouldHandleEvent(const InputEvent* a_event) override = 0;  // 01
+		bool HandleEvent(const ButtonEvent* a_event) override;           // 05
+		bool HandleEvent(const MouseMoveEvent* a_event) override;        // 04
+		bool HandleEvent(const ThumbstickEvent* a_event) override;       // 03
 
 		void ChangeName(const char* a_name);
 

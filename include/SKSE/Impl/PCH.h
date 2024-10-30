@@ -749,6 +749,7 @@ namespace REL
 #	include "RE/Offsets_NiRTTI_VR.h"
 #	include "RE/Offsets_RTTI_VR.h"
 #	include "RE/Offsets_VR.h"
+#	include "vr/OpenVR.h"
 #endif
 
 #include "RE/B/BSCoreTypes.h"

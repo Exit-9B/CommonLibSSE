@@ -12,8 +12,8 @@ namespace RE
 		~MapMoveHandler() override;  // 00
 
 		// override (MapInputHandler)
-		bool CanProcess(InputEvent* a_event) override;              // 01
-		bool ProcessThumbstick(ThumbstickEvent* a_event) override;  // 03
+		bool ShouldHandleEvent(const InputEvent* a_event) override;  // 01
+		bool HandleEvent(const ThumbstickEvent* a_event) override;   // 03
 
 		// members
 		std::uint64_t unk18;  // 18

@@ -12,9 +12,9 @@ namespace RE
 		~FavoritesHandler() override;  // 00
 
 		// add
-		bool CanProcess(InputEvent* a_event) override;      // 01
-		bool ProcessKinect(KinectEvent* a_event) override;  // 02
-		bool ProcessButton(ButtonEvent* a_event) override;  // 05
+		bool ShouldHandleEvent(const InputEvent* a_event) override;  // 01
+		bool HandleEvent(const ButtonEvent* a_event) override;       // 05
+		bool HandleEvent(const KinectEvent* a_event) override;       // 02
 	};
 	static_assert(sizeof(FavoritesHandler) == 0x10);
 }

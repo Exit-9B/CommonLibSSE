@@ -28,8 +28,16 @@ namespace RE
 				kTFCMode,
 				kMapDebug,
 				kLockpicking,
+#if !defined(SKYRIMVR)
 				kCreationsMenu,  // added in 1.6.1130
+#endif
 				kFavor,
+#if defined(SKYRIMVR)
+				kUnk17,
+				kUnk18,
+				kUnk19,
+				kUnk20,
+#endif
 
 				kTotal,
 
@@ -86,7 +94,7 @@ namespace RE
 		BSFixedString kinectShout;        // 0A0 - "KinectShout"
 		BSFixedString grab;               // 0A8 - "Grab"
 		BSFixedString run;                // 0B0 - "Run"
-		BSFixedString toggleRun;          // 0B8 - "Toggle Always Run"
+		BSFixedString toggleAlwaysRun;    // 0B8 - "Toggle Always Run"
 		BSFixedString autoMove;           // 0C0 - "Auto-Move"
 		BSFixedString quicksave;          // 0C8 - "Quicksave"
 		BSFixedString quickload;          // 0D0 - "Quickload"
@@ -167,6 +175,37 @@ namespace RE
 		BSFixedString localMap;           // 328 - "LocalMap"
 		BSFixedString localMapMoveMode;   // 330 - "LocalMapMoveMode"
 		BSFixedString itemZoom;           // 338 - "Item Zoom"
+#if defined(SKYRIMVR)
+		BSFixedString vrSneakOrJump;                // 340 - "Sneak Or Jump"
+		BSFixedString vrSwitchTarget;               // 348 - "Switch Target"
+		BSFixedString vrActivateOrFavorites;        // 350 - "Activate Or Favorites"
+		BSFixedString vrTeleportOrActivate;         // 358 - "Teleport Or Activate"
+		BSFixedString vrTurnLeft;                   // 360 - "Turn Left"
+		BSFixedString vrTurnRight;                  // 368 - "Turn Right"
+		BSFixedString vrSceNavigationMode;          // 370 - "Sce Navigation Mode"
+		BSFixedString vrTabLeft;                    // 378 - "Tab Left"
+		BSFixedString vrTabRight;                   // 380 - "Tab Right"
+		BSFixedString vrTabByHandedness;            // 388 - "Tab By Handedness"
+		BSFixedString vrChangePage;                 // 390 - "Change Page"
+		BSFixedString vrLeftEquipOrTake;            // 398 - "Left Equip Or Take"
+		BSFixedString vrRightEquipOrTake;           // 3A0 - "Right Equip Or Take"
+		BSFixedString vrTakeAllOrStoreOrDropLeft;   // 3A8 - "Take All Or Store Or Drop Left"
+		BSFixedString vrTakeAllOrStoreOrDropRight;  // 3B0 - "Take All Or Store Or Drop Right"
+		BSFixedString vrToggleFavorite;             // 3B8 - "Toggle Favorite"
+		BSFixedString vrChargeOrUnlock;             // 3C0 - "Charge Or Unlock"
+		BSFixedString vrMapTeleport;                // 3C8 - "Map Teleport"
+		BSFixedString vrMapClick;                   // 3D0 - "Map Click"
+		BSFixedString vrToggleOccCulling;           // 3D8 - "ToggleOccCulling"
+		BSFixedString vrDeleteSave;                 // 3E0 - "Delete Save"
+		BSFixedString vrCancelAlt;                  // 3E8 - "Cancel Alt"
+		BSFixedString vrRightStick;                 // 3F0 - "Right Stick"
+		BSFixedString vrTweenOrReadyWeapon;         // 3F8 - "Tween Or Ready Weapon"
+		BSFixedString vrJournalOrWait;              // 400 - "Journal Or Wait"
+#endif
 	};
+#if !defined(SKYRIMVR)
 	static_assert(sizeof(UserEvents) == 0x340);
+#else
+	static_assert(sizeof(UserEvents) == 0x408);
+#endif
 }

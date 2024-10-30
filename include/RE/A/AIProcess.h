@@ -138,7 +138,7 @@ namespace RE
 		};
 		static_assert(sizeof(Data0B8) == 0x38);
 
-		void                    ClearFurniture();
+		void                    ClearFurniture(RE::Actor* a_actor);
 		float                   GetCachedHeight() const;
 		bhkCharacterController* GetCharController();
 		ActorHandle             GetCommandingActor() const;

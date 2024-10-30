@@ -22,9 +22,9 @@ namespace RE
 		UI_MESSAGE_RESULTS ProcessMessage(UIMessage& a_message) override;  // 04
 
 		// override (MenuEventHandler)
-		bool CanProcess(InputEvent* a_event) override;              // 01
-		bool ProcessThumbstick(ThumbstickEvent* a_event) override;  // 03
-		bool ProcessMouseMove(MouseMoveEvent* a_event) override;    // 04
+		bool ShouldHandleEvent(const InputEvent* a_event) override;  // 01
+		bool HandleEvent(const MouseMoveEvent* a_event) override;    // 04
+		bool HandleEvent(const ThumbstickEvent* a_event) override;   // 03
 	};
 #ifndef SKYRIMVR
 	static_assert(sizeof(CursorMenu) == 0x40);

@@ -33,8 +33,8 @@ namespace RE
 		void               PostDisplay() override;                                                // 06
 
 		// override (MenuEventHandler)
-		bool CanProcess(InputEvent* a_event) override;              // 01
-		bool ProcessThumbstick(ThumbstickEvent* a_event) override;  // 03
+		bool ShouldHandleEvent(const InputEvent* a_event) override;  // 01
+		bool HandleEvent(const ThumbstickEvent* a_event) override;   // 03
 
 		// override (BSTEventSink<BSSystemEvent>)
 		BSEventNotifyControl ProcessEvent(const BSSystemEvent* a_event, BSTEventSource<BSSystemEvent>* a_eventSource) override;  // 01

@@ -12,7 +12,11 @@ namespace RE
 		kChar,
 		kThumbstick,
 		kDeviceConnect,
-		kKinect
+		kKinect,
+#ifdef SKYRIMVR
+		kVrWandTouchpadPosition,
+		kVrWandTouchpadSwipe,
+#endif
 	};
 
 	class ButtonEvent;

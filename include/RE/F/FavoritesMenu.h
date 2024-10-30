@@ -35,9 +35,9 @@ namespace RE
 		UI_MESSAGE_RESULTS ProcessMessage(UIMessage& a_message) override;    // 04
 
 		// override (MenuEventHandler)
-		bool CanProcess(InputEvent* a_event) override;      // 01
-		bool ProcessKinect(KinectEvent* a_event) override;  // 02
-		bool ProcessButton(ButtonEvent* a_event) override;  // 05
+		bool ShouldHandleEvent(const InputEvent* a_event) override;  // 01
+		bool HandleEvent(const ButtonEvent* a_event) override;       // 05
+		bool HandleEvent(const KinectEvent* a_event) override;       // 02
 
 		// members
 		GFxValue        root;             // 40 - "Menu_mc"

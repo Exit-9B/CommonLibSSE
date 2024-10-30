@@ -1,5 +1,6 @@
 #pragma once
 
+#include "RE/B/BSString.h"
 #include "RE/F/FxDelegate.h"
 #include "RE/F/FxDelegateHandler.h"
 #include "RE/G/GFxMovieView.h"
@@ -59,7 +60,14 @@ namespace RE
 		using Context = UserEvents::INPUT_CONTEXT_ID;
 		using Flag = UI_MENU_FLAGS;
 
-		~IMenu() override = default;  // 00
+#ifdef SKYRIMVR
+		IMenu() :
+			depthPriority(4),
+			inputContext(static_cast<Context>(22))
+		{}
+#endif
+
+		~IMenu() override;  // 00
 
 		// override (FxDelegateHandler)
 		void Accept(CallbackProcessor* a_processor) override;  // 01 - { return; }
@@ -72,8 +80,15 @@ namespace RE
 		virtual void               PostDisplay();                                                // 06
 		virtual void               PreDisplay();                                                 // 07 - { return; } - only available if kRendersOffscreenTargets is set
 		virtual void               RefreshPlatform();                                            // 08
+#ifdef SKYRIMVR
+		virtual void Unk_09(std::int32_t a_arg1);  // 09
+		virtual void ResetOnShow();                // 0A
+#endif
 
-		[[nodiscard]] constexpr bool AdvancesUnderPauseMenu() const noexcept { return menuFlags.all(Flag::kAdvancesUnderPauseMenu); }
+		[[nodiscard]] constexpr bool AdvancesUnderPauseMenu() const noexcept
+		{
+			return menuFlags.all(Flag::kAdvancesUnderPauseMenu);
+		}
 		[[nodiscard]] constexpr bool AllowSaving() const noexcept { return menuFlags.all(Flag::kAllowSaving); }
 		[[nodiscard]] constexpr bool AlwaysOpen() const noexcept { return menuFlags.all(Flag::kAlwaysOpen); }
 		[[nodiscard]] constexpr bool ApplicationMenu() const noexcept { return menuFlags.all(Flag::kApplicationMenu); }
@@ -106,15 +121,17 @@ namespace RE
 		GPtr<GFxMovieView>                             uiMovie{ nullptr };              // 10
 		std::int8_t                                    depthPriority{ 3 };              // 18
 		std::uint8_t                                   pad19{ 0 };                      // 19
-		std::uint16_t                                  pad20{ 0 };                      // 1A
+		std::uint16_t                                  pad1A{ 0 };                      // 1A
 		stl::enumeration<UI_MENU_FLAGS, std::uint32_t> menuFlags{ Flag::kNone };        // 1C
 		stl::enumeration<Context, std::uint32_t>       inputContext{ Context::kNone };  // 20
 		std::uint32_t                                  pad24{ 0 };                      // 24
 		GPtr<FxDelegate>                               fxDelegate{ nullptr };           // 28
 #ifdef SKYRIMVR
-		std::int32_t  unk30;  // 30
-		std::int32_t  unk34;  // 34
-		std::uint64_t unk38;  // 38
+		std::int32_t  unkVR30{ -1 };       // 30
+		std::uint8_t  unkVR34{ 1 };        // 34
+		std::uint8_t  padVR35;             // 35
+		std::uint16_t padVR36;             // 36
+		BSFixedString unkVR38{ "N/A"sv };  // 38
 #endif
 	};
 #ifndef SKYRIMVR

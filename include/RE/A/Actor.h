@@ -340,10 +340,13 @@ namespace RE
 		BSSimpleList<ActiveEffect*>* GetActiveEffectList() override;       // 007
 
 		// add
-		virtual void                 Unk_A2(void);                                                                                                                                                                    // 0A2
-		virtual void                 PlayPickUpSound(TESBoundObject* a_object, bool a_pickup, bool a_use);                                                                                                            // 0A3
-		virtual float                GetHeading(bool a_ignoreRaceSettings) const;                                                                                                                                     // 0A4
-		virtual void                 SetAvoidanceDisabled(bool a_set);                                                                                                                                                // 0A5 - { return; }
+		virtual void  Unk_A2(void);                                                          // 0A2
+		virtual void  PlayPickUpSound(TESBoundObject* a_object, bool a_pickup, bool a_use);  // 0A3
+		virtual float GetHeading(bool a_ignoreRaceSettings) const;                           // 0A4
+		virtual void  SetAvoidanceDisabled(bool a_set);                                      // 0A5 - { return; }
+#ifdef SKYRIMVR
+		virtual void UnkVR_A7(void);  // 0A7
+#endif
 		virtual void                 DrawWeaponMagicHands(bool a_draw);                                                                                                                                               // 0A6
 		virtual void                 Unk_A7(void);                                                                                                                                                                    // 0A7
 		virtual void                 Unk_A8(void);                                                                                                                                                                    // 0A8
