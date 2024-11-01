@@ -63,7 +63,7 @@ namespace RE
 
 		namespace AIProcess
 		{
-			inline constexpr REL::Offset ClearFurniture(static_cast<std::uint64_t>(0x6A1FE0));
+			inline constexpr REL::Offset ClearFurniture(static_cast<std::uint64_t>(0x683090));
 			inline constexpr REL::Offset SetBaseScale(static_cast<std::uint64_t>(0x665BD0));
 			inline constexpr REL::Offset Update3DModel(static_cast<std::uint64_t>(0x65A140));
 		}
