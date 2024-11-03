@@ -75,10 +75,8 @@ namespace SKSE
 			stl::report_and_fail("interface is null"sv);
 		}
 
-		(void)REL::Module::get();
-#ifndef SKYRIMVR
-		(void)REL::IDDatabase::get();
-#endif
+		REL::Module::init();
+		REL::IDDatabase::init();
 
 		auto&       storage = detail::APIStorage::get();
 		const auto& intfc = *a_intfc;

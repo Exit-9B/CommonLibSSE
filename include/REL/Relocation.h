@@ -63,10 +63,10 @@ namespace REL
 		class memory_map
 		{
 		public:
-			memory_map() noexcept = default;
+			constexpr memory_map() noexcept = default;
 			memory_map(const memory_map&) = delete;
 
-			memory_map(memory_map&& a_rhs) noexcept :
+			constexpr memory_map(memory_map&& a_rhs) noexcept :
 				_mapping(a_rhs._mapping),
 				_view(a_rhs._view)
 			{
@@ -78,7 +78,7 @@ namespace REL
 
 			memory_map& operator=(const memory_map&) = delete;
 
-			memory_map& operator=(memory_map&& a_rhs) noexcept
+			constexpr memory_map& operator=(memory_map&& a_rhs) noexcept
 			{
 				if (this != std::addressof(a_rhs)) {
 					_mapping = a_rhs._mapping;
@@ -398,7 +398,7 @@ namespace REL
 			total
 		};
 
-		Segment() noexcept = default;
+		constexpr Segment() noexcept = default;
 
 		Segment(std::uintptr_t a_proxyBase, std::uintptr_t a_address, std::uintptr_t a_size) noexcept :
 			_proxyBase(a_proxyBase),
@@ -427,13 +427,19 @@ namespace REL
 	class Module
 	{
 	public:
-		static Module& get();
+		[[nodiscard]] static Module& get();
 
-		[[nodiscard]] std::uintptr_t base() const noexcept { return _base; }
-		[[nodiscard]] stl::zwstring  filename() const noexcept { return _filename; }
-		[[nodiscard]] Version        version() const noexcept { return _version; }
+		static void init()
+		{
+			_singleton.load();
+			_loaded = true;
+		}
 
-		[[nodiscard]] Segment segment(Segment::Name a_segment) const noexcept { return _segments[a_segment]; }
+		[[nodiscard]] constexpr std::uintptr_t base() const noexcept { return _base; }
+		[[nodiscard]] constexpr stl::zwstring  filename() const noexcept { return { _filename.data(), _filename.size() }; }
+		[[nodiscard]] constexpr Version        version() const noexcept { return _version; }
+
+		[[nodiscard]] constexpr Segment segment(Segment::Name a_segment) const noexcept { return _segments[a_segment]; }
 
 		[[nodiscard]] void* pointer() const noexcept { return reinterpret_cast<void*>(base()); }
 
@@ -443,20 +449,17 @@ namespace REL
 			return static_cast<T*>(pointer());
 		}
 
-		Module()
-		{
-			load();
-		}
-
 		Module(const Module&) = delete;
 		Module(Module&&) = delete;
 
-		~Module() noexcept = default;
+		constexpr ~Module() noexcept = default;
 
 		Module& operator=(const Module&) = delete;
 		Module& operator=(Module&&) = delete;
 
 	private:
+		constexpr Module() = default;
+
 		void load()
 		{
 			auto handle = WinAPI::GetModuleHandle(static_cast<wchar_t*>(nullptr));
@@ -475,7 +478,7 @@ namespace REL
 					path.data(),
 					static_cast<std::uint32_t>(path.size())));
 
-			_filename = std::filesystem::path(path).filename().c_str();
+			std::wcsncpy(_filename.data(), std::filesystem::path(path).filename().c_str(), _filename.size());
 
 			load_version();
 			load_segments();
@@ -485,7 +488,7 @@ namespace REL
 
 		void load_version()
 		{
-			const auto version = get_file_version(_filename);
+			const auto version = get_file_version(_filename.data());
 			if (version) {
 				_version = *version;
 			} else {
@@ -493,7 +496,7 @@ namespace REL
 					fmt::format(
 						"Failed to obtain file version info for: {}\n"
 						"Please contact the author of this script extender plugin for further assistance."sv,
-						stl::utf16_to_utf8(_filename).value_or("<unicode conversion error>"s)));
+						stl::utf16_to_utf8(_filename.data()).value_or("<unicode conversion error>"s)));
 			}
 		}
 
@@ -508,16 +511,24 @@ namespace REL
 			std::make_pair(".gfids"sv, static_cast<std::uint32_t>(0))
 		};
 
-		std::wstring                        _filename;
-		std::array<Segment, Segment::total> _segments;
-		Version                             _version;
-		std::uintptr_t                      _base{ 0 };
+		static Module                               _singleton;
+		inline static bool                          _loaded{ false };
+		std::array<wchar_t, SKSE::WinAPI::MAX_PATH> _filename;
+		std::array<Segment, Segment::total>         _segments;
+		Version                                     _version;
+		std::uintptr_t                              _base{ 0 };
 	};
 
-	inline static Module gModule;
-	inline Module&       Module::get()
+	inline constinit Module Module::_singleton{};
+
+	inline Module& Module::get()
 	{
-		return gModule;
+#ifndef NDEBUG
+		if (!_loaded) {
+			stl::report_and_fail("Tried to access uninitialized Module.");
+		}
+#endif
+		return _singleton;
 	}
 
 	class IDDatabase
@@ -563,10 +574,10 @@ namespace REL
 			{
 				const mapping_t elem{ 0, a_offset };
 				const auto      it = std::lower_bound(
-						 _offset2id.begin(),
-						 _offset2id.end(),
-						 elem,
-						 [](auto&& a_lhs, auto&& a_rhs) {
+                    _offset2id.begin(),
+                    _offset2id.end(),
+                    elem,
+                    [](auto&& a_lhs, auto&& a_rhs) {
                         return a_lhs.offset < a_rhs.offset;
                     });
 				if (it == _offset2id.end()) {
@@ -597,10 +608,14 @@ namespace REL
 			container_type _offset2id;
 		};
 
-		[[nodiscard]] static IDDatabase& get()
+		[[nodiscard]] static IDDatabase& get();
+
+		static void init()
 		{
-			static IDDatabase singleton;
-			return singleton;
+#ifndef SKYRIMVR
+			_singleton.load();
+			_loaded = true;
+#endif
 		}
 
 		[[nodiscard]] inline std::size_t id2offset(std::uint64_t a_id) const
@@ -624,6 +639,14 @@ namespace REL
 
 			return static_cast<std::size_t>(it->offset);
 		}
+
+		IDDatabase(const IDDatabase&) = delete;
+		IDDatabase(IDDatabase&&) = delete;
+
+		~IDDatabase() = default;
+
+		IDDatabase& operator=(const IDDatabase&) = delete;
+		IDDatabase& operator=(IDDatabase&&) = delete;
 
 	private:
 		friend Offset2ID;
@@ -667,15 +690,7 @@ namespace REL
 			std::int32_t _addressCount{ 0 };
 		};
 
-		IDDatabase() { load(); }
-
-		IDDatabase(const IDDatabase&) = delete;
-		IDDatabase(IDDatabase&&) = delete;
-
-		~IDDatabase() = default;
-
-		IDDatabase& operator=(const IDDatabase&) = delete;
-		IDDatabase& operator=(IDDatabase&&) = delete;
+		constexpr IDDatabase() = default;
 
 		void load()
 		{
@@ -811,9 +826,23 @@ namespace REL
 			}
 		}
 
+		static IDDatabase    _singleton;
+		inline static bool   _loaded{ false };
 		detail::memory_map   _mmap;
 		std::span<mapping_t> _id2offset;
 	};
+
+	inline constinit IDDatabase IDDatabase::_singleton{};
+
+	inline IDDatabase& IDDatabase::get()
+	{
+#ifndef NDEBUG
+		if (!_loaded) {
+			stl::report_and_fail("Tried to access uninitialized IDDatabase.");
+		}
+#endif
+		return _singleton;
+	}
 
 	class Offset
 	{
