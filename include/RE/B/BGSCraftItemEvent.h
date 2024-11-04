@@ -10,11 +10,7 @@ namespace RE
 	class BGSCraftItemEvent
 	{
 	public:
-		[[nodiscard]] static std::int32_t& GetIndex()
-		{
-			REL::Relocation<std::int32_t*> index{ STATIC_OFFSET(BGSCraftItemEvent::GetIndex) };
-			return *index;
-		}
+		[[nodiscard]] static std::int32_t& GetIndex();
 
 		BGSCraftItemEvent(TESObjectREFR* a_workbench, BGSLocation* a_benchLocation, TESForm* a_createdObject) :
 			workbench(BSPointerHandleManagerInterface<TESObjectREFR>::GetHandle(a_workbench)),

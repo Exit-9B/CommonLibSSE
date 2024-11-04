@@ -176,44 +176,19 @@ namespace RE
 		[[nodiscard]] virtual const char*          GetObjectTypeName() const;                                                                                                                       // 39 - { return ""; }
 		[[nodiscard]] virtual bool                 QAvailableInGame() const;                                                                                                                        // 3A - { return true; }
 
-		static void AddCompileIndex(FormID& a_id, TESFile* a_file)
-		{
-			using func_t = decltype(&TESForm::AddCompileIndex);
-			REL::Relocation<func_t> func{ STATIC_OFFSET(TESForm::AddCompileIndex) };
-			return func(a_id, a_file);
-		}
+		static void AddCompileIndex(FormID& a_id, TESFile* a_file);
 
 		[[nodiscard]] static auto GetAllForms()
 			-> std::pair<
 				BSTHashMap<FormID, TESForm*>*,
-				std::reference_wrapper<BSReadWriteLock>>
-		{
-			REL::Relocation<BSTHashMap<FormID, TESForm*>**> allForms{ STATIC_OFFSET(TESForm::AllForms) };
-			REL::Relocation<BSReadWriteLock*>               allFormsMapLock{ STATIC_OFFSET(TESForm::AllFormsMapLock) };
-			return { *allForms, std::ref(*allFormsMapLock) };
-		}
+				std::reference_wrapper<BSReadWriteLock>>;
 
 		[[nodiscard]] static auto GetAllFormsByEditorID()
 			-> std::pair<
 				BSTHashMap<BSFixedString, TESForm*>*,
-				std::reference_wrapper<BSReadWriteLock>>
-		{
-			REL::Relocation<BSTHashMap<BSFixedString, TESForm*>**> allFormsByEditorID{ STATIC_OFFSET(TESForm::AllFormsByEditorID) };
-			REL::Relocation<BSReadWriteLock*>                      allFormsEditorIDMapLock{ STATIC_OFFSET(TESForm::AllFormsEditorIDMapLock) };
-			return { *allFormsByEditorID, std::ref(*allFormsEditorIDMapLock) };
-		}
+				std::reference_wrapper<BSReadWriteLock>>;
 
-		[[nodiscard]] static TESForm* LookupByID(FormID a_formID)
-		{
-			const auto& [map, lock] = GetAllForms();
-			const BSReadWriteLock l{ lock };
-			if (map) {
-				const auto it = map->find(a_formID);
-				return it != map->end() ? it->second : nullptr;
-			} else {
-				return nullptr;
-			}
-		}
+		[[nodiscard]] static TESForm* LookupByID(FormID a_formID);
 
 		template <class T>
 		[[nodiscard]] static T* LookupByID(FormID a_formID)
@@ -222,17 +197,7 @@ namespace RE
 			return form ? form->As<T>() : nullptr;
 		}
 
-		[[nodiscard]] static TESForm* LookupByEditorID(const std::string_view& a_editorID)
-		{
-			const auto& [map, lock] = GetAllFormsByEditorID();
-			const BSReadWriteLock l{ lock };
-			if (map) {
-				const auto it = map->find(a_editorID);
-				return it != map->end() ? it->second : nullptr;
-			} else {
-				return nullptr;
-			}
-		}
+		[[nodiscard]] static TESForm* LookupByEditorID(const std::string_view& a_editorID);
 
 		template <class T>
 		[[nodiscard]] static T* LookupByEditorID(const std::string_view& a_editorID)

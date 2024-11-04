@@ -1363,17 +1363,23 @@ set(SOURCES
 	src/RE/A/ActiveEffect.cpp
 	src/RE/A/Actor.cpp
 	src/RE/A/ActorEquipManager.cpp
+	src/RE/A/ActorValueInfo.cpp
 	src/RE/A/ActorValueOwner.cpp
 	src/RE/A/AddCallbackVisitor.cpp
 	src/RE/A/ArmorRatingVisitor.cpp
 	src/RE/A/ArmorRatingVisitorBase.cpp
 	src/RE/A/Array.cpp
+	src/RE/B/BGSAddToPlayerInventoryEvent.cpp
 	src/RE/B/BGSAttackData.cpp
 	src/RE/B/BGSBaseAlias.cpp
 	src/RE/B/BGSBipedObjectForm.cpp
 	src/RE/B/BGSColorForm.cpp
 	src/RE/B/BGSConstructibleObject.cpp
+	src/RE/B/BGSCraftItemEvent.cpp
 	src/RE/B/BGSCreatedObjectManager.cpp
+	src/RE/B/BGSDefaultObjectManager.cpp
+	src/RE/B/BGSEntryPoint.cpp
+	src/RE/B/BGSEntryPointFunction.cpp
 	src/RE/B/BGSEntryPointFunctionDataActivateChoice.cpp
 	src/RE/B/BGSEntryPointPerkEntry.cpp
 	src/RE/B/BGSFootstepManager.cpp
@@ -1383,23 +1389,31 @@ set(SOURCES
 	src/RE/B/BGSLocation.cpp
 	src/RE/B/BGSOpenCloseForm.cpp
 	src/RE/B/BGSPerkEntry.cpp
+	src/RE/B/BGSSaveLoadGame.cpp
 	src/RE/B/BGSSaveLoadManager.cpp
 	src/RE/B/BGSSkillPerkTreeNode.cpp
 	src/RE/B/BGSSoundCategory.cpp
+	src/RE/B/BGSStoryEventManager.cpp
 	src/RE/B/BGSStoryTeller.cpp
 	src/RE/B/BSAtomic.cpp
 	src/RE/B/BSAudioManager.cpp
 	src/RE/B/BSEffectShaderData.cpp
 	src/RE/B/BSExtraData.cpp
+	src/RE/B/BSFaceGenAnimationData.cpp
 	src/RE/B/BSFixedString.cpp
+	src/RE/B/BSFurnitureMarkerNode.cpp
 	src/RE/B/BSHandleRefObject.cpp
 	src/RE/B/BSInputDevice.cpp
 	src/RE/B/BSInputDeviceManager.cpp
 	src/RE/B/BSInputEventQueue.cpp
 	src/RE/B/BSLightingShaderMaterialBase.cpp
+	src/RE/B/BSMusicManager.cpp
 	src/RE/B/BSPointerHandle.cpp
+	src/RE/B/BSResource.cpp
 	src/RE/B/BSResourceNiBinaryStream.cpp
 	src/RE/B/BSResponse.cpp
+	src/RE/B/BSScaleformExternalTexture.cpp
+	src/RE/B/BSScaleformImageLoader.cpp
 	src/RE/B/BSScaleformManager.cpp
 	src/RE/B/BSScaleformTranslator.cpp
 	src/RE/B/BSScriptObjectBindPolicy.cpp
@@ -1409,10 +1423,12 @@ set(SOURCES
 	src/RE/B/BSSystemFileStorage.cpp
 	src/RE/B/BSTArray.cpp
 	src/RE/B/BSTCreateFactoryManager.cpp
+	src/RE/B/BSThreadEvent.cpp
 	src/RE/B/BSUIMessageData.cpp
 	src/RE/B/BSVisit.cpp
 	src/RE/B/BSWin32KeyboardDevice.cpp
 	src/RE/B/BSWin32SaveDataSystemUtility.cpp
+	src/RE/B/BSWin32SystemUtility.cpp
 	src/RE/B/BSXFlags.cpp
 	src/RE/B/BarterMenu.cpp
 	src/RE/B/BipedAnim.cpp
@@ -1420,12 +1436,15 @@ set(SOURCES
 	src/RE/B/bhkCharProxyController.cpp
 	src/RE/C/Calendar.cpp
 	src/RE/C/ChestsLooted.cpp
+	src/RE/C/CombatUtilities.cpp
 	src/RE/C/CommandTable.cpp
 	src/RE/C/Console.cpp
 	src/RE/C/ConsoleLog.cpp
 	src/RE/C/ContainerMenu.cpp
 	src/RE/C/ControlMap.cpp
+	src/RE/D/DialogueItem.cpp
 	src/RE/E/Effect.cpp
+	src/RE/E/EffectArchetypes.cpp
 	src/RE/E/EnchantConstructMenu.cpp
 	src/RE/E/ExtraAliasInstanceArray.cpp
 	src/RE/E/ExtraAshPileRef.cpp
@@ -1475,6 +1494,7 @@ set(SOURCES
 	src/RE/G/GRenderer.cpp
 	src/RE/G/GStd.cpp
 	src/RE/G/GString.cpp
+	src/RE/G/GSysAllocPaged.cpp
 	src/RE/G/GViewport.cpp
 	src/RE/G/GameSettingCollection.cpp
 	src/RE/G/GiftMenu.cpp
@@ -1482,12 +1502,14 @@ set(SOURCES
 	src/RE/H/HUDObject.cpp
 	src/RE/H/HeapBlock.cpp
 	src/RE/H/hkBaseTypes.cpp
+	src/RE/H/hkContainerAllocators.cpp
 	src/RE/H/hkReferencedObject.cpp
 	src/RE/H/hkStringPtr.cpp
 	src/RE/H/hkpBroadPhase.cpp
 	src/RE/H/hkpCdBody.cpp
 	src/RE/H/hkpCharacterProxyListener.cpp
 	src/RE/H/hkpMaterial.cpp
+	src/RE/H/hkpWorld.cpp
 	src/RE/H/hkpWorldObject.cpp
 	src/RE/I/IAnimationGraphManagerHolder.cpp
 	src/RE/I/IFormFactory.cpp
@@ -1506,20 +1528,26 @@ set(SOURCES
 	src/RE/I/Inventory3DManager.cpp
 	src/RE/I/InventoryChanges.cpp
 	src/RE/I/InventoryEntryData.cpp
+	src/RE/I/ItemCard.cpp
 	src/RE/I/ItemCrafted.cpp
 	src/RE/I/ItemList.cpp
 	src/RE/I/ItemsPickpocketed.cpp
 	src/RE/L/LocalMapCamera.cpp
 	src/RE/L/Location.cpp
 	src/RE/L/LockpickingMenu.cpp
+	src/RE/L/LooseFileLocation.cpp
 	src/RE/L/LooseFileStream.cpp
 	src/RE/M/MagicFavorites.cpp
 	src/RE/M/MagicItem.cpp
 	src/RE/M/MagicTarget.cpp
 	src/RE/M/Main.cpp
+	src/RE/M/MemoryManager.cpp
 	src/RE/M/MemoryPage.cpp
 	src/RE/M/MenuControls.cpp
+	src/RE/M/MenuCursor.cpp
 	src/RE/M/MenuEventHandler.cpp
+	src/RE/M/MenuTopicManager.cpp
+	src/RE/M/MessageBoxData.cpp
 	src/RE/M/MiddleHighProcessData.cpp
 	src/RE/M/Misc.cpp
 	src/RE/N/NativeFunctionBase.cpp
@@ -1569,6 +1597,7 @@ set(SOURCES
 	src/RE/S/SkyrimVM.cpp
 	src/RE/S/Stack.cpp
 	src/RE/S/StackFrame.cpp
+	src/RE/S/State.cpp
 	src/RE/S/Stream.cpp
 	src/RE/S/StreamBase.cpp
 	src/RE/Skyrim.cpp
@@ -1608,6 +1637,7 @@ set(SOURCES
 	src/RE/U/UI.cpp
 	src/RE/U/UIBlurManager.cpp
 	src/RE/U/UIMessageQueue.cpp
+	src/RE/U/UIUtils.cpp
 	src/RE/U/UserEvents.cpp
 	src/RE/V/Variable.cpp
 	src/RE/V/VirtualMachine.cpp

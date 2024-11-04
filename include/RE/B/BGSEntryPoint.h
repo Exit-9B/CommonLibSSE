@@ -140,15 +140,7 @@ namespace RE
 		};
 		static_assert(sizeof(EntryPoint) == 0x20);
 
-		static EntryPoint* GetEntryPoint(ENTRY_POINT a_entryPoint)
-		{
-			if (a_entryPoint < ENTRY_POINT::kTotal) {
-				REL::Relocation<EntryPoint*> entryPoints{ STATIC_OFFSET(BGSEntryPoint::EntryPoints) };
-				return &entryPoints.get()[a_entryPoint];
-			}
-
-			return nullptr;
-		}
+		[[nodiscard]] static EntryPoint* GetEntryPoint(ENTRY_POINT a_entryPoint);
 
 		template <class... Args>
 		static void HandleEntryPoint(ENTRY_POINT a_entryPoint, Actor* a_perkOwner, Args... a_args)

@@ -21,11 +21,7 @@ namespace RE
 	class BGSAddToPlayerInventoryEvent
 	{
 	public:
-		[[nodiscard]] static std::uint32_t& GetIndex()
-		{
-			REL::Relocation<std::uint32_t*> index{ STATIC_OFFSET(BGSAddToPlayerInventoryEvent::GetIndex) };
-			return *index;
-		}
+		[[nodiscard]] static std::uint32_t& GetIndex();
 
 		// members
 		ObjectRefHandle                              ownerRef;                           // 0x00

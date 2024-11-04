@@ -910,7 +910,7 @@ namespace REL
 			clear();
 		}
 
-		void register_address(std::uint64_t a_ID, std::uintptr_t* a_offsetAddr)
+		[[msvc::noinline]] void register_address(std::uint64_t a_ID, std::uintptr_t* a_offsetAddr)
 		{
 			if (_size == _capacity) {
 				grow();

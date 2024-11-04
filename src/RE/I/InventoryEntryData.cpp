@@ -70,11 +70,11 @@ namespace RE
 		extraLists->push_front(a_extra);
 	}
 
-	InventoryEntryData& InventoryEntryData::DeepCopy(const InventoryEntryData& a_other)
+	InventoryEntryData& InventoryEntryData::DeepCopy(const InventoryEntryData& a_rhs)
 	{
 		using func_t = decltype(&InventoryEntryData::DeepCopy);
 		REL::Relocation<func_t> func{ STATIC_OFFSET(InventoryEntryData::DeepCopy) };
-		return func(this, a_other);
+		return func(this, a_rhs);
 	}
 
 	std::optional<double> InventoryEntryData::GetEnchantmentCharge() const
@@ -171,6 +171,13 @@ namespace RE
 		return SOUL_LEVEL::kNone;
 	}
 
+	std::int32_t InventoryEntryData::GetValue() const
+	{
+		using func_t = decltype(&InventoryEntryData::GetValue);
+		REL::Relocation<func_t> func{ STATIC_OFFSET(InventoryEntryData::GetValue) };
+		return func(this);
+	}
+
 	float InventoryEntryData::GetWeight() const
 	{
 		return object ? object->GetWeight() : -1.0F;
@@ -221,5 +228,36 @@ namespace RE
 		}
 
 		return false;
+	}
+
+	bool InventoryEntryData::IsOwnedBy(Actor* a_testOwner, bool a_defaultTo)
+	{
+		return IsOwnedBy(a_testOwner, GetOwner(), a_defaultTo);
+	}
+
+	bool InventoryEntryData::IsOwnedBy(Actor* a_testOwner, TESForm* a_itemOwner, bool a_defaultTo)
+	{
+		return IsOwnedBy_Impl(a_testOwner, a_itemOwner, a_defaultTo);
+	}
+
+	bool InventoryEntryData::IsOwnedBy_Impl(Actor* a_testOwner, TESForm* a_itemOwner, bool a_defaultTo)
+	{
+		using func_t = decltype(&InventoryEntryData::IsOwnedBy_Impl);
+		REL::Relocation<func_t> func{ STATIC_OFFSET(InventoryEntryData::IsOwnedBy) };
+		return func(this, a_testOwner, a_itemOwner, a_defaultTo);
+	}
+
+	bool InventoryEntryData::IsQuestObject() const
+	{
+		using func_t = decltype(&InventoryEntryData::IsQuestObject);
+		REL::Relocation<func_t> func{ STATIC_OFFSET(InventoryEntryData::IsQuestObject) };
+		return func(this);
+	}
+
+	void InventoryEntryData::SetWorn(bool a_worn, bool a_left, bool a_deleteExtraList)
+	{
+		using func_t = decltype(&InventoryEntryData::SetWorn);
+		REL::Relocation<func_t> func{ STATIC_OFFSET(InventoryEntryData::SetWorn) };
+		return func(this, a_worn, a_left, a_deleteExtraList);
 	}
 }

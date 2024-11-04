@@ -21,11 +21,7 @@ namespace RE
 		};
 		static_assert(sizeof(Allocator) == 0x8);
 
-		[[nodiscard]] static Allocator* GetSingleton()
-		{
-			REL::Relocation<hkContainerHeapAllocator::Allocator*> singleton{ STATIC_OFFSET(hkContainerHeapAllocator::Singleton) };
-			return singleton.get();
-		}
+		[[nodiscard]] static Allocator* GetSingleton();
 	};
 	static_assert(sizeof(hkContainerHeapAllocator) == 0x1);
 }

@@ -10,6 +10,7 @@
 namespace RE
 {
 	class BGSDialogueBranch;
+	class DialogueResponse;
 	class MenuOpenCloseEvent;
 	class TESQuest;
 	class TESTopic;
@@ -55,11 +56,7 @@ namespace RE
 		// override (BSTEventSink<PositionPlayerEvent>)
 		BSEventNotifyControl ProcessEvent(const PositionPlayerEvent* a_event, BSTEventSource<PositionPlayerEvent>* a_eventSource) override;  // 01
 
-		static MenuTopicManager* GetSingleton()
-		{
-			REL::Relocation<MenuTopicManager**> singleton{ STATIC_OFFSET(MenuTopicManager::Singleton) };
-			return *singleton;
-		}
+		[[nodiscard]] static MenuTopicManager* GetSingleton();
 
 		// members
 		BSSimpleList<Dialogue*>*     selectedResponseNode;  // 18

@@ -37,12 +37,7 @@ namespace RE
 		void DoAuthenticateUser() override;                                               // 10
 		bool Unk_12() override;                                                           // 12
 
-		[[nodiscard]] static BSWin32SystemUtility* GetSingleton()
-		{
-			using func_t = decltype(&BSWin32SystemUtility::GetSingleton);
-			REL::Relocation<func_t> func{ STATIC_OFFSET(BSWin32SystemUtility::GetSingleton) };
-			return func();
-		}
+		[[nodiscard]] static BSWin32SystemUtility* GetSingleton();
 
 		// members
 		SteamCallback<GameOverlayActivated_t>              steamcallback_GameOverlayActivated;               // 128

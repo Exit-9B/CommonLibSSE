@@ -7,30 +7,16 @@
 namespace RE
 {
 	class GFxMovieView;
+	class InventoryEntryData;
+	class TESForm;
 
 	struct ItemCard
 	{
 	public:
-		ItemCard(RE::GFxMovieView* a_view)
-		{
-			view.reset(a_view);
-			a_view->CreateObject(&obj);
-			//infoText.reserve(2048);
-		}
+		ItemCard(GFxMovieView* a_view);
 
-		void SetForm(const RE::TESForm* a_form)
-		{
-			using func_t = decltype(&ItemCard::SetForm);
-			REL::Relocation<func_t> func{ STATIC_OFFSET(ItemCard::SetForm) };
-			return func(this, a_form);
-		}
-
-		void SetItem(const RE::InventoryEntryData* a_item, bool a_ignoreStolen)
-		{
-			using func_t = decltype(&ItemCard::SetItem);
-			REL::Relocation<func_t> func{ STATIC_OFFSET(ItemCard::SetItem) };
-			return func(this, a_item, a_ignoreStolen);
-		}
+		void SetForm(const TESForm* a_form);
+		void SetItem(const InventoryEntryData* a_item, bool a_ignoreStolen);
 
 		TES_HEAP_REDEFINE_NEW();
 

@@ -7,11 +7,7 @@ namespace RE
 	class MenuCursor : public BSTSingletonSDM<MenuCursor>
 	{
 	public:
-		static MenuCursor* GetSingleton()
-		{
-			REL::Relocation<MenuCursor**> singleton{ STATIC_OFFSET(MenuCursor::Singleton) };
-			return *singleton;
-		}
+		[[nodiscard]] static MenuCursor* GetSingleton();
 
 		// members
 		std::uint8_t  pad01;  // 01

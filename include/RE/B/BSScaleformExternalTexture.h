@@ -14,36 +14,16 @@ namespace RE
 			pad0C(0)
 		{}
 
-		~BSScaleformExternalTexture()
-		{
-			ReleaseTexture();
-		}
+		~BSScaleformExternalTexture();
 
 		BSScaleformExternalTexture(const BSScaleformExternalTexture&) = delete;
 		BSScaleformExternalTexture(BSScaleformExternalTexture&&) = delete;
 		BSScaleformExternalTexture& operator=(const BSScaleformExternalTexture&) = delete;
 		BSScaleformExternalTexture& operator=(BSScaleformExternalTexture&&) = delete;
 
-		bool LoadPNG(const BSFixedString& a_path)
-		{
-			using func_t = decltype(&BSScaleformExternalTexture::LoadPNG);
-			REL::Relocation<func_t> func{ STATIC_OFFSET(BSScaleformExternalTexture::LoadPNG) };
-			return func(this, a_path);
-		}
-
-		void ReleaseTexture()
-		{
-			using func_t = decltype(&BSScaleformExternalTexture::ReleaseTexture);
-			REL::Relocation<func_t> func{ STATIC_OFFSET(BSScaleformExternalTexture::ReleaseTexture) };
-			return func(this);
-		}
-
-		bool SetTexture(NiTexture* a_texture)
-		{
-			using func_t = decltype(&BSScaleformExternalTexture::SetTexture);
-			REL::Relocation<func_t> func{ STATIC_OFFSET(BSScaleformExternalTexture::SetTexture) };
-			return func(this, a_texture);
-		}
+		bool LoadPNG(const BSFixedString& a_path);
+		void ReleaseTexture();
+		bool SetTexture(NiTexture* a_texture);
 
 		// members
 		NiPointer<NiTexture> gamebryoTexture;  // 00

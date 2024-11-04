@@ -179,12 +179,7 @@ namespace RE
 
 		TESNPC* GetActorOwner();
 
-		inline bhkWorld* GetbhkWorld() const
-		{
-			using func_t = decltype(&TESObjectCELL::GetbhkWorld);
-			REL::Relocation<func_t> func{ STATIC_OFFSET(TESObjectCELL::GetbhkWorld) };
-			return func(this);
-		}
+		[[nodiscard]] bhkWorld* GetbhkWorld() const;
 
 		void           ForEachReference(std::function<bool(TESObjectREFR&)> a_callback) const;
 		void           ForEachReferenceInRange(const NiPoint3& a_origin, float a_radius, std::function<bool(TESObjectREFR&)> a_callback) const;

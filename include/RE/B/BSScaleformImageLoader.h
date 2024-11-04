@@ -30,19 +30,8 @@ namespace RE
 		// override (GFxImageLoader)
 		GImageInfoBase* LoadImage(const char* a_url) override;  // 01
 
-		bool AddTexture(BSScaleformExternalTexture& a_texture)
-		{
-			using func_t = decltype(&BSScaleformImageLoader::AddTexture);
-			REL::Relocation<func_t> func{ STATIC_OFFSET(BSScaleformImageLoader::AddTexture) };
-			return func(this, a_texture);
-		}
-
-		void RemoveTexture(BSScaleformExternalTexture& a_texture)
-		{
-			using func_t = decltype(&BSScaleformImageLoader::RemoveTexture);
-			REL::Relocation<func_t> func{ STATIC_OFFSET(BSScaleformImageLoader::RemoveTexture) };
-			return func(this, a_texture);
-		}
+		bool AddTexture(BSScaleformExternalTexture& a_texture);
+		void RemoveTexture(BSScaleformExternalTexture& a_texture);
 
 		// members
 		BSTHashMap<std::uint32_t, TextureEntry> textures;  // 18

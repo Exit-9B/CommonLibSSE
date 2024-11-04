@@ -1,5 +1,6 @@
 #pragma once
 
+#include "RE/A/ActorValues.h"
 #include "RE/B/BSFixedString.h"
 #include "RE/F/FormTypes.h"
 #include "RE/T/TESDescription.h"
@@ -52,12 +53,7 @@ namespace RE
 		// override (TESIcon)
 		[[nodiscard]] const char* GetDefaultPath() const override;  // 06 - { return "Textures\\"; }
 
-		[[nodiscard]] static const char* GetActorValueName(ActorValue a_actorValue)
-		{
-			using func_t = decltype(&ActorValueInfo::GetActorValueName);
-			REL::Relocation<func_t> func{ STATIC_OFFSET(ActorValueInfo::GetActorValueName) };
-			return func(a_actorValue);
-		}
+		[[nodiscard]] static const char* GetActorValueName(ActorValue a_actorValue);
 
 		// members
 		const char*           enumName;       // 050

@@ -84,30 +84,10 @@ namespace RE
 		};
 		static_assert(sizeof(ArchetypeDef) == 0x18);
 
-		static ArchetypeDef& GetArchetypeDef(ArchetypeID a_id)
-		{
-			REL::Relocation<ArchetypeDef*> archetypes{ STATIC_OFFSET(EffectArchetypes::Archetypes) };
-			return archetypes.get()[stl::to_underlying(a_id)];
-		}
-
-		static const char* GetArchetypeName(ArchetypeID a_id)
-		{
-			return GetArchetypeDef(a_id).name;
-		}
-
-		static FormType GetAssociatedFormType(ArchetypeID a_id)
-		{
-			return GetArchetypeDef(a_id).associatedFormType;
-		}
-
-		static ActorValue GetFixedActorValue(ArchetypeID a_id)
-		{
-			return GetArchetypeDef(a_id).fixedActorValue;
-		}
-
-		static bool IsFlagSet(ArchetypeID a_id, Flags a_flag)
-		{
-			return GetArchetypeDef(a_id).flags.all(a_flag);
-		}
+		[[nodiscard]] static ArchetypeDef& GetArchetypeDef(ArchetypeID a_id);
+		[[nodiscard]] static const char*   GetArchetypeName(ArchetypeID a_id);
+		[[nodiscard]] static FormType      GetAssociatedFormType(ArchetypeID a_id);
+		[[nodiscard]] static ActorValue    GetFixedActorValue(ArchetypeID a_id);
+		[[nodiscard]] static bool          IsFlagSet(ArchetypeID a_id, Flags a_flag);
 	};
 }

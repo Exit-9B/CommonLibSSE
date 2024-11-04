@@ -207,7 +207,7 @@ namespace RE
 	public:
 		using value_type = T;
 
-		static BSPointerHandle<T> GetHandle(T* a_ptr)
+		[[nodiscard]] static BSPointerHandle<T> GetHandle(T* a_ptr)
 		{
 			using func_t = decltype(&BSPointerHandleManagerInterface<T, Manager>::GetHandle);
 			REL::Relocation<func_t> func{ STATIC_OFFSET(BSPointerHandleManagerInterface::GetHandle) };

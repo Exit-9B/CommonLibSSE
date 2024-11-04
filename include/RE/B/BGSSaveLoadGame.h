@@ -2,8 +2,10 @@
 
 #include "RE/B/BGSConstructFormsInAllFilesMap.h"
 #include "RE/B/BGSFormChanges.h"
+#include "RE/B/BGSLoadGameSubBuffer.h"
 #include "RE/B/BSAtomic.h"
 #include "RE/B/BSCoreTypes.h"
+#include "RE/B/BSPointerHandle.h"
 #include "RE/B/BSTArray.h"
 #include "RE/B/BSTHashMap.h"
 #include "RE/T/TESDataHandler.h"
@@ -90,11 +92,7 @@ namespace RE
 			kPlayerLocationInvalid = 1 << 6
 		};
 
-		static BGSSaveLoadGame* GetSingleton()
-		{
-			REL::Relocation<BGSSaveLoadGame**> singleton{ STATIC_OFFSET(BGSSaveLoadGame::Singleton) };
-			return *singleton;
-		}
+		[[nodiscard]] static BGSSaveLoadGame* GetSingleton();
 
 		[[nodiscard]] bool GetGlobalAllowChanges() const noexcept { return globalFlags.all(GlobalFlags::kAllowChanges); }
 		[[nodiscard]] bool GetSaveGameLoading() const noexcept { return globalFlags.all(GlobalFlags::kSaveGameLoading); }

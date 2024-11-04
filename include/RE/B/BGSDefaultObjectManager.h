@@ -429,12 +429,7 @@ namespace RE
 		bool Load(TESFile* a_mod) override;  // 06
 		void InitItemImpl() override;        // 13
 
-		[[nodiscard]] static BGSDefaultObjectManager* GetSingleton()
-		{
-			using func_t = decltype(&BGSDefaultObjectManager::GetSingleton);
-			REL::Relocation<func_t> func{ STATIC_OFFSET(BGSDefaultObjectManager::GetSingleton) };
-			return func();
-		}
+		[[nodiscard]] static BGSDefaultObjectManager* GetSingleton();
 
 		[[nodiscard]] TESForm* GetObject(DefaultObject a_object) const noexcept { return GetObject(stl::to_underlying(a_object)); }
 

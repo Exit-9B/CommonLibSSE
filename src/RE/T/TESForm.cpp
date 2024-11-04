@@ -77,4 +77,55 @@ namespace RE
 	{
 		return As<TESModel>() != nullptr;
 	}
+
+	void TESForm::AddCompileIndex(FormID& a_id, TESFile* a_file)
+	{
+		using func_t = decltype(&TESForm::AddCompileIndex);
+		REL::Relocation<func_t> func{ STATIC_OFFSET(TESForm::AddCompileIndex) };
+		return func(a_id, a_file);
+	}
+
+	auto TESForm::GetAllForms()
+		-> std::pair<
+			BSTHashMap<FormID, TESForm*>*,
+			std::reference_wrapper<BSReadWriteLock>>
+	{
+		REL::Relocation<BSTHashMap<FormID, TESForm*>**> allForms{ STATIC_OFFSET(TESForm::AllForms) };
+		REL::Relocation<BSReadWriteLock*>               allFormsMapLock{ STATIC_OFFSET(TESForm::AllFormsMapLock) };
+		return { *allForms, std::ref(*allFormsMapLock) };
+	}
+
+	auto TESForm::GetAllFormsByEditorID()
+		-> std::pair<
+			BSTHashMap<BSFixedString, TESForm*>*,
+			std::reference_wrapper<BSReadWriteLock>>
+	{
+		REL::Relocation<BSTHashMap<BSFixedString, TESForm*>**> allFormsByEditorID{ STATIC_OFFSET(TESForm::AllFormsByEditorID) };
+		REL::Relocation<BSReadWriteLock*>                      allFormsEditorIDMapLock{ STATIC_OFFSET(TESForm::AllFormsEditorIDMapLock) };
+		return { *allFormsByEditorID, std::ref(*allFormsEditorIDMapLock) };
+	}
+
+	TESForm* TESForm::LookupByID(FormID a_formID)
+	{
+		const auto& [map, lock] = GetAllForms();
+		const BSReadWriteLock l{ lock };
+		if (map) {
+			const auto it = map->find(a_formID);
+			return it != map->end() ? it->second : nullptr;
+		} else {
+			return nullptr;
+		}
+	}
+
+	TESForm* TESForm::LookupByEditorID(const std::string_view& a_editorID)
+	{
+		const auto& [map, lock] = GetAllFormsByEditorID();
+		const BSReadWriteLock l{ lock };
+		if (map) {
+			const auto it = map->find(a_editorID);
+			return it != map->end() ? it->second : nullptr;
+		} else {
+			return nullptr;
+		}
+	}
 }
