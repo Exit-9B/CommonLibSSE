@@ -4,7 +4,7 @@ namespace RE
 {
 	BSInputEventQueue* BSInputEventQueue::GetSingleton()
 	{
-		REL::Relocation<BSInputEventQueue**> singleton{ Offset::BSInputEventQueue::Singleton };
+		REL::Relocation<BSInputEventQueue**> singleton{ STATIC_OFFSET(BSInputEventQueue::Singleton) };
 		return *singleton;
 	}
 

@@ -43,21 +43,21 @@ namespace RE
 	TESObjectREFR* TESObjectREFR::FindReferenceFor3D(NiAVObject* a_object3D)
 	{
 		using func_t = decltype(&TESObjectREFR::FindReferenceFor3D);
-		REL::Relocation<func_t> func{ Offset::TESObjectREFR::FindReferenceFor3D };
+		REL::Relocation<func_t> func{ STATIC_OFFSET(TESObjectREFR::FindReferenceFor3D) };
 		return func(a_object3D);
 	}
 
 	ModelReferenceEffect* TESObjectREFR::ApplyArtObject(BGSArtObject* a_artObject, float a_duration, TESObjectREFR* a_facingRef, bool a_faceTarget, bool a_attachToCamera, NiAVObject* a_attachNode, bool a_interfaceEffect)
 	{
 		using func_t = decltype(&TESObjectREFR::ApplyArtObject);
-		REL::Relocation<func_t> func{ Offset::TESObjectREFR::ApplyArtObject };
+		REL::Relocation<func_t> func{ STATIC_OFFSET(TESObjectREFR::ApplyArtObject) };
 		return func(this, a_artObject, a_duration, a_facingRef, a_faceTarget, a_attachToCamera, a_attachNode, a_interfaceEffect);
 	}
 
 	ShaderReferenceEffect* TESObjectREFR::ApplyEffectShader(TESEffectShader* a_effectShader, float a_duration, TESObjectREFR* a_facingRef, bool a_faceTarget, bool a_attachToCamera, NiAVObject* a_attachNode, bool a_interfaceEffect)
 	{
 		using func_t = decltype(&TESObjectREFR::ApplyEffectShader);
-		REL::Relocation<func_t> func{ Offset::TESObjectREFR::ApplyEffectShader };
+		REL::Relocation<func_t> func{ STATIC_OFFSET(TESObjectREFR::ApplyEffectShader) };
 		return func(this, a_effectShader, a_duration, a_facingRef, a_faceTarget, a_attachToCamera, a_attachNode, a_interfaceEffect);
 	}
 
@@ -156,14 +156,14 @@ namespace RE
 	BGSLocation* TESObjectREFR::GetCurrentLocation() const
 	{
 		using func_t = decltype(&TESObjectREFR::GetCurrentLocation);
-		REL::Relocation<func_t> func{ RE::Offset::TESObjectREFR::GetCurrentLocation };
+		REL::Relocation<func_t> func{ STATIC_OFFSET(TESObjectREFR::GetCurrentLocation) };
 		return func(this);
 	}
 
 	const char* TESObjectREFR::GetDisplayFullName()
 	{
 		using func_t = decltype(&TESObjectREFR::GetDisplayFullName);
-		REL::Relocation<func_t> func{ Offset::TESObjectREFR::GetDisplayFullName };
+		REL::Relocation<func_t> func{ STATIC_OFFSET(TESObjectREFR::GetDisplayFullName) };
 		return func(this);
 	}
 
@@ -369,14 +369,14 @@ namespace RE
 	RE::InventoryEntryData* TESObjectREFR::GetInventoryItemAt(std::int32_t a_index, bool a_isViewingContainer) const
 	{
 		using func_t = decltype(&TESObjectREFR::GetInventoryItemAt);
-		REL::Relocation<func_t> func{ Offset::TESObjectREFR::GetInventoryItemAt };
+		REL::Relocation<func_t> func{ STATIC_OFFSET(TESObjectREFR::GetInventoryItemAt) };
 		return func(this, a_index, a_isViewingContainer);
 	}
 
 	std::int32_t TESObjectREFR::GetInventoryItemCount(bool a_isViewingContainer, bool a_playable) const
 	{
 		using func_t = decltype(&TESObjectREFR::GetInventoryItemCount);
-		REL::Relocation<func_t> func{ Offset::TESObjectREFR::GetInventoryItemCount };
+		REL::Relocation<func_t> func{ STATIC_OFFSET(TESObjectREFR::GetInventoryItemCount) };
 		return func(this, a_isViewingContainer, a_playable);
 	}
 
@@ -388,7 +388,7 @@ namespace RE
 	REFR_LOCK* TESObjectREFR::GetLock() const
 	{
 		using func_t = decltype(&TESObjectREFR::GetLock);
-		REL::Relocation<func_t> func{ Offset::TESObjectREFR::GetLock };
+		REL::Relocation<func_t> func{ STATIC_OFFSET(TESObjectREFR::GetLock) };
 		return func(this);
 	}
 
@@ -413,7 +413,7 @@ namespace RE
 	TESForm* TESObjectREFR::GetOwner() const
 	{
 		using func_t = decltype(&TESObjectREFR::GetOwner);
-		REL::Relocation<func_t> func{ Offset::TESObjectREFR::GetOwner };
+		REL::Relocation<func_t> func{ STATIC_OFFSET(TESObjectREFR::GetOwner) };
 		return func(this);
 	}
 
@@ -436,7 +436,7 @@ namespace RE
 	std::uint32_t TESObjectREFR::GetStealValue(const InventoryEntryData* a_entryData, std::uint32_t a_numItems, bool a_useMult) const
 	{
 		using func_t = decltype(&TESObjectREFR::GetStealValue);
-		REL::Relocation<func_t> func{ Offset::TESObjectREFR::GetStealValue };
+		REL::Relocation<func_t> func{ STATIC_OFFSET(TESObjectREFR::GetStealValue) };
 		return func(this, a_entryData, a_numItems, a_useMult);
 	}
 
@@ -449,7 +449,7 @@ namespace RE
 	float TESObjectREFR::GetWeightInContainer()
 	{
 		using func_t = decltype(&TESObjectREFR::GetWeightInContainer);
-		REL::Relocation<func_t> func{ Offset::TESObjectREFR::GetWeightInContainer };
+		REL::Relocation<func_t> func{ STATIC_OFFSET(TESObjectREFR::GetWeightInContainer) };
 		return func(this);
 	}
 
@@ -485,21 +485,21 @@ namespace RE
 	bool TESObjectREFR::HasQuestObject() const
 	{
 		using func_t = decltype(&TESObjectREFR::HasQuestObject);
-		REL::Relocation<func_t> func{ Offset::TESObjectREFR::HasQuestObject };
+		REL::Relocation<func_t> func{ STATIC_OFFSET(TESObjectREFR::HasQuestObject) };
 		return func(this);
 	}
 
 	void TESObjectREFR::InitChildActivates(TESObjectREFR* a_actionRef)
 	{
 		using func_t = decltype(&TESObjectREFR::InitChildActivates);
-		REL::Relocation<func_t> func{ Offset::TESObjectREFR::InitChildActivates };
+		REL::Relocation<func_t> func{ STATIC_OFFSET(TESObjectREFR::InitChildActivates) };
 		return func(this, a_actionRef);
 	}
 
 	bool TESObjectREFR::InitInventoryIfRequired(bool a_ignoreContainerExtraData)
 	{
 		using func_t = decltype(&TESObjectREFR::InitInventoryIfRequired);
-		REL::Relocation<func_t> func{ Offset::TESObjectREFR::InitInventoryIfRequired };
+		REL::Relocation<func_t> func{ STATIC_OFFSET(TESObjectREFR::InitInventoryIfRequired) };
 		return func(this, a_ignoreContainerExtraData);
 	}
 
@@ -517,14 +517,14 @@ namespace RE
 	bool TESObjectREFR::IsAnOwner(const Actor* a_testOwner, bool a_useFaction, bool a_requiresOwner) const
 	{
 		using func_t = decltype(&TESObjectREFR::IsAnOwner);
-		REL::Relocation<func_t> func{ Offset::TESObjectREFR::IsAnOwner };
+		REL::Relocation<func_t> func{ STATIC_OFFSET(TESObjectREFR::IsAnOwner) };
 		return func(this, a_testOwner, a_useFaction, a_requiresOwner);
 	}
 
 	bool TESObjectREFR::IsCrimeToActivate()
 	{
 		using func_t = decltype(&TESObjectREFR::IsCrimeToActivate);
-		REL::Relocation<func_t> func{ Offset::TESObjectREFR::IsCrimeToActivate };
+		REL::Relocation<func_t> func{ STATIC_OFFSET(TESObjectREFR::IsCrimeToActivate) };
 		return func(this);
 	}
 
@@ -715,21 +715,21 @@ namespace RE
 	InventoryChanges* TESObjectREFR::MakeInventoryChanges()
 	{
 		using func_t = decltype(&TESObjectREFR::MakeInventoryChanges);
-		REL::Relocation<func_t> func{ Offset::TESObjectREFR::MakeInventoryChanges };
+		REL::Relocation<func_t> func{ STATIC_OFFSET(TESObjectREFR::MakeInventoryChanges) };
 		return func(this);
 	}
 
 	void TESObjectREFR::MoveTo_Impl(const ObjectRefHandle& a_targetHandle, TESObjectCELL* a_targetCell, TESWorldSpace* a_selfWorldSpace, const NiPoint3& a_position, const NiPoint3& a_rotation)
 	{
 		using func_t = decltype(&TESObjectREFR::MoveTo_Impl);
-		REL::Relocation<func_t> func{ Offset::TESObjectREFR::MoveTo };
+		REL::Relocation<func_t> func{ STATIC_OFFSET(TESObjectREFR::MoveTo) };
 		return func(this, a_targetHandle, a_targetCell, a_selfWorldSpace, a_position, a_rotation);
 	}
 
 	void TESObjectREFR::PlayAnimation_Impl(NiControllerManager* a_manager, NiControllerSequence* a_toSeq, NiControllerSequence* a_fromSeq, bool a_arg4)
 	{
 		using func_t = decltype(&TESObjectREFR::PlayAnimation_Impl);
-		REL::Relocation<func_t> func{ Offset::TESObjectREFR::PlayAnimation };
+		REL::Relocation<func_t> func{ STATIC_OFFSET(TESObjectREFR::PlayAnimation) };
 		return func(this, a_manager, a_toSeq, a_fromSeq, a_arg4);
 	}
 }

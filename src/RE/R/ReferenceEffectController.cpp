@@ -81,7 +81,7 @@ namespace RE
 	void ReferenceEffectController::Start(ReferenceEffect** a_effectOut)
 	{
 		using func_t = decltype(&ReferenceEffectController::Start);
-		static REL::Relocation<func_t> func{ RE::Offset::ReferenceEffectController::Start };
+		REL::Relocation<func_t> func{ STATIC_OFFSET(ReferenceEffectController::Start) };
 		return func(this, a_effectOut);
 	}
 

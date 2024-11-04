@@ -11,7 +11,7 @@ namespace RE
 	void BSShaderProperty::SetMaterial(BSShaderMaterial* a_material, bool a_arg2)
 	{
 		using func_t = decltype(&BSShaderProperty::SetMaterial);
-		REL::Relocation<func_t> func{ Offset::BSShaderProperty::SetMaterial };
+		REL::Relocation<func_t> func{ STATIC_OFFSET(BSShaderProperty::SetMaterial) };
 		return func(this, a_material, a_arg2);
 	}
 }

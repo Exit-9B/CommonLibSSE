@@ -40,7 +40,7 @@ namespace RE
 	bool Actor::AddSpell(SpellItem* a_spell)
 	{
 		using func_t = decltype(&Actor::AddSpell);
-		REL::Relocation<func_t> func{ Offset::Actor::AddSpell };
+		REL::Relocation<func_t> func{ STATIC_OFFSET(Actor::AddSpell) };
 		return func(this, a_spell);
 	}
 
@@ -117,21 +117,21 @@ namespace RE
 	void Actor::DispelWornItemEnchantments()
 	{
 		using func_t = decltype(&Actor::DispelWornItemEnchantments);
-		REL::Relocation<func_t> func{ Offset::Actor::DispelWornItemEnchantments };
+		REL::Relocation<func_t> func{ STATIC_OFFSET(Actor::DispelWornItemEnchantments) };
 		return func(this);
 	}
 
 	void Actor::DoReset3D(bool a_updateWeight)
 	{
 		using func_t = decltype(&Actor::DoReset3D);
-		REL::Relocation<func_t> func{ Offset::Actor::DoReset3D };
+		REL::Relocation<func_t> func{ STATIC_OFFSET(Actor::DoReset3D) };
 		return func(this, a_updateWeight);
 	}
 
 	void Actor::EvaluatePackage(bool a_immediate, bool a_resetAI)
 	{
 		using func_t = decltype(&Actor::EvaluatePackage);
-		REL::Relocation<func_t> func{ Offset::Actor::EvaluatePackage };
+		REL::Relocation<func_t> func{ STATIC_OFFSET(Actor::EvaluatePackage) };
 		return func(this, a_immediate, a_resetAI);
 	}
 
@@ -270,7 +270,7 @@ namespace RE
 	std::uint16_t Actor::GetLevel() const
 	{
 		using func_t = decltype(&Actor::GetLevel);
-		REL::Relocation<func_t> func{ Offset::Actor::GetLevel };
+		REL::Relocation<func_t> func{ STATIC_OFFSET(Actor::GetLevel) };
 		return func(this);
 	}
 
@@ -340,14 +340,14 @@ namespace RE
 	bool Actor::HasPerk(BGSPerk* a_perk) const
 	{
 		using func_t = decltype(&Actor::HasPerk);
-		REL::Relocation<func_t> func{ Offset::Actor::HasPerk };
+		REL::Relocation<func_t> func{ STATIC_OFFSET(Actor::HasPerk) };
 		return func(this, a_perk);
 	}
 
 	void Actor::InterruptCast(bool a_restoreMagicka) const
 	{
 		using func_t = decltype(&Actor::InterruptCast);
-		REL::Relocation<func_t> func{ Offset::Actor::InterruptCast };
+		REL::Relocation<func_t> func{ STATIC_OFFSET(Actor::InterruptCast) };
 		return func(this, a_restoreMagicka);
 	}
 
@@ -399,7 +399,7 @@ namespace RE
 	bool Actor::IsGhost() const
 	{
 		using func_t = decltype(&Actor::IsGhost);
-		REL::Relocation<func_t> func{ Offset::Actor::GetGhost };
+		REL::Relocation<func_t> func{ STATIC_OFFSET(Actor::GetGhost) };
 		return func(this);
 	}
 
@@ -411,7 +411,7 @@ namespace RE
 	bool Actor::IsHostileToActor(Actor* a_actor)
 	{
 		using func_t = decltype(&Actor::IsHostileToActor);
-		REL::Relocation<func_t> func{ Offset::Actor::GetHostileToActor };
+		REL::Relocation<func_t> func{ STATIC_OFFSET(Actor::GetHostileToActor) };
 		return func(this, a_actor);
 	}
 
@@ -428,7 +428,7 @@ namespace RE
 	bool Actor::IsRunning() const
 	{
 		using func_t = decltype(&Actor::IsRunning);
-		REL::Relocation<func_t> func{ Offset::Actor::IsRunning };
+		REL::Relocation<func_t> func{ STATIC_OFFSET(Actor::IsRunning) };
 		return func(this);
 	}
 
@@ -462,7 +462,7 @@ namespace RE
 	void Actor::RefreshEquippedActorValueCharge(const RE::TESForm* a_object, const RE::ExtraDataList* a_extraList, bool a_isLeft)
 	{
 		using func_t = decltype(&Actor::RefreshEquippedActorValueCharge);
-		REL::Relocation<func_t> func{ Offset::Actor::RefreshEquippedActorValueCharge };
+		REL::Relocation<func_t> func{ STATIC_OFFSET(Actor::RefreshEquippedActorValueCharge) };
 		return func(this, a_object, a_extraList, a_isLeft);
 	}
 
@@ -474,35 +474,35 @@ namespace RE
 	bool Actor::RemoveSpell(SpellItem* a_spell)
 	{
 		using func_t = decltype(&Actor::RemoveSpell);
-		REL::Relocation<func_t> func{ Offset::Actor::RemoveSpell };
+		REL::Relocation<func_t> func{ STATIC_OFFSET(Actor::RemoveSpell) };
 		return func(this, a_spell);
 	}
 
 	std::int32_t Actor::RequestDetectionLevel(Actor* a_target, DETECTION_PRIORITY a_priority)
 	{
 		using func_t = decltype(&Actor::RequestDetectionLevel);
-		REL::Relocation<func_t> func{ Offset::Actor::RequestDetectionLevel };
+		REL::Relocation<func_t> func{ STATIC_OFFSET(Actor::RequestDetectionLevel) };
 		return func(this, a_target, a_priority);
 	}
 
 	void Actor::StealAlarm(TESObjectREFR* a_ref, TESForm* a_object, std::int32_t a_num, std::int32_t a_total, TESForm* a_owner, bool a_allowWarning)
 	{
 		using func_t = decltype(&Actor::StealAlarm);
-		REL::Relocation<func_t> func{ Offset::Actor::StealAlarm };
+		REL::Relocation<func_t> func{ STATIC_OFFSET(Actor::StealAlarm) };
 		return func(this, a_ref, a_object, a_num, a_total, a_owner, a_allowWarning);
 	}
 
 	void Actor::SwitchRace(TESRace* a_race, bool a_player)
 	{
 		using func_t = decltype(&Actor::SwitchRace);
-		REL::Relocation<func_t> func{ Offset::Actor::SwitchRace };
+		REL::Relocation<func_t> func{ STATIC_OFFSET(Actor::SwitchRace) };
 		return func(this, a_race, a_player);
 	}
 
 	void Actor::UpdateArmorAbility(TESForm* a_armor, ExtraDataList* a_extraData)
 	{
 		using func_t = decltype(&Actor::UpdateArmorAbility);
-		REL::Relocation<func_t> func{ Offset::Actor::UpdateArmorAbility };
+		REL::Relocation<func_t> func{ STATIC_OFFSET(Actor::UpdateArmorAbility) };
 		return func(this, a_armor, a_extraData);
 	}
 
@@ -556,7 +556,7 @@ namespace RE
 	void Actor::UpdateWeaponAbility(TESForm* a_weapon, ExtraDataList* a_extraData, bool a_leftHand)
 	{
 		using func_t = decltype(&Actor::UpdateWeaponAbility);
-		REL::Relocation<func_t> func{ Offset::Actor::UpdateWeaponAbility };
+		REL::Relocation<func_t> func{ STATIC_OFFSET(Actor::UpdateWeaponAbility) };
 		return func(this, a_weapon, a_extraData, a_leftHand);
 	}
 

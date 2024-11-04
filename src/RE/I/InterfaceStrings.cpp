@@ -4,7 +4,7 @@ namespace RE
 {
 	InterfaceStrings* InterfaceStrings::GetSingleton()
 	{
-		REL::Relocation<InterfaceStrings**> singleton{ Offset::InterfaceStrings::Singleton };
+		REL::Relocation<InterfaceStrings**> singleton{ STATIC_OFFSET(InterfaceStrings::Singleton) };
 		return *singleton;
 	}
 }

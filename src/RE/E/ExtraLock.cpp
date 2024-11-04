@@ -6,7 +6,7 @@ namespace RE
 	{
 		if (IsLocked()) {
 			using func_t = decltype(&REFR_LOCK::GetLockLevel);
-			REL::Relocation<func_t> func{ Offset::ExtraLock::GetLockLevel };
+			REL::Relocation<func_t> func{ STATIC_OFFSET(ExtraLock::GetLockLevel) };
 			return func(this, a_containerRef);
 		} else {
 			return LOCK_LEVEL::kUnlocked;

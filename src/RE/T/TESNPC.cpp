@@ -12,14 +12,14 @@ namespace RE
 	void TESNPC::ChangeHeadPart(BGSHeadPart* a_target)
 	{
 		using func_t = decltype(&TESNPC::ChangeHeadPart);
-		REL::Relocation<func_t> func{ Offset::TESNPC::ChangeHeadPart };
+		REL::Relocation<func_t> func{ STATIC_OFFSET(TESNPC::ChangeHeadPart) };
 		return func(this, a_target);
 	}
 
 	BGSHeadPart** TESNPC::GetBaseOverlays() const
 	{
 		using func_t = decltype(&TESNPC::GetBaseOverlays);
-		REL::Relocation<func_t> func{ Offset::TESNPC::GetBaseOverlays };
+		REL::Relocation<func_t> func{ STATIC_OFFSET(TESNPC::GetBaseOverlays) };
 		return func(this);
 	}
 
@@ -78,7 +78,7 @@ namespace RE
 	std::uint32_t TESNPC::GetNumBaseOverlays() const
 	{
 		using func_t = decltype(&TESNPC::GetNumBaseOverlays);
-		REL::Relocation<func_t> func{ Offset::TESNPC::GetNumBaseOverlays };
+		REL::Relocation<func_t> func{ STATIC_OFFSET(TESNPC::GetNumBaseOverlays) };
 		return func(this);
 	}
 
@@ -113,7 +113,7 @@ namespace RE
 	bool TESNPC::HasOverlays()
 	{
 		using func_t = decltype(&TESNPC::HasOverlays);
-		REL::Relocation<func_t> func{ Offset::TESNPC::HasOverlays };
+		REL::Relocation<func_t> func{ STATIC_OFFSET(TESNPC::HasOverlays) };
 		return func(this);
 	}
 
@@ -142,14 +142,14 @@ namespace RE
 	void TESNPC::SetSkinFromTint(NiColorA* a_result, TintMask* a_tintMask, bool a_fromTint)
 	{
 		using func_t = decltype(&TESNPC::SetSkinFromTint);
-		REL::Relocation<func_t> func{ Offset::TESNPC::SetSkinFromTint };
+		REL::Relocation<func_t> func{ STATIC_OFFSET(TESNPC::SetSkinFromTint) };
 		return func(this, a_result, a_tintMask, a_fromTint);
 	}
 
 	void TESNPC::UpdateNeck(BSFaceGenNiNode* a_faceNode)
 	{
 		using func_t = decltype(&TESNPC::UpdateNeck);
-		REL::Relocation<func_t> func{ Offset::TESNPC::UpdateNeck };
+		REL::Relocation<func_t> func{ STATIC_OFFSET(TESNPC::UpdateNeck) };
 		return func(this, a_faceNode);
 	}
 }

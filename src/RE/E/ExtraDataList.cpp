@@ -44,7 +44,7 @@ namespace RE
 	BaseExtraList::~BaseExtraList()
 	{
 		using func_t = void (*)(BaseExtraList*);
-		REL::Relocation<func_t> func{ Offset::BaseExtraList::Dtor };
+		REL::Relocation<func_t> func{ STATIC_OFFSET(BaseExtraList::Dtor) };
 		func(this);
 	}
 
@@ -159,7 +159,7 @@ namespace RE
 	BSExtraData* ExtraDataList::Add(BSExtraData* a_toAdd)
 	{
 		using func_t = decltype(&ExtraDataList::Add);
-		REL::Relocation<func_t> func{ Offset::ExtraDataList::Add };
+		REL::Relocation<func_t> func{ STATIC_OFFSET(ExtraDataList::Add) };
 		return func(this, a_toAdd);
 	}
 
@@ -267,28 +267,28 @@ namespace RE
 	void ExtraDataList::SetCount(std::uint16_t a_count)
 	{
 		using func_t = decltype(&ExtraDataList::SetCount);
-		REL::Relocation<func_t> func{ Offset::ExtraDataList::SetCount };
+		REL::Relocation<func_t> func{ STATIC_OFFSET(ExtraDataList::SetCount) };
 		return func(this, a_count);
 	}
 
 	void ExtraDataList::SetEnchantment(EnchantmentItem* a_enchantment, std::uint16_t a_chargeAmount, bool a_removeOnUnequip)
 	{
 		using func_t = decltype(&ExtraDataList::SetEnchantment);
-		REL::Relocation<func_t> func{ Offset::ExtraDataList::SetEnchantment };
+		REL::Relocation<func_t> func{ STATIC_OFFSET(ExtraDataList::SetEnchantment) };
 		return func(this, a_enchantment, a_chargeAmount, a_removeOnUnequip);
 	}
 
 	void ExtraDataList::SetExtraFlags(ExtraFlags::Flag a_flags, bool a_enable)
 	{
 		using func_t = decltype(&ExtraDataList::SetExtraFlags);
-		REL::Relocation<func_t> func{ Offset::ExtraDataList::SetExtraFlags };
+		REL::Relocation<func_t> func{ STATIC_OFFSET(ExtraDataList::SetExtraFlags) };
 		return func(this, a_flags, a_enable);
 	}
 
 	void ExtraDataList::SetInventoryChanges(InventoryChanges* a_changes)
 	{
 		using func_t = decltype(&ExtraDataList::SetInventoryChanges);
-		REL::Relocation<func_t> func{ Offset::ExtraDataList::SetInventoryChanges };
+		REL::Relocation<func_t> func{ STATIC_OFFSET(ExtraDataList::SetInventoryChanges) };
 		return func(this, a_changes);
 	}
 

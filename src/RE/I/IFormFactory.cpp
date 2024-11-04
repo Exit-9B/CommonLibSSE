@@ -9,8 +9,8 @@ namespace RE
 			IFormFactory* data[stl::to_underlying(FormType::Max)];
 		};
 
-		REL::Relocation<Factories*> formFactories{ Offset::IFormFactory::FormFactories };
-		REL::Relocation<bool*>      formFactoriesInitialized{ Offset::IFormFactory::FormFactoriesInitialized };
+		REL::Relocation<Factories*> formFactories{ STATIC_OFFSET(IFormFactory::FormFactories) };
+		REL::Relocation<bool*>      formFactoriesInitialized{ STATIC_OFFSET(IFormFactory::FormFactoriesInitialized) };
 		return std::make_pair(formFactories->data, *formFactoriesInitialized);
 	}
 

@@ -7,7 +7,7 @@ namespace RE
 		static void InitSDM()
 		{
 			using func_t = decltype(&BSThreadEvent::InitSDM);
-			REL::Relocation<func_t> func{ Offset::BSThreadEvent::InitSDM };
+			REL::Relocation<func_t> func{ STATIC_OFFSET(BSThreadEvent::InitSDM) };
 			return func();
 		}
 	};

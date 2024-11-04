@@ -20,21 +20,21 @@ namespace RE
 	void Effect::Copy(const Effect* a_other)
 	{
 		using func_t = decltype(&Effect::Copy);
-		REL::Relocation<func_t> func{ Offset::Effect::Copy };
+		REL::Relocation<func_t> func{ STATIC_OFFSET(Effect::Copy) };
 		return func(this, a_other);
 	}
 
 	void Effect::SetDuration(std::int32_t a_duration)
 	{
 		using func_t = decltype(&Effect::SetDuration);
-		REL::Relocation<func_t> func{ Offset::Effect::SetDuration };
+		REL::Relocation<func_t> func{ STATIC_OFFSET(Effect::SetDuration) };
 		return func(this, a_duration);
 	}
 
 	void Effect::SetMagnitude(float a_magnitude)
 	{
 		using func_t = decltype(&Effect::SetMagnitude);
-		REL::Relocation<func_t> func{ Offset::Effect::SetMagnitude };
+		REL::Relocation<func_t> func{ STATIC_OFFSET(Effect::SetMagnitude) };
 		return func(this, a_magnitude);
 	}
 }

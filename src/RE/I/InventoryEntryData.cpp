@@ -73,7 +73,7 @@ namespace RE
 	InventoryEntryData& InventoryEntryData::DeepCopy(const InventoryEntryData& a_other)
 	{
 		using func_t = decltype(&InventoryEntryData::DeepCopy);
-		REL::Relocation<func_t> func{ Offset::InventoryEntryData::DeepCopy };
+		REL::Relocation<func_t> func{ STATIC_OFFSET(InventoryEntryData::DeepCopy) };
 		return func(this, a_other);
 	}
 

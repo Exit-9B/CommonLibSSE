@@ -137,7 +137,7 @@ namespace RE
 
 	const NiPoint3& NiPoint3::Zero()
 	{
-		static REL::Relocation<NiPoint3*> zero{ RE::Offset::NiPoint3::Zero };
+		REL::Relocation<NiPoint3*> zero{ STATIC_OFFSET(NiPoint3::Zero) };
 		return *zero.get();
 	}
 }

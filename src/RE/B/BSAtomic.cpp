@@ -117,28 +117,28 @@ namespace RE
 	void BSReadWriteLock::LockForRead()
 	{
 		using func_t = decltype(&BSReadWriteLock::LockForRead);
-		REL::Relocation<func_t> func{ Offset::BSReadWriteLock::LockForRead };
+		REL::Relocation<func_t> func{ STATIC_OFFSET(BSReadWriteLock::LockForRead) };
 		func(this);
 	}
 
 	void BSReadWriteLock::UnlockForRead()
 	{
 		using func_t = decltype(&BSReadWriteLock::UnlockForRead);
-		REL::Relocation<func_t> func{ Offset::BSReadWriteLock::UnlockForRead };
+		REL::Relocation<func_t> func{ STATIC_OFFSET(BSReadWriteLock::UnlockForRead) };
 		func(this);
 	}
 
 	void BSReadWriteLock::LockForWrite()
 	{
 		using func_t = decltype(&BSReadWriteLock::LockForWrite);
-		REL::Relocation<func_t> func{ Offset::BSReadWriteLock::LockForWrite };
+		REL::Relocation<func_t> func{ STATIC_OFFSET(BSReadWriteLock::LockForWrite) };
 		func(this);
 	}
 
 	void BSReadWriteLock::UnlockForWrite()
 	{
 		using func_t = decltype(&BSReadWriteLock::UnlockForWrite);
-		REL::Relocation<func_t> func{ Offset::BSReadWriteLock::UnlockForWrite };
+		REL::Relocation<func_t> func{ STATIC_OFFSET(BSReadWriteLock::UnlockForWrite) };
 		func(this);
 	}
 

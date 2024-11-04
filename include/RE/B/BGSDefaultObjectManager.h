@@ -432,7 +432,7 @@ namespace RE
 		[[nodiscard]] static BGSDefaultObjectManager* GetSingleton()
 		{
 			using func_t = decltype(&BGSDefaultObjectManager::GetSingleton);
-			REL::Relocation<func_t> func{ Offset::BGSDefaultObjectManager::GetSingleton };
+			REL::Relocation<func_t> func{ STATIC_OFFSET(BGSDefaultObjectManager::GetSingleton) };
 			return func();
 		}
 

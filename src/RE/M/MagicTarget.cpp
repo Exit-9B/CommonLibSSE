@@ -46,7 +46,7 @@ namespace RE
 	bool MagicTarget::HasMagicEffect(EffectSetting* a_effect)
 	{
 		using func_t = decltype(&MagicTarget::HasMagicEffect);
-		REL::Relocation<func_t> func{ Offset::MagicTarget::HasMagicEffect };
+		REL::Relocation<func_t> func{ STATIC_OFFSET(MagicTarget::HasMagicEffect) };
 		return func(this, a_effect);
 	}
 }

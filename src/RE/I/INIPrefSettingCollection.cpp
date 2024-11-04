@@ -4,7 +4,7 @@ namespace RE
 {
 	INIPrefSettingCollection* INIPrefSettingCollection::GetSingleton()
 	{
-		REL::Relocation<INIPrefSettingCollection**> singleton{ Offset::INIPrefSettingCollection::Singleton };
+		REL::Relocation<INIPrefSettingCollection**> singleton{ STATIC_OFFSET(INIPrefSettingCollection::Singleton) };
 		return *singleton;
 	}
 }

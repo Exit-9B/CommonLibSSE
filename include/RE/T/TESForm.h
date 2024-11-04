@@ -179,7 +179,7 @@ namespace RE
 		static void AddCompileIndex(FormID& a_id, TESFile* a_file)
 		{
 			using func_t = decltype(&TESForm::AddCompileIndex);
-			REL::Relocation<func_t> func{ Offset::TESForm::AddCompileIndex };
+			REL::Relocation<func_t> func{ STATIC_OFFSET(TESForm::AddCompileIndex) };
 			return func(a_id, a_file);
 		}
 
@@ -188,8 +188,8 @@ namespace RE
 				BSTHashMap<FormID, TESForm*>*,
 				std::reference_wrapper<BSReadWriteLock>>
 		{
-			REL::Relocation<BSTHashMap<FormID, TESForm*>**> allForms{ Offset::TESForm::AllForms };
-			REL::Relocation<BSReadWriteLock*>               allFormsMapLock{ Offset::TESForm::AllFormsMapLock };
+			REL::Relocation<BSTHashMap<FormID, TESForm*>**> allForms{ STATIC_OFFSET(TESForm::AllForms) };
+			REL::Relocation<BSReadWriteLock*>               allFormsMapLock{ STATIC_OFFSET(TESForm::AllFormsMapLock) };
 			return { *allForms, std::ref(*allFormsMapLock) };
 		}
 
@@ -198,8 +198,8 @@ namespace RE
 				BSTHashMap<BSFixedString, TESForm*>*,
 				std::reference_wrapper<BSReadWriteLock>>
 		{
-			REL::Relocation<BSTHashMap<BSFixedString, TESForm*>**> allFormsByEditorID{ Offset::TESForm::AllFormsByEditorID };
-			REL::Relocation<BSReadWriteLock*>                      allFormsEditorIDMapLock{ Offset::TESForm::AllFormsEditorIDMapLock };
+			REL::Relocation<BSTHashMap<BSFixedString, TESForm*>**> allFormsByEditorID{ STATIC_OFFSET(TESForm::AllFormsByEditorID) };
+			REL::Relocation<BSReadWriteLock*>                      allFormsEditorIDMapLock{ STATIC_OFFSET(TESForm::AllFormsEditorIDMapLock) };
 			return { *allFormsByEditorID, std::ref(*allFormsEditorIDMapLock) };
 		}
 

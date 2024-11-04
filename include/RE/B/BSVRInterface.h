@@ -19,7 +19,7 @@ namespace RE
 	public:
 		[[nodiscard]] vr::IVROverlay* VROverlay()
 		{
-			static REL::Relocation<vr::IVROverlay*(vr::COpenVRContext&)> get{ REL::Offset(0x8A0110) };
+			REL::Relocation<vr::IVROverlay*(vr::COpenVRContext&)> get{ REL::Offset(0x8A0110) };
 			return get(moduleContext);
 		}
 

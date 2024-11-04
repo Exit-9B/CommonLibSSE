@@ -4,7 +4,7 @@ namespace RE
 {
 	TES* TES::GetSingleton()
 	{
-		REL::Relocation<TES**> singleton{ Offset::TES::Singleton };
+		REL::Relocation<TES**> singleton{ STATIC_OFFSET(TES::Singleton) };
 		return *singleton;
 	}
 }

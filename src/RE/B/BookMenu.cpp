@@ -6,7 +6,7 @@ namespace RE
 {
 	TESObjectREFR* BookMenu::GetTargetReference()
 	{
-		REL::Relocation<TESObjectREFRPtr*> refptr{ Offset::BookMenu::TargetReference };
+		REL::Relocation<TESObjectREFRPtr*> refptr{ STATIC_OFFSET(BookMenu::TargetReference) };
 		return refptr->get();
 	}
 }

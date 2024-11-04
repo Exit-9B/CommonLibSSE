@@ -27,7 +27,7 @@ namespace RE
 
 		[[nodiscard]] static auto GetHandleEntries()
 		{
-			REL::Relocation<Entry(*)[0x100000]> entries{ Offset::BSPointerHandleManager::HandleEntries };
+			REL::Relocation<Entry(*)[0x100000]> entries{ STATIC_OFFSET(BSPointerHandleManager::HandleEntries) };
 			return std::span<Entry, 0x100000>{ *entries };
 		}
 	};

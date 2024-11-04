@@ -13,7 +13,7 @@ namespace RE
 	bool TESQuest::EnsureQuestStarted(bool& a_result, bool a_startNow)
 	{
 		using func_t = decltype(&TESQuest::EnsureQuestStarted);
-		REL::Relocation<func_t> func{ Offset::TESQuest::EnsureQuestStarted };
+		REL::Relocation<func_t> func{ STATIC_OFFSET(TESQuest::EnsureQuestStarted) };
 		return func(this, a_result, a_startNow);
 	}
 
@@ -60,7 +60,7 @@ namespace RE
 	void TESQuest::Reset()
 	{
 		using func_t = decltype(&TESQuest::Reset);
-		REL::Relocation<func_t> func{ Offset::TESQuest::ResetQuest };
+		REL::Relocation<func_t> func{ STATIC_OFFSET(TESQuest::ResetQuest) };
 		return func(this);
 	}
 

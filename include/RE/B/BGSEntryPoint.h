@@ -143,7 +143,7 @@ namespace RE
 		static EntryPoint* GetEntryPoint(ENTRY_POINT a_entryPoint)
 		{
 			if (a_entryPoint < ENTRY_POINT::kTotal) {
-				REL::Relocation<EntryPoint*> entryPoints{ Offset::BGSEntryPoint::EntryPoints };
+				REL::Relocation<EntryPoint*> entryPoints{ STATIC_OFFSET(BGSEntryPoint::EntryPoints) };
 				return &entryPoints.get()[a_entryPoint];
 			}
 
@@ -154,7 +154,7 @@ namespace RE
 		static void HandleEntryPoint(ENTRY_POINT a_entryPoint, Actor* a_perkOwner, Args... a_args)
 		{
 			using func_t = decltype(&HandleEntryPoint<Args...>);
-			REL::Relocation<func_t> func{ Offset::BGSEntryPoint::HandleEntryPoint };
+			REL::Relocation<func_t> func{ STATIC_OFFSET(BGSEntryPoint::HandleEntryPoint) };
 			return func(a_entryPoint, a_perkOwner, a_args...);
 		}
 	};

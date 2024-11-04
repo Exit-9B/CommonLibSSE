@@ -182,7 +182,7 @@ namespace RE
 		inline bhkWorld* GetbhkWorld() const
 		{
 			using func_t = decltype(&TESObjectCELL::GetbhkWorld);
-			REL::Relocation<func_t> func{ Offset::TESObjectCELL::GetbhkWorld };
+			REL::Relocation<func_t> func{ STATIC_OFFSET(TESObjectCELL::GetbhkWorld) };
 			return func(this);
 		}
 

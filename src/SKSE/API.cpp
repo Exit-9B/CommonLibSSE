@@ -77,6 +77,7 @@ namespace SKSE
 
 		REL::Module::init();
 		REL::IDDatabase::init();
+		REL::AddressManager::get().flush();
 
 		auto&       storage = detail::APIStorage::get();
 		const auto& intfc = *a_intfc;

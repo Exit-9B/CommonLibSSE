@@ -10,7 +10,7 @@ namespace RE
 		BSExtraData(),
 		owner(a_owner)
 	{
-		REL::Relocation<std::uintptr_t> vtbl{ Offset::ExtraOwnership::Vtbl };
+		REL::Relocation<std::uintptr_t> vtbl{ STATIC_OFFSET(ExtraOwnership::Vtbl) };
 		((std::uintptr_t*)this)[0] = vtbl.address();
 	}
 

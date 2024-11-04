@@ -35,14 +35,14 @@ namespace RE
 
 	TESDataHandler* TESDataHandler::GetSingleton()
 	{
-		REL::Relocation<TESDataHandler**> singleton{ Offset::TESDataHandler::Singleton };
+		REL::Relocation<TESDataHandler**> singleton{ STATIC_OFFSET(TESDataHandler::Singleton) };
 		return *singleton;
 	}
 
 	std::uint32_t TESDataHandler::LoadScripts()
 	{
 		using func_t = decltype(&TESDataHandler::LoadScripts);
-		REL::Relocation<func_t> func{ Offset::TESDataHandler::LoadScripts };
+		REL::Relocation<func_t> func{ STATIC_OFFSET(TESDataHandler::LoadScripts) };
 		return func(this);
 	}
 

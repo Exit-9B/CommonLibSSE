@@ -11,21 +11,21 @@ namespace RE
 	bool LookupReferenceByHandle_ActorImpl(const RefHandle& a_handle, NiPointer<Actor>& a_refrOut)
 	{
 		using func_t = decltype(&LookupReferenceByHandle_ActorImpl);
-		REL::Relocation<func_t> func{ Offset::LookupReferenceByHandle };
+		REL::Relocation<func_t> func{ STATIC_OFFSET(LookupReferenceByHandle) };
 		return func(a_handle, a_refrOut);
 	}
 
 	bool LookupReferenceByHandle_RefrImpl(const RefHandle& a_handle, NiPointer<TESObjectREFR>& a_refrOut)
 	{
 		using func_t = decltype(&LookupReferenceByHandle_RefrImpl);
-		REL::Relocation<func_t> func{ Offset::LookupReferenceByHandle };
+		REL::Relocation<func_t> func{ STATIC_OFFSET(LookupReferenceByHandle) };
 		return func(a_handle, a_refrOut);
 	}
 
 	void CreateRefHandle(RefHandle& a_handleOut, TESObjectREFR* a_refTo)
 	{
 		using func_t = decltype(&CreateRefHandle);
-		REL::Relocation<func_t> func{ Offset::CreateRefHandle };
+		REL::Relocation<func_t> func{ STATIC_OFFSET(CreateRefHandle) };
 		return func(a_handleOut, a_refTo);
 	}
 
@@ -55,14 +55,14 @@ namespace RE
 	void PlaySound(const char* a_editorID)
 	{
 		using func_t = decltype(&PlaySound);
-		REL::Relocation<func_t> func{ Offset::PlaySound };
+		REL::Relocation<func_t> func{ STATIC_OFFSET(PlaySound) };
 		return func(a_editorID);
 	}
 
 	float GetArmorFinalRating(RE::InventoryEntryData* a_armorEntryData, float a_armorPerks, float a_skillMultiplier)
 	{
 		using func_t = decltype(&GetArmorFinalRating);
-		REL::Relocation<func_t> func{ Offset::GetArmorFinalRating };
+		REL::Relocation<func_t> func{ STATIC_OFFSET(GetArmorFinalRating) };
 		return func(a_armorEntryData, a_armorPerks, a_skillMultiplier);
 	}
 }

@@ -29,14 +29,14 @@ namespace RE
 		bool InitHeapEngine(const void* a_heapDesc) override  // 01
 		{
 			using func_t = decltype(&GSysAllocPaged::InitHeapEngine);
-			REL::Relocation<func_t> func{ Offset::GSysAllocPaged::InitHeapEngine };
+			REL::Relocation<func_t> func{ STATIC_OFFSET(GSysAllocPaged::InitHeapEngine) };
 			return func(this, a_heapDesc);
 		}
 
 		void ShutdownHeapEngine() override  // 02
 		{
 			using func_t = decltype(&GSysAllocPaged::ShutdownHeapEngine);
-			REL::Relocation<func_t> func{ Offset::GSysAllocPaged::ShutdownHeapEngine };
+			REL::Relocation<func_t> func{ STATIC_OFFSET(GSysAllocPaged::ShutdownHeapEngine) };
 			return func(this);
 		}
 

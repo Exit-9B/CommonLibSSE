@@ -17,7 +17,7 @@ namespace RE
 		data(),
 		pad24(0)
 	{
-		REL::Relocation<std::uintptr_t> vtbl{ Offset::ExtraLightData::Vtbl };
+		REL::Relocation<std::uintptr_t> vtbl{ STATIC_OFFSET(ExtraLightData::Vtbl) };
 		((std::uintptr_t*)this)[0] = vtbl.address();
 	}
 

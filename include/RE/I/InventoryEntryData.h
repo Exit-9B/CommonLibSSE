@@ -44,7 +44,7 @@ namespace RE
 		[[nodiscard]] std::int32_t GetValue() const
 		{
 			using func_t = decltype(&InventoryEntryData::GetValue);
-			REL::Relocation<func_t> func{ Offset::InventoryEntryData::GetValue };
+			REL::Relocation<func_t> func{ STATIC_OFFSET(InventoryEntryData::GetValue) };
 			return func(this);
 		}
 
@@ -66,14 +66,14 @@ namespace RE
 		[[nodiscard]] bool IsQuestObject() const
 		{
 			using func_t = decltype(&InventoryEntryData::IsQuestObject);
-			REL::Relocation<func_t> func{ Offset::InventoryEntryData::IsQuestObject };
+			REL::Relocation<func_t> func{ STATIC_OFFSET(InventoryEntryData::IsQuestObject) };
 			return func(this);
 		}
 
 		void SetWorn(bool a_worn, bool a_left, bool a_deleteExtraList = true)
 		{
 			using func_t = decltype(&InventoryEntryData::SetWorn);
-			REL::Relocation<func_t> func{ Offset::InventoryEntryData::SetWorn };
+			REL::Relocation<func_t> func{ STATIC_OFFSET(InventoryEntryData::SetWorn) };
 			return func(this, a_worn, a_left, a_deleteExtraList);
 		}
 
@@ -89,7 +89,7 @@ namespace RE
 		[[nodiscard]] bool IsOwnedBy_Impl(Actor* a_testOwner, TESForm* a_itemOwner, bool a_defaultTo)
 		{
 			using func_t = decltype(&InventoryEntryData::IsOwnedBy_Impl);
-			REL::Relocation<func_t> func{ Offset::InventoryEntryData::IsOwnedBy };
+			REL::Relocation<func_t> func{ STATIC_OFFSET(InventoryEntryData::IsOwnedBy) };
 			return func(this, a_testOwner, a_itemOwner, a_defaultTo);
 		}
 	};

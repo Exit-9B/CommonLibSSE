@@ -20,7 +20,7 @@ namespace RE
 		void QueueMessage()
 		{
 			using func_t = decltype(&MessageBoxData::QueueMessage);
-			static REL::Relocation<func_t> func{ Offset::MessageBoxData::QueueMessage };
+			REL::Relocation<func_t> func{ STATIC_OFFSET(MessageBoxData::QueueMessage) };
 			return func(this);
 		}
 

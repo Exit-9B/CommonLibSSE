@@ -10,7 +10,7 @@ namespace RE
 {
 	BSInputDeviceManager* BSInputDeviceManager::GetSingleton()
 	{
-		REL::Relocation<BSInputDeviceManager**> singleton{ Offset::BSInputDeviceManager::Singleton };
+		REL::Relocation<BSInputDeviceManager**> singleton{ STATIC_OFFSET(BSInputDeviceManager::Singleton) };
 		return *singleton;
 	}
 

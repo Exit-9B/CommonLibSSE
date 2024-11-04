@@ -12,14 +12,14 @@ namespace RE
 
 	PlayerControls* PlayerControls::GetSingleton()
 	{
-		REL::Relocation<PlayerControls**> singleton{ Offset::PlayerControls::Singleton };
+		REL::Relocation<PlayerControls**> singleton{ STATIC_OFFSET(PlayerControls::Singleton) };
 		return *singleton;
 	}
 
 	PlayerControls* PlayerControls::Ctor()
 	{
 		using func_t = decltype(&PlayerControls::Ctor);
-		REL::Relocation<func_t> func{ Offset::PlayerControls::Ctor };
+		REL::Relocation<func_t> func{ STATIC_OFFSET(PlayerControls::Ctor) };
 		return func(this);
 	}
 }

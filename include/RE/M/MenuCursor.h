@@ -9,7 +9,7 @@ namespace RE
 	public:
 		static MenuCursor* GetSingleton()
 		{
-			REL::Relocation<MenuCursor**> singleton{ Offset::MenuCursor::Singleton };
+			REL::Relocation<MenuCursor**> singleton{ STATIC_OFFSET(MenuCursor::Singleton) };
 			return *singleton;
 		}
 

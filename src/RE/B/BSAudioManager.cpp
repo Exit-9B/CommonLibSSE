@@ -9,7 +9,7 @@ namespace RE
 	BSAudioManager* BSAudioManager::GetSingleton()
 	{
 		using func_t = decltype(&BSAudioManager::GetSingleton);
-		REL::Relocation<func_t> func{ Offset::BSAudioManager::GetSingleton };
+		REL::Relocation<func_t> func{ STATIC_OFFSET(BSAudioManager::GetSingleton) };
 		return func();
 	}
 
@@ -28,14 +28,14 @@ namespace RE
 	bool BSAudioManager::BuildSoundDataFromDescriptor(BSSoundHandle& a_soundHandle, BSISoundDescriptor* a_descriptor, std::uint32_t a_flags)
 	{
 		using func_t = decltype(&BSAudioManager::BuildSoundDataFromDescriptor);
-		REL::Relocation<func_t> func{ Offset::BSAudioManager::BuildSoundDataFromDescriptor };
+		REL::Relocation<func_t> func{ STATIC_OFFSET(BSAudioManager::BuildSoundDataFromDescriptor) };
 		return func(this, a_soundHandle, a_descriptor, a_flags);
 	}
 
 	void BSAudioManager::PrecacheDescriptor(const BSISoundDescriptor* a_descriptor, std::uint32_t a_flags)
 	{
 		using func_t = decltype(&BSAudioManager::PrecacheDescriptor);
-		REL::Relocation<func_t> func{ Offset::BSAudioManager::PrecacheDescriptor };
+		REL::Relocation<func_t> func{ STATIC_OFFSET(BSAudioManager::PrecacheDescriptor) };
 		return func(this, a_descriptor, a_flags);
 	}
 }

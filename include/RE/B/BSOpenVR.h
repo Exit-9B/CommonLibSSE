@@ -23,7 +23,7 @@ namespace RE
 
 		[[nodiscard]] static BSOpenVR* GetSingleton()
 		{
-			static REL::Relocation<BSOpenVR**> singleton{ REL::Offset(0x2FEB9B0) };
+			REL::Relocation<BSOpenVR**> singleton{ REL::Offset(0x2FEB9B0) };
 			return *singleton;
 		}
 

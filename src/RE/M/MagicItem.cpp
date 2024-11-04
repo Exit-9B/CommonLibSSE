@@ -15,14 +15,14 @@ namespace RE
 	Effect* MagicItem::GetCostliestEffectItem(MagicSystem::Delivery a_delivery, bool a_arg2)
 	{
 		using func_t = decltype(&MagicItem::GetCostliestEffectItem);
-		REL::Relocation<func_t> func{ Offset::MagicItem::GetCostliestEffectItem };
+		REL::Relocation<func_t> func{ STATIC_OFFSET(MagicItem::GetCostliestEffectItem) };
 		return func(this, a_delivery, a_arg2);
 	}
 
 	float MagicItem::CalculateCost(Actor* a_caster) const
 	{
 		using func_t = decltype(&MagicItem::CalculateTotalGoldValue);
-		REL::Relocation<func_t> func{ Offset::MagicItem::CalculateCost };
+		REL::Relocation<func_t> func{ STATIC_OFFSET(MagicItem::CalculateCost) };
 		return func(this, a_caster);
 	}
 

@@ -12,7 +12,7 @@ namespace RE
 	public:
 		[[nodiscard]] static std::int32_t& GetIndex()
 		{
-			REL::Relocation<std::int32_t*> index{ Offset::BGSCraftItemEvent::GetIndex };
+			REL::Relocation<std::int32_t*> index{ STATIC_OFFSET(BGSCraftItemEvent::GetIndex) };
 			return *index;
 		}
 

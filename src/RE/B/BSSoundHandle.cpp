@@ -13,35 +13,35 @@ namespace RE
 	bool BSSoundHandle::IsValid() const
 	{
 		using func_t = decltype(&BSSoundHandle::IsValid);
-		REL::Relocation<func_t> func{ Offset::BSSoundHandle::IsValid };
+		REL::Relocation<func_t> func{ STATIC_OFFSET(BSSoundHandle::IsValid) };
 		return func(this);
 	}
 
 	bool BSSoundHandle::SetPosition(NiPoint3 a_pos)
 	{
 		using func_t = decltype(&BSSoundHandle::SetPosition);
-		REL::Relocation<func_t> func{ Offset::BSSoundHandle::SetPosition };
+		REL::Relocation<func_t> func{ STATIC_OFFSET(BSSoundHandle::SetPosition) };
 		return func(this, a_pos);
 	}
 
 	void BSSoundHandle::SetObjectToFollow(NiAVObject* a_node)
 	{
 		using func_t = decltype(&BSSoundHandle::SetObjectToFollow);
-		REL::Relocation<func_t> func{ Offset::BSSoundHandle::SetObjectToFollow };
+		REL::Relocation<func_t> func{ STATIC_OFFSET(BSSoundHandle::SetObjectToFollow) };
 		return func(this, a_node);
 	}
 
 	bool BSSoundHandle::Stop()
 	{
 		using func_t = decltype(&BSSoundHandle::Stop);
-		REL::Relocation<func_t> func{ Offset::BSSoundHandle::Stop };
+		REL::Relocation<func_t> func{ STATIC_OFFSET(BSSoundHandle::Stop) };
 		return func(this);
 	}
 
 	bool BSSoundHandle::Play()
 	{
 		using func_t = decltype(&BSSoundHandle::Play);
-		REL::Relocation<func_t> func{ Offset::BSSoundHandle::Play };
+		REL::Relocation<func_t> func{ STATIC_OFFSET(BSSoundHandle::Play) };
 		return func(this);
 	}
 }

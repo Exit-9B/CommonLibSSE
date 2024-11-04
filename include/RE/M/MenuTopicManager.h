@@ -57,7 +57,7 @@ namespace RE
 
 		static MenuTopicManager* GetSingleton()
 		{
-			REL::Relocation<MenuTopicManager**> singleton{ Offset::MenuTopicManager::Singleton };
+			REL::Relocation<MenuTopicManager**> singleton{ STATIC_OFFSET(MenuTopicManager::Singleton) };
 			return *singleton;
 		}
 

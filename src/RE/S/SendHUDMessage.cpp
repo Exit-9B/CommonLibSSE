@@ -13,7 +13,7 @@ namespace RE
 	void SendHUDMessage::ShowHUDMessage(const char* a_notification, const char* a_soundToPlay, bool a_cancelIfAlreadyQueued)
 	{
 		using func_t = decltype(&SendHUDMessage::ShowHUDMessage);
-		REL::Relocation<func_t> func{ Offset::SendHUDMessage::ShowHUDMessage };
+		REL::Relocation<func_t> func{ STATIC_OFFSET(SendHUDMessage::ShowHUDMessage) };
 		return func(a_notification, a_soundToPlay, a_cancelIfAlreadyQueued);
 	}
 

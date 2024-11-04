@@ -92,7 +92,7 @@ namespace RE
 
 		static BGSSaveLoadGame* GetSingleton()
 		{
-			REL::Relocation<BGSSaveLoadGame**> singleton{ Offset::BGSSaveLoadGame::Singleton };
+			REL::Relocation<BGSSaveLoadGame**> singleton{ STATIC_OFFSET(BGSSaveLoadGame::Singleton) };
 			return *singleton;
 		}
 

@@ -64,7 +64,7 @@ namespace RE
 	void IMenu::RefreshPlatform()
 	{
 		using func_t = decltype(&IMenu::RefreshPlatform);
-		REL::Relocation<func_t> func{ Offset::IMenu::RefreshPlatform };
+		REL::Relocation<func_t> func{ STATIC_OFFSET(IMenu::RefreshPlatform) };
 		return func(this);
 	}
 

@@ -260,7 +260,7 @@ namespace RE
 	GString* GString::ctor(const char* a_str)
 	{
 		using func_t = decltype(&GString::ctor);
-		REL::Relocation<func_t> func{ Offset::GString::Ctor };
+		REL::Relocation<func_t> func{ STATIC_OFFSET(GString::Ctor) };
 		return func(this, a_str);
 	}
 

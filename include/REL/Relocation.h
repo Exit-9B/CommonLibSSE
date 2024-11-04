@@ -574,10 +574,10 @@ namespace REL
 			{
 				const mapping_t elem{ 0, a_offset };
 				const auto      it = std::lower_bound(
-						 _offset2id.begin(),
-						 _offset2id.end(),
-						 elem,
-						 [](auto&& a_lhs, auto&& a_rhs) {
+                    _offset2id.begin(),
+                    _offset2id.end(),
+                    elem,
+                    [](auto&& a_lhs, auto&& a_rhs) {
                         return a_lhs.offset < a_rhs.offset;
                     });
 				if (it == _offset2id.end()) {
@@ -893,6 +893,82 @@ namespace REL
 		std::uint64_t _id{ 0 };
 	};
 
+	class AddressManager
+	{
+	public:
+		using reg_t = std::pair<std::uint64_t, std::uintptr_t*>;
+
+		constexpr AddressManager() noexcept = default;
+
+		[[nodiscard]] static AddressManager& get();
+
+		void flush()
+		{
+			for (const auto& [id, offsetAddr] : std::span(_buffer.get(), _size)) {
+				*offsetAddr = ID(id).offset();
+			}
+			clear();
+		}
+
+		void register_address(std::uint64_t a_ID, std::uintptr_t* a_offsetAddr)
+		{
+			if (_size == _capacity) {
+				grow();
+			}
+			std::construct_at(&_buffer[_size++], a_ID, a_offsetAddr);
+		}
+
+		void clear()
+		{
+			_buffer.reset();
+			_size = 0;
+			_capacity = 0;
+		}
+
+	private:
+		void grow()
+		{
+			const std::size_t capacity = _capacity > 0 ? _capacity * 2 : 1;
+			auto              buffer = std::make_unique<reg_t[]>(capacity);
+			std::memcpy(buffer.get(), _buffer.get(), _capacity * sizeof(reg_t));
+			_buffer.swap(buffer);
+			_capacity = capacity;
+		}
+
+	private:
+		static AddressManager    _singleton;
+		std::unique_ptr<reg_t[]> _buffer{ nullptr };
+		std::size_t              _size{ 0 };
+		std::size_t              _capacity{ 0 };
+	};
+
+	inline constinit AddressManager AddressManager::_singleton{};
+
+	inline AddressManager& AddressManager::get()
+	{
+		return _singleton;
+	}
+
+	template <std::uint64_t ID>
+	class StaticID
+	{
+	public:
+		operator Offset() const noexcept { return Offset(_cache._offset); }
+
+	private:
+		struct Cache
+		{
+			Cache()
+			{
+				AddressManager::get().register_address(ID, &_offset);
+			}
+
+			std::uintptr_t _offset;
+		};
+
+		inline static Cache _cache;
+	};
+
 	template <class T>
 	class Relocation
 	{
@@ -1179,6 +1255,12 @@ namespace REL
 	static_assert(make_pattern<"B8 D0 ?? ?? D4 6E">().match(
 		detail::make_byte_array(0xB8, 0xD0, 0x35, 0x2A, 0xD4, 0x6E)));
 }
+
+#ifndef SKYRIMVR
+#	define STATIC_OFFSET(name) ::REL::StaticID<::RE::Offset::name.id()>()
+#else
+#	define STATIC_OFFSET(name) ::RE::Offset::name
+#endif
 
 #undef REL_MAKE_MEMBER_FUNCTION_NON_POD_TYPE
 #undef REL_MAKE_MEMBER_FUNCTION_NON_POD_TYPE_HELPER
