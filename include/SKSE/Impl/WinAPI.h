@@ -95,12 +95,12 @@ namespace SKSE::WinAPI
 
 	[[nodiscard]] std::size_t GetMaxPath() noexcept;
 
-	[[nodiscard]] std::uint32_t GetModuleFileName(
+	std::uint32_t GetModuleFileName(
 		void*         a_module,
 		char*         a_filename,
 		std::uint32_t a_size) noexcept;
 
-	[[nodiscard]] std::uint32_t GetModuleFileName(
+	std::uint32_t GetModuleFileName(
 		void*         a_module,
 		wchar_t*      a_filename,
 		std::uint32_t a_size) noexcept;
@@ -125,7 +125,7 @@ namespace SKSE::WinAPI
 		const wchar_t* a_caption,
 		unsigned int   a_type) noexcept;
 
-	[[nodiscard]] int MultiByteToWideChar(
+	int MultiByteToWideChar(
 		unsigned int  a_codePage,
 		std::uint32_t a_flags,
 		const char*   a_multiByteStr,

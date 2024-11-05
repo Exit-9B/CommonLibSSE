@@ -469,16 +469,10 @@ namespace REL
 			}
 			_base = reinterpret_cast<std::uintptr_t>(handle);
 
-			std::wstring path;
-			path.resize(4096);
-
-			path.resize(
-				WinAPI::GetModuleFileName(
-					handle,
-					path.data(),
-					static_cast<std::uint32_t>(path.size())));
-
-			std::wcsncpy(_filename.data(), std::filesystem::path(path).filename().c_str(), _filename.size());
+			WinAPI::GetModuleFileName(
+				handle,
+				_filename.data(),
+				static_cast<std::uint32_t>(_filename.size()));
 
 			load_version();
 			load_segments();
