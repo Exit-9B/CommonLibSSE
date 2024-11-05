@@ -513,13 +513,13 @@ namespace REL
 
 		static Module                               _singleton;
 		inline static bool                          _loaded{ false };
-		std::array<wchar_t, SKSE::WinAPI::MAX_PATH> _filename;
-		std::array<Segment, Segment::total>         _segments;
+		std::array<wchar_t, SKSE::WinAPI::MAX_PATH> _filename{ L"" };
+		std::array<Segment, Segment::total>         _segments{};
 		Version                                     _version;
 		std::uintptr_t                              _base{ 0 };
 	};
 
-	inline constinit Module Module::_singleton{};
+	inline constinit Module Module::_singleton;
 
 	inline Module& Module::get()
 	{
@@ -832,7 +832,7 @@ namespace REL
 		std::span<mapping_t> _id2offset;
 	};
 
-	inline constinit IDDatabase IDDatabase::_singleton{};
+	inline constinit IDDatabase IDDatabase::_singleton;
 
 	inline IDDatabase& IDDatabase::get()
 	{
@@ -942,7 +942,7 @@ namespace REL
 		std::size_t              _capacity{ 0 };
 	};
 
-	inline constinit AddressManager AddressManager::_singleton{};
+	inline constinit AddressManager AddressManager::_singleton;
 
 	inline AddressManager& AddressManager::get()
 	{
