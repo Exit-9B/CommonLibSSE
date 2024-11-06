@@ -14,7 +14,7 @@ if("${PROJECT_SOURCE_DIR}" STREQUAL "${PROJECT_BINARY_DIR}")
 endif()
 
 find_package(binary_io REQUIRED CONFIG)
-find_package(Boost MODULE REQUIRED)
+find_package(Boost REQUIRED COMPONENTS stl_interfaces)
 find_package(spdlog REQUIRED CONFIG)
 
 include(cmake/sourcelist.cmake)
