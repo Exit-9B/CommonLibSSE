@@ -1,7 +1,6 @@
 #pragma once
 
 #include "RE/B/BGSPerkEntry.h"
-#include "RE/F/FormTypes.h"
 #include "RE/M/MemoryManager.h"
 
 namespace RE

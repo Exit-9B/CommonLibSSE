@@ -206,27 +206,17 @@ namespace RE
 			return form ? form->As<T>() : nullptr;
 		}
 
-		template <
-			class T,
-			class = std::enable_if_t<
-				std::negation_v<
-					std::disjunction<
-						std::is_pointer<T>,
-						std::is_reference<T>,
-						std::is_const<T>,
-						std::is_volatile<T>>>>>
-		[[nodiscard]] T* As() noexcept;
+		template <class T>
+		requires(std::is_class_v<T>)
+			[[nodiscard]] T* As() noexcept;
 
-		template <
-			class T,
-			class = std::enable_if_t<
-				std::negation_v<
-					std::disjunction<
-						std::is_pointer<T>,
-						std::is_reference<T>,
-						std::is_const<T>,
-						std::is_volatile<T>>>>>
-		[[nodiscard]] const T* As() const noexcept;
+		template <class T>
+		requires(requires { T::FORMTYPE; })
+			[[nodiscard]] const T* As() const noexcept;
+
+		template <std::derived_from<BaseFormComponent> T>
+		requires(!requires { T::FORMTYPE; })
+			[[nodiscard]] const T* As() const noexcept;
 
 		[[nodiscard]] TESObjectREFR*       AsReference() { return AsReference1(); }
 		[[nodiscard]] const TESObjectREFR* AsReference() const { return AsReference2(); }
