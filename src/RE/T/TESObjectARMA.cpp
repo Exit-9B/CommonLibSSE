@@ -1,6 +1,5 @@
 #include "RE/T/TESObjectARMA.h"
 
-#include "RE/F/FormTraits.h"
 #include "RE/T/TESNPC.h"
 #include "RE/T/TESObjectARMO.h"
 #include "RE/T/TESObjectREFR.h"

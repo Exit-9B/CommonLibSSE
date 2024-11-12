@@ -27,7 +27,7 @@ namespace RE
 		}
 
 		template <class CharT>
-		BSFixedString<CharT>::BSFixedString(std::basic_string_view<CharT> a_view)
+		BSFixedString<CharT>::BSFixedString(std::basic_string_view<value_type> a_view)
 		{
 			if (!a_view.empty()) {
 				ctor(a_view.data());
@@ -73,7 +73,7 @@ namespace RE
 		}
 
 		template <class CharT>
-		BSFixedString<CharT>& BSFixedString<CharT>::operator=(std::basic_string_view<CharT> a_view)
+		BSFixedString<CharT>& BSFixedString<CharT>::operator=(std::basic_string_view<value_type> a_view)
 		{
 			try_release();
 			if (!a_view.empty()) {

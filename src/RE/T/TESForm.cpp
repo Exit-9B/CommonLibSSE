@@ -1,13 +1,16 @@
 #include "RE/T/TESForm.h"
 
 #include "RE/B/BGSDefaultObjectManager.h"
-#include "RE/F/FormTraits.h"
 #include "RE/I/IObjectHandlePolicy.h"
 #include "RE/I/InventoryEntryData.h"
+#include "RE/T/TESBoundObject.h"
+#include "RE/T/TESForm.h"
 #include "RE/T/TESFullName.h"
 #include "RE/T/TESGlobal.h"
 #include "RE/T/TESModel.h"
+#include "RE/T/TESNPC.h"
 #include "RE/T/TESObjectREFR.h"
+#include "RE/T/TESWeightForm.h"
 #include "RE/V/VirtualMachine.h"
 
 namespace RE

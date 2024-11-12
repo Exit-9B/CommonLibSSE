@@ -1,6 +1,6 @@
 #include "RE/T/TESLeveledList.h"
 
-#include "RE/F/FormTraits.h"
+#include "RE/T/TESForm.h"
 
 namespace RE
 {

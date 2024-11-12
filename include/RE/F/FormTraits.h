@@ -142,28 +142,17 @@
 
 namespace RE
 {
-	template <class T>
-	requires(std::is_class_v<T>)
-		T* TESForm::As() noexcept
-	{
-		return const_cast<T*>(
-			static_cast<const TESForm*>(this)->As<T>());
-	}
+	extern template const TESBoundObject*     TESForm::As() const noexcept;
+	extern template const TESContainer*       TESForm::As() const noexcept;
+	extern template const TESEnchantableForm* TESForm::As() const noexcept;
+	extern template const TESFullName*        TESForm::As() const noexcept;
+	extern template const TESLeveledList*     TESForm::As() const noexcept;
+	extern template const TESModel*           TESForm::As() const noexcept;
+	extern template const TESWeightForm*      TESForm::As() const noexcept;
 
 	template <class T>
-	requires(requires { T::FORMTYPE; })
-		const T* TESForm::As() const noexcept
-	{
-		if (GetFormType() == T::FORMTYPE) {
-			return static_cast<const T*>(this);
-		} else {
-			return nullptr;
-		}
-	}
-
-	template <std::derived_from<BaseFormComponent> T>
-	requires(!requires { T::FORMTYPE; })
-		const T* TESForm::As() const noexcept
+		requires(!requires { T::FORMTYPE; })
+	const T* TESForm::As() const noexcept
 	{
 		switch (GetFormType()) {
 			SKSE_FORMTRAITS(TESForm);

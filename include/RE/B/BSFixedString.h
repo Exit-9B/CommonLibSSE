@@ -23,10 +23,11 @@ namespace RE
 			BSFixedString(const BSFixedString& a_rhs);
 			BSFixedString(BSFixedString&& a_rhs) noexcept;
 			BSFixedString(const_pointer a_string);
-			BSFixedString(std::basic_string_view<CharT> a_view);
+			BSFixedString(std::basic_string_view<value_type> a_view);
 
-			inline BSFixedString(std::convertible_to<std::basic_string_view<CharT>> auto&& a_string) :
-				BSFixedString(static_cast<std::basic_string_view<CharT>>(a_string))
+			template <std::convertible_to<std::basic_string_view<value_type>> T>
+			inline BSFixedString(T&& a_string) :
+				BSFixedString(static_cast<std::basic_string_view<value_type>>(std::forward<T>(a_string)))
 			{
 			}
 
@@ -35,11 +36,12 @@ namespace RE
 			BSFixedString& operator=(const BSFixedString& a_rhs);
 			BSFixedString& operator=(BSFixedString&& a_rhs) noexcept;
 			BSFixedString& operator=(const_pointer a_string);
-			BSFixedString& operator=(std::basic_string_view<CharT> a_view);
+			BSFixedString& operator=(std::basic_string_view<value_type> a_view);
 
-			inline BSFixedString& operator=(std::convertible_to<std::basic_string_view<CharT>> auto&& a_string)
+			template <std::convertible_to<std::basic_string_view<value_type>> T>
+			inline BSFixedString& operator=(T&& a_string)
 			{
-				return *this = static_cast<std::basic_string_view<CharT>>(a_string);
+				return *this = static_cast<std::basic_string_view<value_type>>(std::forward<T>(a_string));
 			}
 
 			[[nodiscard]] inline const_reference operator[](size_type a_pos) const noexcept

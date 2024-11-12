@@ -7,7 +7,6 @@
 #include "RE/E/ExtraTextDisplayData.h"
 #include "RE/E/ExtraWorn.h"
 #include "RE/E/ExtraWornLeft.h"
-#include "RE/F/FormTraits.h"
 #include "RE/G/GameSettingCollection.h"
 #include "RE/T/TESBoundObject.h"
 #include "RE/T/TESEnchantableForm.h"

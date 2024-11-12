@@ -12,7 +12,6 @@
 #include "RE/E/ExtraOwnership.h"
 #include "RE/E/ExtraReferenceHandle.h"
 #include "RE/E/ExtraTextDisplayData.h"
-#include "RE/F/FormTraits.h"
 #include "RE/I/InventoryChanges.h"
 #include "RE/I/InventoryEntryData.h"
 #include "RE/M/Misc.h"
@@ -24,6 +23,7 @@
 #include "RE/T/TESEnchantableForm.h"
 #include "RE/T/TESFaction.h"
 #include "RE/T/TESNPC.h"
+#include "RE/T/TESObjectCELL.h"
 #include "SKSE/Logger.h"
 
 namespace RE
