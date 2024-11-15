@@ -1,7 +1,7 @@
 #pragma once
 
+#include "RE/B/BSSimpleList.h"
 #include "RE/B/BSTEvent.h"
-#include "RE/B/BSTList.h"
 #include "RE/B/BSTTuple.h"
 #include "RE/C/Color.h"
 #include "RE/I/ICellAttachDetachEventSource.h"

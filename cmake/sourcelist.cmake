@@ -267,6 +267,7 @@ set(SOURCES
 	include/RE/B/BSShader.h
 	include/RE/B/BSShaderMaterial.h
 	include/RE/B/BSShaderProperty.h
+	include/RE/B/BSSimpleList.h
 	include/RE/B/BSSmallBlockAllocator.h
 	include/RE/B/BSSoundHandle.h
 	include/RE/B/BSStorage.h
@@ -283,7 +284,6 @@ set(SOURCES
 	include/RE/B/BSTEvent.h
 	include/RE/B/BSTFreeList.h
 	include/RE/B/BSTHashMap.h
-	include/RE/B/BSTList.h
 	include/RE/B/BSTLocklessQueue.h
 	include/RE/B/BSTMessageQueue.h
 	include/RE/B/BSTObjectDictionary.h

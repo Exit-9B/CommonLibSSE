@@ -2,8 +2,8 @@
 
 #include "RE/A/ActiveEffectReferenceEffectController.h"
 #include "RE/B/BSPointerHandle.h"
+#include "RE/B/BSSimpleList.h"
 #include "RE/B/BSSoundHandle.h"
-#include "RE/B/BSTList.h"
 #include "RE/M/MagicSystem.h"
 #include "RE/N/NiSmartPointer.h"
 

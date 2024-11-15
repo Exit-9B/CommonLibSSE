@@ -1,7 +1,7 @@
 #pragma once
 
 #include "RE/B/BSPointerHandle.h"
-#include "RE/B/BSTList.h"
+#include "RE/B/BSSimpleList.h"
 #include "RE/B/BSTSmartPointer.h"
 #include "RE/E/EffectArchetypes.h"
 #include "RE/M/MagicSystem.h"
