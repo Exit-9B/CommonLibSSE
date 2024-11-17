@@ -2,19 +2,68 @@
 
 #include <Windows.h>
 
+#undef CallWindowProc
+#undef CreateEventEx
 #undef GetEnvironmentVariable
 #undef GetFileVersionInfo
 #undef GetFileVersionInfoSize
 #undef GetModuleFileName
 #undef GetModuleHandle
+#undef GetWindowLongPtr
 #undef MessageBox
 #undef OutputDebugString
+#undef RegisterDeviceNotification
+#undef SetWindowLongPtr
 #undef VerQueryValue
 
 extern "C" IMAGE_DOS_HEADER __ImageBase;
 
 namespace SKSE::WinAPI
 {
+	std::intptr_t CallWindowProc(
+		WNDPROC        a_prevWndFunc,
+		void*          a_wnd,
+		std::uint32_t  a_msg,
+		std::uintptr_t a_wParam,
+		std::intptr_t  a_lParam)
+	{
+		return static_cast<std::intptr_t>(
+			::CallWindowProcA(
+				reinterpret_cast<::WNDPROC>(a_prevWndFunc),
+				static_cast<::HWND>(a_wnd),
+				static_cast<::UINT>(a_msg),
+				static_cast<::WPARAM>(a_wParam),
+				static_cast<::LPARAM>(a_lParam)));
+	}
+
+	ScopedHandle CreateEventEx(
+		SECURITY_ATTRIBUTES* a_eventAttributes,
+		char*                a_name,
+		std::uint32_t        a_flags,
+		std::uint32_t        a_desiredAccess)
+	{
+		return ScopedHandle(
+			::CreateEventExA(
+				reinterpret_cast<::LPSECURITY_ATTRIBUTES>(a_eventAttributes),
+				static_cast<::LPCSTR>(a_name),
+				static_cast<::DWORD>(a_flags),
+				static_cast<::DWORD>(a_desiredAccess)));
+	}
+
+	ScopedHandle CreateEventEx(
+		SECURITY_ATTRIBUTES* a_eventAttributes,
+		wchar_t*             a_name,
+		std::uint32_t        a_flags,
+		std::uint32_t        a_desiredAccess)
+	{
+		return ScopedHandle(
+			::CreateEventExW(
+				reinterpret_cast<::LPSECURITY_ATTRIBUTES>(a_eventAttributes),
+				static_cast<::LPCWSTR>(a_name),
+				static_cast<::DWORD>(a_flags),
+				static_cast<::DWORD>(a_desiredAccess)));
+	}
+
 	void* GetCurrentModule() noexcept
 	{
 		return static_cast<void*>(
@@ -157,6 +206,16 @@ namespace SKSE::WinAPI
 				static_cast<::LPCSTR>(a_procName)));
 	}
 
+	std::intptr_t GetWindowLongPtr(
+		HWND               a_wnd,
+		GetWindowLongIndex a_index) noexcept
+	{
+		return static_cast<std::intptr_t>(
+			::GetWindowLongPtrA(
+				reinterpret_cast<::HWND>(a_wnd),
+				static_cast<int>(a_index)));
+	}
+
 	std::int32_t MessageBox(
 		void*        a_wnd,
 		const char*  a_text,
@@ -214,6 +273,49 @@ namespace SKSE::WinAPI
 	{
 		::OutputDebugStringW(
 			static_cast<::LPCWSTR>(a_outputString));
+	}
+
+	ScopedDeviceNotify RegisterDeviceNotification(
+		void*         a_recipient,
+		void*         a_notificationFilter,
+		std::uint32_t a_flags) noexcept
+	{
+		return ScopedDeviceNotify(
+			::RegisterDeviceNotificationA(
+				static_cast<::HANDLE>(a_recipient),
+				static_cast<::LPVOID>(a_notificationFilter),
+				static_cast<::DWORD>(a_flags)));
+	}
+
+	bool SetEvent(ScopedHandle& a_event) noexcept
+	{
+		return static_cast<bool>(
+			::SetEvent(
+				static_cast<::HANDLE>(a_event.get())));
+	}
+
+	std::intptr_t SetWindowLongPtr(
+		HWND               a_wnd,
+		GetWindowLongIndex a_index,
+		std::intptr_t      a_newLong) noexcept
+	{
+		return static_cast<std::intptr_t>(
+			::SetWindowLongPtrA(
+				reinterpret_cast<::HWND>(a_wnd),
+				static_cast<int>(a_index),
+				static_cast<::LONG_PTR>(a_newLong)));
+	}
+
+	void* SetWindowLongPtr(
+		HWND               a_wnd,
+		GetWindowLongIndex a_index,
+		void*              a_newLong) noexcept
+	{
+		return reinterpret_cast<void*>(
+			::SetWindowLongPtrA(
+				reinterpret_cast<::HWND>(a_wnd),
+				static_cast<int>(a_index),
+				reinterpret_cast<::LONG_PTR>(a_newLong)));
 	}
 
 	void TerminateProcess(
@@ -296,6 +398,33 @@ namespace SKSE::WinAPI
 				reinterpret_cast<::PDWORD>(a_oldProtect)));
 	}
 
+	std::uint32_t WaitForMultipleObjectsEx(
+		std::span<void* const> a_handles,
+		bool                   a_waitAll,
+		std::uint32_t          a_milliseconds,
+		bool                   a_alertable)
+	{
+		return static_cast<std::uint32_t>(
+			::WaitForMultipleObjectsEx(
+				static_cast<::DWORD>(a_handles.size()),
+				static_cast<const ::HANDLE*>(a_handles.data()),
+				static_cast<::BOOL>(a_waitAll),
+				static_cast<::DWORD>(a_milliseconds),
+				static_cast<::BOOL>(a_alertable)));
+	}
+
+	std::uint32_t WaitForSingleObjectEx(
+		ScopedHandle& a_handle,
+		std::uint32_t a_milliseconds,
+		bool          a_alertable) noexcept
+	{
+		return static_cast<std::uint32_t>(
+			::WaitForSingleObjectEx(
+				static_cast<::HANDLE>(a_handle.get()),
+				static_cast<::DWORD>(a_milliseconds),
+				static_cast<::BOOL>(a_alertable)));
+	}
+
 	int WideCharToMultiByte(
 		unsigned int   a_codePage,
 		std::uint32_t  a_flags,
@@ -315,5 +444,17 @@ namespace SKSE::WinAPI
 			a_multiByte,
 			static_cast<::LPCCH>(a_defaultChar),
 			static_cast<::LPBOOL>(a_usedDefaultChar));
+	}
+
+	void HandleCloser::operator()(void* a_handle) const noexcept
+	{
+		::CloseHandle(
+			static_cast<::HANDLE>(a_handle));
+	}
+
+	void DeviceNotifyCloser::operator()(void* a_handle) const noexcept
+	{
+		::UnregisterDeviceNotification(
+			static_cast<::HDEVNOTIFY>(a_handle));
 	}
 }

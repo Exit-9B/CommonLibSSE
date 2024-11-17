@@ -57,6 +57,135 @@ namespace SKSE::WinAPI
 	static_assert(sizeof(_WIN32_FIND_DATAA) == 0x140);
 	using WIN32_FIND_DATAA = _WIN32_FIND_DATAA;
 
+	using WNDPROC = std::intptr_t (*)(HWND, std::uint32_t, std::uintptr_t, std::intptr_t);
+
+	enum struct GetWindowLongIndex
+	{
+		EXSTYLE = -20,
+		HINSTANCE = -6,
+		HWNDPARENT = -8,
+		ID = -12,
+		STYLE = -16,
+		USERDATA = -21,
+		WNDPROC = -4,
+	};
+	using GWL = GetWindowLongIndex;
+
+	struct SECURITY_ATTRIBUTES
+	{
+		std::uint32_t Length;              // 00
+		void*         SecurityDescriptor;  // 08
+		std::int32_t  InheritHandle;       // 10
+	};
+	static_assert(sizeof(SECURITY_ATTRIBUTES) == 0x18);
+
+	struct HandleCloser
+	{
+		void operator()(void* a_handle) const noexcept;
+	};
+
+	using ScopedHandle = std::unique_ptr<void, HandleCloser>;
+
+	struct _GUID
+	{
+		constexpr auto operator<=>(const _GUID&) const noexcept = default;
+
+		// members
+		std::uint32_t Data1;     // 00
+		std::uint16_t Data2;     // 04
+		std::uint16_t Data3;     // 06
+		std::uint8_t  Data4[8];  // 08
+	};
+	static_assert(sizeof(_GUID) == 0x10);
+	using GUID = _GUID;
+	using IID = GUID;
+	using REFIID = const IID&;
+	using CLSID = GUID;
+	using REFCLSID = const IID&;
+
+	namespace DBT
+	{
+		enum DeviceChangeMessage : std::uintptr_t
+		{
+			DEVICEARRIVAL = 0x8000,
+			DEVICEQUERYREMOVE = 0x8001,
+			DEVICEQUERYREMOVEFAILED = 0x8002,
+			DEVICEREMOVEPENDING = 0x8003,
+			DEVICEREMOVECOMPLETE = 0x8004,
+			DEVICETYPESPECIFIC = 0x8005,
+		};
+
+		enum struct DeviceType : std::uint32_t
+		{
+			OEM = 0x00000000,
+			DEVNODE = 0x00000001,
+			VOLUME = 0x00000002,
+			PORT = 0x00000003,
+			NET = 0x00000004,
+			DEVICEINTERFACE = 0x00000005,
+			HANDLE = 0x00000006,
+		};
+		using DEVTYP = DeviceType;
+	};
+
+	struct _DEV_BROADCAST_HDR
+	{
+		std::uint32_t   dbch_size;        // 0
+		DBT::DeviceType dbch_devicetype;  // 4
+		std::uint32_t   dbch_reserved;    // 8
+	};
+	static_assert(sizeof(_DEV_BROADCAST_HDR) == 0xC);
+	using DEV_BROADCAST_HDR = _DEV_BROADCAST_HDR;
+
+	struct _DEV_BROADCAST_DEVICEINTERFACE_A
+	{
+		std::uint32_t   dbcc_size;        // 00
+		DBT::DeviceType dbcc_devicetype;  // 04
+		std::uint32_t   dbcc_reserved;    // 08
+		GUID            dbcc_classguid;   // 0C
+		char            dbcc_name[1];     // 1C
+	};
+	static_assert(sizeof(_DEV_BROADCAST_DEVICEINTERFACE_A) == 0x20);
+	using DEV_BROADCAST_DEVICEINTERFACE_A = _DEV_BROADCAST_DEVICEINTERFACE_A;
+	using DEV_BROADCAST_DEVICEINTERFACE = DEV_BROADCAST_DEVICEINTERFACE_A;
+
+	struct DEVICE_NOTIFY
+	{
+		enum Flags
+		{
+			WINDOW_HANDLE = 0x00000000,
+			SERVICE_HANDLE = 0x00000001,
+
+			ALL_INTERFACE_CLASSES = 0x00000004,
+		};
+	};
+
+	struct DeviceNotifyCloser
+	{
+		void operator()(void* handle) const noexcept;
+	};
+
+	using ScopedDeviceNotify = std::unique_ptr<void, DeviceNotifyCloser>;
+
+	[[nodiscard]] std::intptr_t CallWindowProc(
+		WNDPROC        a_prevWndFunc,
+		void*          a_wnd,
+		std::uint32_t  a_msg,
+		std::uintptr_t a_wParam,
+		std::intptr_t  a_lParam);
+
+	[[nodiscard]] ScopedHandle CreateEventEx(
+		SECURITY_ATTRIBUTES* a_eventAttributes,
+		char*                a_name,
+		std::uint32_t        a_flags,
+		std::uint32_t        a_desiredAccess);
+
+	[[nodiscard]] ScopedHandle CreateEventEx(
+		SECURITY_ATTRIBUTES* a_eventAttributes,
+		wchar_t*             a_name,
+		std::uint32_t        a_flags,
+		std::uint32_t        a_desiredAccess);
+
 	[[nodiscard]] void* GetCurrentModule() noexcept;
 
 	[[nodiscard]] void* GetCurrentProcess() noexcept;
@@ -113,6 +242,10 @@ namespace SKSE::WinAPI
 		void*       a_module,
 		const char* a_procName) noexcept;
 
+	std::intptr_t GetWindowLongPtr(
+		HWND               a_wnd,
+		GetWindowLongIndex a_index) noexcept;
+
 	std::int32_t MessageBox(
 		void*        a_wnd,
 		const char*  a_text,
@@ -138,6 +271,23 @@ namespace SKSE::WinAPI
 
 	void OutputDebugString(
 		const wchar_t* a_outputString) noexcept;
+
+	[[nodiscard]] ScopedDeviceNotify RegisterDeviceNotification(
+		void*         a_recipient,
+		void*         a_notificationFilter,
+		std::uint32_t a_flags) noexcept;
+
+	bool SetEvent(ScopedHandle& a_event) noexcept;
+
+	std::intptr_t SetWindowLongPtr(
+		HWND               a_wnd,
+		GetWindowLongIndex a_index,
+		std::intptr_t      a_newLong) noexcept;
+
+	void* SetWindowLongPtr(
+		HWND               a_wnd,
+		GetWindowLongIndex a_index,
+		void*              a_newLong) noexcept;
 
 	[[noreturn]] void TerminateProcess(
 		void*        a_process,
@@ -171,6 +321,17 @@ namespace SKSE::WinAPI
 		std::size_t    a_size,
 		std::uint32_t  a_newProtect,
 		std::uint32_t* a_oldProtect) noexcept;
+
+	std::uint32_t WaitForMultipleObjectsEx(
+		std::span<void* const> a_handles,
+		bool                   a_waitAll,
+		std::uint32_t          a_milliseconds,
+		bool                   a_alertable);
+
+	std::uint32_t WaitForSingleObjectEx(
+		ScopedHandle& a_handle,
+		std::uint32_t a_milliseconds,
+		bool          a_alertable) noexcept;
 
 	[[nodiscard]] int WideCharToMultiByte(
 		unsigned int   a_codePage,
