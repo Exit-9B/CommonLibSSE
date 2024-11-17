@@ -178,6 +178,58 @@ namespace SKSE
 			return write_call<N>(a_src, stl::unrestricted_cast<std::uintptr_t>(a_dst));
 		}
 
+		[[nodiscard]] std::int32_t make_disp(std::uintptr_t a_rip, std::uintptr_t a_dst)
+		{
+#pragma pack(push, 1)
+			// FF /4
+			// JMP r/m64
+			struct TrampolineAssembly
+			{
+				// jmp [rip]
+				std::uint8_t  jmp;    // 0 - 0xFF
+				std::uint8_t  modrm;  // 1 - 0x25
+				std::int32_t  disp;   // 2 - 0x00000000
+				std::uint64_t addr;   // 6 - [rip]
+			};
+			static_assert(offsetof(TrampolineAssembly, jmp) == 0x0);
+			static_assert(offsetof(TrampolineAssembly, modrm) == 0x1);
+			static_assert(offsetof(TrampolineAssembly, disp) == 0x2);
+			static_assert(offsetof(TrampolineAssembly, addr) == 0x6);
+			static_assert(sizeof(TrampolineAssembly) == 0xE);
+#pragma pack(pop)
+
+			std::ptrdiff_t disp =
+				reinterpret_cast<const std::byte*>(a_dst) -
+				reinterpret_cast<const std::byte*>(a_rip);
+
+			if (!std::in_range<std::int32_t>(disp)) {
+				TrampolineAssembly* mem = nullptr;
+				if (const auto it = _5branches.find(a_dst); it != _5branches.end()) {
+					mem = reinterpret_cast<TrampolineAssembly*>(it->second);
+				} else {
+					mem = allocate<TrampolineAssembly>();
+					_5branches.emplace(a_dst, reinterpret_cast<std::byte*>(mem));
+				}
+
+				disp =
+					reinterpret_cast<const std::byte*>(mem) -
+					reinterpret_cast<const std::byte*>(a_rip);
+
+				if (!std::in_range<std::int32_t>(disp)) {  // the trampoline should already be in range, so this should never happen
+					stl::report_and_fail("displacement is out of range"sv);
+				}
+
+				*mem = {
+					.jmp = static_cast<std::uint8_t>(0xFF),
+					.modrm = static_cast<std::uint8_t>(0x25),
+					.disp = static_cast<std::int32_t>(0),
+					.addr = static_cast<std::uint64_t>(a_dst),
+				};
+			}
+
+			return static_cast<std::int32_t>(disp);
+		}
+
 	private:
 		[[nodiscard]] void* do_create(std::size_t a_size, std::uintptr_t a_address);
 
@@ -205,54 +257,14 @@ namespace SKSE
 			static_assert(offsetof(SrcAssembly, opcode) == 0x0);
 			static_assert(offsetof(SrcAssembly, disp) == 0x1);
 			static_assert(sizeof(SrcAssembly) == 0x5);
-
-			// FF /4
-			// JMP r/m64
-			struct TrampolineAssembly
-			{
-				// jmp [rip]
-				std::uint8_t  jmp;    // 0 - 0xFF
-				std::uint8_t  modrm;  // 1 - 0x25
-				std::int32_t  disp;   // 2 - 0x00000000
-				std::uint64_t addr;   // 6 - [rip]
-			};
-			static_assert(offsetof(TrampolineAssembly, jmp) == 0x0);
-			static_assert(offsetof(TrampolineAssembly, modrm) == 0x1);
-			static_assert(offsetof(TrampolineAssembly, disp) == 0x2);
-			static_assert(offsetof(TrampolineAssembly, addr) == 0x6);
-			static_assert(sizeof(TrampolineAssembly) == 0xE);
 #pragma pack(pop)
 
-			std::ptrdiff_t disp =
-				reinterpret_cast<const std::byte*>(a_dst) -
-				reinterpret_cast<const std::byte*>(a_src + sizeof(SrcAssembly));
+			const std::int32_t disp = make_disp(a_src + sizeof(SrcAssembly), a_dst);
 
-			if (!in_range(disp)) {
-				TrampolineAssembly* mem = nullptr;
-				if (const auto it = _5branches.find(a_dst); it != _5branches.end()) {
-					mem = reinterpret_cast<TrampolineAssembly*>(it->second);
-				} else {
-					mem = allocate<TrampolineAssembly>();
-					_5branches.emplace(a_dst, reinterpret_cast<std::byte*>(mem));
-				}
-
-				disp =
-					reinterpret_cast<const std::byte*>(mem) -
-					reinterpret_cast<const std::byte*>(a_src + sizeof(SrcAssembly));
-
-				if (!in_range(disp)) {  // the trampoline should already be in range, so this should never happen
-					stl::report_and_fail("displacement is out of range"sv);
-				}
-
-				mem->jmp = static_cast<std::uint8_t>(0xFF);
-				mem->modrm = static_cast<std::uint8_t>(0x25);
-				mem->disp = static_cast<std::int32_t>(0);
-				mem->addr = static_cast<std::uint64_t>(a_dst);
-			}
-
-			SrcAssembly assembly;
-			assembly.opcode = a_opcode;
-			assembly.disp = static_cast<std::int32_t>(disp);
+			SrcAssembly assembly{
+				.opcode = a_opcode,
+				.disp = disp,
+			};
 			REL::safe_write(a_src, &assembly, sizeof(assembly));
 		}
 
@@ -283,14 +295,15 @@ namespace SKSE
 			const auto disp =
 				reinterpret_cast<const std::byte*>(mem) -
 				reinterpret_cast<const std::byte*>(a_src + sizeof(Assembly));
-			if (!in_range(disp)) {  // the trampoline should already be in range, so this should never happen
+			if (!std::in_range<std::int32_t>(disp)) {  // the trampoline should already be in range, so this should never happen
 				stl::report_and_fail("displacement is out of range"sv);
 			}
 
-			Assembly assembly;
-			assembly.opcode = static_cast<std::uint8_t>(0xFF);
-			assembly.modrm = a_modrm;
-			assembly.disp = static_cast<std::int32_t>(disp);
+			Assembly assembly{
+				.opcode = static_cast<std::uint8_t>(0xFF),
+				.modrm = a_modrm,
+				.disp = static_cast<std::int32_t>(disp),
+			};
 			REL::safe_write(a_src, &assembly, sizeof(assembly));
 
 			*mem = a_dst;
@@ -333,14 +346,6 @@ namespace SKSE
 		}
 
 		void log_stats() const;
-
-		[[nodiscard]] bool in_range(std::ptrdiff_t a_disp) const
-		{
-			constexpr auto min = std::numeric_limits<std::int32_t>::min();
-			constexpr auto max = std::numeric_limits<std::int32_t>::max();
-
-			return min <= a_disp && a_disp <= max;
-		}
 
 		void release()
 		{
