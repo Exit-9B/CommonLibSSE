@@ -204,9 +204,14 @@ namespace RE
 
 		namespace BSAudioManager
 		{
-			inline constexpr REL::Offset GetSingleton(static_cast<std::uint64_t>(0xC29430));
-			inline constexpr REL::Offset BuildSoundDataFromDescriptor(static_cast<std::uint64_t>(0xC29F60));
+			inline constexpr REL::Offset CacheSpinLock(static_cast<std::uint64_t>(0x30C1D60));
+
+			inline constexpr REL::Offset ComposeMessage(static_cast<std::uint64_t>(0xC2BC00));
+			inline constexpr REL::Offset GetSoundHandle(static_cast<std::uint64_t>(0xC29F60));
+			inline constexpr REL::Offset KillAll(static_cast<std::uint64_t>(0xC2A160));
 			inline constexpr REL::Offset PrecacheDescriptor(static_cast<std::uint64_t>(0xC2BE60));
+			inline constexpr REL::Offset QInstance(static_cast<std::uint64_t>(0xC29430));
+			inline constexpr REL::Offset QPlatformInstance(static_cast<std::uint64_t>(0xC29440));
 		}
 
 		namespace BSFaceGenAnimationData
@@ -392,6 +397,12 @@ namespace RE
 		namespace BSWin32SystemUtility
 		{
 			inline constexpr REL::Offset GetSingleton(static_cast<std::uint64_t>(0x137B630));
+		}
+
+		namespace BSXAudio2GameSound
+		{
+			inline constexpr REL::ID pAudioImplementation(static_cast<std::uint64_t>(0x30C1F28));
+			inline constexpr REL::ID pXAudioListener(static_cast<std::uint64_t>(0x30C1F30));
 		}
 
 		namespace BucketTable
