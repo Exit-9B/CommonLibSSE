@@ -236,6 +236,11 @@ namespace RE
 			inline constexpr REL::Offset FindBSFurnitureMarkerNode(static_cast<std::uint64_t>(0xD9D640));
 		}
 
+		namespace BSGameSound
+		{
+			inline constexpr REL::Offset SetOutputModel(static_cast<std::uint64_t>());
+		}
+
 		namespace BSGraphics
 		{
 			namespace State
@@ -401,8 +406,9 @@ namespace RE
 
 		namespace BSXAudio2GameSound
 		{
-			inline constexpr REL::ID pAudioImplementation(static_cast<std::uint64_t>(0x30C1F28));
-			inline constexpr REL::ID pXAudioListener(static_cast<std::uint64_t>(0x30C1F30));
+			inline constexpr REL::Offset SeekInSamples(static_cast<std::uint64_t>(0xC394F0));
+			inline constexpr REL::Offset pAudioImplementation(static_cast<std::uint64_t>(0x30C1F28));
+			inline constexpr REL::Offset pXAudioListener(static_cast<std::uint64_t>(0x30C1F30));
 		}
 
 		namespace BucketTable

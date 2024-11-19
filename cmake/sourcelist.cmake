@@ -326,6 +326,7 @@ set(SOURCES
 	include/RE/B/BSWin32VirtualKeyboardDevice.h
 	include/RE/B/BSXAudio2Audio.h
 	include/RE/B/BSXAudio2AudioListener.h
+	include/RE/B/BSXAudio2DataSrc.h
 	include/RE/B/BSXAudio2GameSound.h
 	include/RE/B/BSXFlags.h
 	include/RE/B/BShkbAnimationGraph.h
@@ -1423,6 +1424,7 @@ set(SOURCES
 	src/RE/B/BSFaceGenAnimationData.cpp
 	src/RE/B/BSFixedString.cpp
 	src/RE/B/BSFurnitureMarkerNode.cpp
+	src/RE/B/BSGameSound.cpp
 	src/RE/B/BSHandleRefObject.cpp
 	src/RE/B/BSInputDevice.cpp
 	src/RE/B/BSInputDeviceManager.cpp
