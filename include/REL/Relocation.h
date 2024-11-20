@@ -532,6 +532,24 @@ namespace REL
 		{
 			std::uint64_t id;
 			std::uint64_t offset;
+
+			constexpr auto operator<=>(const mapping_t&) const noexcept = default;
+		};
+
+		struct comp_offset
+		{
+			constexpr bool operator()(const mapping_t& a_lhs, const mapping_t& a_rhs) const noexcept
+			{
+				return a_lhs.offset < a_rhs.offset;
+			}
+		};
+
+		struct backup_t
+		{
+			std::uint64_t id;
+			std::uint64_t backup;
+
+			constexpr auto operator<=>(const backup_t&) const noexcept = default;
 		};
 
 	public:
@@ -551,13 +569,7 @@ namespace REL
 				const std::span<const mapping_t> id2offset = IDDatabase::get()._id2offset;
 				_offset2id.reserve(id2offset.size());
 				_offset2id.insert(_offset2id.begin(), id2offset.begin(), id2offset.end());
-				std::sort(
-					a_policy,
-					_offset2id.begin(),
-					_offset2id.end(),
-					[](auto&& a_lhs, auto&& a_rhs) {
-						return a_lhs.offset < a_rhs.offset;
-					});
+				std::sort(a_policy, _offset2id.begin(), _offset2id.end(), comp_offset());
 			}
 
 			Offset2ID() :
@@ -567,13 +579,7 @@ namespace REL
 			[[nodiscard]] std::uint64_t operator()(std::size_t a_offset) const
 			{
 				const mapping_t elem{ 0, a_offset };
-				const auto      it = std::lower_bound(
-						 _offset2id.begin(),
-						 _offset2id.end(),
-						 elem,
-						 [](auto&& a_lhs, auto&& a_rhs) {
-                        return a_lhs.offset < a_rhs.offset;
-                    });
+				const auto      it = std::ranges::lower_bound(_offset2id, elem, comp_offset());
 				if (it == _offset2id.end()) {
 					stl::report_and_fail(
 						fmt::format(
@@ -614,15 +620,16 @@ namespace REL
 
 		[[nodiscard]] inline std::size_t id2offset(std::uint64_t a_id) const
 		{
-			mapping_t  elem{ a_id, 0 };
-			const auto it = std::lower_bound(
-				_id2offset.begin(),
-				_id2offset.end(),
-				elem,
-				[](auto&& a_lhs, auto&& a_rhs) {
-					return a_lhs.id < a_rhs.id;
-				});
-			if (it == _id2offset.end()) {
+			auto it = std::ranges::lower_bound(_id2offset, mapping_t{ a_id, 0 });
+			if (it == _id2offset.end() || it->id != a_id) {
+				const auto backup = std::ranges::lower_bound(_backups, backup_t{ a_id, 0 });
+				if (backup != _backups.end() && backup->id == a_id) {
+					a_id = backup->backup;
+					it = std::ranges::lower_bound(_id2offset, mapping_t{ a_id, 0 });
+				}
+			}
+
+			if (it == _id2offset.end() || it->id != a_id) {
 				stl::report_and_fail(
 					fmt::format(
 						"Failed to find the id within the address library: {}\n"
@@ -824,6 +831,16 @@ namespace REL
 		inline static bool   _loaded{ false };
 		detail::memory_map   _mmap;
 		std::span<mapping_t> _id2offset;
+
+		// Patch for known Address Library bugs
+		inline static constexpr auto _backups =
+			std::to_array<backup_t>({
+				{ 441582, 21890 },
+				{ 443410, 69188 },
+				{ 453511, 109206 },
+				{ 502114, 380738 },
+			});
+		static_assert(std::ranges::is_sorted(_backups));
 	};
 
 	inline constinit IDDatabase IDDatabase::_singleton;
