@@ -2,6 +2,8 @@
 
 namespace RE
 {
+	class Movie;
+
 	class MoviePlayer
 	{
 	public:
@@ -27,7 +29,7 @@ namespace RE
 		// members
 		std::uint64_t unk08;  // 08
 		std::uint64_t unk10;  // 10
-		std::uint64_t unk18;  // 18
+		Movie*        movie;  // 18
 		std::uint64_t unk20;  // 20
 		std::uint64_t unk28;  // 28
 		std::uint64_t unk30;  // 30
