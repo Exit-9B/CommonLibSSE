@@ -205,8 +205,11 @@ namespace RE
 		template <class T>
 		inline constexpr bool is_valid_return_v = is_valid_return<T>::value;
 
+		template <class T, class P = void>
+		struct is_valid_latent_return : std::false_type {};
+
 		template <class T>
-		struct is_valid_latent_return :
+		struct is_valid_latent_return<T, std::void_t<typename std::coroutine_traits<T>::template promise_type>> :
 			std::conjunction<
 				std::is_base_of<
 					LatentPromiseBase,
