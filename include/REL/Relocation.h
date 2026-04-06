@@ -915,18 +915,18 @@ namespace REL
 
 		void flush()
 		{
-			for (const auto& [id, offsetAddr] : std::span(_buffer.get(), _size)) {
-				*offsetAddr = ID(id).offset();
+			for (const auto& [id, pAddr] : std::span(_buffer.get(), _size)) {
+				*pAddr = ID(id).address();
 			}
 			clear();
 		}
 
-		[[msvc::noinline]] void register_address(std::uint64_t a_ID, std::uintptr_t* a_offsetAddr)
+		[[msvc::noinline]] void register_address(std::uint64_t a_ID, std::uintptr_t* a_pAddress)
 		{
 			if (_size == _capacity) {
 				grow();
 			}
-			std::construct_at(&_buffer[_size++], a_ID, a_offsetAddr);
+			std::construct_at(&_buffer[_size++], a_ID, a_pAddress);
 		}
 
 		void clear()
@@ -964,17 +964,17 @@ namespace REL
 	class StaticID
 	{
 	public:
-		operator Offset() const noexcept { return Offset(_cache._offset); }
+		operator std::uint64_t() const noexcept { return _cache._address; }
 
 	private:
 		struct Cache
 		{
 			Cache()
 			{
-				AddressManager::get().register_address(ID, &_offset);
+				AddressManager::get().register_address(ID, &_address);
 			}
 
-			std::uintptr_t _offset;
+			std::uintptr_t _address;
 		};
 
 		inline static Cache _cache;
