@@ -207,16 +207,16 @@ namespace RE
 		}
 
 		template <class T>
-		requires(std::is_class_v<T>)
-			[[nodiscard]] T* As() noexcept
+			requires(std::is_class_v<T>)
+		[[nodiscard]] T* As() noexcept
 		{
 			return const_cast<T*>(
 				static_cast<const TESForm*>(this)->As<T>());
 		}
 
 		template <class T>
-		requires(requires { T::FORMTYPE; })
-			[[nodiscard]] const T* As() const noexcept
+			requires(requires { T::FORMTYPE; })
+		[[nodiscard]] const T* As() const noexcept
 		{
 			if (GetFormType() == T::FORMTYPE) {
 				return static_cast<const T*>(this);
@@ -226,8 +226,8 @@ namespace RE
 		}
 
 		template <class T>
-		requires(!requires { T::FORMTYPE; })
-			[[nodiscard]] const T* As() const noexcept;
+			requires(!requires { T::FORMTYPE; })
+		[[nodiscard]] const T* As() const noexcept;
 
 		[[nodiscard]] TESObjectREFR*       AsReference() { return AsReference1(); }
 		[[nodiscard]] const TESObjectREFR* AsReference() const { return AsReference2(); }
@@ -260,7 +260,7 @@ namespace RE
 
 		template <class... Args>
 		[[nodiscard]] bool Is(Args... a_args) const noexcept  //
-			requires(std::same_as<Args, FormType>&&...)
+			requires(std::same_as<Args, FormType> && ...)
 		{
 			return (Is(a_args) || ...);
 		}
@@ -280,7 +280,7 @@ namespace RE
 
 		template <class... Args>
 		[[nodiscard]] bool IsNot(Args... a_args) const noexcept  //
-			requires(std::same_as<Args, FormType>&&...)
+			requires(std::same_as<Args, FormType> && ...)
 		{
 			return (IsNot(a_args) && ...);
 		}
