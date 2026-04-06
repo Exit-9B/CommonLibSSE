@@ -238,7 +238,7 @@ namespace RE
 
 		namespace BSGameSound
 		{
-			inline constexpr REL::Offset SetOutputModel(static_cast<std::uint64_t>());
+			inline constexpr REL::Offset SetOutputModel(static_cast<std::uint64_t>(0xC34CE0));
 		}
 
 		namespace BSGraphics
