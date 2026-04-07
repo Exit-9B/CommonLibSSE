@@ -6,6 +6,22 @@
 
 namespace RE
 {
+	template <class T, class Manager>
+	[[nodiscard]] BSPointerHandle<T> BSPointerHandleManagerInterface<T, Manager>::GetHandle(T* a_ptr)
+	{
+		using func_t = decltype(&BSPointerHandleManagerInterface<T, Manager>::GetHandle);
+		REL::Relocation<func_t> func{ STATIC_OFFSET(BSPointerHandleManagerInterface::GetHandle) };
+		return func(a_ptr);
+	}
+
+	template <class T, class Manager>
+	bool BSPointerHandleManagerInterface<T, Manager>::GetSmartPointer(const BSPointerHandle<T>& a_handle, NiPointer<T>& a_smartPointerOut)
+	{
+		using func_t = decltype(&BSPointerHandleManagerInterface<T, Manager>::GetSmartPointer);
+		REL::Relocation<func_t> func{ STATIC_OFFSET(BSPointerHandleManagerInterface::GetSmartPointer) };
+		return func(a_handle, a_smartPointerOut);
+	}
+
 	template class BSUntypedPointerHandle<>;
 	static_assert(sizeof(BSUntypedPointerHandle<>) == 0x4);
 
