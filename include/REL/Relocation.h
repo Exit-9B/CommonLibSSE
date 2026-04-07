@@ -939,7 +939,7 @@ namespace REL
 	private:
 		void grow()
 		{
-			const std::size_t capacity = _capacity > 0 ? _capacity * 2 : 1;
+			const std::size_t capacity = (_capacity > 0) ? (_capacity * 2) : (4096 / sizeof(reg_t));
 			auto              buffer = std::make_unique<reg_t[]>(capacity);
 			std::memcpy(buffer.get(), _buffer.get(), _capacity * sizeof(reg_t));
 			_buffer.swap(buffer);
@@ -964,7 +964,7 @@ namespace REL
 	class StaticID
 	{
 	public:
-		operator std::uint64_t() const noexcept { return _cache._address; }
+		operator std::uintptr_t() const noexcept { return _cache._address; }
 
 	private:
 		struct Cache
