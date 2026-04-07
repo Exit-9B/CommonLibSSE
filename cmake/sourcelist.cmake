@@ -1676,8 +1676,8 @@ set(SOURCES
 	src/SKSE/Impl/WinAPI.cpp
 	src/SKSE/InputMap.cpp
 	src/SKSE/Interfaces.cpp
-	src/SKSE/Logger.cpp
 	src/SKSE/Logger.Papyrus.cpp
+	src/SKSE/Logger.cpp
 	src/SKSE/MergeMapper.cpp
 	src/SKSE/PapyrusInterface.cpp
 	src/SKSE/RegistrationMap.cpp
