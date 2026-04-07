@@ -5,6 +5,7 @@
 #include "SKSE/Events.h"
 #include "SKSE/Impl/Stubs.h"
 #include "SKSE/Interfaces.h"
+#include "SKSE/PapyrusInterface.h"
 #include "SKSE/Trampoline.h"
 #include "SKSE/Version.h"
 

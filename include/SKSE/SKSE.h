@@ -9,6 +9,7 @@
 #include "SKSE/Interfaces.h"
 #include "SKSE/Logger.h"
 #include "SKSE/MergeMapper.h"
+#include "SKSE/PapyrusInterface.h"
 #include "SKSE/RegistrationMap.h"
 #include "SKSE/RegistrationSet.h"
 #include "SKSE/Trampoline.h"

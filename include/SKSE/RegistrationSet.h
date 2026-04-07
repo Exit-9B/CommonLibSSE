@@ -10,7 +10,7 @@
 
 #include "SKSE/API.h"
 #include "SKSE/Impl/RegistrationTraits.h"
-#include "SKSE/Interfaces.h"
+#include "SKSE/PapyrusInterface.h"
 
 namespace SKSE
 {
