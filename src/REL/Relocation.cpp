@@ -152,4 +152,19 @@ namespace REL
 			}
 		}
 	}
+
+	[[nodiscard]] static REL::Vendor find_vendor()
+	{
+#ifndef SKYRIMVR
+		if (::GetModuleHandle(TEXT("Galaxy64"))) {
+			return Vendor::GOG;
+		}
+#endif
+		return Vendor::Steam;
+	}
+
+	void Module::load_vendor()
+	{
+		_vendor = find_vendor();
+	}
 }

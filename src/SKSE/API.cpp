@@ -75,7 +75,6 @@ namespace SKSE
 			stl::report_and_fail("interface is null"sv);
 		}
 
-		REL::Module::init();
 		REL::IDDatabase::init();
 		REL::AddressManager::get().flush();
 

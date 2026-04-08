@@ -424,16 +424,16 @@ namespace REL
 		std::size_t    _size{ 0 };
 	};
 
+	enum class Vendor
+	{
+		Steam,
+		GOG,
+	};
+
 	class Module
 	{
 	public:
 		[[nodiscard]] static Module& get();
-
-		static void init()
-		{
-			_singleton.load();
-			_loaded = true;
-		}
 
 		[[nodiscard]] constexpr std::uintptr_t base() const noexcept { return _base; }
 		[[nodiscard]] constexpr stl::zwstring  filename() const noexcept { return { _filename.data(), _filename.size() }; }
@@ -449,6 +449,8 @@ namespace REL
 			return static_cast<T*>(pointer());
 		}
 
+		[[nodiscard]] constexpr Vendor vendor() const noexcept { return _vendor; }
+
 		Module(const Module&) = delete;
 		Module(Module&&) = delete;
 
@@ -458,7 +460,10 @@ namespace REL
 		Module& operator=(Module&&) = delete;
 
 	private:
-		constexpr Module() = default;
+		Module()
+		{
+			load();
+		}
 
 		void load()
 		{
@@ -476,9 +481,11 @@ namespace REL
 
 			load_version();
 			load_segments();
+			load_vendor();
 		}
 
 		void load_segments();
+		void load_vendor();
 
 		void load_version()
 		{
@@ -511,9 +518,10 @@ namespace REL
 		std::array<Segment, Segment::total>         _segments{};
 		Version                                     _version;
 		std::uintptr_t                              _base{ 0 };
+		Vendor                                      _vendor{ Vendor::Steam };
 	};
 
-	inline constinit Module Module::_singleton;
+	inline Module Module::_singleton;
 
 	inline Module& Module::get()
 	{
@@ -894,11 +902,15 @@ namespace REL
 			return *this;
 		}
 
+		constexpr std::uint64_t operator()() const noexcept
+		{
+			return _id;
+		}
+
 		[[nodiscard]] std::uintptr_t          address() const { return base() + offset(); }
 		[[nodiscard]] constexpr std::uint64_t id() const noexcept { return _id; }
 		[[nodiscard]] std::size_t             offset() const { return IDDatabase::get().id2offset(_id); }
 
-	private:
 		[[nodiscard]] static std::uintptr_t base() { return Module::get().base(); }
 
 		std::uint64_t _id{ 0 };
@@ -960,7 +972,7 @@ namespace REL
 		return _singleton;
 	}
 
-	template <std::uint64_t ID>
+	template <auto I>
 	class StaticID
 	{
 	public:
@@ -971,7 +983,7 @@ namespace REL
 		{
 			Cache()
 			{
-				AddressManager::get().register_address(ID, &_address);
+				AddressManager::get().register_address(I(), &_address);
 			}
 
 			std::uintptr_t _address;
@@ -1268,7 +1280,7 @@ namespace REL
 }
 
 #ifndef SKYRIMVR
-#	define STATIC_OFFSET(name) ::REL::StaticID<::RE::Offset::name.id()>()
+#	define STATIC_OFFSET(name) ::REL::StaticID<::RE::Offset::name>()
 #else
 #	define STATIC_OFFSET(name) ::RE::Offset::name
 #endif
