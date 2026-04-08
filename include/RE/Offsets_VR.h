@@ -168,6 +168,7 @@ namespace RE
 
 		namespace BGSSaveLoadGame
 		{
+			inline constexpr REL::Offset Singleton{ static_cast<std::uint64_t>(0x583FD0) };
 			inline constexpr REL::Offset Singleton{ static_cast<std::uint64_t>(0x2FEB200) };
 		}
 

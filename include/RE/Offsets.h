@@ -155,6 +155,7 @@ namespace RE
 
 		namespace BGSSaveLoadGame
 		{
+			inline constexpr REL::ID ClearForm{ static_cast<std::uint64_t>(35588) };
 			inline constexpr REL::ID Singleton{ static_cast<std::uint64_t>(403330) };
 		}
 

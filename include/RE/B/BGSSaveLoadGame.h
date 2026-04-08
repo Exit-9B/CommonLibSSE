@@ -101,6 +101,8 @@ namespace RE
 		[[nodiscard]] bool GetDeferInitForms() const noexcept { return globalFlags.all(GlobalFlags::kDeferInitForms); }
 		[[nodiscard]] bool GetPositioningPlayerCharacter() const noexcept { return globalFlags.all(GlobalFlags::kPositioningPlayerCharacter); }
 
+		void ClearForm(TESForm* a_form);
+
 		// members
 #ifndef SKYRIMVR
 		TESFileCollection files;  // 000
