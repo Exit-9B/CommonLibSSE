@@ -124,7 +124,7 @@ namespace RE
 		static_assert(sizeof(CompleteObjectLocator) == 0x14);
 	}
 
-	inline void* RTDynamicCast(void* a_inptr, std::int32_t a_vfDelta, void* a_srcType, void* a_targetType, std::int32_t a_isReference);
+	void* RTDynamicCast(void* a_inptr, std::int32_t a_vfDelta, void* a_srcType, void* a_targetType, std::int32_t a_isReference);
 
 	namespace detail
 	{
