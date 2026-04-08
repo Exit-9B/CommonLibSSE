@@ -1445,6 +1445,7 @@ set(SOURCES
 	src/RE/B/BSSoundHandle.cpp
 	src/RE/B/BSStringPool.cpp
 	src/RE/B/BSSystemFileStorage.cpp
+	src/RE/B/BSSystemUtility.cpp
 	src/RE/B/BSTArray.cpp
 	src/RE/B/BSTCreateFactoryManager.cpp
 	src/RE/B/BSThreadEvent.cpp
@@ -1452,7 +1453,6 @@ set(SOURCES
 	src/RE/B/BSVisit.cpp
 	src/RE/B/BSWin32KeyboardDevice.cpp
 	src/RE/B/BSWin32SaveDataSystemUtility.cpp
-	src/RE/B/BSWin32SystemUtility.cpp
 	src/RE/B/BSXAudio2GameSound.cpp
 	src/RE/B/BSXFlags.cpp
 	src/RE/B/BarterMenu.cpp

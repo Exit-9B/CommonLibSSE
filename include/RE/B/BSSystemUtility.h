@@ -36,6 +36,8 @@ namespace RE
 		virtual void Unk_11(void);                                                       // 11
 		virtual bool Unk_12();                                                           // 12 - added in 1.6.1130
 
+		[[nodiscard]] static BSSystemUtility* GetSingleton();
+
 		// members
 		std::uint64_t unk060[24];  // 060
 		std::uint8_t  unk120;      // 120 - added in 1.6.1130

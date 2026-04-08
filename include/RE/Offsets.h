@@ -1,6 +1,7 @@
 #pragma once
 
 #include "REL/Relocation.h"
+#include "SKSE/Version.h"
 
 namespace RE
 {
@@ -376,6 +377,24 @@ namespace RE
 			inline constexpr REL::ID Release16(static_cast<std::uint64_t>(69193));
 		}
 
+		namespace BSSystemUtility
+		{
+			[[nodiscard]] inline std::uint64_t GetSingleton()
+			{
+				switch (REL::Module::get().vendor()) {
+				case REL::Vendor::Steam:
+					if (REL::Module::get().version() >= SKSE::RUNTIME_1_6_1130) {
+						return 453511;
+					} else {
+						return 109206;
+					}
+				case REL::Vendor::GOG:
+					return 510977;
+				}
+				return 0;
+			}
+		}
+
 		namespace BSThreadEvent
 		{
 			inline constexpr REL::ID InitSDM(static_cast<std::uint64_t>(68449));
@@ -389,11 +408,6 @@ namespace RE
 		namespace BSWin32SaveDataSystemUtility
 		{
 			inline constexpr REL::ID GetSingleton(static_cast<std::uint64_t>(109278));
-		}
-
-		namespace BSWin32SystemUtility
-		{
-			inline constexpr REL::ID GetSingleton(static_cast<std::uint64_t>(453511));
 		}
 
 		namespace BSXAudio2GameSound
