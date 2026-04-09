@@ -463,6 +463,7 @@ namespace REL
 		Module()
 		{
 			load();
+			_loaded = true;
 		}
 
 		void load()
