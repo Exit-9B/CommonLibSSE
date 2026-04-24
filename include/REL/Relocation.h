@@ -882,7 +882,6 @@ namespace REL
 		[[nodiscard]] std::uintptr_t        address() const { return base() + offset(); }
 		[[nodiscard]] constexpr std::size_t offset() const noexcept { return _offset; }
 
-	private:
 		[[nodiscard]] static std::uintptr_t base() { return Module::get().base(); }
 
 		std::size_t _offset{ 0 };
@@ -972,6 +971,13 @@ namespace REL
 	{
 		return _singleton;
 	}
+
+	template <Offset O>
+	class StaticOffset
+	{
+	public:
+		operator std::uintptr_t() const noexcept { return O.address(); };
+	};
 
 	template <auto I>
 	class StaticID
@@ -1283,7 +1289,7 @@ namespace REL
 #ifndef SKYRIMVR
 #	define STATIC_OFFSET(name) ::REL::StaticID<::RE::Offset::name>()
 #else
-#	define STATIC_OFFSET(name) ::RE::Offset::name
+#	define STATIC_OFFSET(name) ::REL::StaticOffset<::RE::Offset::name>()
 #endif
 
 #undef REL_MAKE_MEMBER_FUNCTION_NON_POD_TYPE
