@@ -976,7 +976,10 @@ namespace REL
 	class StaticOffset
 	{
 	public:
-		operator std::uintptr_t() const noexcept { return O.address(); };
+		operator std::uintptr_t() const noexcept { return _cache; };
+
+	private:
+		inline static std::uintptr_t _cache = O.address();
 	};
 
 	template <auto I>

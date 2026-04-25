@@ -76,7 +76,9 @@ namespace SKSE
 		}
 
 		REL::IDDatabase::init();
+#ifndef SKYRIMVR
 		REL::AddressManager::get().flush();
+#endif
 
 		auto&       storage = detail::APIStorage::get();
 		const auto& intfc = *a_intfc;
