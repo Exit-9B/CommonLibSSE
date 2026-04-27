@@ -215,7 +215,7 @@ namespace RE
 		}
 
 		template <class T>
-			requires(requires { T::FORMTYPE; })
+			requires(T::FORMTYPE != FormType::None)
 		[[nodiscard]] const T* As() const noexcept
 		{
 			if (GetFormType() == T::FORMTYPE) {
@@ -226,7 +226,6 @@ namespace RE
 		}
 
 		template <class T>
-			requires(!requires { T::FORMTYPE; })
 		[[nodiscard]] const T* As() const noexcept;
 
 		[[nodiscard]] TESObjectREFR*       AsReference() { return AsReference1(); }

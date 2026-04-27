@@ -151,7 +151,6 @@ namespace RE
 	extern template const TESWeightForm*      TESForm::As() const noexcept;
 
 	template <class T>
-		requires(!requires { T::FORMTYPE; })
 	const T* TESForm::As() const noexcept
 	{
 		switch (GetFormType()) {
