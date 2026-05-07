@@ -215,6 +215,53 @@ namespace REL
 		}
 	}
 
+	class safe_write_context
+	{
+	public:
+		safe_write_context(void* a_dst, std::size_t a_count) noexcept :
+			_dst(a_dst),
+			_count(a_count)
+		{
+			_success =
+				WinAPI::VirtualProtect(
+					a_dst,
+					a_count,
+					(WinAPI::PAGE_EXECUTE_READWRITE),
+					std::addressof(_oldProtect));
+		}
+
+		safe_write_context(const safe_write_context&) = delete;
+		safe_write_context(safe_write_context&&) noexcept = delete;
+
+		~safe_write_context() noexcept
+		{
+			if (_success != 0) {
+				_success =
+					WinAPI::VirtualProtect(
+						_dst,
+						_count,
+						_oldProtect,
+						std::addressof(_oldProtect));
+			}
+
+			assert(_success != 0);
+		}
+
+		safe_write_context& operator=(const safe_write_context&) = delete;
+		safe_write_context& operator=(safe_write_context&&) noexcept = delete;
+
+		explicit operator bool() const noexcept
+		{
+			return _success != 0;
+		}
+
+	private:
+		void*         _dst;
+		std::size_t   _count;
+		std::uint32_t _oldProtect{ 0 };
+		bool          _success;
+	};
+
 	inline void safe_write(std::uintptr_t a_dst, const void* a_src, std::size_t a_count)
 	{
 		std::uint32_t old{ 0 };
