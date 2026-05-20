@@ -14,9 +14,12 @@ namespace RE
 		kDialogueCompiler
 	};
 
+	class Script;
+
 	class ScriptCompiler
 	{
 	public:
+		bool CompilePartialScript(Script* a_script, TESObjectREFR* a_targetRef, COMPILER_NAME a_name = COMPILER_NAME::kDefaultCompiler, bool = false);
 	};
 	static_assert(sizeof(ScriptCompiler) == 0x1);
 
@@ -41,11 +44,13 @@ namespace RE
 		bool Load(TESFile* a_mod) override;  // 06
 		void InitItemImpl() override;        // 13
 
-		void                      ClearCommand();
-		void                      CompileAndRun(TESObjectREFR* a_targetRef, COMPILER_NAME a_name = COMPILER_NAME::kSystemWindowCompiler);
-		void                      CompileAndRun(ScriptCompiler* a_compiler, TESObjectREFR* a_targetRef, COMPILER_NAME a_name = COMPILER_NAME::kSystemWindowCompiler);
-		[[nodiscard]] std::string GetCommand() const;
-		void                      SetCommand(std::string_view a_command);
+		void                                       ClearCommand();
+		void                                       CompileAndRun(TESObjectREFR* a_targetRef, COMPILER_NAME a_name = COMPILER_NAME::kSystemWindowCompiler);
+		void                                       CompileAndRun(ScriptCompiler* a_compiler, TESObjectREFR* a_targetRef, COMPILER_NAME a_name = COMPILER_NAME::kSystemWindowCompiler);
+		[[nodiscard]] BSSimpleList<SCRIPT_LOCAL*>* CreateLocalList();
+		[[nodiscard]] std::string                  GetCommand() const;
+		bool                                       Run(TESObjectREFR* a_targetRef, ScriptLocals* a_locals, TESObjectREFR* = nullptr, bool = true);
+		void                                       SetCommand(std::string_view a_command);
 
 		// members
 		SCRIPT_HEADER                           header;                       // 20

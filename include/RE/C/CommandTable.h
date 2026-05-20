@@ -154,6 +154,8 @@ namespace RE
 	struct ACTION_OBJECT
 	{
 	public:
+		TES_HEAP_REDEFINE_NEW();
+
 		// members
 		TESForm*      form;   // 00
 		std::uint32_t flags;  // 08
@@ -164,18 +166,24 @@ namespace RE
 	struct SCRIPT_LOCAL
 	{
 	public:
+		TES_HEAP_REDEFINE_NEW();
+
 		// members
-		std::uint32_t id;         // 0
-		float         value;      // 4
-		bool          isInteger;  // 8
-		std::uint8_t  pad9;       // 9
-		std::uint16_t padA;       // A
+		std::uint32_t id;         // 00
+		std::uint32_t pad04;      // 04
+		double        value;      // 08
+		bool          isInteger;  // 10
+		std::uint8_t  pad11;      // 11
+		std::uint16_t pad12;      // 12
+		std::uint32_t pad14;      // 14
 	};
-	static_assert(sizeof(SCRIPT_LOCAL) == 0xC);
+	static_assert(sizeof(SCRIPT_LOCAL) == 0x18);
 
 	struct SCRIPT_EFFECT_DATA
 	{
 	public:
+		TES_HEAP_REDEFINE_NEW();
+
 		// members
 		bool          scriptEffectStart;   // 00
 		bool          scriptEffectFinish;  // 01
@@ -187,6 +195,20 @@ namespace RE
 	class ScriptLocals
 	{
 	public:
+		ScriptLocals() = default;
+		ScriptLocals(const ScriptLocals&) = delete;
+		ScriptLocals(ScriptLocals&&) noexcept = delete;
+
+		~ScriptLocals();
+
+		ScriptLocals& operator=(const ScriptLocals&) = delete;
+		ScriptLocals& operator=(ScriptLocals&&) = delete;
+
+		void ClearActionList();
+		void ClearVariableList();
+
+		TES_HEAP_REDEFINE_NEW();
+
 		// members
 		Script*                       masterScript;      // 00
 		char                          flags;             // 08
@@ -202,12 +224,13 @@ namespace RE
 	struct ScriptVariable
 	{
 	public:
+		TES_HEAP_REDEFINE_NEW();
+
 		// members
 		SCRIPT_LOCAL  data;   // 00
-		std::uint32_t pad0C;  // 0C
-		BSString      name;   // 10
+		BSString      name;   // 18
 	};
-	static_assert(sizeof(ScriptVariable) == 0x20);
+	static_assert(sizeof(ScriptVariable) == 0x28);
 
 	struct SCRIPT_LINE
 	{

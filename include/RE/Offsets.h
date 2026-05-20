@@ -1088,7 +1088,22 @@ namespace RE
 
 		namespace Script
 		{
-			inline constexpr REL::ID CompileAndRun(static_cast<std::uint64_t>(441582));
+			[[nodiscard]] inline std::uint64_t CompileAndRun()
+			{
+				if (REL::Module::get().version() >= SKSE::RUNTIME_1_6_1130) {
+					return 441582;
+				} else {
+					return 21890;
+				}
+			}
+
+			inline constexpr REL::ID CreateLocalList(static_cast<std::uint64_t>(21885));
+			inline constexpr REL::ID Run(static_cast<std::uint64_t>(21886));
+		}
+
+		namespace ScriptCompiler
+		{
+			inline constexpr REL::ID CompilePartialScript(static_cast<std::uint64_t>(21954));
 		}
 
 		namespace ScriptEventSourceHolder

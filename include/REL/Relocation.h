@@ -891,7 +891,6 @@ namespace REL
 		// Patch for known Address Library bugs
 		inline static constexpr auto _backups =
 			std::to_array<backup_t>({
-				{ 441582, 21890 },
 				{ 443410, 69188 },
 				{ 453511, 109206 },
 				{ 502114, 380738 },

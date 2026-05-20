@@ -2,6 +2,37 @@
 
 namespace RE
 {
+	ScriptLocals::~ScriptLocals()
+	{
+		ClearActionList();
+		ClearVariableList();
+		delete scriptEffectData;
+	}
+
+	void ScriptLocals::ClearActionList()
+	{
+		if (actionList) {
+			for (const auto action : *actionList) {
+				delete action;
+			}
+
+			delete actionList;
+			actionList = nullptr;
+		}
+	}
+
+	void ScriptLocals::ClearVariableList()
+	{
+		if (localList) {
+			for (const auto local : *localList) {
+				delete local;
+			}
+
+			delete localList;
+			localList = nullptr;
+		}
+	}
+
 	auto SCRIPT_FUNCTION::Chunk::AsString()
 		-> StringChunk*
 	{

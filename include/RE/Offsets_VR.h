@@ -1099,6 +1099,13 @@ namespace RE
 		namespace Script
 		{
 			inline constexpr REL::Offset CompileAndRun(static_cast<std::uint64_t>(0x2F8AF0));
+			inline constexpr REL::Offset CreateLocalList(static_cast<std::uint64_t>(0x2F8590));
+			inline constexpr REL::Offset Run(static_cast<std::uint64_t>(0x2F8750));
+		}
+
+		namespace ScriptCompiler
+		{
+			inline constexpr REL::Offset CompilePartialScript(static_cast<std::uint64_t>(0x2FC730));
 		}
 
 		namespace ScriptEventSourceHolder
