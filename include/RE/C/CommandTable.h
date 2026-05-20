@@ -227,8 +227,8 @@ namespace RE
 		TES_HEAP_REDEFINE_NEW();
 
 		// members
-		SCRIPT_LOCAL  data;   // 00
-		BSString      name;   // 18
+		SCRIPT_LOCAL data;  // 00
+		BSString     name;  // 18
 	};
 	static_assert(sizeof(ScriptVariable) == 0x28);
 
