@@ -75,8 +75,13 @@ namespace SKSE
 			stl::report_and_fail("interface is null"sv);
 		}
 
-		REL::IDDatabase::init();
 #ifndef SKYRIMVR
+		const REL::PF* x = &REL::InitSegStart;
+		for (++x; x < &REL::InitSegEnd; ++x)
+			if (*x)
+				(*x)();
+
+		REL::IDDatabase::init();
 		REL::AddressManager::get().flush();
 #endif
 

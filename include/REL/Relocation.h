@@ -1028,6 +1028,16 @@ namespace REL
 		inline static std::uintptr_t _cache = O.address();
 	};
 
+	typedef void(__cdecl* PF)(void);
+
+#pragma section(".reloc$a", read, write)
+	__declspec(allocate(".reloc$a")) const PF InitSegStart = (PF)1;
+
+#pragma section(".reloc$z", read, write)
+	__declspec(allocate(".reloc$z")) const PF InitSegEnd = (PF)1;
+
+#pragma section(".reloc$m", read, write)
+
 	template <auto I>
 	class StaticID
 	{
@@ -1045,8 +1055,9 @@ namespace REL
 			std::uintptr_t _address;
 		};
 
-		inline static Cache _cache;
+		__declspec(allocate(".reloc$m")) inline static Cache _cache;
 	};
+#pragma init_seg(".reloc$m")
 
 	template <class T>
 	class Relocation
