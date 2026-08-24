@@ -153,6 +153,20 @@ namespace REL
 		}
 	}
 
+	void IDDatabase::load()
+	{
+		const auto version = Module::get().version();
+		const auto prefix = version >= SKSE::RUNTIME_1_6_317 ? "versionlib"sv : "version"sv;
+		const auto filename =
+			stl::utf8_to_utf16(
+				fmt::format(
+					"Data/SKSE/Plugins/{}-{}.bin"sv,
+					prefix,
+					version.string()))
+				.value_or(L"<unknown filename>"s);
+		load_file(filename, version);
+	}
+
 	[[nodiscard]] static REL::Vendor find_vendor()
 	{
 #ifndef SKYRIMVR
