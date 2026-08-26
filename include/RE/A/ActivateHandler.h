@@ -12,8 +12,8 @@ namespace RE
 		~ActivateHandler() override;  // 00
 
 		// override (PlayerInputHandler)
-		bool CanProcess(InputEvent* a_event) override;                                  // 01
-		void ProcessButton(ButtonEvent* a_event, PlayerControlsData* a_data) override;  // 04
+		bool CanProcess(InputEvent* a_event) override;                                // 01
+		void HandleEvent(ButtonEvent* a_event, PlayerControlsData* a_data) override;  // 06
 
 		constexpr inline void SetHeldButtonActionSuccess(bool a_success) noexcept { heldButtonActionSuccess = a_success; }
 

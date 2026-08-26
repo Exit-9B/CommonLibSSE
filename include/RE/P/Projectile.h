@@ -212,7 +212,7 @@ namespace RE
 		stl::enumeration<Flags, std::uint32_t> flags;              // 1CC
 		std::uint64_t                          unk1D0;             // 1D0
 	};
-#if !defined(SKYRIMVR) && !defined(SKYRIMSE_PRE_1_6_629)
+#if HAS_SKYRIMSE(1, 6, 629)
 	static_assert(sizeof(Projectile) == 0x1E0);
 #else
 	static_assert(sizeof(Projectile) == 0x1D8);

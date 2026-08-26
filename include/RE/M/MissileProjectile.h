@@ -45,7 +45,7 @@ namespace RE
 		std::uint8_t  unk1DD;                 // 1DD
 		std::uint16_t unk1DE;                 // 1DE
 	};
-#if !defined(SKYRIMVR) && !defined(SKYRIMSE_PRE_1_6_629)
+#if HAS_SKYRIMSE(1, 6, 629)
 	static_assert(sizeof(MissileProjectile) == 0x1E8);
 #else
 	static_assert(sizeof(MissileProjectile) == 0x1E0);

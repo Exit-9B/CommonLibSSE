@@ -20,7 +20,15 @@ namespace RE
 		virtual void Unk_36(void);  // 36
 
 		// members
+#if HAS_SKYRIMSE(1, 7, 99)
+		std::uint8_t unk0020[0xC710 - 0x0020];  // 0020
+#else
 		std::uint8_t unk0020[0xC600 - 0x0020];  // 0020
+#endif
 	};
+#if HAS_SKYRIMSE(1, 7, 99)
+	static_assert(sizeof(bhkWorld) == 0xC710);
+#else
 	static_assert(sizeof(bhkWorld) == 0xC600);
+#endif
 }

@@ -77,19 +77,27 @@ namespace RE
 		virtual errno_t PrepareFileSavePath(const char* a_fileName, char* a_dst, bool a_tmpSave, bool a_ignoreINI) = 0;  // 02 - a_dst must be 0x104 in length
 		virtual void    Unk_03(void);                                                                                    // 03 - { return Unk_04(); }
 		virtual void    Unk_04(void);                                                                                    // 04 - { return; }
-		virtual void    Unk_05(void);                                                                                    // 05
-		virtual void    Unk_06(void) = 0;                                                                                // 06
-		virtual void    Unk_07(void);                                                                                    // 07
-		virtual void    Unk_08(void);                                                                                    // 08 - { return; }
-		virtual void    Unk_09(void);                                                                                    // 09 - { return; }
-		virtual void    Unk_0A(void);                                                                                    // 0A
-		virtual void    Unk_0B(void);                                                                                    // 0B - { return; }
-		virtual void    Unk_0C(void);                                                                                    // 0C
-		virtual void    Unk_0D(void);                                                                                    // 0D - { return; }
-		virtual void    Unk_0E(void);                                                                                    // 0E - { return 1; }
-		virtual void    Unk_0F(void);                                                                                    // 0F - { return 1; }
-		virtual void    Unk_10(void);                                                                                    // 10 - { return 0; }
-		virtual void    Unk_11(void);                                                                                    // 11 - { return; }
+#if HAS_SKYRIMSE(1, 7, 99)
+		virtual void Unk_05(void);  // 05
+		virtual void Unk_06(void);  // 06
+		virtual void Unk_07(void);  // 07
+		virtual void Unk_08(void);  // 08
+		virtual void Unk_09(void);  // 09
+		virtual void Unk_0A(void);  // 0A
+#endif
+		virtual void Unk_0B(void);      // 0B
+		virtual void Unk_0C(void) = 0;  // 0C
+		virtual void Unk_0D(void);      // 0D
+		virtual void Unk_0E(void);      // 0E - { return; }
+		virtual void Unk_0F(void);      // 0F - { return; }
+		virtual void Unk_10(void);      // 10
+		virtual void Unk_11(void);      // 11 - { return; }
+		virtual void Unk_12(void);      // 12
+		virtual void Unk_13(void);      // 13 - { return; }
+		virtual void Unk_14(void);      // 14 - { return 1; }
+		virtual void Unk_15(void);      // 15 - { return 1; }
+		virtual void Unk_16(void);      // 16 - { return 0; }
+		virtual void Unk_17(void);      // 17 - { return; }
 
 		// members
 		std::uint32_t unk060;       // 060

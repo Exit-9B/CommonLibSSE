@@ -28,7 +28,7 @@ namespace RE
 		};
 		static_assert(sizeof(PresenceBitfield) == 0x18);
 
-#if !defined(SKYRIMVR) && !defined(SKYRIMSE_PRE_1_6_629)
+#if HAS_SKYRIMSE(1, 6, 629)
 		virtual ~BaseExtraList();  // 00
 #else
 		~BaseExtraList();
@@ -40,7 +40,7 @@ namespace RE
 		BSExtraData*      data = nullptr;      // 08
 		PresenceBitfield* presence = nullptr;  // 10
 	};
-#if !defined(SKYRIMVR) && !defined(SKYRIMSE_PRE_1_6_629)
+#if HAS_SKYRIMSE(1, 6, 629)
 	static_assert(sizeof(BaseExtraList) == 0x18);
 #else
 	static_assert(sizeof(BaseExtraList) == 0x10);
@@ -197,7 +197,7 @@ namespace RE
 		BaseExtraList           _extraData;  // 00
 		mutable BSReadWriteLock _lock;       // 18
 	};
-#if !defined(SKYRIMVR) && !defined(SKYRIMSE_PRE_1_6_629)
+#if HAS_SKYRIMSE(1, 6, 629)
 	static_assert(sizeof(ExtraDataList) == 0x20);
 #else
 	static_assert(sizeof(ExtraDataList) == 0x18);

@@ -46,7 +46,7 @@ namespace RE
 		std::uint32_t           pad1DC;         // 1DC
 		BSTArray<CollisionData> collisionData;  // 1E0
 	};
-#if !defined(SKYRIMVR) && !defined(SKYRIMSE_PRE_1_6_629)
+#if HAS_SKYRIMSE(1, 6, 629)
 	static_assert(sizeof(BarrierProjectile) == 0x200);
 #else
 	static_assert(sizeof(BarrierProjectile) == 0x1F8);

@@ -43,7 +43,7 @@ namespace RE
 		std::uint64_t unk1E0;  // 1E0
 		AlchemyItem*  poison;  // 1E8
 	};
-#if !defined(SKYRIMVR) && !defined(SKYRIMSE_PRE_1_6_629)
+#if HAS_SKYRIMSE(1, 6, 629)
 	static_assert(sizeof(ArrowProjectile) == 0x1F8);
 #else
 	static_assert(sizeof(ArrowProjectile) == 0x1F0);

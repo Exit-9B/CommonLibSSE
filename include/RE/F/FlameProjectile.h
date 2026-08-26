@@ -38,7 +38,7 @@ namespace RE
 		float expirationTimer;  // 1D8
 		float coneAngle;        // 1DC
 	};
-#if !defined(SKYRIMVR) && !defined(SKYRIMSE_PRE_1_6_629)
+#if HAS_SKYRIMSE(1, 6, 629)
 	static_assert(sizeof(FlameProjectile) == 0x1E8);
 #else
 	static_assert(sizeof(FlameProjectile) == 0x1E0);

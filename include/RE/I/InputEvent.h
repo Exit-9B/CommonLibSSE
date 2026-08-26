@@ -13,7 +13,12 @@ namespace RE
 		kThumbstick,
 		kDeviceConnect,
 		kKinect,
-#ifdef SKYRIMVR
+#if HAS_SKYRIMSE(1, 7, 99)
+		kSixaxis,
+		kMotionGesture,
+		kAmiibo,
+#endif
+#if defined(SKYRIMVR)
 		kVrWandTouchpadPosition,
 		kVrWandTouchpadSwipe,
 #endif

@@ -611,7 +611,7 @@ namespace RE
 	private:
 		TESFaction* GetCrimeFactionImpl() const;
 	};
-#if !defined(SKYRIMVR) && !defined(SKYRIMSE_PRE_1_6_629)
+#if HAS_SKYRIMSE(1, 6, 629)
 	static_assert(sizeof(Actor) == 0x2B8);
 #else
 	static_assert(sizeof(Actor) == 0x2B0);

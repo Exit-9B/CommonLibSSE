@@ -139,7 +139,14 @@ namespace RE
 		stl::enumeration<FavorLevel, std::uint8_t> favorLevel;     // 3B - CNAM
 		TOPIC_INFO_DATA                            data;           // 3C - ENAM
 		std::uint32_t                              fileOffset;     // 40
-		std::uint32_t                              pad44;          // 44
+#if HAS_SKYRIMSE(1, 7, 99)
+		std::uint32_t unk44;  // 44
+		std::uint32_t unk48;  // 48
+#endif
 	};
+#if HAS_SKYRIMSE(1, 7, 99)
+	static_assert(sizeof(TESTopicInfo) == 0x50);
+#else
 	static_assert(sizeof(TESTopicInfo) == 0x48);
+#endif
 }

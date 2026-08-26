@@ -28,8 +28,8 @@ namespace RE
 		void Revert(BGSLoadFormBuffer* a_buf) override;                      // 08
 
 		// override (PlayerInputHandler)
-		bool CanProcess(InputEvent* a_event) override;                                          // 01
-		void ProcessButton(ButtonEvent* a_event, PlayerControlsData* a_movementData) override;  // 04
+		bool CanProcess(InputEvent* a_event) override;                                        // 01
+		void HandleEvent(ButtonEvent* a_event, PlayerControlsData* a_movementData) override;  // 06
 
 		// members
 		NiPoint3      lastPosition;             // 30
@@ -43,12 +43,16 @@ namespace RE
 		float         unk70;                    // 70
 		float         currentPitchOffset;       // 74 - [-100, 100]
 		float         targetPitchOffset;        // 78 - [-100, 100]
-		float         unk7C;                    // 7C
-		std::uint32_t unk80;                    // 80
-		bool          cameraOverride;           // 84
-		bool          cameraPitchOverride;      // 85
-		std::uint16_t unk86;                    // 86
-		std::uint64_t unk88;                    // 88
+#if HAS_SKYRIMSE(1, 7, 99)
+		std::uint32_t unk7C;  // 7C
+#endif
+		float         unk80;                // 80
+		std::uint32_t unk84;                // 84
+		bool          cameraOverride;       // 88
+		bool          cameraPitchOverride;  // 89
+		std::uint8_t  unk8A;                // 8A
+		std::uint8_t  unk8B;                // 8B
+		std::uint8_t  unk8C;                // 8C
 	};
 	static_assert(sizeof(FirstPersonState) == 0x90);
 }

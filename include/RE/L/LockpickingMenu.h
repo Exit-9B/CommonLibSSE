@@ -29,9 +29,9 @@ namespace RE
 
 		// override (MenuEventHandler)
 		bool ShouldHandleEvent(const InputEvent* a_event) override;  // 01
-		bool HandleEvent(const ButtonEvent* a_event) override;       // 05
-		bool HandleEvent(const MouseMoveEvent* a_event) override;    // 04
-		bool HandleEvent(const ThumbstickEvent* a_event) override;   // 03
+		bool HandleEvent(const ButtonEvent* a_event) override;       // 07
+		bool HandleEvent(const MouseMoveEvent* a_event) override;    // 06
+		bool HandleEvent(const ThumbstickEvent* a_event) override;   // 05
 
 		// override (BSTEventSink<MenuOpenCloseEvent>)
 		BSEventNotifyControl ProcessEvent(const MenuOpenCloseEvent* a_event, BSTEventSource<MenuOpenCloseEvent>* a_eventSource) override;  // 01
@@ -66,21 +66,30 @@ namespace RE
 		std::uint32_t unk0DC;  // 0DC
 		std::uint32_t unk0E0;  // 0E0
 		std::uint32_t unk0E4;  // 0E4
-		std::uint32_t unk0E8;  // 0E8
-		BSSoundHandle unk0EC;  // 0EC
+#if HAS_SKYRIMSE(1, 7, 99)
+		std::uint64_t unk0E8;  // 0E8
+		std::uint32_t unk0F0;  // 0F0
+		std::uint16_t unk0F4;  // 0F4
+		std::uint8_t  unk0F6;  // 0F6
+		std::uint8_t  pad0F7;  // 0F7
 		std::uint32_t unk0F8;  // 0F8
-		std::uint32_t unk0FC;  // 0FC
-		std::uint32_t unk100;  // 100
-		std::uint32_t unk104;  // 104
-		std::uint16_t unk108;  // 108
-		std::uint8_t  unk10A;  // 10A
-		std::uint8_t  unk10B;  // 10B
-		std::uint8_t  unk10C;  // 10C
-		std::uint8_t  unk10D;  // 10D
-		std::uint8_t  unk10E;  // 10E
-		std::uint8_t  pad10F;  // 10F
+#endif
+		std::uint32_t unk0FC;  // 0E8
+		BSSoundHandle unk100;  // 0EC
+		std::uint32_t unk10C;  // 0F8
+		std::uint32_t unk110;  // 0FC
+		std::uint32_t unk114;  // 100
+		std::uint32_t unk118;  // 104
+		std::uint16_t unk11C;  // 108
+		std::uint8_t  unk11E;  // 10A
+		std::uint8_t  unk11F;  // 10B
+		std::uint8_t  unk120;  // 10C
+		std::uint8_t  unk121;  // 10D
+		std::uint8_t  unk122;  // 10E
 	};
-#ifndef SKYRIMVR
+#if HAS_SKYRIMSE(1, 7, 99)
+	static_assert(sizeof(LockpickingMenu) == 0x128);
+#elif !defined(SKYRIMVR)
 	static_assert(sizeof(LockpickingMenu) == 0x110);
 #else
 	static_assert(sizeof(LockpickingMenu) == 0x120);

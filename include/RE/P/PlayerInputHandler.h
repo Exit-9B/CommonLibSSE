@@ -4,8 +4,10 @@ namespace RE
 {
 	class ButtonEvent;
 	class InputEvent;
+	class MotionGestureEvent;
 	class MouseMoveEvent;
 	class PlayerControlsData;
+	class SixaxisEvent;
 	class ThumbstickEvent;
 
 	class PlayerInputHandler
@@ -15,10 +17,14 @@ namespace RE
 
 		virtual ~PlayerInputHandler();  // 00
 
-		virtual bool CanProcess(InputEvent* a_event) = 0;                                      // 01
-		virtual void ProcessThumbstick(ThumbstickEvent* a_event, PlayerControlsData* a_data);  // 02 - { return; }
-		virtual void ProcessMouseMove(MouseMoveEvent* a_event, PlayerControlsData* a_data);    // 03 - { return; }
-		virtual void ProcessButton(ButtonEvent* a_event, PlayerControlsData* a_data);          // 04 - { return; }
+		virtual bool CanProcess(InputEvent* a_event) = 0;                                // 01
+		virtual void HandleEvent(ButtonEvent* a_event, PlayerControlsData* a_data);      // 06
+		virtual void HandleEvent(MouseMoveEvent* a_event, PlayerControlsData* a_data);   // 05
+		virtual void HandleEvent(ThumbstickEvent* a_event, PlayerControlsData* a_data);  // 04
+#if HAS_SKYRIMSE(1, 7, 99)
+		virtual void HandleEvent(SixaxisEvent* a_event, PlayerControlsData* a_data);        // 03
+		virtual void HandleEvent(MotionGestureEvent* a_event, PlayerControlsData* a_data);  // 02
+#endif
 
 		[[nodiscard]] bool IsInputEventHandlingEnabled() const;
 		void               SetInputEventHandlingEnabled(bool a_enabled);

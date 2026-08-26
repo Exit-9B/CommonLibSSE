@@ -101,8 +101,10 @@ namespace RE
 		std::uint8_t                                     pad12B;                              // 12B
 		stl::enumeration<PC_GAMEPAD_TYPE, std::uint32_t> gamePadMapType;                      // 12C
 	};
-#if !defined(SKYRIMVR)
+#if HAS_SKYRIMSE(1, 6, 1130)
 	static_assert(sizeof(ControlMap) == 0x130);
+#elif !defined(SKYRIMVR)
+	static_assert(sizeof(ControlMap) == 0x128);
 #else
 	static_assert(offsetof(ControlMap, textEntryCount) == 0x140);
 	static_assert(sizeof(ControlMap) == 0x148);

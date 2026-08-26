@@ -26,7 +26,7 @@ namespace RE
 
 		// override (MenuEventHandler)
 		bool ShouldHandleEvent(const InputEvent* a_event) override;  // 01
-		bool HandleEvent(const ThumbstickEvent* a_event) override;   // 03
+		bool HandleEvent(const ThumbstickEvent* a_event) override;   // 05
 
 		// override (GFxFunctionHandler)
 		void Call(Params& a_params) override;  // 01

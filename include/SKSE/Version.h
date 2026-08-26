@@ -1,5 +1,26 @@
 #pragma once
 
+#include "REL/Relocation.h"
+
+#define MAKE_EXE_VERSION_EX(major, minor, build, sub) ((((major) & 0xFF) << 24) | (((minor) & 0xFF) << 16) | (((build) & 0xFFF) << 4) | ((sub) & 0xF))
+#define MAKE_EXE_VERSION(major, minor, build) MAKE_EXE_VERSION_EX(major, minor, build, 0)
+
+#if !defined(SKYRIMVR) && !defined(SKYRIMSE_EXE_VERSION)
+#	ifdef SKYRIMSE_PRE_1_6_317
+#		define SKYRIMSE_EXE_VERSION MAKE_EXE_VERSION(1, 5, 97)
+#	elifdef SKYRIMSE_PRE_1_6_629
+#		define SKYRIMSE_EXE_VERSION MAKE_EXE_VERSION(1, 6, 353)
+#	elifdef SKYRIMSE_PRE_1_6_1130
+#		define SKYRIMSE_EXE_VERSION MAKE_EXE_VERSION(1, 6, 659)
+#	elifdef SKYRIMSE_PRE_1_7_99
+#		define SKYRIMSE_EXE_VERSION MAKE_EXE_VERSION(1, 6, 1179)
+#	else
+#		define SKYRIMSE_EXE_VERSION MAKE_EXE_VERSION(1, 7, 99)
+#	endif
+#endif
+
+#define HAS_SKYRIMSE(major, minor, build) SKYRIMSE_EXE_VERSION >= MAKE_EXE_VERSION(major, minor, build)
+
 namespace SKSE
 {
 	inline constexpr REL::Version RUNTIME_1_1_47(1, 1, 47, 0);
@@ -31,9 +52,10 @@ namespace SKSE
 	inline constexpr REL::Version RUNTIME_1_6_1130(1, 6, 1130, 0);
 	inline constexpr REL::Version RUNTIME_1_6_1170(1, 6, 1170, 0);
 	inline constexpr REL::Version RUNTIME_1_6_1179(1, 6, 1179, 0);
+	inline constexpr REL::Version RUNTIME_1_7_99(1, 7, 99, 0);
 
 	inline constexpr REL::Version RUNTIME_VR_1_4_15(1, 4, 15, 0);
 	inline constexpr REL::Version RUNTIME_VR_1_4_15_1(1, 4, 15, 1);
 
-	inline constexpr auto RUNTIME_LATEST = RUNTIME_1_6_1170;  // latest for steam
+	inline constexpr auto RUNTIME_LATEST = RUNTIME_1_7_99;  // latest for steam
 }

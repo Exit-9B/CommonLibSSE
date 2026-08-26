@@ -13,8 +13,8 @@ namespace RE
 
 		// add
 		bool ShouldHandleEvent(const InputEvent* a_event) override;  // 01
-		bool HandleEvent(const ButtonEvent* a_event) override;       // 05
-		bool HandleEvent(const KinectEvent* a_event) override;       // 02
+		bool HandleEvent(const ButtonEvent* a_event) override;       // 07
+		bool HandleEvent(const KinectEvent* a_event) override;       // 04
 	};
 	static_assert(sizeof(FavoritesHandler) == 0x10);
 }

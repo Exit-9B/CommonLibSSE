@@ -67,7 +67,7 @@ namespace RE
 		std::uint8_t                                  pad15B;           // 15B
 		std::uint32_t                                 pad15C;           // 15C
 	};
-#if !defined(SKYRIMVR) && !defined(SKYRIMSE_PRE_1_6_629)
+#if HAS_SKYRIMSE(1, 6, 629)
 	static_assert(sizeof(Inventory3DManager) == 0x168);
 #else
 	static_assert(sizeof(Inventory3DManager) == 0x160);

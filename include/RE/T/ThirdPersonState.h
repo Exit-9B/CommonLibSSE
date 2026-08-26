@@ -31,8 +31,8 @@ namespace RE
 		void Revert(BGSLoadFormBuffer* a_buf) override;                      // 08
 
 		// override (PlayerInputHandler)
-		bool CanProcess(InputEvent* a_event) override;                                          // 01
-		void ProcessButton(ButtonEvent* a_event, PlayerControlsData* a_movementData) override;  // 04
+		bool CanProcess(InputEvent* a_event) override;                                        // 01
+		void HandleEvent(ButtonEvent* a_event, PlayerControlsData* a_movementData) override;  // 06
 
 		// add
 		virtual void SetCameraHandle(RefHandle& a_handle);        // 09 - { return; }

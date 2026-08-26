@@ -29,9 +29,9 @@ namespace RE
 
 		// override (MenuEventHandler)
 		bool ShouldHandleEvent(const InputEvent* a_event) override = 0;  // 01
-		bool HandleEvent(const ButtonEvent* a_event) override;           // 05
-		bool HandleEvent(const MouseMoveEvent* a_event) override;        // 04
-		bool HandleEvent(const ThumbstickEvent* a_event) override;       // 03
+		bool HandleEvent(const ButtonEvent* a_event) override;           // 07
+		bool HandleEvent(const MouseMoveEvent* a_event) override;        // 06
+		bool HandleEvent(const ThumbstickEvent* a_event) override;       // 05
 
 		void ChangeName(const char* a_name);
 

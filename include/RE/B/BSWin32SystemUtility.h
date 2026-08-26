@@ -31,32 +31,45 @@ namespace RE
 		virtual ~BSWin32SystemUtility_Steam();  // 00
 
 		// override (BSSystemUtility)
-		void GetAuthenticationInfo(char*& a_userAuthID, std::uint64_t& a_size) override;  // 02
-		void DoInitialize() override;                                                     // 04
-		void Unk_05(void) override;                                                       // 05
-		void DoUpdate() override;                                                         // 06
-		void DoGetUserName(char* a_buffer, std::uint64_t a_size) override;                // 08
-		void DoGetComputerName(char* a_buffer, std::uint64_t a_size) override;            // 0D
-		void DoAuthenticateUser() override;                                               // 10
-		bool Unk_12() override;                                                           // 12
+		void GetAuthenticationInfo(char*& a_userAuthID, std::uint64_t& a_size) override;  // 03
+		void DoInitialize() override;                                                     // 05
+		void Unk_06(void) override;                                                       // 06
+		void DoUpdate() override;                                                         // 07
+		void DoGetUserName(char* a_buffer, std::uint64_t a_size) override;                // 09
+		void DoGetComputerName(char* a_buffer, std::uint64_t a_size) override;            // 0E
+		void DoAuthenticateUser() override;                                               // 11
+#if HAS_SKYRIMSE(1, 6, 1130)
+		bool Unk_13() override;  // 13
+#endif
 
 		// members
+#if HAS_SKYRIMSE(1, 6, 1130)
 		SteamCallback<GameOverlayActivated_t>              steamcallback_GameOverlayActivated;               // 128
-		SteamCallback<FloatingGamepadTextInputDismissed_t> steamcallback_FloatingGamepadTextInputDismissed;  // 150 - added in 1.6.1130
-		SteamCallback<GamepadTextInputDismissed_t>         steamcallback_GamepadTextInputDismissed;          // 178 - added in 1.6.1130
+		SteamCallback<FloatingGamepadTextInputDismissed_t> steamcallback_FloatingGamepadTextInputDismissed;  // 150
+		SteamCallback<GamepadTextInputDismissed_t>         steamcallback_GamepadTextInputDismissed;          // 178
 		SteamCallResult<EncryptedAppTicketResponse_t>      steamcallresult_EncryptedAppTicketResponse;       // 1A0
-		VirtualKeyboardDoneCallback*                       virtualKeyboardDone;                              // 1D0 - added in 1.6.1130
-		VirtualKeyboardCancelCallback*                     virtualKeyboardCancel;                            // 1D8 - added in 1.6.1130
-		void*                                              virtualKeyboardUserParam;                         // 1E0 - added in 1.6.1130
+		VirtualKeyboardDoneCallback*                       virtualKeyboardDone;                              // 1D0
+		VirtualKeyboardCancelCallback*                     virtualKeyboardCancel;                            // 1D8
+		void*                                              virtualKeyboardUserParam;                         // 1E0
 		bool                                               steamAPIInitialized;                              // 1E8
 		std::byte                                          pad1E9[7];                                        // 1E9
-		ISteamClient*                                      steamClient;                                      // 1F0 - added in 1.6.1130
-		HSteamPipe                                         steamPipe;                                        // 1F8 - added in 1.6.1130
+		ISteamClient*                                      steamClient;                                      // 1F0
+		HSteamPipe                                         steamPipe;                                        // 1F8
 		std::uint32_t                                      pad1FC;                                           // 1FC
-		ISteamUtils*                                       steamUtils;                                       // 200 - added in 1.6.1130
-		bool                                               isRunningOnSteamDeck;                             // 208 - added in 1.6.1130
+		ISteamUtils*                                       steamUtils;                                       // 200
+		bool                                               isRunningOnSteamDeck;                             // 208
+#else
+		SteamCallback<GameOverlayActivated_t>         steamcallback_GameOverlayActivated;          // 120
+		bool                                          steamAPIInitialized;                         // 148
+		std::byte                                     pad149[7];                                   // 149
+		SteamCallResult<EncryptedAppTicketResponse_t> steamcallresult_EncryptedAppTicketResponse;  // 150
+#endif
 	};
+#if HAS_SKYRIMSE(1, 6, 1130)
 	static_assert(sizeof(BSWin32SystemUtility_Steam) == 0x210);
+#else
+	static_assert(sizeof(BSWin32SystemUtility_Steam) == 0x180);
+#endif
 
 	class BSWin32SystemUtility_GOG : public BSWin32SystemUtility
 	{
@@ -64,13 +77,15 @@ namespace RE
 		virtual ~BSWin32SystemUtility_GOG();  // 00
 
 		// override (BSSystemUtility)
-		void DoInitialize() override;                                           // 04
-		void Unk_05(void) override;                                             // 05
-		void DoUpdate() override;                                               // 06
-		void DoGetUserName(char* a_buffer, std::uint64_t a_size) override;      // 08
-		void DoGetComputerName(char* a_buffer, std::uint64_t a_size) override;  // 0D
-		void DoAuthenticateUser() override;                                     // 10
-		bool Unk_12() override;                                                 // 12
+		void DoInitialize() override;                                           // 05
+		void Unk_06(void) override;                                             // 06
+		void DoUpdate() override;                                               // 07
+		void DoGetUserName(char* a_buffer, std::uint64_t a_size) override;      // 09
+		void DoGetComputerName(char* a_buffer, std::uint64_t a_size) override;  // 0E
+		void DoAuthenticateUser() override;                                     // 11
+#if HAS_SKYRIMSE(1, 6, 1130)
+		bool Unk_13() override;  // 13
+#endif
 
 		// members
 		bool      galaxyAPIInitialized;       // 128
@@ -80,5 +95,7 @@ namespace RE
 		void*     recvStatsListener;          // 138
 		void*     sendStatsListener;          // 140
 	};
+#if HAS_SKYRIMSE(1, 6, 1130)
 	static_assert(sizeof(BSWin32SystemUtility_GOG) == 0x148);
+#endif
 }

@@ -15,10 +15,10 @@ namespace RE
 		return *singleton;
 	}
 
-	bool BSScaleformManager::IsValidName(const char* a_name)
+	bool BSScaleformManager::IsNameValid(const char* a_name)
 	{
-		using func_t = decltype(&BSScaleformManager::IsValidName);
-		REL::Relocation<func_t> func{ STATIC_OFFSET(BSScaleformManager::IsValidName) };
+		using func_t = decltype(&BSScaleformManager::IsNameValid);
+		REL::Relocation<func_t> func{ STATIC_OFFSET(BSScaleformManager::IsNameValid) };
 		return func(this, a_name);
 	}
 

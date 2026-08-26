@@ -34,7 +34,7 @@ namespace RE
 
 		// override (MenuEventHandler)
 		bool ShouldHandleEvent(const InputEvent* a_event) override;  // 01
-		bool HandleEvent(const ThumbstickEvent* a_event) override;   // 03
+		bool HandleEvent(const ThumbstickEvent* a_event) override;   // 05
 
 		// override (BSTEventSink<BSSystemEvent>)
 		BSEventNotifyControl ProcessEvent(const BSSystemEvent* a_event, BSTEventSource<BSSystemEvent>* a_eventSource) override;  // 01

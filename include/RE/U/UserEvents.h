@@ -28,8 +28,8 @@ namespace RE
 				kTFCMode,
 				kMapDebug,
 				kLockpicking,
-#if !defined(SKYRIMVR)
-				kCreationsMenu,  // added in 1.6.1130
+#if HAS_SKYRIMSE(1, 6, 1130)
+				kCreationsMenu,
 #endif
 				kFavor,
 #if defined(SKYRIMVR)

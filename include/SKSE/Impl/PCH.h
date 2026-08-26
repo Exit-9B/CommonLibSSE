@@ -741,6 +741,7 @@ namespace REL
 }
 
 #include "REL/Relocation.h"
+#include "SKSE/Version.h"
 
 #ifndef SKYRIMVR
 #	include "RE/Offsets.h"

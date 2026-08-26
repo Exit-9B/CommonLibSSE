@@ -28,6 +28,7 @@ namespace RE
 	class BipedAnim;
 	class BSFadeNode;
 	class BSLight;
+	class BSSystemEvent;
 	class CombatGroup;
 	class ImageSpaceModifierInstanceDOF;
 	class InventoryEntryData;
@@ -131,13 +132,17 @@ namespace RE
 
 	class PlayerCharacter :
 		public Character,                            // 000
-		public BSTEventSource<BGSActorCellEvent>,    // 2D0
-		public BSTEventSource<BGSActorDeathEvent>,   // 328
-		public BSTEventSource<PositionPlayerEvent>,  // 380
-		public BSTEventSink<MenuOpenCloseEvent>,     // 2B0
-		public BSTEventSink<MenuModeChangeEvent>,    // 2B8
-		public BSTEventSink<UserEventEnabledEvent>,  // 2C0
-		public BSTEventSink<TESTrackedStatsEvent>    // 2C8
+		public BSTEventSource<BGSActorCellEvent>,    // 2E0
+		public BSTEventSource<BGSActorDeathEvent>,   // 338
+		public BSTEventSource<PositionPlayerEvent>,  // 390
+		public BSTEventSink<MenuOpenCloseEvent>,     // 2B8
+		public BSTEventSink<MenuModeChangeEvent>,    // 2C0
+		public BSTEventSink<UserEventEnabledEvent>,  // 2C8
+		public BSTEventSink<TESTrackedStatsEvent>    // 2D0
+#if HAS_SKYRIMSE(1, 7, 99)
+		,
+		public BSTEventSink<BSSystemEvent>  // 2D8
+#endif
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_PlayerCharacter;
@@ -468,9 +473,11 @@ namespace RE
 	private:
 		bool CenterOnCell_Impl(const char* a_cellName, RE::TESObjectCELL* a_cell);
 	};
-#if !defined(SKYRIMVR) && !defined(SKYRIMSE_PRE_1_6_629)
+#if HAS_SKYRIMSE(1, 7, 99)
+	static_assert(sizeof(PlayerCharacter) == 0xBF0);
+#elif HAS_SKYRIMSE(1, 6, 629)
 	static_assert(sizeof(PlayerCharacter) == 0xBE8);
-#else
+#elif defined(SKYRIMVR)
 	static_assert(sizeof(PlayerCharacter) == 0xBE0);
 #endif
 }

@@ -51,8 +51,16 @@ namespace RE
 		bool                                 isNote;     // 95
 		std::uint8_t                         unk96;      // 96
 		std::uint8_t                         pad97;      // 97
+#if HAS_SKYRIMSE(1, 7, 99)
+		float unk98;  // 98
+		float unk9C;  // 9C
+		float unkA0;  // A0
+		float unkA4;  // A4
+#endif
 	};
-#ifndef SKYRIMVR
+#if HAS_SKYRIMSE(1, 7, 99)
+	static_assert(sizeof(BookMenu) == 0xA8);
+#elif !defined(SKYRIMVR)
 	static_assert(sizeof(BookMenu) == 0x98);
 #else
 	//static_assert(sizeof(BookMenu) == 0xB0);

@@ -13,8 +13,8 @@ namespace RE
 
 		// override (MenuEventHandler)
 		bool ShouldHandleEvent(const InputEvent* a_event) override;  // 01
-		bool HandleEvent(const ButtonEvent* a_event) override;       // 05
-		bool HandleEvent(const KinectEvent* a_event) override;       // 02
+		bool HandleEvent(const ButtonEvent* a_event) override;       // 07
+		bool HandleEvent(const KinectEvent* a_event) override;       // 04
 
 		// members
 		bool          unk10;  // 10

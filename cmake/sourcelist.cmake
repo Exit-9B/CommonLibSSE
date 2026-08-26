@@ -24,6 +24,7 @@ set(SOURCES
 	include/RE/A/AddCallbackVisitor.h
 	include/RE/A/AlchemyItem.h
 	include/RE/A/AlchemyMenu.h
+	include/RE/A/AmiiboEvent.h
 	include/RE/A/Archive.h
 	include/RE/A/ArmorRatingVisitor.h
 	include/RE/A/ArmorRatingVisitorBase.h
@@ -1008,6 +1009,7 @@ set(SOURCES
 	include/RE/M/ModManagerMenu.h
 	include/RE/M/ModelReferenceEffect.h
 	include/RE/M/Moon.h
+	include/RE/M/MotionGestureEvent.h
 	include/RE/M/MouseMoveEvent.h
 	include/RE/M/MoveToFunctor.h
 	include/RE/M/Movement.h
@@ -1165,6 +1167,7 @@ set(SOURCES
 	include/RE/S/ShoutMeter.h
 	include/RE/S/SimpleAllocMemoryPagePolicy.h
 	include/RE/S/SimpleAnimationGraphManagerHolder.h
+	include/RE/S/SixaxisEvent.h
 	include/RE/S/Sky.h
 	include/RE/S/SkyEffectController.h
 	include/RE/S/SkyObject.h

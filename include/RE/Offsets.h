@@ -310,8 +310,15 @@ namespace RE
 
 		namespace BSScaleformManager
 		{
-			inline constexpr REL::ID FileExists(static_cast<std::uint64_t>(82411));
-			inline constexpr REL::ID IsValidName(static_cast<std::uint64_t>(82331));
+			inline constexpr REL::ID           FileExists(static_cast<std::uint64_t>(82411));
+			[[nodiscard]] inline std::uint64_t IsNameValid()
+			{
+				if (REL::Module::get().version() >= SKSE::RUNTIME_1_7_99) {
+					return 524270;
+				} else {
+					return 82331;
+				}
+			}
 			inline constexpr REL::ID LoadMovie(static_cast<std::uint64_t>(82325));
 			inline constexpr REL::ID Singleton(static_cast<std::uint64_t>(402775));
 		}

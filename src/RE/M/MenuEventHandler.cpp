@@ -22,7 +22,19 @@ namespace RE
 		return false;
 	}
 
-#ifdef SKYRIMVR
+#if HAS_SKYRIMSE(1, 7, 99)
+	bool MenuEventHandler::HandleEvent(const SixaxisEvent*)
+	{
+		return false;
+	}
+
+	bool MenuEventHandler::HandleEvent(const MotionGestureEvent*)
+	{
+		return false;
+	}
+#endif
+
+#if defined(SKYRIMVR)
 	bool MenuEventHandler::HandleEvent(const VRWandEvent*)
 	{
 		return false;
