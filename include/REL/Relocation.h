@@ -93,10 +93,12 @@ namespace REL
 			[[nodiscard]] void* data() noexcept { return _view; }
 
 			bool open(stl::zwstring a_name, std::size_t a_size);
+			bool open_existing(stl::zwstring a_name, stl::zwstring a_path);
 			bool create(stl::zwstring a_name, std::size_t a_size);
 			void close();
 
 		private:
+			void* _file{ nullptr };
 			void* _mapping{ nullptr };
 			void* _view{ nullptr };
 		};
@@ -371,23 +373,23 @@ namespace REL
 				(_impl[3] & 0x00F) << 0u);
 		}
 
-		[[nodiscard]] std::string string() const
+		[[nodiscard]] std::string string(char a_sep = '.') const
 		{
 			std::string result;
 			for (auto&& ver : _impl) {
 				result += std::to_string(ver);
-				result += '-';
+				result += a_sep;
 			}
 			result.pop_back();
 			return result;
 		}
 
-		[[nodiscard]] std::wstring wstring() const
+		[[nodiscard]] std::wstring wstring(wchar_t a_sep = L'.') const
 		{
 			std::wstring result;
 			for (auto&& ver : _impl) {
 				result += std::to_wstring(ver);
-				result += L'-';
+				result += a_sep;
 			}
 			result.pop_back();
 			return result;
@@ -584,6 +586,13 @@ namespace REL
 	class IDDatabase
 	{
 	private:
+		enum class Format : std::int32_t
+		{
+			Empty = -1,
+			Unpacked = 0,
+			Packed = 1,
+		};
+
 		struct mapping_t
 		{
 			std::uint64_t id;
@@ -609,61 +618,6 @@ namespace REL
 		};
 
 	public:
-		class Offset2ID
-		{
-		public:
-			using value_type = mapping_t;
-			using container_type = std::vector<value_type>;
-			using size_type = typename container_type::size_type;
-			using const_iterator = typename container_type::const_iterator;
-			using const_reverse_iterator = typename container_type::const_reverse_iterator;
-
-			template <class ExecutionPolicy>
-			explicit Offset2ID(ExecutionPolicy&& a_policy)  //
-				requires(std::is_execution_policy_v<std::decay_t<ExecutionPolicy>>)
-			{
-				const std::span<const mapping_t> id2offset = IDDatabase::get()._id2offset;
-				_offset2id.reserve(id2offset.size());
-				_offset2id.insert(_offset2id.begin(), id2offset.begin(), id2offset.end());
-				std::sort(a_policy, _offset2id.begin(), _offset2id.end(), comp_offset());
-			}
-
-			Offset2ID() :
-				Offset2ID(std::execution::sequenced_policy{})
-			{}
-
-			[[nodiscard]] std::uint64_t operator()(std::size_t a_offset) const
-			{
-				const mapping_t elem{ 0, a_offset };
-				const auto      it = std::ranges::lower_bound(_offset2id, elem, comp_offset());
-				if (it == _offset2id.end()) {
-					stl::report_and_fail(
-						fmt::format(
-							"Failed to find the offset within the database: 0x{:08X}"sv,
-							a_offset));
-				}
-
-				return it->id;
-			}
-
-			[[nodiscard]] const_iterator begin() const noexcept { return _offset2id.begin(); }
-			[[nodiscard]] const_iterator cbegin() const noexcept { return _offset2id.cbegin(); }
-
-			[[nodiscard]] const_iterator end() const noexcept { return _offset2id.end(); }
-			[[nodiscard]] const_iterator cend() const noexcept { return _offset2id.cend(); }
-
-			[[nodiscard]] const_reverse_iterator rbegin() const noexcept { return _offset2id.rbegin(); }
-			[[nodiscard]] const_reverse_iterator crbegin() const noexcept { return _offset2id.crbegin(); }
-
-			[[nodiscard]] const_reverse_iterator rend() const noexcept { return _offset2id.rend(); }
-			[[nodiscard]] const_reverse_iterator crend() const noexcept { return _offset2id.crend(); }
-
-			[[nodiscard]] size_type size() const noexcept { return _offset2id.size(); }
-
-		private:
-			container_type _offset2id;
-		};
-
 		[[nodiscard]] static IDDatabase& get();
 
 		static void init()
@@ -676,25 +630,41 @@ namespace REL
 
 		[[nodiscard]] inline std::size_t id2offset(std::uint64_t a_id) const
 		{
-			auto it = std::ranges::lower_bound(_id2offset, mapping_t{ a_id, 0 });
-			if (it == _id2offset.end() || it->id != a_id) {
-				const auto backup = std::ranges::lower_bound(_backups, backup_t{ a_id, 0 });
-				if (backup != _backups.end() && backup->id == a_id) {
-					a_id = backup->backup;
-					it = std::ranges::lower_bound(_id2offset, mapping_t{ a_id, 0 });
+retry:
+			switch (_format) {
+			case Format::Unpacked:
+				{
+					const auto offsets = std::span<std::uint32_t>{ static_cast<std::uint32_t*>(_id2offset), _offsetCount };
+					if (a_id < offsets.size() && offsets[a_id]) {
+						return offsets[a_id];
+					}
+				}
+				break;
+
+			case Format::Packed:
+				{
+					const auto mappings = std::span<mapping_t>{ static_cast<mapping_t*>(_id2offset), _offsetCount };
+					auto       it = std::ranges::lower_bound(mappings, mapping_t{ a_id, 0 });
+					if (it != mappings.end() && it->id == a_id) {
+						return static_cast<std::size_t>(it->offset);
+					}
+				}
+				break;
+			}
+
+			for (const auto& backup : _backups) {
+				if (backup.id == a_id) {
+					a_id = backup.backup;
+					goto retry;
 				}
 			}
 
-			if (it == _id2offset.end() || it->id != a_id) {
-				stl::report_and_fail(
-					fmt::format(
-						"Failed to find the id within the address library: {}\n"
-						"This means this script extender plugin is incompatible with the address "
-						"library for this version of the game, and thus does not support it."sv,
-						a_id));
-			}
-
-			return static_cast<std::size_t>(it->offset);
+			stl::report_and_fail(
+				fmt::format(
+					"Failed to find the id within the address library: {}\n"
+					"This means this script extender plugin is incompatible with the address "
+					"library for this version of the game, and thus does not support it."sv,
+					a_id));
 		}
 
 		IDDatabase(const IDDatabase&) = delete;
@@ -706,44 +676,70 @@ namespace REL
 		IDDatabase& operator=(IDDatabase&&) = delete;
 
 	private:
-		friend Offset2ID;
-
 		class header_t
 		{
 		public:
 			void read(binary_io::file_istream& a_in)
 			{
 				const auto [format] = a_in.read<std::int32_t>();
-				if (format > 2) {
-					stl::report_and_fail(
-						fmt::format(
-							"Unsupported address library format: {}\n"
-							"This means this script extender plugin is incompatible with the address "
-							"library available for this version of the game, and thus does not "
-							"support it."sv,
-							format));
+				switch (format) {
+				case 1:
+				case 2:
+					{
+						const auto [major, minor, patch, revision] =
+							a_in.read<std::int32_t, std::int32_t, std::int32_t, std::int32_t>();
+						_version[0] = static_cast<std::uint16_t>(major);
+						_version[1] = static_cast<std::uint16_t>(minor);
+						_version[2] = static_cast<std::uint16_t>(patch);
+						_version[3] = static_cast<std::uint16_t>(revision);
+
+						const auto [nameLen] = a_in.read<std::int32_t>();
+						a_in.seek_relative(nameLen);
+
+						a_in.read(_pointerSize, _addressCount);
+						_dataFormat = Format::Packed;
+					}
+					break;
+
+				case 5:
+					{
+						const auto [major, minor, patch, revision] =
+							a_in.read<std::int32_t, std::int32_t, std::int32_t, std::int32_t>();
+						_version[0] = static_cast<std::uint16_t>(major);
+						_version[1] = static_cast<std::uint16_t>(minor);
+						_version[2] = static_cast<std::uint16_t>(patch);
+						_version[3] = static_cast<std::uint16_t>(revision);
+
+						constexpr auto nameLen = 64;
+						a_in.seek_relative(nameLen);
+
+						a_in.read(_pointerSize, _dataFormat, _addressCount);
+					}
+					break;
+
+				default:
+					{
+						stl::report_and_fail(
+							fmt::format(
+								"Unsupported address library format: {}\n"
+								"This means this script extender plugin is incompatible with the address "
+								"library available for this version of the game, and thus does not "
+								"support it."sv,
+								format));
+					}
+					break;
 				}
-
-				const auto [major, minor, patch, revision] =
-					a_in.read<std::int32_t, std::int32_t, std::int32_t, std::int32_t>();
-				_version[0] = static_cast<std::uint16_t>(major);
-				_version[1] = static_cast<std::uint16_t>(minor);
-				_version[2] = static_cast<std::uint16_t>(patch);
-				_version[3] = static_cast<std::uint16_t>(revision);
-
-				const auto [nameLen] = a_in.read<std::int32_t>();
-				a_in.seek_relative(nameLen);
-
-				a_in.read(_pointerSize, _addressCount);
 			}
 
 			[[nodiscard]] std::size_t   address_count() const noexcept { return static_cast<std::size_t>(_addressCount); }
+			[[nodiscard]] Format        format() const noexcept { return _dataFormat; }
 			[[nodiscard]] std::uint64_t pointer_size() const noexcept { return static_cast<std::uint64_t>(_pointerSize); }
 			[[nodiscard]] Version       version() const noexcept { return _version; }
 
 		private:
 			Version      _version;
 			std::int32_t _pointerSize{ 0 };
+			Format       _dataFormat{ Format::Empty };
 			std::int32_t _addressCount{ 0 };
 		};
 
@@ -761,22 +757,44 @@ namespace REL
 					stl::report_and_fail("version mismatch"sv);
 				}
 
-				auto mapname = L"CommonLibSSEOffsets-v2-"s;
-				mapname += a_version.wstring();
-				const auto byteSize = static_cast<std::size_t>(header.address_count()) * sizeof(mapping_t);
-				if (_mmap.open(mapname, byteSize)) {
-					_id2offset = { static_cast<mapping_t*>(_mmap.data()), header.address_count() };
-				} else if (_mmap.create(mapname, byteSize)) {
-					_id2offset = { static_cast<mapping_t*>(_mmap.data()), header.address_count() };
-					unpack_file(in, header);
-					std::sort(
-						_id2offset.begin(),
-						_id2offset.end(),
-						[](auto&& a_lhs, auto&& a_rhs) {
-							return a_lhs.id < a_rhs.id;
-						});
+				_format = header.format();
+				if (_format == Format::Empty) {
+					return;
+				}
+
+				auto mapname = L"COMMONLIB_IDDB_OFFSETS_"s;
+				mapname += a_version.wstring(L'_');
+
+				if (_format == Format::Unpacked) {
+					const auto byteSize = header.address_count() * sizeof(std::uint32_t);
+					if (_mmap.open_existing(mapname, a_filename)) {
+						_id2offset = static_cast<std::byte*>(_mmap.data()) + 0x60;
+						_offsetCount = header.address_count();
+					} else {
+						stl::report_and_fail("failed to create shared mapping"sv);
+					}
 				} else {
-					stl::report_and_fail("failed to create shared mapping"sv);
+					const auto byteSize = header.address_count() * sizeof(mapping_t);
+					if (_mmap.open(mapname, byteSize)) {
+						_id2offset = _mmap.data();
+						_offsetCount = header.address_count();
+					} else if (_mmap.create(mapname, byteSize)) {
+						_id2offset = _mmap.data();
+						_offsetCount = header.address_count();
+						if (_format == Format::Packed) {
+							unpack_file(in, header);
+
+							const auto mappings = std::span<mapping_t>{ static_cast<mapping_t*>(_id2offset), _offsetCount };
+							std::sort(
+								mappings.begin(),
+								mappings.end(),
+								[](auto&& a_lhs, auto&& a_rhs) {
+									return a_lhs.id < a_rhs.id;
+								});
+						}
+					} else {
+						stl::report_and_fail("failed to create shared mapping"sv);
+					}
 				}
 			} catch (const std::system_error&) {
 				stl::report_and_fail(
@@ -790,14 +808,15 @@ namespace REL
 			}
 		}
 
-		void unpack_file(binary_io::file_istream& a_in, header_t a_header)
+		void unpack_file(binary_io::file_istream& a_in, const header_t& a_header)
 		{
 			std::uint8_t  type = 0;
 			std::uint64_t id = 0;
 			std::uint64_t offset = 0;
 			std::uint64_t prevID = 0;
 			std::uint64_t prevOffset = 0;
-			for (auto& mapping : _id2offset) {
+			const auto    mappings = std::span<mapping_t>{ static_cast<mapping_t*>(_id2offset), _offsetCount };
+			for (auto& mapping : mappings) {
 				a_in.read(type);
 				const auto lo = static_cast<std::uint8_t>(type & 0xF);
 				const auto hi = static_cast<std::uint8_t>(type >> 4);
@@ -873,10 +892,12 @@ namespace REL
 			}
 		}
 
-		static IDDatabase    _singleton;
-		inline static bool   _loaded{ false };
-		detail::memory_map   _mmap;
-		std::span<mapping_t> _id2offset;
+		static IDDatabase  _singleton;
+		inline static bool _loaded{ false };
+		detail::memory_map _mmap;
+		Format             _format{ Format::Empty };
+		void*              _id2offset{ nullptr };
+		std::size_t        _offsetCount{ 0 };
 
 		// Patch for known Address Library bugs
 		inline static constexpr auto _backups =

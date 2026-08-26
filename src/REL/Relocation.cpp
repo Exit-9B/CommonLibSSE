@@ -115,6 +115,44 @@ namespace REL
 			return true;
 		}
 
+		bool memory_map::open_existing(stl::zwstring a_name, stl::zwstring a_path)
+		{
+			close();
+
+			_file = ::CreateFileW(
+				a_path.data(),
+				FILE_GENERIC_READ,
+				FILE_SHARE_READ,
+				nullptr,
+				OPEN_EXISTING,
+				FILE_ATTRIBUTE_READONLY,
+				nullptr);
+
+			if (_file == INVALID_HANDLE_VALUE) {
+				return false;
+			}
+
+			LARGE_INTEGER size;
+			GetFileSizeEx(_file, &size);
+
+			_mapping = OpenFileMappingW(FILE_MAP_READ, false, a_name.data());
+			if (!_mapping) {
+				_mapping = CreateFileMappingW(_file, nullptr, PAGE_READONLY, size.HighPart, size.LowPart, a_name.data());
+				if (!_mapping) {
+					close();
+					return false;
+				}
+			}
+
+			_view = MapViewOfFile(_mapping, FILE_MAP_READ, 0, 0, size.QuadPart);
+			if (!_view) {
+				close();
+				return false;
+			}
+
+			return true;
+		}
+
 		void memory_map::close()
 		{
 			if (_view) {
@@ -125,6 +163,11 @@ namespace REL
 			if (_mapping) {
 				::CloseHandle(_mapping);
 				_mapping = nullptr;
+			}
+
+			if (_file && _file != INVALID_HANDLE_VALUE) {
+				::CloseHandle(_file);
+				_file = nullptr;
 			}
 		}
 	}
@@ -162,7 +205,7 @@ namespace REL
 				fmt::format(
 					"Data/SKSE/Plugins/{}-{}.bin"sv,
 					prefix,
-					version.string()))
+					version.string('-')))
 				.value_or(L"<unknown filename>"s);
 		load_file(filename, version);
 	}
