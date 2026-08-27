@@ -93,7 +93,7 @@ namespace REL
 			[[nodiscard]] void* data() noexcept { return _view; }
 
 			bool open(stl::zwstring a_name, std::size_t a_size);
-			bool open_existing(stl::zwstring a_name, stl::zwstring a_path);
+			bool open_path(stl::zwstring a_name, stl::zwstring a_path);
 			bool create(stl::zwstring a_name, std::size_t a_size);
 			void close();
 
@@ -767,7 +767,7 @@ retry:
 
 				if (_format == Format::Unpacked) {
 					const auto byteSize = header.address_count() * sizeof(std::uint32_t);
-					if (_mmap.open_existing(mapname, a_filename)) {
+					if (_mmap.open_path(mapname, a_filename)) {
 						_id2offset = static_cast<std::byte*>(_mmap.data()) + 0x60;
 						_offsetCount = header.address_count();
 					} else {

@@ -115,7 +115,7 @@ namespace REL
 			return true;
 		}
 
-		bool memory_map::open_existing(stl::zwstring a_name, stl::zwstring a_path)
+		bool memory_map::open_path(stl::zwstring a_name, stl::zwstring a_path)
 		{
 			close();
 
