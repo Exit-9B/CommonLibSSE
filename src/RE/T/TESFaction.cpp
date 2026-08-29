@@ -49,7 +49,7 @@ namespace RE
 		}
 
 		const auto playerData = player->PlayerCharacterData();
-		auto it = playerData->crimeGoldMap.find(const_cast<TESFaction*>(this));
+		auto       it = playerData->crimeGoldMap.find(const_cast<TESFaction*>(this));
 		if (it != playerData->crimeGoldMap.end()) {
 			return static_cast<std::int32_t>(it->second.nonViolentInfamy + it->second.violentInfamy);
 		} else {
@@ -65,7 +65,7 @@ namespace RE
 		}
 
 		const auto playerData = player->PlayerCharacterData();
-		auto it = playerData->crimeGoldMap.find(const_cast<TESFaction*>(this));
+		auto       it = playerData->crimeGoldMap.find(const_cast<TESFaction*>(this));
 		if (it != playerData->crimeGoldMap.end()) {
 			return static_cast<std::int32_t>(it->second.nonViolentInfamy);
 		} else {
@@ -81,7 +81,7 @@ namespace RE
 		}
 
 		const auto playerData = player->PlayerCharacterData();
-		auto it = playerData->crimeGoldMap.find(const_cast<TESFaction*>(this));
+		auto       it = playerData->crimeGoldMap.find(const_cast<TESFaction*>(this));
 		if (it != playerData->crimeGoldMap.end()) {
 			return static_cast<std::int32_t>(it->second.violentInfamy);
 		} else {
@@ -97,7 +97,7 @@ namespace RE
 		}
 
 		const auto playerData = player->PlayerCharacterData();
-		auto it = playerData->stolenItemValueMap.find(const_cast<TESFaction*>(this));
+		auto       it = playerData->stolenItemValueMap.find(const_cast<TESFaction*>(this));
 		if (it != playerData->stolenItemValueMap.end()) {
 			return static_cast<std::int32_t>(it->second.witnessed);
 		} else {
@@ -113,7 +113,7 @@ namespace RE
 		}
 
 		const auto playerData = player->PlayerCharacterData();
-		auto it = playerData->stolenItemValueMap.find(const_cast<TESFaction*>(this));
+		auto       it = playerData->stolenItemValueMap.find(const_cast<TESFaction*>(this));
 		if (it != playerData->stolenItemValueMap.end()) {
 			return static_cast<std::int32_t>(it->second.unwitnessed);
 		} else {
