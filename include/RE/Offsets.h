@@ -767,7 +767,14 @@ namespace RE
 
 		namespace IMenu
 		{
-			inline constexpr REL::ID RefreshPlatform(static_cast<std::uint64_t>(82309));
+			[[nodiscard]] inline std::uint64_t RefreshPlatform()
+			{
+				if (REL::Module::get().version() >= SKSE::RUNTIME_1_7_99) {
+					return 524269;
+				} else {
+					return 82309;
+				}
+			}
 		}
 
 		namespace INIPrefSettingCollection
