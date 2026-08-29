@@ -50,7 +50,7 @@ namespace RE
 
 	NiPointer<Actor> PlayerCharacter::GetActorDoingPlayerCommand() const
 	{
-		return actorDoingPlayerCommand.get();
+		return PlayerCharacterData()->actorDoingPlayerCommand.get();
 	}
 
 	float PlayerCharacter::GetArmorValue(InventoryEntryData* a_form)
@@ -70,7 +70,7 @@ namespace RE
 	NiPointer<TESObjectREFR> PlayerCharacter::GetGrabbedRef()
 	{
 #ifndef SKYRIMVR
-		return grabbedObject.get();
+		return PlayerCharacterData()->grabbedObject.get();
 #else
 		return nullptr;
 #endif
@@ -86,13 +86,14 @@ namespace RE
 #ifndef SKYRIMVR
 	TintMask* PlayerCharacter::GetOverlayTintMask(TintMask* a_original)
 	{
-		if (!overlayTintMasks) {
+		const auto m = PlayerCharacterData();
+		if (!m->overlayTintMasks) {
 			return nullptr;
 		}
 
-		for (std::uint32_t i = 0; i < tintMasks.size(); ++i) {
-			if (tintMasks[i] == a_original) {
-				return i < overlayTintMasks->size() ? (*overlayTintMasks)[i] : nullptr;
+		for (std::uint32_t i = 0; i < m->tintMasks.size(); ++i) {
+			if (m->tintMasks[i] == a_original) {
+				return i < m->overlayTintMasks->size() ? (*m->overlayTintMasks)[i] : nullptr;
 			}
 		}
 
@@ -102,7 +103,8 @@ namespace RE
 
 	BSTArray<TintMask*>& PlayerCharacter::GetTintList()
 	{
-		return overlayTintMasks ? *overlayTintMasks : tintMasks;
+		const auto m = PlayerCharacterData();
+		return m->overlayTintMasks ? *m->overlayTintMasks : m->tintMasks;
 	}
 
 	TintMask* PlayerCharacter::GetTintMask(std::uint32_t a_tintType, std::uint32_t a_index)
@@ -114,13 +116,13 @@ namespace RE
 
 	bool PlayerCharacter::HasActorDoingCommand() const
 	{
-		return static_cast<bool>(actorDoingPlayerCommand);
+		return static_cast<bool>(PlayerCharacterData()->actorDoingPlayerCommand);
 	}
 
 	bool PlayerCharacter::IsGrabbing() const
 	{
 #ifndef SKYRIMVR
-		return static_cast<bool>(grabbedObject);
+		return static_cast<bool>(PlayerCharacterData()->grabbedObject);
 #else
 		return false;
 #endif

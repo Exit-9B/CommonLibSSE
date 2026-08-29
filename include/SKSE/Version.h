@@ -21,6 +21,15 @@
 
 #define HAS_SKYRIMSE(major, minor, build) SKYRIMSE_EXE_VERSION >= MAKE_EXE_VERSION(major, minor, build)
 
+#define BEGIN_MOVABLE_MEMBERS(name) \
+	struct name                     \
+	{                               \
+		~name();
+
+#define END_MOVABLE_MEMBERS \
+	}                       \
+	;
+
 namespace SKSE
 {
 	inline constexpr REL::Version RUNTIME_1_1_47(1, 1, 47, 0);

@@ -131,16 +131,7 @@ namespace RE
 		public BSTEventSink<TESTriggerEnterEvent>,             // 0160
 		public BSTEventSink<TESTriggerLeaveEvent>,             // 0168
 		public BSTEventSink<TESUniqueIDChangeEvent>,           // 0170
-		public BSTEventSink<TESSwitchRaceCompleteEvent>,       // 0178
-#if HAS_SKYRIMSE(1, 7, 99)
-		public BSTEventSink<TESAmiiboTouchEvent>,                // 0180
-		public BSTEventSink<TESAmiiboForcedStopDetectionEvent>,  // 0188
-#endif
-		public BSTEventSink<TESPlayerBowShotEvent>,  // 0190
-		public BSTEventSink<TESFastTravelEndEvent>,  // 0198
-		public BSTEventSink<PositionPlayerEvent>,    // 01A0
-		public BSTEventSink<BSScript::StatsEvent>,   // 01A8
-		public BSTEventSource<BSScript::StatsEvent>  // 01B8
+		public BSTEventSink<TESSwitchRaceCompleteEvent>        // 0178
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_SkyrimVM;
@@ -152,6 +143,7 @@ namespace RE
 		bool QueuePostRenderCall(const BSTSmartPointer<SkyrimScript::DelayFunctor>& a_functor);
 
 		// members
+		BEGIN_MOVABLE_MEMBERS(SkyrimVM_Data)
 		BSTSmartPointer<BSScript::IVirtualMachine>                            impl;                       // 0200
 		BSScript::IVMSaveLoadInterface*                                       saveLoadInterface;          // 0208
 		BSScript::IVMDebugInterface*                                          debugInterface;             // 0210
@@ -204,10 +196,58 @@ namespace RE
 		std::uint64_t                                                         unk8938;                    // 8938
 		std::uint64_t                                                         unk8940;                    // 8940
 		BSTHashMap<UnkKey, UnkValue>                                          unk8948;                    // 8948
+		END_MOVABLE_MEMBERS
+
+		const SkyrimVM_Data* SkyrimVMData() const;
+		SkyrimVM_Data*       SkyrimVMData();
 	};
+
+	class SkyrimVM_1 :
+		public SkyrimVM,                             // 0000
+		public BSTEventSink<TESPlayerBowShotEvent>,  // 0180
+		public BSTEventSink<TESFastTravelEndEvent>,  // 0188
+		public BSTEventSink<PositionPlayerEvent>,    // 0190
+		public BSTEventSink<BSScript::StatsEvent>,   // 0198
+		public BSTEventSource<BSScript::StatsEvent>  // 01A8
+	{
+	public:
+		SkyrimVM_Data _SkyrimVM;  // 0200
+	};
+	static_assert(sizeof(SkyrimVM_1) == 0x8978);
+
 #if HAS_SKYRIMSE(1, 7, 99)
-	static_assert(sizeof(SkyrimVM) == 0x8988);
-#else
-	static_assert(sizeof(SkyrimVM) == 0x8978);
+	class SkyrimVM_1_7_99 :
+		public SkyrimVM,                                         // 0000
+		public BSTEventSink<TESAmiiboTouchEvent>,                // 0180
+		public BSTEventSink<TESAmiiboForcedStopDetectionEvent>,  // 0188
+		public BSTEventSink<TESPlayerBowShotEvent>,              // 0190
+		public BSTEventSink<TESFastTravelEndEvent>,              // 0198
+		public BSTEventSink<PositionPlayerEvent>,                // 01A0
+		public BSTEventSink<BSScript::StatsEvent>,               // 01A8
+		public BSTEventSource<BSScript::StatsEvent>              // 01B8
+	{
+	public:
+		SkyrimVM_Data _SkyrimVM;  // 0210
+	};
+	static_assert(sizeof(SkyrimVM_1_7_99) == 0x8988);
 #endif
+
+	inline auto SkyrimVM::SkyrimVMData() const -> const SkyrimVM_Data*
+	{
+		[[maybe_unused]] const auto version = REL::Module::get().version();
+
+#if HAS_SKYRIMSE(1, 7, 99)
+		if (version >= SKSE::RUNTIME_1_7_99) {
+			return std::addressof(static_cast<const SkyrimVM_1_7_99*>(this)->_SkyrimVM);
+		}
+#endif
+
+		return std::addressof(static_cast<const SkyrimVM_1*>(this)->_SkyrimVM);
+	}
+
+	inline auto SkyrimVM::SkyrimVMData() -> SkyrimVM_Data*
+	{
+		return const_cast<SkyrimVM_Data*>(
+			const_cast<const SkyrimVM*>(this)->SkyrimVMData());
+	}
 }

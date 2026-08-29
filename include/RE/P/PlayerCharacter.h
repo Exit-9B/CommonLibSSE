@@ -132,17 +132,10 @@ namespace RE
 
 	class PlayerCharacter :
 		public Character,                            // 000
-		public BSTEventSource<BGSActorCellEvent>,    // 2E0
-		public BSTEventSource<BGSActorDeathEvent>,   // 338
-		public BSTEventSource<PositionPlayerEvent>,  // 390
 		public BSTEventSink<MenuOpenCloseEvent>,     // 2B8
 		public BSTEventSink<MenuModeChangeEvent>,    // 2C0
 		public BSTEventSink<UserEventEnabledEvent>,  // 2C8
 		public BSTEventSink<TESTrackedStatsEvent>    // 2D0
-#if HAS_SKYRIMSE(1, 7, 99)
-		,
-		public BSTEventSink<BSSystemEvent>  // 2D8
-#endif
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_PlayerCharacter;
@@ -302,6 +295,7 @@ namespace RE
 		void                 StartGrabObject();
 
 		// members
+		BEGIN_MOVABLE_MEMBERS(PlayerCharacter_Data)
 		std::uint32_t                                           unk3D8;                                       // 3D8
 		std::uint32_t                                           unk3DC;                                       // 3DC
 		BSTHashMap<const TESFaction*, CrimeGoldStruct>          crimeGoldMap;                                 // 3E0
@@ -469,15 +463,60 @@ namespace RE
 		stl::enumeration<FlagBDC, std::uint8_t>                 unkBDC;                                       // BDC
 		stl::enumeration<FlagBDD, std::uint8_t>                 unkBDD;                                       // BDD
 		std::uint16_t                                           padBDE;                                       // BDE
+		END_MOVABLE_MEMBERS
+
+		const PlayerCharacter_Data* PlayerCharacterData() const;
+		PlayerCharacter_Data*       PlayerCharacterData();
 
 	private:
 		bool CenterOnCell_Impl(const char* a_cellName, RE::TESObjectCELL* a_cell);
 	};
-#if HAS_SKYRIMSE(1, 7, 99)
-	static_assert(sizeof(PlayerCharacter) == 0xBF0);
-#elif HAS_SKYRIMSE(1, 6, 629)
-	static_assert(sizeof(PlayerCharacter) == 0xBE8);
-#elif defined(SKYRIMVR)
-	static_assert(sizeof(PlayerCharacter) == 0xBE0);
+
+	class PlayerCharacter_1 :
+		public PlayerCharacter,                     // 000
+		public BSTEventSource<BGSActorCellEvent>,   // 2D8
+		public BSTEventSource<BGSActorDeathEvent>,  // 330
+		public BSTEventSource<PositionPlayerEvent>  // 388
+	{
+	public:
+		PlayerCharacter_Data _PlayerCharacter;  // 3E0
+	};
+#if HAS_SKYRIMSE(1, 6, 629)
+	static_assert(sizeof(PlayerCharacter_1) == 0xBE8);
+#else
+	static_assert(sizeof(PlayerCharacter_1) == 0xBE0);
 #endif
+
+#if HAS_SKYRIMSE(1, 7, 99)
+	class PlayerCharacter_1_7_99 :
+		public PlayerCharacter,                     // 000
+		public BSTEventSink<BSSystemEvent>,         // 2D8
+		public BSTEventSource<BGSActorCellEvent>,   // 2E0
+		public BSTEventSource<BGSActorDeathEvent>,  // 338
+		public BSTEventSource<PositionPlayerEvent>  // 390
+	{
+	public:
+		PlayerCharacter_Data _PlayerCharacter;  // 3E8
+	};
+	static_assert(sizeof(PlayerCharacter_1_7_99) == 0xBF0);
+#endif
+
+	inline auto PlayerCharacter::PlayerCharacterData() const -> const PlayerCharacter_Data*
+	{
+		[[maybe_unused]] const auto version = REL::Module::get().version();
+
+#if HAS_SKYRIMSE(1, 7, 99)
+		if (version >= SKSE::RUNTIME_1_7_99) {
+			return std::addressof(static_cast<const PlayerCharacter_1_7_99*>(this)->_PlayerCharacter);
+		}
+#endif
+
+		return std::addressof(static_cast<const PlayerCharacter_1*>(this)->_PlayerCharacter);
+	}
+
+	inline auto PlayerCharacter::PlayerCharacterData() -> PlayerCharacter_Data*
+	{
+		return const_cast<PlayerCharacter_Data*>(
+			const_cast<const PlayerCharacter*>(this)->PlayerCharacterData());
+	}
 }

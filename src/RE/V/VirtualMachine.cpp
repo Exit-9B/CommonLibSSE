@@ -15,14 +15,8 @@ namespace RE
 					return nullptr;
 				}
 
-				// HACK: Temporary workaround to support GOG version.
-				auto p = &vm->impl;
-#if !defined(SKYRIMVR)
-				if (REL::Module::get().version() < SKSE::RUNTIME_1_7_99) {
-					p = reinterpret_cast<BSTSmartPointer<BSScript::IVirtualMachine>*>(reinterpret_cast<std::byte*>(vm) + 0x200);
-				}
-#endif
-				return static_cast<VirtualMachine*>(p->get());
+				const auto data = vm->SkyrimVMData();
+				return static_cast<VirtualMachine*>(data->impl.get());
 			}
 		}
 	}

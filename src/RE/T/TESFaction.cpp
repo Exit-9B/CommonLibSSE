@@ -48,8 +48,9 @@ namespace RE
 			return 0;
 		}
 
-		auto it = player->crimeGoldMap.find(const_cast<TESFaction*>(this));
-		if (it != player->crimeGoldMap.end()) {
+		const auto playerData = player->PlayerCharacterData();
+		auto it = playerData->crimeGoldMap.find(const_cast<TESFaction*>(this));
+		if (it != playerData->crimeGoldMap.end()) {
 			return static_cast<std::int32_t>(it->second.nonViolentInfamy + it->second.violentInfamy);
 		} else {
 			return 0;
@@ -63,8 +64,9 @@ namespace RE
 			return 0;
 		}
 
-		auto it = player->crimeGoldMap.find(const_cast<TESFaction*>(this));
-		if (it != player->crimeGoldMap.end()) {
+		const auto playerData = player->PlayerCharacterData();
+		auto it = playerData->crimeGoldMap.find(const_cast<TESFaction*>(this));
+		if (it != playerData->crimeGoldMap.end()) {
 			return static_cast<std::int32_t>(it->second.nonViolentInfamy);
 		} else {
 			return 0;
@@ -78,8 +80,9 @@ namespace RE
 			return 0;
 		}
 
-		auto it = player->crimeGoldMap.find(const_cast<TESFaction*>(this));
-		if (it != player->crimeGoldMap.end()) {
+		const auto playerData = player->PlayerCharacterData();
+		auto it = playerData->crimeGoldMap.find(const_cast<TESFaction*>(this));
+		if (it != playerData->crimeGoldMap.end()) {
 			return static_cast<std::int32_t>(it->second.violentInfamy);
 		} else {
 			return 0;
@@ -93,8 +96,9 @@ namespace RE
 			return 0;
 		}
 
-		auto it = player->stolenItemValueMap.find(const_cast<TESFaction*>(this));
-		if (it != player->stolenItemValueMap.end()) {
+		const auto playerData = player->PlayerCharacterData();
+		auto it = playerData->stolenItemValueMap.find(const_cast<TESFaction*>(this));
+		if (it != playerData->stolenItemValueMap.end()) {
 			return static_cast<std::int32_t>(it->second.witnessed);
 		} else {
 			return 0;
@@ -108,8 +112,9 @@ namespace RE
 			return 0;
 		}
 
-		auto it = player->stolenItemValueMap.find(const_cast<TESFaction*>(this));
-		if (it != player->stolenItemValueMap.end()) {
+		const auto playerData = player->PlayerCharacterData();
+		auto it = playerData->stolenItemValueMap.find(const_cast<TESFaction*>(this));
+		if (it != playerData->stolenItemValueMap.end()) {
 			return static_cast<std::int32_t>(it->second.unwitnessed);
 		} else {
 			return 0;
