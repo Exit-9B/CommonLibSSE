@@ -10,7 +10,11 @@ namespace RE
 			kKeyboard = 0,
 			kMouse,
 			kGamepad,
-#ifdef SKYRIMVR
+#if HAS_SKYRIMSE(1, 7, 99)
+			kUnk3,
+			kUnk4,
+#endif
+#if defined(SKYRIMVR)
 			kVivePrimary,
 			kViveSecondary,
 			kOculusPrimary,

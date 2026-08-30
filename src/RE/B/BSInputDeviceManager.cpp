@@ -43,6 +43,11 @@ namespace RE
 
 	BSWin32VirtualKeyboardDevice* BSInputDeviceManager::GetVirtualKeyboard()
 	{
+#if HAS_SKYRIMSE(1, 7, 99)
+		if (REL::Module::get().version() < SKSE::RUNTIME_1_7_99) {
+			return static_cast<BSWin32VirtualKeyboardDevice*>(devices[3]);
+		}
+#endif
 		return static_cast<BSWin32VirtualKeyboardDevice*>(devices[stl::to_underlying(INPUT_DEVICE::kVirtualKeyboard)]);
 	}
 

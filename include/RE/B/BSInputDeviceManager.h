@@ -17,8 +17,8 @@ namespace RE
 	struct BSRemoteGamepadEvent;
 
 	class BSInputDeviceManager :
-		public BSTEventSource<InputEvent*>,           // 00
-		public BSTSingletonSDM<BSInputDeviceManager>  // 58
+		public BSTEventSource<InputEvent*>,           // 000
+		public BSTSingletonSDM<BSInputDeviceManager>  // 058
 	{
 	public:
 		static BSInputDeviceManager* GetSingleton();
@@ -33,23 +33,25 @@ namespace RE
 		bool                          IsGamepadEnabled();
 
 		// members
-		std::uint8_t                         pad59;                           // 59
-		std::uint16_t                        pad5A;                           // 5A
-		std::uint32_t                        pad5C;                           // 5C
-		BSIInputDevice*                      devices[INPUT_DEVICES::kTotal];  // 60
-		bool                                 queuedGamepadEnableValue;        // 80
-		bool                                 valueQueued;                     // 81
-		bool                                 pollingEnabled;                  // 82
-		std::uint8_t                         pad83;                           // 83
-		std::uint32_t                        pad84;                           // 84
-		BSTEventSource<BSRemoteGamepadEvent> remoteGamepadEventSource;        // 88
-		std::uint8_t                         unkE0;                           // E0
-		std::uint8_t                         unkE1;                           // E1
-		std::uint16_t                        unkE2;                           // E2
-		std::uint32_t                        unkE4;                           // E4
-		std::uint64_t                        unkE8;                           // E8
+		std::uint8_t                         pad59;                           // 059
+		std::uint16_t                        pad5A;                           // 05A
+		std::uint32_t                        pad5C;                           // 05C
+		BSIInputDevice*                      devices[INPUT_DEVICES::kTotal];  // 060
+		bool                                 queuedGamepadEnableValue;        // 090
+		bool                                 valueQueued;                     // 091
+		bool                                 pollingEnabled;                  // 092
+		std::uint8_t                         pad093;                          // 093
+		std::uint32_t                        pad094;                          // 094
+		BSTEventSource<BSRemoteGamepadEvent> remoteGamepadEventSource;        // 098
+		std::uint8_t                         unk0F0;                          // 0F0
+		std::uint8_t                         unk0F1;                          // 0F1
+		std::uint16_t                        unk0F2;                          // 0F2
+		std::uint32_t                        unk0F4;                          // 0F4
+		std::uint64_t                        unk0F8;                          // 0F8
 	};
-#ifndef SKYRIMVR
+#if HAS_SKYRIMSE(1, 7, 99)
+	static_assert(sizeof(BSInputDeviceManager) == 0x100);
+#elif !defined(SKYRIMVR)
 	static_assert(sizeof(BSInputDeviceManager) == 0xF0);
 #else
 	static_assert(sizeof(BSInputDeviceManager) == 0x120);

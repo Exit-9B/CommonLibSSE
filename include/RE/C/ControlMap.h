@@ -47,7 +47,9 @@ namespace RE
 			// members
 			BSTArray<UserEventMapping> deviceMappings[INPUT_DEVICES::kTotal];  // 00
 		};
-#if !defined(SKYRIMVR)
+#if HAS_SKYRIMSE(1, 7, 99)
+		static_assert(sizeof(InputContext) == 0x90);
+#elif !defined(SKYRIMVR)
 		static_assert(sizeof(InputContext) == 0x60);
 #else
 		static_assert(sizeof(InputContext) == 0xF0);
