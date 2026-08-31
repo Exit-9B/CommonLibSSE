@@ -1289,7 +1289,7 @@ retry:
 				return this->match(*reinterpret_cast<const std::byte(*)[sizeof...(Rules)]>(a_address));
 			}
 
-			void match_or_fail(std::uintptr_t a_address, std::source_location a_loc = std::source_location::current()) const noexcept
+			[[msvc::noinline]] void match_or_fail(std::uintptr_t a_address, std::source_location a_loc = std::source_location::current()) const noexcept
 			{
 				if (!this->match(a_address)) {
 					const auto version = Module::get().version();
