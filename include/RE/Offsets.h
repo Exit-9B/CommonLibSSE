@@ -438,7 +438,14 @@ namespace RE
 
 		namespace CombatUtilities
 		{
-			inline constexpr REL::ID GetAngleToProjectedTarget(static_cast<std::uint64_t>(47286));
+			[[nodiscard]] inline std::uint64_t GetAngleToProjectedTarget()
+			{
+				if (REL::Module::get().version() >= SKSE::RUNTIME_1_7_99) {
+					return 523983;
+				} else {
+					return 47286;
+				}
+			}
 		}
 
 		namespace Console
