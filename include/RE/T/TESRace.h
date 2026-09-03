@@ -95,7 +95,7 @@ namespace RE
 		public:
 			// members
 			stl::enumeration<ActorValue::Index, std::uint8_t> skill;  // 0
-			std::uint8_t                               bonus;  // 1
+			std::uint8_t                                      bonus;  // 1
 		};
 		static_assert(sizeof(SkillBoost) == 0x2);
 

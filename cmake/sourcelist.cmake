@@ -17,10 +17,10 @@ set(SOURCES
 	include/RE/A/ActorSpeedChannel.h
 	include/RE/A/ActorState.h
 	include/RE/A/ActorTargetCheck.h
+	include/RE/A/ActorValue.h
 	include/RE/A/ActorValueInfo.h
 	include/RE/A/ActorValueMeter.h
 	include/RE/A/ActorValueOwner.h
-	include/RE/A/ActorValue.h
 	include/RE/A/AddCallbackVisitor.h
 	include/RE/A/AlchemyItem.h
 	include/RE/A/AlchemyMenu.h
