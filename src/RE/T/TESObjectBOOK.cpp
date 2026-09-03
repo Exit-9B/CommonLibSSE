@@ -44,7 +44,7 @@ namespace RE
 		return data.type == OBJ_BOOK::Type::kNoteScroll;
 	}
 
-	ActorValue TESObjectBOOK::GetSkill() const
+	ActorValue::Index TESObjectBOOK::GetSkill() const
 	{
 		return TeachesSkill() ? data.teaches.actorValueToAdvance : ActorValue::kNone;
 	}

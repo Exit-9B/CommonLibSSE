@@ -426,7 +426,7 @@ namespace RE
 		float                                                   commandTimer;                                 // AD8
 		std::uint32_t                                           unkADC;                                       // ADC
 		TESImageSpaceModifier*                                  unkAE0;                                       // AE0
-		RE::ActorValue                                          advanceSkill;                                 // AE8
+		RE::ActorValue::Index                                   advanceSkill;                                 // AE8
 		std::uint32_t                                           advanceAction;                                // AEC
 		std::uint32_t                                           unkAF0;                                       // AF0
 		stl::enumeration<GrabbingType, std::uint32_t>           grabType;                                     // AF4

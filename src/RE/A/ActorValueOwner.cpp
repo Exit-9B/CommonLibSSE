@@ -9,7 +9,7 @@ namespace RE
 		return func(this, a_skillLevel);
 	}
 
-	float ActorValueOwner::GetClampedActorValue(ActorValue a_akValue) const
+	float ActorValueOwner::GetClampedActorValue(ActorValue::Index a_akValue) const
 	{
 		using func_t = decltype(&ActorValueOwner::GetClampedActorValue);
 		REL::Relocation<func_t> func{ STATIC_OFFSET(ActorValueOwner::GetClampedActorValue) };

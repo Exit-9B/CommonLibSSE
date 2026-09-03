@@ -15,9 +15,9 @@ namespace RE
 		void Run(Message a_msg) override;  // 01
 
 		// members
-		std::uint64_t  unk10;  // 10
-		std::uint32_t  unk18;  // 18
-		RE::ActorValue skill;  // 1C
+		std::uint64_t         unk10;  // 10
+		std::uint32_t         unk18;  // 18
+		RE::ActorValue::Index skill;  // 1C
 	};
 	static_assert(sizeof(LegendarySkillResetConfirmCallback) == 0x20);
 }

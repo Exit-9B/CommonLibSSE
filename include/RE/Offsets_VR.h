@@ -45,9 +45,10 @@ namespace RE
 			inline constexpr REL::Offset UnequipObject(static_cast<std::uint64_t>(0x6411A0));
 		}
 
-		namespace ActorValueInfo
+		namespace ActorValue
 		{
 			inline constexpr REL::Offset GetActorValueName(static_cast<std::uint64_t>(0x3F0AE0));
+			inline constexpr REL::Offset Singleton(static_cast<std::uint64_t>(0x1F82AC8));
 		}
 
 		namespace ActorValueOwner

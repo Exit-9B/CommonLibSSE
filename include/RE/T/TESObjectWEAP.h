@@ -1,6 +1,6 @@
 #pragma once
 
-#include "RE/A/ActorValues.h"
+#include "RE/A/ActorValue.h"
 #include "RE/B/BGSBlockBashData.h"
 #include "RE/B/BGSDestructibleObjectForm.h"
 #include "RE/B/BGSEquipType.h"
@@ -166,12 +166,12 @@ namespace RE
 			float                                              unk1C;                // 1C
 			float                                              staggerValue;         // 20
 			stl::enumeration<WEAPONHITBEHAVIOR, std::uint32_t> hitBehavior;          // 24
-			stl::enumeration<ActorValue, std::uint32_t>        skill;                // 28
-			stl::enumeration<ActorValue, std::uint32_t>        resistance;           // 2C
+			stl::enumeration<ActorValue::Index, std::uint32_t> skill;                // 28
+			stl::enumeration<ActorValue::Index, std::uint32_t> resistance;           // 2C
 			stl::enumeration<Flag2, std::uint16_t>             flags2;               // 30
 			std::uint8_t                                       baseVATSToHitChance;  // 32
 			stl::enumeration<AttackAnimation, std::uint8_t>    attackAnimation;      // 33
-			stl::enumeration<ActorValue, std::uint8_t>         embeddedWeaponAV;     // 34 - unused
+			stl::enumeration<ActorValue::Index, std::uint8_t>  embeddedWeaponAV;     // 34 - unused
 			stl::enumeration<WEAPON_TYPE, std::uint8_t>        animationType;        // 35
 			stl::enumeration<Flag, std::uint8_t>               flags;                // 36
 			std::uint8_t                                       unk37;                // 37

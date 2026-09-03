@@ -85,7 +85,7 @@ namespace RE
 		bool                     IsFood() const override;                                               // 5D - { return (GetData()->flags >> 1) & 1; }
 		bool                     GetSkillUsageData(SkillUsageData& a_data) const override;              // 60
 		std::uint32_t            GetMaxEffectCount() const override;                                    // 65 - { return 4; }
-		ActorValue               GetAssociatedSkill() const override;                                   // 66 - { return ActorValue::kConfidence; }
+		ActorValue::Index        GetAssociatedSkill() const override;                                   // 66 - { return ActorValue::kConfidence; }
 		std::uint32_t            GetChunkID() override;                                                 // 68 - { return 'ENIT'; }
 		void                     CopyMagicItemData(MagicItem* a_src) override;                          // 69
 		void                     LoadMagicItemChunk(TESFile* a_mod, std::uint32_t a_chunkID) override;  // 6A

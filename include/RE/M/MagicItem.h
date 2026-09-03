@@ -1,6 +1,6 @@
 #pragma once
 
-#include "RE/A/ActorValues.h"
+#include "RE/A/ActorValue.h"
 #include "RE/B/BGSKeywordForm.h"
 #include "RE/B/BSTArray.h"
 #include "RE/B/BSTSmartPointer.h"
@@ -41,13 +41,13 @@ namespace RE
 		{
 		public:
 			// members
-			EffectItem*   effect;     // 00
-			ActorValue    skill;      // 08
-			float         magnitude;  // 0C
-			bool          custom;     // 10
-			std::uint8_t  pad11;      // 11
-			std::uint16_t pad12;      // 12
-			std::uint32_t pad14;      // 14
+			EffectItem*       effect;     // 00
+			ActorValue::Index skill;      // 08
+			float             magnitude;  // 0C
+			bool              custom;     // 10
+			std::uint8_t      pad11;      // 11
+			std::uint16_t     pad12;      // 12
+			std::uint32_t     pad14;      // 14
 		};
 		static_assert(sizeof(SkillUsageData) == 0x18);
 
@@ -93,7 +93,7 @@ namespace RE
 		virtual void                                   AdjustCost(float& a_cost, Actor* a_actor) const;              // 63 - { return; }
 		[[nodiscard]] virtual float                    GetChargeTime() const;                                        // 64 - { return 0.0; }
 		[[nodiscard]] virtual std::uint32_t            GetMaxEffectCount() const;                                    // 65 - { return 0; }
-		[[nodiscard]] virtual ActorValue               GetAssociatedSkill() const;                                   // 66 - { return ActorValue::kNone; }
+		[[nodiscard]] virtual ActorValue::Index        GetAssociatedSkill() const;                                   // 66 - { return ActorValue::kNone; }
 		[[nodiscard]] virtual bool                     IsTwoHanded() const;                                          // 67 - { return false; }
 		virtual std::uint32_t                          GetChunkID() = 0;                                             // 68
 		virtual void                                   CopyMagicItemData(MagicItem* a_src) = 0;                      // 69

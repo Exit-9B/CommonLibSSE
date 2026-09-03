@@ -1,6 +1,6 @@
 #pragma once
 
-#include "RE/A/ActorValues.h"
+#include "RE/A/ActorValue.h"
 #include "RE/B/BGSKeywordForm.h"
 #include "RE/B/BGSMenuDisplayObject.h"
 #include "RE/B/BSFixedString.h"
@@ -68,8 +68,8 @@ namespace RE
 			stl::enumeration<Flag, std::uint32_t> flags;                  // 00
 			float                                 baseCost;               // 04
 			TESForm*                              associatedForm;         // 08
-			ActorValue                            associatedSkill;        // 10
-			ActorValue                            resistVariable;         // 14
+			ActorValue::Index                     associatedSkill;        // 10
+			ActorValue::Index                     resistVariable;         // 14
 			std::int16_t                          numCounterEffects;      // 18
 			std::uint16_t                         pad1A;                  // 1A
 			std::uint32_t                         pad1C;                  // 1C
@@ -85,12 +85,12 @@ namespace RE
 			float                                 taperDuration;          // 50
 			float                                 secondAVWeight;         // 54
 			Archetype                             archetype;              // 58
-			ActorValue                            primaryAV;              // 5C
+			ActorValue::Index                     primaryAV;              // 5C
 			BGSProjectile*                        projectileBase;         // 60
 			BGSExplosion*                         explosion;              // 68
 			MagicSystem::CastingType              castingType;            // 70
 			MagicSystem::Delivery                 delivery;               // 74
-			ActorValue                            secondaryAV;            // 78
+			ActorValue::Index                     secondaryAV;            // 78
 			BGSArtObject*                         castingArt;             // 80
 			BGSArtObject*                         hitEffectArt;           // 88
 			BGSImpactDataSet*                     impactDataSet;          // 90
@@ -134,10 +134,10 @@ namespace RE
 		// override (BGSKeywordForm)
 		bool HasKeyword(const BGSKeyword* a_keyword) const override;  // 04
 
-		[[nodiscard]] constexpr Archetype    GetArchetype() const noexcept { return data.archetype; }
-		[[nodiscard]] constexpr ActorValue   GetMagickSkill() const noexcept { return data.associatedSkill; }
-		[[nodiscard]] constexpr std::int32_t GetMinimumSkillLevel() const noexcept { return data.minimumSkill; }
-		[[nodiscard]] constexpr bool         HasArchetype(Archetype a_type) const noexcept { return data.archetype == a_type; }
+		[[nodiscard]] constexpr Archetype         GetArchetype() const noexcept { return data.archetype; }
+		[[nodiscard]] constexpr ActorValue::Index GetMagickSkill() const noexcept { return data.associatedSkill; }
+		[[nodiscard]] constexpr std::int32_t      GetMinimumSkillLevel() const noexcept { return data.minimumSkill; }
+		[[nodiscard]] constexpr bool              HasArchetype(Archetype a_type) const noexcept { return data.archetype == a_type; }
 
 		// members
 		FilterValidation_t*          filterValidationFunction;   // 058

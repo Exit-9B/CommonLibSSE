@@ -3,8 +3,8 @@
 #include "RE/A/AITimeStamp.h"
 #include "RE/A/ActiveEffect.h"
 #include "RE/A/ActorState.h"
+#include "RE/A/ActorValue.h"
 #include "RE/A/ActorValueOwner.h"
-#include "RE/A/ActorValues.h"
 #include "RE/B/BGSBipedObjectForm.h"
 #include "RE/B/BGSEntryPointPerkEntry.h"
 #include "RE/B/BSPointerHandle.h"
@@ -79,12 +79,12 @@ namespace RE
 		struct LocalMap
 		{
 		public:
-			T* operator[](ActorValue a_actorValue)
+			T* operator[](ActorValue::Index a_actorValue)
 			{
 				return GetAt(static_cast<char>(a_actorValue));
 			}
 
-			const T* operator[](ActorValue a_actorValue) const
+			const T* operator[](ActorValue::Index a_actorValue) const
 			{
 				return GetAt(static_cast<char>(a_actorValue));
 			}
@@ -428,7 +428,7 @@ namespace RE
 		virtual void                 Unk_F4(void);                                                                                                                                                                    // 0F4
 		virtual bool                 HasBeenAttacked() const;                                                                                                                                                         // 0F5
 		virtual void                 SetBeenAttacked(bool a_set);                                                                                                                                                     // 0F6
-		virtual void                 UseSkill(ActorValue a_av, float a_points, TESForm* a_advanceObject = nullptr, SKILL_ACTION a_advanceAction = SKILL_ACTION::kNormalUse);                                          // 0F7 - { return; }
+		virtual void                 UseSkill(ActorValue::Index a_av, float a_points, TESForm* a_advanceObject = nullptr, SKILL_ACTION a_advanceAction = SKILL_ACTION::kNormalUse);                                   // 0F7 - { return; }
 		virtual bool                 IsAtPoint(const NiPoint3& a_point, float a_radius, bool a_expandRadius, bool a_alwaysTestHeight);                                                                                // 0F8
 		virtual bool                 IsInFaction(const TESFaction* faction) const;                                                                                                                                    // 0F9
 		virtual void                 ForEachPerk(PerkEntryVisitor& a_visitor) const;                                                                                                                                  // 0FA
@@ -476,7 +476,7 @@ namespace RE
 		virtual void                 CreateActorMover();                                                                                                                                                              // 124
 		virtual void                 DestroyActorMover();                                                                                                                                                             // 125
 		virtual bool                 ShouldRespondToActorCollision(const MovementMessageActorCollision& a_msg, const ActorHandlePtr& a_target);                                                                       // 126
-		virtual float                CheckClampDamageModifier(ActorValue a_av, float a_delta);                                                                                                                        // 127
+		virtual float                CheckClampDamageModifier(ActorValue::Index a_av, float a_delta);                                                                                                                 // 127
 
 		static NiPointer<Actor> LookupByHandle(RefHandle a_refHandle);
 		static bool             LookupByHandle(RefHandle a_refHandle, NiPointer<Actor>& a_refrOut);

@@ -1,6 +1,6 @@
 #pragma once
 
-#include "RE/A/ActorValues.h"
+#include "RE/A/ActorValue.h"
 #include "RE/B/BGSAttackDataForm.h"
 #include "RE/B/BGSBehaviorGraphModel.h"
 #include "RE/B/BGSBipedObjectForm.h"
@@ -94,7 +94,7 @@ namespace RE
 		{
 		public:
 			// members
-			stl::enumeration<ActorValue, std::uint8_t> skill;  // 0
+			stl::enumeration<ActorValue::Index, std::uint8_t> skill;  // 0
 			std::uint8_t                               bonus;  // 1
 		};
 		static_assert(sizeof(SkillBoost) == 0x2);

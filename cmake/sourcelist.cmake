@@ -20,7 +20,7 @@ set(SOURCES
 	include/RE/A/ActorValueInfo.h
 	include/RE/A/ActorValueMeter.h
 	include/RE/A/ActorValueOwner.h
-	include/RE/A/ActorValues.h
+	include/RE/A/ActorValue.h
 	include/RE/A/AddCallbackVisitor.h
 	include/RE/A/AlchemyItem.h
 	include/RE/A/AlchemyMenu.h
@@ -1389,7 +1389,7 @@ set(SOURCES
 	src/RE/A/ActiveEffect.cpp
 	src/RE/A/Actor.cpp
 	src/RE/A/ActorEquipManager.cpp
-	src/RE/A/ActorValueInfo.cpp
+	src/RE/A/ActorValue.cpp
 	src/RE/A/ActorValueOwner.cpp
 	src/RE/A/AddCallbackVisitor.cpp
 	src/RE/A/ArmorRatingVisitor.cpp

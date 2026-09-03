@@ -1,6 +1,6 @@
 #pragma once
 
-#include "RE/A/ActorValues.h"
+#include "RE/A/ActorValue.h"
 #include "RE/F/FormTypes.h"
 
 namespace RE
@@ -78,16 +78,16 @@ namespace RE
 		{
 			const char*                            name;                // 00
 			stl::enumeration<Flags, std::uint32_t> flags;               // 08
-			ActorValue                             fixedActorValue;     // 0C
+			ActorValue::Index                      fixedActorValue;     // 0C
 			FormType                               associatedFormType;  // 10
 			std::uint32_t                          pad14;               // 14
 		};
 		static_assert(sizeof(ArchetypeDef) == 0x18);
 
-		[[nodiscard]] static ArchetypeDef& GetArchetypeDef(ArchetypeID a_id);
-		[[nodiscard]] static const char*   GetArchetypeName(ArchetypeID a_id);
-		[[nodiscard]] static FormType      GetAssociatedFormType(ArchetypeID a_id);
-		[[nodiscard]] static ActorValue    GetFixedActorValue(ArchetypeID a_id);
-		[[nodiscard]] static bool          IsFlagSet(ArchetypeID a_id, Flags a_flag);
+		[[nodiscard]] static ArchetypeDef&     GetArchetypeDef(ArchetypeID a_id);
+		[[nodiscard]] static const char*       GetArchetypeName(ArchetypeID a_id);
+		[[nodiscard]] static FormType          GetAssociatedFormType(ArchetypeID a_id);
+		[[nodiscard]] static ActorValue::Index GetFixedActorValue(ArchetypeID a_id);
+		[[nodiscard]] static bool              IsFlagSet(ArchetypeID a_id, Flags a_flag);
 	};
 }

@@ -1,6 +1,6 @@
 #pragma once
 
-#include "RE/A/ActorValues.h"
+#include "RE/A/ActorValue.h"
 #include "RE/B/BGSDestructibleObjectForm.h"
 #include "RE/B/BGSKeywordForm.h"
 #include "RE/B/BGSMessageIcon.h"
@@ -35,8 +35,8 @@ namespace RE
 
 		union Teaches
 		{
-			ActorValue actorValueToAdvance;
-			SpellItem* spell;
+			ActorValue::Index actorValueToAdvance;
+			SpellItem*        spell;
 		};
 		static_assert(sizeof(Teaches) == 0x8);
 
@@ -101,14 +101,14 @@ namespace RE
 		// override (BGSKeywordForm)
 		[[nodiscard]] BGSKeyword* GetDefaultKeyword() const override;  // 05
 
-		[[nodiscard]] bool       TeachesSkill() const;
-		[[nodiscard]] bool       TeachesSpell() const;
-		[[nodiscard]] bool       IsRead() const;
-		[[nodiscard]] bool       CanBeTaken() const;
-		[[nodiscard]] bool       IsBookTome() const;
-		[[nodiscard]] bool       IsNoteScroll() const;
-		[[nodiscard]] ActorValue GetSkill() const;
-		SpellItem*               GetSpell();
+		[[nodiscard]] bool              TeachesSkill() const;
+		[[nodiscard]] bool              TeachesSpell() const;
+		[[nodiscard]] bool              IsRead() const;
+		[[nodiscard]] bool              CanBeTaken() const;
+		[[nodiscard]] bool              IsBookTome() const;
+		[[nodiscard]] bool              IsNoteScroll() const;
+		[[nodiscard]] ActorValue::Index GetSkill() const;
+		SpellItem*                      GetSpell();
 
 		// members
 		OBJ_BOOK       data;                 // 110 - DATA

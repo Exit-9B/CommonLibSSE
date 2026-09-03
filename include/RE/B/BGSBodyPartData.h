@@ -1,6 +1,6 @@
 #pragma once
 
-#include "RE/A/ActorValues.h"
+#include "RE/A/ActorValue.h"
 #include "RE/B/BGSBodyPartDefs.h"
 #include "RE/B/BGSPreloadable.h"
 #include "RE/B/BSFixedString.h"
@@ -32,7 +32,7 @@ namespace RE
 		stl::enumeration<Flag, std::uint8_t>                       flags;                        // 04
 		stl::enumeration<BGSBodyPartDefs::LIMB_ENUM, std::uint8_t> type;                         // 05
 		std::int8_t                                                healthPercent;                // 06
-		stl::enumeration<ActorValue, std::uint8_t>                 actorValue;                   // 07
+		stl::enumeration<ActorValue::Index, std::uint8_t>          actorValue;                   // 07
 		std::int8_t                                                toHitChance;                  // 08
 		std::int8_t                                                explosionChance;              // 09
 		std::int8_t                                                explosionGenericDebrisCount;  // 0A

@@ -18,7 +18,7 @@ namespace RE
 		return GetArchetypeDef(a_id).associatedFormType;
 	}
 
-	ActorValue EffectArchetypes::GetFixedActorValue(ArchetypeID a_id)
+	ActorValue::Index EffectArchetypes::GetFixedActorValue(ArchetypeID a_id)
 	{
 		return GetArchetypeDef(a_id).fixedActorValue;
 	}

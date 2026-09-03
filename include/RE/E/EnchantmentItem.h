@@ -58,7 +58,7 @@ namespace RE
 		virtual void                     SetDelivery(MagicSystem::Delivery a_type) override;        // 56 - { if (Unk_58()) { data.delivery = a_type; } }
 		virtual MagicSystem::Delivery    GetDelivery() const override;                              // 57 - { return data.delivery; }
 		virtual float                    GetChargeTime() const override;                            // 64
-		virtual ActorValue               GetAssociatedSkill() const override;                       // 66 - { return ActorValue::kEnchanting; }
+		virtual ActorValue::Index        GetAssociatedSkill() const override;                       // 66 - { return ActorValue::kEnchanting; }
 		virtual std::uint32_t            GetChunkID() override;                                     // 68 - { return 'ENIT'; }
 		virtual void                     CopyMagicItemData(MagicItem* a_src) override;              // 69
 		virtual const MagicItem::Data*   GetData1() const override;                                 // 6C - { return &data; }

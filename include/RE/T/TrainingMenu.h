@@ -1,6 +1,6 @@
 #pragma once
 
-#include "RE/A/ActorValues.h"
+#include "RE/A/ActorValue.h"
 #include "RE/B/BSTEvent.h"
 #include "RE/G/GFxValue.h"
 #include "RE/I/IMenu.h"
@@ -31,16 +31,16 @@ namespace RE
 		BSEventNotifyControl ProcessEvent(const MenuOpenCloseEvent* a_event, BSTEventSource<MenuOpenCloseEvent>* a_eventSource) override;  // 01
 
 		// members
-		void*         unk38;            // 38 - smart ptr
-		ActorValue    skill;            // 40
-		std::uint32_t unk44;            // 44
-		GFxValue      trainingMenuObj;  // 48 - MovieClip
-		GFxValue      skillName;        // 60 - TextField
-		GFxValue      skillMeter;       // 78 - Components.Meter
-		GFxValue      trainerSkill;     // 90 - TextField
-		GFxValue      timesTrained;     // A8 - TextField
-		GFxValue      trainCost;        // C0 - TextField
-		GFxValue      currentGold;      // D8 - TextField
+		void*             unk38;            // 38 - smart ptr
+		ActorValue::Index skill;            // 40
+		std::uint32_t     unk44;            // 44
+		GFxValue          trainingMenuObj;  // 48 - MovieClip
+		GFxValue          skillName;        // 60 - TextField
+		GFxValue          skillMeter;       // 78 - Components.Meter
+		GFxValue          trainerSkill;     // 90 - TextField
+		GFxValue          timesTrained;     // A8 - TextField
+		GFxValue          trainCost;        // C0 - TextField
+		GFxValue          currentGold;      // D8 - TextField
 	};
 #ifndef SKYRIMVR
 	static_assert(sizeof(TrainingMenu) == 0xF0);

@@ -1,7 +1,7 @@
 #pragma once
 
 #include "RE/A/ActorPackage.h"
-#include "RE/A/ActorValues.h"
+#include "RE/A/ActorValue.h"
 #include "RE/B/BGSBodyPartDefs.h"
 #include "RE/B/BGSPerkEntry.h"
 #include "RE/B/BSAtomic.h"
@@ -151,7 +151,7 @@ namespace RE
 		float                      criticalDamageMult;  // 7C
 		Flag                       flags;               // 80
 		std::uint32_t              equipIndex;          // 84
-		ActorValue                 skill;               // 88
+		ActorValue::Index          skill;               // 88
 		BGSBodyPartDefs::LIMB_ENUM damageLimb;          // 8C
 	};
 	static_assert(sizeof(HitData) == 0x90);

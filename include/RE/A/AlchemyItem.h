@@ -70,7 +70,7 @@ namespace RE
 		virtual bool                     IsFood() const override;                                               // 5D - { return ((GetData()->flags) & 2) && !IsPoison(); }
 		virtual bool                     IsPoison() const override;                                             // 61 - { return ((GetData()->flags) >> 17) & 1; }
 		virtual bool                     IsMedicine() const override;                                           // 62 - { return ((GetData()->flags) >> 8) >> 8; }
-		virtual ActorValue               GetAssociatedSkill() const override;                                   // 66 - { return ActorValue::kConfidence; }
+		virtual ActorValue::Index        GetAssociatedSkill() const override;                                   // 66 - { return ActorValue::kConfidence; }
 		virtual std::uint32_t            GetChunkID() override;                                                 // 68 - { return 'ENIT'; }
 		virtual void                     CopyMagicItemData(MagicItem* a_src) override;                          // 69
 		virtual void                     LoadMagicItemChunk(TESFile* a_mod, std::uint32_t a_chunkID) override;  // 6A

@@ -48,9 +48,10 @@ namespace RE
 			inline constexpr REL::ID UnequipObject(static_cast<std::uint64_t>(38901));
 		}
 
-		namespace ActorValueInfo
+		namespace ActorValue
 		{
 			inline constexpr REL::ID GetActorValueName(static_cast<std::uint64_t>(27192));
+			inline constexpr REL::ID Singleton(static_cast<std::uint64_t>(400267));
 		}
 
 		namespace ActorValueOwner

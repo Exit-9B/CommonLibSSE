@@ -1,6 +1,6 @@
 #pragma once
 
-#include "RE/A/ActorValues.h"
+#include "RE/A/ActorValue.h"
 #include "RE/H/HUDMeter.h"
 
 namespace RE
@@ -17,8 +17,8 @@ namespace RE
 		float GetFillPct() override;                          // 05
 
 		// members
-		ActorValue    actorValue;  // 48
-		std::uint32_t pad4C;       // 4C
+		ActorValue::Index actorValue;  // 48
+		std::uint32_t     pad4C;       // 4C
 	};
 	static_assert(sizeof(ActorValueMeter) == 0x50);
 }

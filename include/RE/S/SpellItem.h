@@ -77,7 +77,7 @@ namespace RE
 		bool                     GetSkillUsageData(SkillUsageData& a_data) const override;              // 60
 		void                     AdjustCost(float& a_cost, Actor* a_actor) const override;              // 63
 		float                    GetChargeTime() const override;                                        // 64
-		ActorValue               GetAssociatedSkill() const override;                                   // 66
+		ActorValue::Index        GetAssociatedSkill() const override;                                   // 66
 		bool                     IsTwoHanded() const override;                                          // 67 - { BGSEquipSlot* equipSlot = BGSEquipType::GetEquipSlot(); return equipSlot && equipSlot->flags & 1; }
 		std::uint32_t            GetChunkID() override;                                                 // 68 - { return 'SPIT'; }
 		void                     CopyMagicItemData(MagicItem* a_src) override;                          // 69

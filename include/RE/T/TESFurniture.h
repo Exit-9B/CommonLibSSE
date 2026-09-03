@@ -1,6 +1,6 @@
 #pragma once
 
-#include "RE/A/ActorValues.h"
+#include "RE/A/ActorValue.h"
 #include "RE/B/BSTArray.h"
 #include "RE/F/FormTypes.h"
 #include "RE/T/TESObjectACTI.h"
@@ -76,8 +76,8 @@ namespace RE
 			};
 
 			// members
-			stl::enumeration<BenchType, std::uint8_t>  benchType;  // 0
-			stl::enumeration<ActorValue, std::uint8_t> usesSkill;  // 1
+			stl::enumeration<BenchType, std::uint8_t>         benchType;  // 0
+			stl::enumeration<ActorValue::Index, std::uint8_t> usesSkill;  // 1
 		};
 		static_assert(sizeof(WorkBenchData) == 0x2);
 
