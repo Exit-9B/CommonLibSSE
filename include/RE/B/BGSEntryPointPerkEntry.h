@@ -65,7 +65,7 @@ namespace RE
 		// members
 		EntryData                  entryData;     // 10 - DATA
 		BGSEntryPointFunctionData* functionData;  // 18
-		SimpleArray<TESCondition>  conditions;    // 20
+		TESCondition*              conditions;    // 20
 		BGSPerk*                   perk;          // 28
 	};
 	static_assert(sizeof(BGSEntryPointPerkEntry) == 0x30);
