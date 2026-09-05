@@ -915,6 +915,11 @@ namespace RE
 			inline constexpr REL::ID GetCostliestEffectItem(static_cast<std::uint64_t>(11335));
 		}
 
+		namespace MagicMenu
+		{
+			inline constexpr REL::ID UpdateList(static_cast<std::uint64_t>(52043));
+		}
+
 		namespace MagicTarget
 		{
 			inline constexpr REL::ID HasMagicEffect(static_cast<std::uint64_t>(34517));

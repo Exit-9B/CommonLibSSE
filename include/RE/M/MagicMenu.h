@@ -24,6 +24,8 @@ namespace RE
 		UI_MESSAGE_RESULTS ProcessMessage(UIMessage& a_message) override;    // 04
 		void               PostDisplay() override;                           // 06
 
+		void UpdateList();
+
 		// members
 		void*         unk30;            // 30 - some variation of the item list
 		ItemCard*     itemCard;         // 38

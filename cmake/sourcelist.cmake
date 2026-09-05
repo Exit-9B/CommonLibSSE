@@ -1568,6 +1568,7 @@ set(SOURCES
 	src/RE/L/LooseFileStream.cpp
 	src/RE/M/MagicFavorites.cpp
 	src/RE/M/MagicItem.cpp
+	src/RE/M/MagicMenu.cpp
 	src/RE/M/MagicTarget.cpp
 	src/RE/M/Main.cpp
 	src/RE/M/MemoryManager.cpp

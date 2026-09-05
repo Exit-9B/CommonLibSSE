@@ -898,6 +898,11 @@ namespace RE
 			inline constexpr REL::Offset GetCostliestEffectItem(static_cast<std::uint64_t>(0x112270));
 		}
 
+		namespace MagicMenu
+		{
+			inline constexpr REL::Offset UpdateList(static_cast<std::uint64_t>(0x8CB450));
+		}
+
 		namespace MagicTarget
 		{
 			inline constexpr REL::Offset HasMagicEffect(static_cast<std::uint64_t>(0x557380));
