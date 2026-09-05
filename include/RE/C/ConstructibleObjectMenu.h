@@ -21,7 +21,7 @@ namespace RE
 				~CreationConfirmCallback() override;  // 00
 
 				// override (IMessageBoxCallback)
-				void Run(Message a_msg) override;  // 01
+				void operator()(std::int8_t a_msg) override;  // 01
 
 				// members
 				ConstructibleObjectMenu* menu;  // 10

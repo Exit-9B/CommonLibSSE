@@ -128,7 +128,7 @@ namespace RE
 				virtual ~EnchantMenuDisenchantCallback();  // 00
 
 				// override (EnchantMenuCallback)
-				virtual void Run(Message a_msg) override;  // 01
+				virtual void operator()(std::int8_t a_msg) override;  // 01
 			};
 			static_assert(sizeof(EnchantMenuDisenchantCallback) == 0x18);
 
@@ -140,7 +140,7 @@ namespace RE
 				virtual ~EnchantMenuCraftCallback();  // 00
 
 				// override (EnchantMenuCallback)
-				virtual void Run(Message a_msg) override;  // 01
+				virtual void operator()(std::int8_t a_msg) override;  // 01
 			};
 			static_assert(sizeof(EnchantMenuCraftCallback) == 0x18);
 
@@ -152,7 +152,7 @@ namespace RE
 				virtual ~EnchantMenuExitCallback();  // 00
 
 				// override (EnchantMenuCallback)
-				virtual void Run(Message a_msg) override;  // 01
+				virtual void operator()(std::int8_t a_msg) override;  // 01
 			};
 			static_assert(sizeof(EnchantMenuExitCallback) == 0x18);
 

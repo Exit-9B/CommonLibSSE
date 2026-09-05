@@ -939,9 +939,9 @@ namespace RE
 			inline constexpr REL::Offset Singleton(static_cast<std::uint64_t>(0x2FC4878));
 		}
 
-		namespace MessageBoxData
+		namespace MessageBoxMenu
 		{
-			inline constexpr REL::Offset QueueMessage(static_cast<std::uint64_t>(0x8D8420));
+			inline constexpr REL::Offset Create_MessageBoxData(static_cast<std::uint64_t>(0x8D8420));
 		}
 
 		namespace MessageDataFactoryManager

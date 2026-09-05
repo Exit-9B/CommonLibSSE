@@ -4,6 +4,8 @@
 
 namespace RE
 {
+	class MessageBoxData;
+
 	// menuDepth = 10
 	// flags = kPausesGame | kAlwaysOpen | kUsesCursor | kModal
 	// context = kMenuMode
@@ -18,6 +20,8 @@ namespace RE
 		// override (IMenu)
 		void               Accept(CallbackProcessor* a_processor) override;  // 01
 		UI_MESSAGE_RESULTS ProcessMessage(UIMessage& a_message) override;    // 04
+
+		static bool Create(MessageBoxData* a_data);
 
 		// members
 		std::uint8_t  unk30;  // 30

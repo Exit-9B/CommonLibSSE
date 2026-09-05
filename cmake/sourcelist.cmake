@@ -1576,7 +1576,7 @@ set(SOURCES
 	src/RE/M/MenuCursor.cpp
 	src/RE/M/MenuEventHandler.cpp
 	src/RE/M/MenuTopicManager.cpp
-	src/RE/M/MessageBoxData.cpp
+	src/RE/M/MessageBoxMenu.cpp
 	src/RE/M/MiddleHighProcessData.cpp
 	src/RE/M/Misc.cpp
 	src/RE/N/NativeFunctionBase.cpp

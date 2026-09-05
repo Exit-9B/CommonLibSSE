@@ -956,9 +956,9 @@ namespace RE
 			inline constexpr REL::ID Singleton(static_cast<std::uint64_t>(401099));
 		}
 
-		namespace MessageBoxData
+		namespace MessageBoxMenu
 		{
-			inline constexpr REL::ID QueueMessage(static_cast<std::uint64_t>(52271));
+			inline constexpr REL::ID Create_MessageBoxData(static_cast<std::uint64_t>(52271));
 		}
 
 		namespace MessageDataFactoryManager
