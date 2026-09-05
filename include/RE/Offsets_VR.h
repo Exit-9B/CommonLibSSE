@@ -43,6 +43,7 @@ namespace RE
 			inline constexpr REL::Offset EquipSpell(static_cast<std::uint64_t>(0x6556624));
 			inline constexpr REL::Offset Singleton(static_cast<std::uint64_t>(0x2F896D8));
 			inline constexpr REL::Offset UnequipObject(static_cast<std::uint64_t>(0x6411A0));
+			inline constexpr REL::Offset UnequipSpell(static_cast<std::uint64_t>(0x641350));
 		}
 
 		namespace ActorValue

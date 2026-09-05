@@ -46,6 +46,7 @@ namespace RE
 			inline constexpr REL::ID EquipSpell(static_cast<std::uint64_t>(38895));
 			inline constexpr REL::ID Singleton(static_cast<std::uint64_t>(400636));
 			inline constexpr REL::ID UnequipObject(static_cast<std::uint64_t>(38901));
+			inline constexpr REL::ID UnequipSpell(static_cast<std::uint64_t>(38902));
 		}
 
 		namespace ActorValue

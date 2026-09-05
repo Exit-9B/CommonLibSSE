@@ -37,6 +37,10 @@ namespace RE
 		bool Load(TESFile* a_mod) override;  // 06
 		void InitItemImpl() override;        // 13
 
+		[[nodiscard]] static BGSEquipSlot* GetLeftHandSlot();
+		[[nodiscard]] static BGSEquipSlot* GetRightHandSlot();
+		[[nodiscard]] static BGSEquipSlot* GetVoiceSlot();
+
 		// members
 		BSTArray<BGSEquipSlot*>               parentSlots;  // 20 - PNAM
 		stl::enumeration<Flag, std::uint32_t> flags;        // 38 - DATA

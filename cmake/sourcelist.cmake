@@ -1408,6 +1408,7 @@ set(SOURCES
 	src/RE/B/BGSEntryPointFunction.cpp
 	src/RE/B/BGSEntryPointFunctionDataActivateChoice.cpp
 	src/RE/B/BGSEntryPointPerkEntry.cpp
+	src/RE/B/BGSEquipSlot.cpp
 	src/RE/B/BGSFootstepManager.cpp
 	src/RE/B/BGSHeadPart.cpp
 	src/RE/B/BGSKeywordForm.cpp

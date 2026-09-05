@@ -35,4 +35,11 @@ namespace RE
 		REL::Relocation<func_t> func{ STATIC_OFFSET(ActorEquipManager::UnequipObject) };
 		return func(this, a_actor, a_object, a_extraData, a_count, a_slot, a_queueEquip, a_forceEquip, a_playSounds, a_applyNow, a_slotToReplace);
 	}
+
+	void ActorEquipManager::UnequipSpell(Actor* a_actor, SpellItem* a_spell, const BGSEquipSlot* a_slot)
+	{
+		using func_t = decltype(&ActorEquipManager::UnequipSpell);
+		REL::Relocation<func_t> func{ STATIC_OFFSET(ActorEquipManager::UnequipSpell) };
+		return func(this, a_actor, a_spell, a_slot);
+	}
 }
